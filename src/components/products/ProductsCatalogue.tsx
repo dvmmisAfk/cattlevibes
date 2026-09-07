@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { LayoutGroup, motion } from "framer-motion";
+import Link from "next/link";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -9,6 +10,7 @@ import {
   Search,
   SlidersHorizontal,
   X,
+  ArrowRight,
 } from "lucide-react";
 import { categoryFilterMap, products } from "@/data/products";
 import type { AnimalType, HealthConcern, Product } from "@/lib/types";
@@ -101,38 +103,42 @@ export function ProductsCatalogue({
 
     if (categories.length > 0) {
       result = result.filter((product) =>
-        product.healthConcerns.some((concern) => categories.includes(concern)),
+        categories.some((concern) =>
+          product.healthConcerns.includes(concern as HealthConcern),
+        ),
       );
     }
 
     if (selectedAnimals.length > 0) {
       result = result.filter((product) =>
-        product.animals.some((animal) => selectedAnimals.includes(animal)),
+        selectedAnimals.some((animal) =>
+          product.animals.includes(animal as AnimalType),
+        ),
       );
     }
 
     return result;
-  }, [query, forms, categories, selectedAnimals, categoryGroup]);
+  }, [categories, categoryGroup, forms, query, selectedAnimals]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
-  const paged = filtered.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE,
-  );
+  const paged = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filtered.slice(start, start + PAGE_SIZE);
+  }, [currentPage, filtered]);
 
   useEffect(() => {
     setPage(1);
   }, [query, forms, categories, selectedAnimals, categoryGroup]);
 
-  const chips = [
-    ...forms.map((value) => ({ group: "form" as const, value })),
-    ...categories.map((value) => ({ group: "category" as const, value })),
-    ...selectedAnimals.map((value) => ({ group: "animal" as const, value })),
-    ...(categoryGroup
-      ? [{ group: "group" as const, value: categoryGroup }]
-      : []),
-  ];
+  const chips = useMemo(() => {
+    const list: { group: string; value: string }[] = [];
+    if (categoryGroup) list.push({ group: "group", value: categoryGroup });
+    forms.forEach((value) => list.push({ group: "form", value }));
+    categories.forEach((value) => list.push({ group: "category", value }));
+    selectedAnimals.forEach((value) => list.push({ group: "animal", value }));
+    return list;
+  }, [categoryGroup, forms, categories, selectedAnimals]);
 
   const clearAll = () => {
     setQuery("");
@@ -154,7 +160,7 @@ export function ProductsCatalogue({
   const filterPanel = (
     <div className="space-y-8">
       <div>
-        <h3 className="font-heading mb-4 border-b border-[#EEEEEE] pb-2 text-xl font-bold text-deep-navy">
+        <h3 className="font-heading mb-4 border-b border-border/70 pb-2 text-xl font-bold text-deep-navy">
           Filters
         </h3>
         <FilterGroup
@@ -205,11 +211,11 @@ export function ProductsCatalogue({
             <h1 className="font-heading mb-2 text-[32px] leading-tight font-bold text-deep-navy md:text-[40px]">
               Clinical Products Catalogue
             </h1>
-            <p className="mb-8 text-[#3A4750]">
-              High-density, enquiry-led clinical catalogue for verifiable outcomes.
+            <p className="mb-8 text-primary-navy">
+              High-density, enquiry-led clinical catalogue for verifiable veterinary outcomes.
             </p>
             <div className="relative h-14 w-full max-w-2xl">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-[#3A4750]">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-primary-navy/70">
                 <Search className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <input
@@ -217,13 +223,13 @@ export function ProductsCatalogue({
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search by product name or molecule..."
-                className="h-full w-full rounded-lg border border-[#EEEEEE] bg-white pr-4 pl-12 text-deep-navy shadow-sm transition-all outline-none placeholder:text-[#3A4750]/60 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+                className="h-full w-full rounded-xl border border-border/80 bg-white pr-4 pl-12 text-deep-navy shadow-sm transition-all outline-none placeholder:text-primary-navy/60 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
               />
             </div>
             <button
               type="button"
               onClick={() => setMobileFiltersOpen(true)}
-              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-[#EEEEEE] bg-white px-4 py-2.5 text-sm font-medium text-deep-navy md:hidden"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border/80 bg-white px-4 py-2.5 text-sm font-medium text-deep-navy md:hidden shadow-sm"
             >
               <SlidersHorizontal className="h-4 w-4" />
               Filters
@@ -240,13 +246,13 @@ export function ProductsCatalogue({
               {chips.map((chip) => (
                 <span
                   key={`${chip.group}-${chip.value}`}
-                  className="inline-flex items-center gap-1 rounded-full border border-[#EEEEEE] bg-white px-3 py-1 text-xs font-medium text-[#3A4750]"
+                  className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white px-3 py-1 text-xs font-medium text-primary-navy shadow-sm"
                 >
                   {chip.value}
                   <button
                     type="button"
                     onClick={() => removeChip(chip.group, chip.value)}
-                    className="text-[#3A4750] hover:text-brand-orange"
+                    className="text-primary-navy hover:text-brand-orange"
                     aria-label={`Remove ${chip.value}`}
                   >
                     <X className="h-3.5 w-3.5" strokeWidth={2} />
@@ -257,18 +263,18 @@ export function ProductsCatalogue({
           )}
 
           {filtered.length === 0 ? (
-            <div className="mt-12 flex flex-col items-center justify-center rounded-xl border border-[#EEEEEE] bg-white p-12 text-center">
-              <Search className="mb-4 h-12 w-12 text-[#3A4750]/40" strokeWidth={1.25} />
+            <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-white p-12 text-center shadow-sm">
+              <Search className="mb-4 h-12 w-12 text-primary-navy/40" strokeWidth={1.25} />
               <h3 className="font-heading mb-2 text-xl font-bold text-deep-navy">
                 No clinical products match these criteria.
               </h3>
-              <p className="mb-6 text-[#3A4750]">
+              <p className="mb-6 text-text-muted">
                 Try adjusting your filters or search terms.
               </p>
               <button
                 type="button"
                 onClick={clearAll}
-                className="font-heading rounded-lg bg-brand-orange px-6 py-2 text-sm font-bold tracking-[0.02em] text-white uppercase transition-colors hover:bg-deep-navy"
+                className="font-heading rounded-xl bg-brand-orange px-6 py-2.5 text-sm font-bold tracking-[0.02em] text-white uppercase transition-colors hover:bg-deep-navy"
               >
                 Clear All Filters
               </button>
@@ -305,10 +311,10 @@ export function ProductsCatalogue({
                         key={number}
                         type="button"
                         onClick={() => setPage(number)}
-                        className={`flex h-10 w-10 items-center justify-center rounded-lg font-bold ${
+                        className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold transition-colors ${
                           number === currentPage
-                            ? "bg-deep-navy text-white"
-                            : "border border-[#EEEEEE] text-[#3A4750] transition-colors hover:bg-[#EEEEEE]"
+                            ? "bg-deep-navy text-white shadow-sm"
+                            : "border border-border/80 text-primary-navy hover:bg-warm-cream"
                         }`}
                       >
                         {number}
@@ -353,30 +359,27 @@ export function ProductsCatalogue({
         </div>
       )}
 
-      {viewProduct && (
-        <ProductQuickView
+      <AnimatePresence>
+        {viewProduct && (
+          <ProductQuickView
             product={viewProduct}
             products={filtered}
             initialSlide={openedSlide}
             sharedLayout={layoutOriginSlug === viewProduct.slug}
             onZoomSettled={handleZoomSettled}
-            onSelect={(product) => {
+            onClose={() => setViewProduct(null)}
+            onSelect={(nextProduct) => {
               setLayoutOriginSlug(null);
               setOpenedSlide(0);
-              setViewProduct(product);
-            }}
-            onClose={() => {
-              setViewProduct(null);
-              setLayoutOriginSlug(null);
-              setOpenedSlide(0);
+              setViewProduct(nextProduct);
             }}
             onEnquire={(product) => {
               setViewProduct(null);
-              setLayoutOriginSlug(null);
               setEnquiryProduct(product);
             }}
           />
-      )}
+        )}
+      </AnimatePresence>
 
       <CatalogueEnquiryDrawer
         product={enquiryProduct}
@@ -399,7 +402,7 @@ function FilterGroup({
 }) {
   return (
     <div className="mb-6">
-      <h4 className="font-heading mb-3 font-medium text-[#3A4750]">{title}</h4>
+      <h4 className="font-heading mb-3 font-medium text-primary-navy">{title}</h4>
       <div className="space-y-2">
         {options.map((option) => (
           <label
@@ -410,9 +413,9 @@ function FilterGroup({
               type="checkbox"
               checked={selected.includes(option)}
               onChange={() => onToggle(option)}
-              className="h-5 w-5 cursor-pointer rounded-md border-[#EEEEEE] text-brand-orange focus:ring-brand-orange focus:ring-offset-0"
+              className="h-5 w-5 cursor-pointer rounded-md border-border text-brand-orange focus:ring-brand-orange focus:ring-offset-0"
             />
-            <span className="text-sm transition-colors group-hover:text-deep-navy">
+            <span className="text-sm text-text-muted transition-colors group-hover:text-deep-navy">
               {option}
             </span>
           </label>
@@ -452,12 +455,13 @@ function CatalogueProductCard({
   const packshot = <ProductPackshot src={current} alt={product.name} />;
 
   return (
-    <div className="group flex h-[420px] flex-col rounded-xl border border-[#EEEEEE] bg-white transition-shadow duration-300 hover:shadow-[0_12px_32px_rgba(49,56,65,0.12)]">
-      <div className="relative h-[60%] rounded-t-xl bg-[#F7F7F7]">
+    <div className="group flex h-[440px] flex-col rounded-[18px] border border-border/80 bg-white transition-all duration-300 hover:shadow-[0_12px_32px_rgba(49,56,65,0.12)] hover:border-brand-orange/30">
+      <div className="relative h-[58%] rounded-t-[18px] bg-soft-white overflow-hidden">
         <button
           type="button"
           onClick={() => onView(slide)}
-          className="flex h-full w-full items-center justify-center p-4"
+          className="flex h-full w-full items-center justify-center p-4 cursor-pointer"
+          aria-label={`Preview ${product.name}`}
         >
           {enableLayout ? (
             <motion.div
@@ -473,7 +477,7 @@ function CatalogueProductCard({
           )}
         </button>
         <div className="pointer-events-none absolute top-4 left-4">
-          <span className="rounded bg-white/80 px-2 py-1 text-xs font-bold text-deep-navy backdrop-blur">
+          <span className="rounded-lg bg-white/90 px-2.5 py-1 text-xs font-bold text-deep-navy backdrop-blur shadow-sm border border-border/40">
             {product.formulation}
           </span>
         </div>
@@ -508,20 +512,34 @@ function CatalogueProductCard({
           </>
         )}
       </div>
-      <div className="flex h-[40%] flex-col justify-between p-5">
-        <button type="button" onClick={() => onView(slide)} className="text-left">
-          <h3 className="font-heading mb-1 text-xl font-bold text-deep-navy">
-            {product.name}
-          </h3>
-          <p className="truncate text-sm text-[#3A4750]">{subtitle}</p>
-        </button>
-        <button
-          type="button"
-          onClick={() => onView(slide)}
-          className="font-heading mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-lg border-2 border-deep-navy text-[13px] font-bold tracking-[0.02em] text-deep-navy uppercase transition-colors group-hover:bg-deep-navy group-hover:text-white"
-        >
-          View Product
-        </button>
+      <div className="flex h-[42%] flex-col justify-between p-5">
+        <div>
+          <Link
+            href={`/products/${product.slug}`}
+            className="group/title block text-left"
+          >
+            <h3 className="font-heading mb-1 text-xl font-bold text-deep-navy transition-colors group-hover/title:text-brand-orange">
+              {product.name}
+            </h3>
+          </Link>
+          <p className="truncate text-sm text-text-muted">{subtitle}</p>
+        </div>
+        <div className="mt-4 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => onView(slide)}
+            className="flex-1 flex h-10 items-center justify-center gap-1 rounded-xl border border-primary-navy/25 bg-white text-xs font-semibold text-deep-navy transition-all hover:border-brand-orange hover:text-brand-orange hover:shadow-sm cursor-pointer"
+          >
+            Quick View
+          </button>
+          <Link
+            href={`/products/${product.slug}`}
+            className="group/btn flex-1 flex h-10 items-center justify-center gap-1 rounded-xl bg-deep-navy text-xs font-semibold text-white transition-all hover:bg-deep-navy/90 hover:shadow-sm"
+          >
+            Details
+            <ArrowRight className="h-3.5 w-3.5 text-brand-orange transition-transform group-hover/btn:translate-x-1" strokeWidth={2} />
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -544,7 +562,7 @@ function PaginationButton({
       disabled={disabled}
       onClick={onClick}
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#EEEEEE] text-[#3A4750] transition-colors hover:bg-[#EEEEEE] disabled:opacity-50"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/80 text-primary-navy transition-colors hover:bg-warm-cream disabled:opacity-50"
     >
       {children}
     </button>

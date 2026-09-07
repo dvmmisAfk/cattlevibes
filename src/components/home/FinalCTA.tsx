@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { Button } from "@/components/ui/Buttons";
 import { images } from "@/data/site";
 
 export function FinalCTA() {
@@ -28,20 +28,17 @@ export function FinalCTA() {
             designed around livestock health, recovery and productivity.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/solutions"
-              className="group inline-flex items-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            >
+            <Button href="/solutions" variant="accent" size="lg">
               Explore Our Solutions
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-            <Link
+            </Button>
+            <Button
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              variant="secondary"
+              size="lg"
+              className="!border-white/40 !bg-transparent !text-white hover:!bg-white/10"
             >
               Talk to Cattlevibes
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
+            </Button>
           </div>
         </FadeIn>
       </div>

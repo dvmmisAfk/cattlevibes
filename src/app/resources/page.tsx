@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Download } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ResourceCard } from "@/components/sections/ResourceCard";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { CTASection } from "@/components/sections/CTASection";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { faqItems } from "@/data/site";
-import { Download } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -45,23 +46,25 @@ export default function ResourcesPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="mx-auto mt-12 max-w-2xl rounded-[24px] border border-border bg-white p-8 text-center md:p-12">
+            <div className="mx-auto mt-12 max-w-2xl rounded-[24px] border border-border bg-white p-8 text-center md:p-12 shadow-sm">
               <Download className="mx-auto h-10 w-10 text-brand-orange" strokeWidth={1.5} />
               <h2 className="mt-4 text-2xl font-bold text-deep-navy">
-                Download Product Catalogue
+                Product Catalogue
               </h2>
-              <p className="mt-3 text-sm text-text-muted">
-                The complete product catalogue will be available for download here. Please contact
-                us to request a copy in the meantime.
+              <p className="mt-3 text-sm text-text-muted leading-relaxed">
+                Direct digital download is being updated with our latest veterinary portfolio.
+                Request an official digital copy directly from our clinical support team.
               </p>
-              <button
-                type="button"
-                disabled
-                className="mt-6 inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-deep-navy/50 px-7 py-3.5 text-sm font-semibold text-white"
-              >
-                Download Catalogue
-              </button>
-              <p className="mt-3 text-xs text-text-muted">Catalogue download coming soon</p>
+              <div className="mt-6 flex justify-center">
+                <Link
+                  href="/contact?product=Product+Catalogue+Request"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-deep-navy px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-deep-navy/90 hover:shadow-md hover:-translate-y-0.5"
+                >
+                  Request Catalogue
+                  <ArrowRight className="h-4 w-4 text-brand-orange transition-transform group-hover:translate-x-1" strokeWidth={2} />
+                </Link>
+              </div>
+              <p className="mt-3 text-xs text-text-muted">Digital PDF sent via email upon request</p>
             </div>
           </FadeIn>
         </div>

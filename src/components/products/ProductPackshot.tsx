@@ -6,11 +6,18 @@ interface ProductPackshotProps {
   className?: string;
 }
 
-export function ProductPackshot({ src, alt, className = "" }: ProductPackshotProps) {
+export function ProductPackshot({
+  src,
+  alt,
+  className = "",
+}: ProductPackshotProps) {
   if (!src) {
     return (
       <div className={`flex items-center justify-center ${className}`}>
-        <FlaskConical className="h-16 w-16 text-[#3A4750]/25" strokeWidth={1.25} />
+        <FlaskConical
+          className="h-16 w-16 text-primary-navy/25"
+          strokeWidth={1.25}
+        />
       </div>
     );
   }

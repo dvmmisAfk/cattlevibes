@@ -22,7 +22,7 @@ export function ProblemSection() {
               <FadeIn key={card.number} delay={i * 0.08}>
                 <div className="flex h-full flex-col rounded-[18px] border border-border bg-white p-6 md:p-7">
                   <div className="flex items-start justify-between">
-                    <span className="text-3xl font-extrabold text-brand-orange/25">
+                    <span className="text-3xl font-extrabold text-brand-orange/50">
                       {card.number}
                     </span>
                     <Icon className="h-5 w-5 text-brand-orange/70" strokeWidth={1.5} />

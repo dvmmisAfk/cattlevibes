@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   description: "Contact Cattlevibes for product enquiries and animal healthcare information.",
 };
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{ product?: string }>;
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  const initialProduct = params.product || "";
+
   return (
     <>
       <section className="bg-warm-cream pt-(--nav-height)">
@@ -69,7 +76,7 @@ export default function ContactPage() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <EnquiryForm />
+              <EnquiryForm initialProduct={initialProduct} />
             </FadeIn>
           </div>
         </div>

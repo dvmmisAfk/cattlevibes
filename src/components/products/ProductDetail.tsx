@@ -45,7 +45,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="overflow-hidden rounded-[24px] border border-border bg-[#F7F7F7]"
+          className="overflow-hidden rounded-[24px] border border-border bg-soft-white"
         >
           <DetailImageSlider product={product} />
         </motion.div>

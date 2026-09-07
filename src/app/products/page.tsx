@@ -15,7 +15,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const params = await searchParams;
 
   return (
-    <section className="bg-[#F7F7F7] pt-(--nav-height) font-body text-[#3A4750]">
+    <section className="bg-soft-white pt-(--nav-height) font-body text-primary-navy">
       <ProductsCatalogue
         initialQuery={params.q || ""}
         initialCategory={params.category || ""}

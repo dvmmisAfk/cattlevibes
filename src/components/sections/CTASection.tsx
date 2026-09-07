@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { PrimaryButton, SecondaryButton } from "@/components/ui/Buttons";
+import { Button } from "@/components/ui/Buttons";
 
 interface CTASectionProps {
   title: string;
@@ -27,6 +26,9 @@ export function CTASection({
         ? "bg-warm-cream"
         : "bg-white";
 
+  const cleanPrimaryLabel = primaryLabel.replace(" →", "");
+  const cleanSecondaryLabel = secondaryLabel?.replace(" →", "");
+
   return (
     <section className={`${bgClass} py-16 md:py-24`}>
       <div className="mx-auto max-w-[1320px] px-5 text-center lg:px-8">
@@ -49,29 +51,29 @@ export function CTASection({
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           {variant === "navy" ? (
             <>
-              <Link
-                href={primaryHref}
-                className="group inline-flex items-center gap-2 rounded-xl bg-brand-orange px-7 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                {primaryLabel}
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-              {secondaryLabel && secondaryHref && (
-                <Link
+              <Button href={primaryHref} variant="accent" size="lg">
+                {cleanPrimaryLabel}
+              </Button>
+              {cleanSecondaryLabel && secondaryHref && (
+                <Button
                   href={secondaryHref}
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+                  variant="secondary"
+                  size="lg"
+                  className="!border-white/40 !bg-transparent !text-white hover:!bg-white/10"
                 >
-                  {secondaryLabel} →
-                </Link>
+                  {cleanSecondaryLabel}
+                </Button>
               )}
             </>
           ) : (
             <>
-              <PrimaryButton href={primaryHref}>{primaryButtonText(primaryLabel)}</PrimaryButton>
-              {secondaryLabel && secondaryHref && (
-                <SecondaryButton href={secondaryHref} variant="light">
-                  {secondaryLabel}
-                </SecondaryButton>
+              <Button href={primaryHref} variant="primary" size="lg">
+                {cleanPrimaryLabel}
+              </Button>
+              {cleanSecondaryLabel && secondaryHref && (
+                <Button href={secondaryHref} variant="secondary" size="lg">
+                  {cleanSecondaryLabel}
+                </Button>
               )}
             </>
           )}
@@ -79,8 +81,4 @@ export function CTASection({
       </div>
     </section>
   );
-}
-
-function primaryButtonText(label: string) {
-  return label.replace(" →", "");
 }

@@ -2,7 +2,6 @@
 
 import { Droplets, Wheat, Baby, Thermometer, Bug } from "lucide-react";
 import { PrimaryButton, SecondaryButton } from "@/components/ui/Buttons";
-import { HeroBackgroundVideo } from "@/components/sections/HeroBackgroundVideo";
 import { siteConfig, heroFeatures } from "@/data/site";
 
 const iconMap = {
@@ -33,9 +32,7 @@ export function Hero({
   const isHome = variant === "home";
 
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
-      <HeroBackgroundVideo />
-
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-soft-white">
       <div className="relative z-10 mx-auto max-w-[1320px] px-5 pb-16 pt-[calc(var(--nav-height)+1.5rem)] text-center lg:px-8">
         <p className="mb-4 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-orange md:text-sm">
           {eyebrow || (isHome ? "Complete Animal Healthcare Solutions" : undefined)}
