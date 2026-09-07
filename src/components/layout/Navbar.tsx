@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { images, navLinks, siteConfig } from "@/data/site";
-import { EnquireButton } from "./EnquireButton";
 import PillNav from "./PillNav";
 
 const navbarLinks = navLinks.filter((link) => link.href !== "/contact");
@@ -35,7 +34,6 @@ export function Navbar() {
           pillTextColor="#313841"
           hoveredPillTextColor="#ffffff"
           initialLoadAnimation
-          endSlot={<EnquireButton />}
         />
       </div>
     </header>

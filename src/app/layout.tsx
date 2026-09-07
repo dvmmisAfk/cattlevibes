@@ -24,8 +24,12 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/images/cattlevibes-mark.png",
-    apple: "/images/cattlevibes-mark.png",
+    icon: [
+      { url: "/images/cattlevibes-mark.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+    shortcut: "/images/cattlevibes-mark.png",
   },
   keywords: [
     "veterinary medicines",

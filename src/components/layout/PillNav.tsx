@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import "./PillNav.css";
 
@@ -263,6 +264,36 @@ export default function PillNav({
     ["--pill-text"]: resolvedPillTextColor,
   } as React.CSSProperties;
 
+  const renderEnquire = () => {
+    const i = items.length;
+    return (
+      <Link
+        href="/contact"
+        className={`pill pill-enquire${pathname === "/contact" ? " is-active" : ""}`}
+        aria-label="Enquire now"
+        onMouseEnter={() => handleEnter(i)}
+        onMouseLeave={() => handleLeave(i)}
+      >
+        <span
+          className="hover-circle"
+          aria-hidden="true"
+          ref={(el) => {
+            circleRefs.current[i] = el;
+          }}
+        />
+        <span className="label-stack">
+          <span className="pill-label">Enquire Now</span>
+          <span className="pill-label-hover" aria-hidden="true">
+            Enquire Now
+          </span>
+        </span>
+        <span className="pill-enquire-icon" aria-hidden="true">
+          <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+        </span>
+      </Link>
+    );
+  };
+
   const renderPill = (item: PillNavItem, i: number) => (
     <Link
       role="menuitem"
@@ -318,6 +349,7 @@ export default function PillNav({
         </div>
 
         <div className="pill-nav-end">
+          {renderEnquire()}
           {endSlot}
           <button
             className="mobile-menu-button mobile-only"
@@ -350,6 +382,15 @@ export default function PillNav({
               </Link>
             </li>
           ))}
+          <li>
+            <Link
+              href="/contact"
+              className={`mobile-menu-link${pathname === "/contact" ? " is-active" : ""}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Enquire Now
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

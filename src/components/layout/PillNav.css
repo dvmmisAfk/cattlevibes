@@ -276,6 +276,7 @@
   height: 100%;
   object-fit: contain;
   background: transparent;
+  mix-blend-mode: multiply;
 }
 
 .pill-nav--cattlevibes .pill-nav-items {
@@ -287,6 +288,33 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.pill-nav--cattlevibes .pill-enquire {
+  height: var(--nav-h);
+  gap: 8px;
+  padding: 0 6px 0 16px;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.pill-nav--cattlevibes .pill-enquire.is-active::after {
+  display: none;
+}
+
+.pill-nav--cattlevibes .pill-enquire-icon {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  height: 28px;
+  width: 28px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #ea9216;
+  color: #ffffff;
 }
 
 .pill-nav--cattlevibes .pill {
@@ -309,5 +337,9 @@
     font-size: 13px;
     --pill-pad-x: 12px;
     padding: 0 12px;
+  }
+
+  .pill-nav--cattlevibes .pill-enquire {
+    padding: 0 6px 0 14px;
   }
 }
