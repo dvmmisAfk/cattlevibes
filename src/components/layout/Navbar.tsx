@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { images, navLinks, siteConfig } from "@/data/site";
 import PillNav from "./PillNav";
@@ -18,6 +19,25 @@ function activeHrefForPath(pathname: string) {
 
 export function Navbar() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  const isHeroInitial = isHome && !scrolled;
 
   return (
     <header className="pointer-events-none fixed top-0 z-[100] w-full bg-transparent">
@@ -27,13 +47,13 @@ export function Navbar() {
           logoAlt={siteConfig.name}
           items={navbarLinks}
           activeHref={activeHrefForPath(pathname)}
-          className="pill-nav--cattlevibes"
+          className={`pill-nav--cattlevibes ${isHeroInitial ? "pill-nav--hero-initial" : "pill-nav--scrolled"}`}
           ease="power2.easeOut"
           baseColor="#313841"
           pillColor="#ffffff"
           pillTextColor="#313841"
           hoveredPillTextColor="#ffffff"
-          initialLoadAnimation
+          initialLoadAnimation={!isHome}
         />
       </div>
     </header>

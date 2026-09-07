@@ -343,3 +343,67 @@
     padding: 0 6px 0 14px;
   }
 }
+
+/* ─── Scroll-Reveal States for Home Page ─── */
+.pill-nav--cattlevibes.pill-nav--hero-initial .pill-nav-items {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.pill-nav--cattlevibes.pill-nav--scrolled .pill-nav-items {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-nav--cattlevibes.pill-nav--hero-initial .pill-enquire {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0;
+  background: transparent;
+  border-radius: 9999px;
+  box-shadow: none;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-nav--cattlevibes.pill-nav--hero-initial .pill-enquire .label-stack {
+  max-width: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.pill-nav--cattlevibes.pill-nav--hero-initial .pill-enquire .pill-enquire-icon {
+  width: 44px;
+  height: 44px;
+  background: #ea9216;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(234, 146, 22, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill-nav--cattlevibes.pill-nav--hero-initial .pill-enquire:hover .pill-enquire-icon {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(234, 146, 22, 0.6);
+}
+
+.pill-nav--cattlevibes.pill-nav--scrolled .pill-enquire {
+  width: auto;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-nav--cattlevibes.pill-nav--scrolled .pill-enquire .label-stack {
+  max-width: 140px;
+  opacity: 1;
+  transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+

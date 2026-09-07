@@ -8,6 +8,7 @@ import type { Product } from "@/lib/types";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductPackshot } from "@/components/products/ProductPackshot";
 import { PrimaryButton } from "@/components/ui/Buttons";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getRelatedProducts } from "@/data/products";
 
 interface ProductDetailViewProps {
@@ -22,30 +23,21 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 
   return (
     <div>
-      <nav className="mb-8 text-sm text-text-muted" aria-label="Breadcrumb">
-        <ol className="flex flex-wrap items-center gap-2">
-          <li>
-            <Link href="/" className="hover:text-brand-orange">
-              Home
-            </Link>
-          </li>
-          <li>/</li>
-          <li>
-            <Link href="/products" className="hover:text-brand-orange">
-              Products
-            </Link>
-          </li>
-          <li>/</li>
-          <li className="font-medium text-deep-navy">{product.name}</li>
-        </ol>
-      </nav>
+      <Breadcrumbs
+        customItems={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/products" },
+          { label: product.name, href: `/products/${product.slug}` },
+        ]}
+        className="mb-8"
+      />
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="overflow-hidden rounded-[24px] border border-border bg-soft-white"
+          className="overflow-hidden rounded-xl border border-border bg-soft-white"
         >
           <DetailImageSlider product={product} />
         </motion.div>
@@ -55,7 +47,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <p className="text-xs font-bold uppercase tracking-wider text-brand-orange">
+          <p className="mb-2 text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
             {product.category}
           </p>
           <h1 className="mt-2 text-3xl font-bold text-deep-navy md:text-4xl">
@@ -85,13 +77,13 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       </div>
 
       {infoEntries.length > 0 && (
-        <section className="mt-16 rounded-[20px] border border-border bg-white p-6 md:p-8">
+        <section className="mt-16 rounded-xl border border-border bg-white p-6 md:p-8">
           <h2 className="text-xl font-bold text-deep-navy">Product Information</h2>
           <dl className="mt-6 grid gap-4 sm:grid-cols-2">
             {Object.entries(product.info).map(([key, value]) =>
               value ? (
                 <div key={key} className="border-b border-border pb-4">
-                  <dt className="text-xs font-bold uppercase tracking-wider text-brand-orange">
+                  <dt className="text-xs font-bold uppercase tracking-wider text-yam-orange">
                     {formatLabel(key)}
                   </dt>
                   <dd className="mt-1 text-sm text-text-primary">{value}</dd>
@@ -104,7 +96,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 
       <section className="mt-12">
         <h2 className="text-xl font-bold text-deep-navy">Product Details</h2>
-        <p className="mt-4 text-base leading-relaxed text-text-muted">{product.description}</p>
+        <p className="mt-4 text-base leading-relaxed text-cadet-blue">{product.description}</p>
         <p className="mt-4 text-sm italic text-text-muted">
           For complete composition, indications, dosage, and presentation details, please refer
           to the official product catalogue or contact our team.
@@ -122,7 +114,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
         </section>
       )}
 
-      <section className="mt-16 rounded-[20px] bg-warm-cream p-8 text-center md:p-12">
+      <section className="mt-16 rounded-xl border border-border bg-light-pebble/60 p-8 text-center md:p-12">
         <h2 className="text-xl font-bold text-deep-navy">Need more information?</h2>
         <p className="mt-3 text-sm text-text-muted">
           Contact our team for detailed product information and enquiries.

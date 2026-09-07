@@ -234,7 +234,7 @@ export function ProductsCatalogue({
               <SlidersHorizontal className="h-4 w-4" />
               Filters
               {chips.length > 0 && (
-                <span className="rounded-full bg-brand-orange px-2 py-0.5 text-xs text-white">
+                <span className="rounded-md bg-brand-orange px-1.5 py-0.5 text-[11px] font-bold text-white">
                   {chips.length}
                 </span>
               )}
@@ -246,7 +246,7 @@ export function ProductsCatalogue({
               {chips.map((chip) => (
                 <span
                   key={`${chip.group}-${chip.value}`}
-                  className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white px-3 py-1 text-xs font-medium text-primary-navy shadow-sm"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-white px-2.5 py-1 text-xs font-medium text-primary-navy shadow-xs"
                 >
                   {chip.value}
                   <button
@@ -263,7 +263,7 @@ export function ProductsCatalogue({
           )}
 
           {filtered.length === 0 ? (
-            <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-white p-12 text-center shadow-sm">
+            <div className="mt-12 flex flex-col items-center justify-center rounded-xl border border-border bg-white p-12 text-center">
               <Search className="mb-4 h-12 w-12 text-primary-navy/40" strokeWidth={1.25} />
               <h3 className="font-heading mb-2 text-xl font-bold text-deep-navy">
                 No clinical products match these criteria.
@@ -343,7 +343,7 @@ export function ProductsCatalogue({
             aria-label="Close filters"
             onClick={() => setMobileFiltersOpen(false)}
           />
-          <div className="absolute inset-y-0 left-0 w-[min(100%,320px)] overflow-y-auto bg-white p-6 shadow-[0_12px_32px_rgba(49,56,65,0.12)]">
+          <div className="absolute inset-y-0 left-0 w-[min(100%,320px)] overflow-y-auto bg-white p-6 border-r border-border">
             <div className="mb-6 flex items-center justify-between">
               <p className="font-heading text-lg font-bold text-deep-navy">Filters</p>
               <button
@@ -455,8 +455,8 @@ function CatalogueProductCard({
   const packshot = <ProductPackshot src={current} alt={product.name} />;
 
   return (
-    <div className="group flex h-[440px] flex-col rounded-[18px] border border-border/80 bg-white transition-all duration-300 hover:shadow-[0_12px_32px_rgba(49,56,65,0.12)] hover:border-brand-orange/30">
-      <div className="relative h-[58%] rounded-t-[18px] bg-soft-white overflow-hidden">
+    <div className="group flex min-h-[460px] h-full flex-col justify-between rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-yam-orange/50">
+      <div className="relative h-[250px] shrink-0 rounded-t-xl bg-soft-white overflow-hidden">
         <button
           type="button"
           onClick={() => onView(slide)}
@@ -512,7 +512,7 @@ function CatalogueProductCard({
           </>
         )}
       </div>
-      <div className="flex h-[42%] flex-col justify-between p-5">
+      <div className="flex flex-1 flex-col justify-between p-5">
         <div>
           <Link
             href={`/products/${product.slug}`}
@@ -522,7 +522,7 @@ function CatalogueProductCard({
               {product.name}
             </h3>
           </Link>
-          <p className="truncate text-sm text-text-muted">{subtitle}</p>
+          <p className="line-clamp-2 text-sm text-text-muted">{subtitle}</p>
         </div>
         <div className="mt-4 flex items-center gap-2">
           <button

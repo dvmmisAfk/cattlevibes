@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Cattlevibes for product enquiries and animal healthcare information.",
+  description: "Contact Cattlevibes for institutional supply, commercial procurement, and veterinary product enquiries.",
 };
 
 interface ContactPageProps {
@@ -19,15 +20,19 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
   return (
     <>
-      <section className="bg-warm-cream pt-(--nav-height)">
-        <div className="mx-auto max-w-[1320px] px-5 py-16 md:py-20 lg:px-8">
+      <section className="bg-light-pebble pt-(--nav-height)">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-20 lg:px-8">
+          <Breadcrumbs className="mb-8" />
           <FadeIn>
             <div className="text-center">
-              <h1 className="text-3xl font-bold text-deep-navy md:text-5xl">
-                Let&apos;s Talk About Animal Health
+              <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-yam-orange mb-3">
+                Commercial Enquiries &middot; Institutional Procurement
+              </p>
+              <h1 className="text-3xl font-extrabold font-heading text-deep-navy md:text-5xl">
+                Commercial & Clinical Enquiries
               </h1>
-              <p className="mx-auto mt-4 max-w-xl text-base text-text-muted md:text-lg">
-                Have a product enquiry or want to know more about Cattlevibes?
+              <p className="mx-auto mt-4 max-w-xl text-base text-cadet-blue md:text-lg">
+                Connect with our veterinary support team for bulk distribution agreements, formulation specifications, or institutional tender procurement.
               </p>
             </div>
           </FadeIn>
@@ -65,7 +70,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   />
                 </div>
 
-                <div className="mt-10 rounded-[18px] border border-border bg-warm-cream p-6">
+                <div className="mt-10 rounded-xl border border-border bg-light-pebble/60 p-6">
                   <h3 className="font-bold text-deep-navy">Product Enquiries</h3>
                   <p className="mt-2 text-sm text-text-muted">
                     For specific product information, please include the product name in your

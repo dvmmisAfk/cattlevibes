@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div className={`max-w-2xl ${alignClass}`}>
       {eyebrow && (
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-brand-orange">
+        <p className="mb-4 text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
           {eyebrow}
         </p>
       )}

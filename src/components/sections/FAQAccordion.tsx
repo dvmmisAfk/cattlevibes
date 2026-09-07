@@ -16,20 +16,20 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-border rounded-[20px] border border-border bg-white">
+    <div className="divide-y divide-border rounded-xl border border-border bg-white">
       {items.map((item, index) => (
         <div key={item.question}>
           <button
             type="button"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="flex w-full items-center justify-between px-6 py-5 text-left"
+            className="flex w-full items-center justify-between px-6 py-5 text-left cursor-pointer"
             aria-expanded={openIndex === index}
           >
             <span className="pr-4 text-base font-semibold text-deep-navy">
               {item.question}
             </span>
             <ChevronDown
-              className={`h-5 w-5 shrink-0 text-brand-orange transition-transform duration-300 ${
+              className={`h-5 w-5 shrink-0 text-yam-orange transition-transform duration-200 ${
                 openIndex === index ? "rotate-180" : ""
               }`}
             />

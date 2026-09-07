@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimalCard } from "@/components/sections/AnimalCard";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -26,12 +27,13 @@ export default function SolutionsPage() {
   return (
     <>
       <section className="bg-white pt-(--nav-height)">
-        <div className="mx-auto max-w-[1320px] px-5 py-16 md:py-24 lg:px-8 lg:py-32">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-20 lg:px-8">
+          <Breadcrumbs className="mb-8" />
           <FadeIn>
             <SectionHeading
               eyebrow="Healthcare Solutions"
               title="Solutions for Better Animal Health"
-              subtitle="Editorial solutions across veterinary medicines, nutrition, and livestock productivity — designed for real farms and real veterinary needs."
+              subtitle="Editorial solutions across veterinary medicines, nutrition, and livestock productivity designed for real farm operations and veterinary clinical standards."
               align="center"
             />
           </FadeIn>
@@ -49,15 +51,15 @@ export default function SolutionsPage() {
           <section
             key={section.id}
             id={section.id}
-            className={isEven ? "bg-warm-cream" : "bg-white"}
+            className={isEven ? "bg-light-pebble" : "bg-white"}
           >
             <div className="mx-auto max-w-[1320px] px-5 py-16 md:py-24 lg:px-8">
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <FadeIn className={!isEven ? "lg:order-2" : "lg:order-1"}>
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] shadow-sm border border-border/40">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/80">
                     <Image
                       src={section.image}
-                      alt={`${section.title} — Cattlevibes solutions`}
+                      alt={`${section.title} veterinary solutions`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -68,7 +70,7 @@ export default function SolutionsPage() {
                   delay={0.1}
                   className={!isEven ? "lg:order-1" : "lg:order-2"}
                 >
-                  <p className="text-xs font-bold uppercase tracking-wider text-brand-orange">
+                  <p className="mb-2 text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                   <h2 className="mt-2 text-2xl font-bold text-deep-navy md:text-3xl">
@@ -77,16 +79,9 @@ export default function SolutionsPage() {
                   <p className="mt-4 text-base leading-relaxed text-text-muted">
                     {section.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {section.products.map((product) => (
-                      <span
-                        key={product}
-                        className="rounded-lg bg-white px-3 py-1 text-xs font-medium text-text-primary border border-border/80 shadow-xs"
-                      >
-                        {product}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="mt-4 text-[11px] md:text-xs font-bold uppercase tracking-wider text-cadet-blue">
+                    {section.products.join(" · ")}
+                  </p>
                   <div className="mt-6">
                     <Link
                       href={targetHref}

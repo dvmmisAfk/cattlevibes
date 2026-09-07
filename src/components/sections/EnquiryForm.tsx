@@ -18,7 +18,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
 
   if (submitted) {
     return (
-      <div className="rounded-[20px] border border-border bg-white p-8 text-center md:p-10 shadow-sm">
+      <div className="rounded-xl border border-border bg-white p-8 text-center md:p-10">
         <h3 className="text-xl font-bold text-deep-navy">Thank you for your enquiry</h3>
         <p className="mt-3 text-sm text-text-muted">
           Our team will get back to you shortly.
@@ -30,7 +30,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-[20px] border border-border bg-white p-6 md:p-8 shadow-sm"
+      className="rounded-xl border border-border bg-white p-6 md:p-8"
     >
       <h3 className="text-xl font-bold text-deep-navy">Product Enquiry</h3>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

@@ -3,14 +3,21 @@ import { images } from "@/data/site";
 interface BrandLogoProps {
   className?: string;
   priority?: boolean;
+  variant?: "default" | "white";
 }
 
-export function BrandLogo({ className = "", priority = false }: BrandLogoProps) {
+export function BrandLogo({
+  className = "",
+  priority = false,
+  variant = "default",
+}: BrandLogoProps) {
+  const src = variant === "white" ? images.logoWhite : images.logo;
+
   return (
     // Native img keeps PNG alpha. next/image was quantizing this mark to a
     // paletted PNG that painted a white square in the header.
     <img
-      src={images.logo}
+      src={src}
       alt="CattleVibes Healthcare Pvt. Ltd."
       width={479}
       height={449}

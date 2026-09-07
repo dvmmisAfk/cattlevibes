@@ -20,10 +20,10 @@ export const siteConfig = {
 
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
   { label: "Solutions", href: "/solutions" },
   { label: "Our Products", href: "/products" },
   { label: "Resources", href: "/resources" },
+  { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -42,13 +42,7 @@ export const resourceDropdownLinks = [
   { label: "FAQs", href: "/resources" },
 ];
 
-export const heroFeatures = [
-  { label: "Digestion", icon: "digestion" },
-  { label: "Nutrition", icon: "nutrition" },
-  { label: "Reproductive Health", icon: "reproductive" },
-  { label: "Pain & Inflammation", icon: "pain" },
-  { label: "Parasite Control", icon: "parasite" },
-];
+
 
 export const solutions = [
   {
@@ -194,6 +188,7 @@ export const faqItems = [
 
 export const images = {
   logo: "/images/cattlevibes-mark.png",
+  logoWhite: "/images/cattlevibes-mark-white.png",
   heroVideo: "/videos/hero-upscaled.mp4",
   heroAudio: "/audio/hero.mp3",
   heroPoster:
@@ -210,235 +205,7 @@ export const images = {
     "https://images.unsplash.com/photo-1574943320210-5538b2583fcb?w=1600&q=80",
 };
 
-// ---------------------------------------------------------------------------
-// Homepage-only content. Scoped to the redesigned home page — secondary pages
-// (Solutions, Resources, Products) keep using the data above unmodified.
-// ---------------------------------------------------------------------------
 
-export const portfolioProof = [
-  {
-    category: "Liver Health",
-    products: [{ name: "Liver-OK", slug: "liver-ok" }],
-  },
-  {
-    category: "Digestive Health",
-    products: [{ name: "Rumi-OK", slug: "rumi-ok-powder" }],
-  },
-  {
-    category: "Reproductive & Uterine Care",
-    products: [{ name: "Utrovibe", slug: "utrovibe" }],
-  },
-  {
-    category: "Pain & Inflammation",
-    products: [
-      { name: "Pyrovibe", slug: "pyrovibe-injection" },
-      { name: "Megluvibe", slug: "megluvibe" },
-      { name: "Cattlespas", slug: "cattlespas" },
-    ],
-  },
-  {
-    category: "Infection Control",
-    products: [
-      { name: "Cattle-Cef", slug: "cattle-cef" },
-      { name: "Cattlecef-SB", slug: "cattlecef-sb" },
-    ],
-  },
-  {
-    category: "Parasite Control",
-    products: [
-      { name: "Fendivibe Plus", slug: "fendivibe-plus" },
-      { name: "Flukevibe DS", slug: "flukevibe-ds" },
-      { name: "Worms-OK Plus", slug: "worms-ok-plus" },
-    ],
-  },
-  {
-    category: "Nutrition & Productivity",
-    products: [
-      { name: "Cattlemin", slug: "cattlemin" },
-      { name: "Cattlestar range", slug: "cattlestar" },
-    ],
-  },
-];
-
-export const problemCards = [
-  {
-    number: "01",
-    icon: "digestion",
-    title: "Poor Digestion",
-    description:
-      "Reduced appetite and inefficient feed utilization can affect growth and overall performance.",
-  },
-  {
-    number: "02",
-    icon: "production",
-    title: "Production Challenges",
-    description:
-      "Calcium imbalance and nutritional deficiencies can affect recovery and milk productivity.",
-  },
-  {
-    number: "03",
-    icon: "reproductive",
-    title: "Reproductive Setbacks",
-    description:
-      "Uterine and post-calving challenges can disrupt the production cycle.",
-  },
-  {
-    number: "04",
-    icon: "pain",
-    title: "Pain, Infection & Parasites",
-    description:
-      "Pain, inflammation, infections and parasite burdens can compromise animal health.",
-  },
-];
-
-export const solutionPillars = [
-  {
-    id: "nutrition-productivity",
-    number: "01",
-    eyebrow: "Nutrition & Productivity",
-    icon: "nutrition",
-    heading: "Build the foundation.",
-    description:
-      "Support essential nutrition, mineral balance, growth, fertility and milk productivity.",
-    products: [
-      { name: "Cattlemin", slug: "cattlemin" },
-      { name: "Cattlestar", slug: "cattlestar" },
-      { name: "Cattlestar Gold", slug: null },
-      { name: "Cattlestar-DS", slug: "cattlestar-ds" },
-    ],
-  },
-  {
-    id: "digestion-liver",
-    number: "02",
-    eyebrow: "Digestion & Liver Health",
-    icon: "digestion",
-    heading: "Better inside. Better performance outside.",
-    description:
-      "Support appetite, digestion, rumen function, nutrient utilization and liver health.",
-    products: [
-      { name: "Rumi-OK", slug: "rumi-ok-powder" },
-      { name: "Liver-OK", slug: "liver-ok" },
-    ],
-  },
-  {
-    id: "reproductive-uterine",
-    number: "03",
-    eyebrow: "Reproductive & Uterine Care",
-    icon: "reproductive",
-    heading: "Support recovery when timing matters most.",
-    description:
-      "Solutions designed around uterine health, post-calving recovery and reproductive challenges.",
-    products: [{ name: "Utrovibe", slug: "utrovibe" }],
-  },
-  {
-    id: "pain-fever-inflammation",
-    number: "04",
-    eyebrow: "Pain, Fever & Inflammation",
-    icon: "pain",
-    heading: "When relief can't wait.",
-    description:
-      "Veterinary solutions for pain, fever, inflammation, mastitis, lameness and related conditions.",
-    products: [
-      { name: "Pyrovibe", slug: "pyrovibe-injection" },
-      { name: "Pyrovibe Bolus", slug: "pyrovibe-bolus" },
-      { name: "Megluvibe", slug: "megluvibe" },
-      { name: "Cattlespas", slug: "cattlespas" },
-    ],
-  },
-  {
-    id: "infection-parasite",
-    number: "05",
-    eyebrow: "Infection & Parasite Control",
-    icon: "parasite",
-    heading: "Protection against biological threats.",
-    description:
-      "Solutions addressing bacterial infections and internal and external parasite challenges.",
-    products: [
-      { name: "Cattle-Cef", slug: "cattle-cef" },
-      { name: "Cattlecef-SB", slug: "cattlecef-sb" },
-      { name: "Fendivibe Plus", slug: "fendivibe-plus" },
-      { name: "Flukevibe DS", slug: "flukevibe-ds" },
-      { name: "Worms-OK Plus", slug: "worms-ok-plus" },
-    ],
-  },
-];
-
-export const homeShowcaseSlugs = [
-  "liver-ok",
-  "rumi-ok-powder",
-  "utrovibe",
-  "pyrovibe-injection",
-  "megluvibe",
-  "cattle-cef",
-  "fendivibe-plus",
-  "cattlemin",
-  "cattlestar",
-];
-
-export const howItWorksSteps = [
-  {
-    number: "01",
-    icon: "identify",
-    title: "Identify",
-    description: "Recognise the animal's health, nutritional or productivity challenge.",
-  },
-  {
-    number: "02",
-    icon: "choose",
-    title: "Choose",
-    description: "Explore the Cattlevibes solution designed around the specific need.",
-  },
-  {
-    number: "03",
-    icon: "use",
-    title: "Use Responsibly",
-    description: "Follow product directions and veterinary guidance where applicable.",
-  },
-  {
-    number: "04",
-    icon: "support",
-    title: "Support",
-    description:
-      "Support recovery, nutrition and performance through the appropriate stage of the animal's cycle.",
-  },
-];
-
-export const healthJourneyStages = [
-  "Nutrition",
-  "Digestion",
-  "Growth",
-  "Reproduction",
-  "Lactation",
-  "Recovery",
-];
-
-export const brandPillars = [
-  {
-    title: "Health",
-    icon: "health",
-    description: "Veterinary formulations designed around real livestock health challenges.",
-  },
-  {
-    title: "Nutrition",
-    icon: "nutrition",
-    description: "Essential vitamins, minerals, calcium and nutritional support.",
-  },
-  {
-    title: "Productivity",
-    icon: "productivity",
-    description:
-      "Solutions supporting growth, milk production, reproductive health and animal performance.",
-  },
-];
-
-export const lifecycleStages = [
-  { id: "grow", label: "Grow", description: "Nutrition + minerals" },
-  { id: "digest", label: "Digest", description: "Rumen + liver support" },
-  { id: "calve", label: "Calve", description: "Uterine + calcium support" },
-  { id: "produce", label: "Produce", description: "Milk + metabolic support" },
-  { id: "protect", label: "Protect", description: "Infection + parasite control" },
-  { id: "recover", label: "Recover", description: "Pain + inflammation support" },
-];
 
 export const homeFaqItems = [
   {

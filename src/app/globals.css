@@ -3,11 +3,15 @@
 :root {
   /* Palette source: Pebble / Yam / Cadet Blue / High Tide */
   --primary-navy: #3a4750; /* Cadet Blue */
+  --cadet-blue: #3a4750;
   --deep-navy: #313841; /* High Tide */
   --brand-orange: #ea9216; /* Yam */
+  --yam-orange: #ea9216;
   --warm-orange: #efad50; /* Yam, lightened */
   --warm-cream: #eeeeee; /* Pebble */
+  --pebble: #eeeeee;
   --soft-white: #f7f7f7; /* Pebble, lightened */
+  --light-pebble: #f7f7f7;
   --pure-white: #ffffff;
   --text-primary: #3a4750; /* Cadet Blue */
   --text-muted: #58636a; /* Cadet Blue, lightened */
@@ -25,11 +29,15 @@
 
 @theme inline {
   --color-primary-navy: var(--primary-navy);
+  --color-cadet-blue: var(--cadet-blue);
   --color-deep-navy: var(--deep-navy);
   --color-brand-orange: var(--brand-orange);
+  --color-yam-orange: var(--yam-orange);
   --color-warm-orange: var(--warm-orange);
   --color-warm-cream: var(--warm-cream);
+  --color-pebble: var(--pebble);
   --color-soft-white: var(--soft-white);
+  --color-light-pebble: var(--light-pebble);
   --color-pure-white: var(--pure-white);
   --color-text-primary: var(--text-primary);
   --color-text-muted: var(--text-muted);
@@ -37,10 +45,6 @@
   --color-border-subtle: var(--border-subtle);
   --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -68,20 +72,24 @@ h6 {
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* ─── Scroll indicator animation ─── */
+@keyframes scroll-hint {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  50% {
+    opacity: 0.8;
+    transform: translateY(6px);
   }
 }
 
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+/* ─── Legacy fade-up (kept for non-home pages) ─── */
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -97,7 +105,16 @@ h6 {
   animation: fade-up 0.6s ease-out forwards;
 }
 
+/* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .hero-video-bg {
     display: none !important;
   }

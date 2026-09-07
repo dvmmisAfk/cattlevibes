@@ -10,13 +10,13 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link
               href="/"
-              className="inline-flex h-[80px] items-center rounded-2xl bg-white/95 p-3 shadow-md backdrop-blur-sm border border-white/20 transition-all hover:bg-white"
+              className="inline-block h-[76px] sm:h-[84px] transition-opacity hover:opacity-90"
               aria-label="CattleVibes Healthcare home"
             >
-              <BrandLogo />
+              <BrandLogo variant="white" />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-              {siteConfig.shortName} — {siteConfig.subtitle}. Delivering premium
+              {siteConfig.shortName} &middot; {siteConfig.subtitle}. Delivering premium
               veterinary medicines and nutritional supplements for livestock health and
               productivity.
             </p>
@@ -89,15 +89,24 @@ export function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms", "Disclaimer"].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="text-xs text-white/70 transition-colors hover:text-white"
-              >
-                {item}
-              </Link>
-            ))}
+            <Link
+              href="/privacy"
+              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/contact"
+              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+            >
+              Commercial Enquiries
+            </Link>
           </div>
         </div>
       </div>

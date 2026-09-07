@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ResourceCard } from "@/components/sections/ResourceCard";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -35,19 +36,20 @@ const resources = [
 export default function ResourcesPage() {
   return (
     <>
-      <section className="bg-warm-cream pt-(--nav-height)">
-        <div className="mx-auto max-w-[1320px] px-5 py-16 md:py-24 lg:px-8">
+      <section className="bg-light-pebble pt-(--nav-height)">
+        <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-20 lg:px-8">
+          <Breadcrumbs className="mb-8" />
           <FadeIn>
             <SectionHeading
               title="Resources & Product Information"
-              subtitle="Access product catalogues, information sheets, and answers to common enquiries."
+              subtitle="Access product catalogues, technical specification sheets, and veterinary formulary documentation."
               align="center"
             />
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="mx-auto mt-12 max-w-2xl rounded-[24px] border border-border bg-white p-8 text-center md:p-12 shadow-sm">
-              <Download className="mx-auto h-10 w-10 text-brand-orange" strokeWidth={1.5} />
+            <div className="mx-auto mt-12 max-w-2xl rounded-xl border border-border bg-white p-8 text-center md:p-12">
+              <Download className="mx-auto h-10 w-10 text-yam-orange" strokeWidth={1.5} />
               <h2 className="mt-4 text-2xl font-bold text-deep-navy">
                 Product Catalogue
               </h2>

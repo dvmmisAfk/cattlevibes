@@ -41,7 +41,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   ghost:
     "bg-transparent text-primary-navy hover:text-brand-orange hover:bg-warm-cream/50",
   pill:
-    "rounded-full bg-deep-navy text-white hover:-translate-y-0.5 hover:shadow-md pl-4 pr-1.5 py-1.5",
+    "rounded-xl bg-deep-navy text-white hover:-translate-y-0.5 hover:shadow-md px-5 py-2",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

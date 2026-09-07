@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 const VIDEO_CANDIDATES = [
   "public/videos/hero-upscaled.mp4",
-  "upscaled-video.mp4",
 ];
 
 const MIN_VIDEO_BYTES = 100_000;

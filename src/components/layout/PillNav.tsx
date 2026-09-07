@@ -68,71 +68,84 @@ export default function PillNav({
     }
   }, [pathname]);
 
+  const layoutPill = (circle: HTMLSpanElement | null, index: number) => {
+    if (!circle?.parentElement) return;
+
+    const pill = circle.parentElement;
+    const rect = pill.getBoundingClientRect();
+    const { width: w, height: h } = rect;
+    if (w === 0 || h === 0) return;
+
+    const R = (w * w) / 4 / h + h / 2;
+    const D = Math.ceil(2 * R) + 2;
+    const delta =
+      Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
+    const originY = D - delta;
+
+    circle.style.width = `${D}px`;
+    circle.style.height = `${D}px`;
+    circle.style.bottom = `-${delta}px`;
+
+    gsap.set(circle, {
+      xPercent: -50,
+      scale: 0,
+      transformOrigin: `50% ${originY}px`,
+    });
+
+    const label = pill.querySelector(".pill-label");
+    const white = pill.querySelector(".pill-label-hover");
+
+    if (label) gsap.set(label, { y: 0 });
+    if (white) gsap.set(white, { y: h + 12, opacity: 0 });
+
+    tlRefs.current[index]?.kill();
+    const tl = gsap.timeline({ paused: true });
+
+    // scale: 2.2 ensures 100% coverage across the entire pill width on hover
+    tl.to(
+      circle,
+      { scale: 2.2, xPercent: -50, duration: 2, ease, overwrite: "auto" },
+      0,
+    );
+
+    if (label) {
+      tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: "auto" }, 0);
+    }
+
+    if (white) {
+      gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
+      tl.to(
+        white,
+        { y: 0, opacity: 1, duration: 2, ease, overwrite: "auto" },
+        0,
+      );
+    }
+
+    tlRefs.current[index] = tl;
+  };
+
+  const layout = () => {
+    circleRefs.current.forEach((circle, index) => {
+      layoutPill(circle, index);
+    });
+  };
+
   useEffect(() => {
-    const layout = () => {
-      circleRefs.current.forEach((circle) => {
-        if (!circle?.parentElement) return;
-
-        const pill = circle.parentElement;
-        const rect = pill.getBoundingClientRect();
-        const { width: w, height: h } = rect;
-        if (w === 0 || h === 0) return;
-
-        const R = (w * w) / 4 / h + h / 2;
-        const D = Math.ceil(2 * R) + 2;
-        const delta =
-          Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
-        const originY = D - delta;
-
-        circle.style.width = `${D}px`;
-        circle.style.height = `${D}px`;
-        circle.style.bottom = `-${delta}px`;
-
-        gsap.set(circle, {
-          xPercent: -50,
-          scale: 0,
-          transformOrigin: `50% ${originY}px`,
-        });
-
-        const label = pill.querySelector(".pill-label");
-        const white = pill.querySelector(".pill-label-hover");
-
-        if (label) gsap.set(label, { y: 0 });
-        if (white) gsap.set(white, { y: h + 12, opacity: 0 });
-
-        const index = circleRefs.current.indexOf(circle);
-        if (index === -1) return;
-
-        tlRefs.current[index]?.kill();
-        const tl = gsap.timeline({ paused: true });
-
-        tl.to(
-          circle,
-          { scale: 1.2, xPercent: -50, duration: 2, ease, overwrite: "auto" },
-          0,
-        );
-
-        if (label) {
-          tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: "auto" }, 0);
-        }
-
-        if (white) {
-          gsap.set(white, { y: Math.ceil(h + 100), opacity: 0 });
-          tl.to(
-            white,
-            { y: 0, opacity: 1, duration: 2, ease, overwrite: "auto" },
-            0,
-          );
-        }
-
-        tlRefs.current[index] = tl;
-      });
-    };
-
     layout();
 
     const onResize = () => layout();
     window.addEventListener("resize", onResize);
+
+    // Observe size transitions (e.g. Enquire Now expanding on scroll)
+    const resizeObserver = new ResizeObserver(() => {
+      layout();
+    });
+
+    circleRefs.current.forEach((circle) => {
+      if (circle?.parentElement) {
+        resizeObserver.observe(circle.parentElement);
+      }
+    });
 
     if (document.fonts?.ready) {
       document.fonts.ready.then(layout).catch(() => {});
@@ -166,10 +179,16 @@ export default function PillNav({
       }
     }
 
-    return () => window.removeEventListener("resize", onResize);
-  }, [items, ease, initialLoadAnimation]);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      resizeObserver.disconnect();
+    };
+  }, [items, ease, initialLoadAnimation, className]);
 
   const handleEnter = (i: number) => {
+    // Recalculate dimensions for this pill in case it just expanded
+    layoutPill(circleRefs.current[i], i);
+
     const tl = tlRefs.current[i];
     if (!tl) return;
     activeTweenRefs.current[i]?.kill();
