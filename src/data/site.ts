@@ -190,11 +190,12 @@ export const images = {
   logo: "/images/cattlevibes-mark.png",
   logoWhite: "/images/cattlevibes-mark-white.png",
   heroVideo: "/videos/hero-upscaled.mp4",
+  heroVideoWebm: "/videos/hero.webm",
   heroAudio: "/audio/hero.mp3",
-  heroPoster:
+  heroPoster: "/videos/hero-poster.webp",
+  heroPosterMobile: "/videos/hero-poster.webp",
+  heroPosterFallback:
     "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=85",
-  heroPosterMobile:
-    "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=85&fit=crop&crop=top",
   aboutHero:
     "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1600&q=80",
   farmWide:

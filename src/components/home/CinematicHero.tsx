@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { images, siteConfig } from "@/data/site";
@@ -38,6 +38,29 @@ function AnimatedWord({ children, delay }: AnimatedWordProps) {
 export function CinematicHero() {
   const prefersReduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    if (!video.paused) {
+      setIsPlaying(true);
+      return;
+    }
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          // Autoplay policy or low power mode; poster remains visible
+        });
+    }
+  }, [prefersReduced]);
 
   // Original brand head tagline
   const line1Words = ["Complete", "Animal"];
@@ -45,19 +68,39 @@ export function CinematicHero() {
 
   return (
     <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy">
-      {/* ─── Video Background ─── */}
+      {/* ─── Instant Poster Background (0ms initial HTML paint) ─── */}
+      <img
+        src={images.heroPoster}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        loading="eager"
+        decoding="sync"
+        className={`absolute inset-0 h-full w-full object-cover pointer-events-none transition-opacity duration-700 ease-out ${
+          isPlaying ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
+      {/* ─── Faststart Video Background ─── */}
       {!prefersReduced && (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
-          src={images.heroVideo}
+          className="hero-video-bg absolute inset-0 h-full w-full object-cover"
+          poster={images.heroPoster}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
           aria-hidden="true"
-        />
+          onPlaying={() => setIsPlaying(true)}
+          onPlay={() => setIsPlaying(true)}
+        >
+          {images.heroVideoWebm && (
+            <source src={images.heroVideoWebm} type="video/webm" />
+          )}
+          <source src={images.heroVideo} type="video/mp4" />
+        </video>
       )}
 
       {/* ─── Vignette overlays ─── */}

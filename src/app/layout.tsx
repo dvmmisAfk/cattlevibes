@@ -51,6 +51,21 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="/videos/hero-poster.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/videos/hero-upscaled.mp4"
+          as="video"
+          type="video/mp4"
+        />
+      </head>
       <body className="min-h-screen bg-soft-white font-body text-text-primary antialiased">
         <Navbar />
         <main>{children}</main>
