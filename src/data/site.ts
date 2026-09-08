@@ -134,7 +134,7 @@ export const solutionSections = [
     description:
       "Broad-spectrum anthelmintics and flukicides for internal parasite and liver fluke control in livestock.",
     image: "https://images.unsplash.com/photo-1574943320210-5538b2583fcb?w=1200&q=80",
-    products: ["FENDIVIBE PLUS", "FLUKEVIBE DS", "WORMS-OK", "WORMS-OK PLUS"],
+    products: ["FENDIVIBE PLUS", "FLUKEVIBE DS", "WORMS-OK PLUS"],
   },
   {
     id: "calcium-milk",
@@ -142,7 +142,7 @@ export const solutionSections = [
     description:
       "Calcium and mineral supplements in liquid and gel forms to support post-calving recovery and milk productivity in dairy animals.",
     image: "https://images.unsplash.com/photo-1550583724-b2692b85-7742?w=1200&q=80",
-    products: ["CATTLESTAR", "CATTLESTAR-DS", "CATTLESTAR GEL", "CATTLESTAR ADVANCE GEL"],
+    products: ["CATTLESTAR", "CATTLESTAR-DS", "CATTLESTAR GOLD", "CATTLESTAR GEL", "CATTLESTAR ADVANCE GEL"],
   },
 ];
 

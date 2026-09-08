@@ -24,7 +24,8 @@ export type AnimalType =
   | "Calf"
   | "Pig"
   | "Poultry"
-  | "Aqua";
+  | "Aqua"
+  | "Dog";
 
 export type HealthConcern =
   | "Liver Health"
@@ -35,7 +36,8 @@ export type HealthConcern =
   | "Calcium & Minerals"
   | "Milk Productivity"
   | "Antibiotic"
-  | "Fever & Inflammation";
+  | "Fever & Inflammation"
+  | "Hypocalcemia Support";
 
 export interface ProductInfo {
   composition?: string;
@@ -45,6 +47,8 @@ export interface ProductInfo {
   applicableAnimals?: string;
   withdrawalPeriod?: string;
   storage?: string;
+  productPositioning?: string;
+  safetyClassification?: string;
 }
 
 export interface Product {

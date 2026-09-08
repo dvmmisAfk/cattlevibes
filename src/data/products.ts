@@ -292,13 +292,13 @@ export const products: Product[] = [
     slug: "fendivibe-plus",
     name: "FENDIVIBE PLUS",
     category: "Parasite Control",
-    formulation: "Liquid",
+    formulation: "Bolus",
     animals: ["Cattle", "Buffalo", "Sheep", "Goat"],
     healthConcerns: ["Parasite Control"],
     shortDescription:
-      "Broad-spectrum anthelmintic for internal parasite control in livestock.",
+      "Broad-spectrum anthelmintic bolus for internal parasite control in livestock.",
     description:
-      "FENDIVIBE PLUS is a broad-spectrum anthelmintic for internal parasite control. Refer to the official product catalogue for complete composition, indications, and dosage.",
+      "FENDIVIBE PLUS is a broad-spectrum anthelmintic bolus (Fenbendazole & Ivermectin) formulated for internal parasite control. Refer to the official product catalogue for complete composition, indications, and dosage.",
     benefits: [
       "Broad-spectrum anthelmintic action",
       "Supports internal parasite control",
@@ -310,19 +310,19 @@ export const products: Product[] = [
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
     },
-    relatedSlugs: ["flukevibe-ds", "worms-ok", "worms-ok-plus"],
+    relatedSlugs: ["flukevibe-ds", "worms-ok-plus", "liver-ok"],
   },
   {
     slug: "flukevibe-ds",
     name: "FLUKEVIBE DS",
     category: "Parasite Control",
-    formulation: "Liquid",
+    formulation: "Bolus",
     animals: ["Cattle", "Buffalo", "Sheep", "Goat"],
     healthConcerns: ["Parasite Control"],
     shortDescription:
-      "Flukicide formulation for liver fluke control in ruminants.",
+      "Flukicide bolus formulation for liver fluke control in ruminants.",
     description:
-      "FLUKEVIBE DS is formulated for liver fluke control in ruminants. Refer to the official product catalogue for complete composition, indications, and dosage.",
+      "FLUKEVIBE DS is formulated for liver fluke control in ruminants (Oxyclozanide & Levamisole). Refer to the official product catalogue for complete composition, indications, and dosage.",
     benefits: [
       "Targeted flukicide formulation",
       "Supports liver fluke control in ruminants",
@@ -334,31 +334,7 @@ export const products: Product[] = [
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
     },
-    relatedSlugs: ["fendivibe-plus", "worms-ok", "liver-ok"],
-  },
-  {
-    slug: "worms-ok",
-    name: "WORMS-OK",
-    category: "Parasite Control",
-    formulation: "Liquid",
-    animals: ["Cattle", "Buffalo", "Sheep", "Goat"],
-    healthConcerns: ["Parasite Control"],
-    shortDescription:
-      "Anthelmintic dewormer for internal parasite management in livestock.",
-    description:
-      "WORMS-OK is an anthelmintic dewormer for internal parasite management. Refer to the official product catalogue for complete product information.",
-    benefits: [
-      "Anthelmintic deworming support",
-      "Internal parasite management",
-      "Suitable for ruminant livestock",
-    ],
-    info: {
-      presentation: "As per product catalogue",
-      applicableAnimals: "Cattle, Buffalo, Sheep, Goat",
-      withdrawalPeriod: "As per product catalogue",
-      storage: "Store in a cool, dry place",
-    },
-    relatedSlugs: ["worms-ok-plus", "fendivibe-plus", "flukevibe-ds"],
+    relatedSlugs: ["fendivibe-plus", "worms-ok-plus", "liver-ok"],
   },
   {
     slug: "worms-ok-plus",
@@ -368,21 +344,21 @@ export const products: Product[] = [
     animals: ["Cattle", "Buffalo", "Sheep", "Goat"],
     healthConcerns: ["Parasite Control"],
     shortDescription:
-      "Enhanced anthelmintic formulation for comprehensive worm control.",
+      "Enhanced anthelmintic oral suspension for comprehensive worm control.",
     description:
-      "WORMS-OK PLUS is an enhanced anthelmintic for comprehensive worm control. Refer to the official product catalogue for complete product information.",
+      "WORMS-OK PLUS is an enhanced anthelmintic oral suspension (Fenbendazole & Ivermectin) for comprehensive worm control. Refer to the official product catalogue for complete product information.",
     benefits: [
       "Enhanced anthelmintic formulation",
       "Comprehensive worm control support",
       "For veterinary-guided parasite management",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "Oral Suspension — As per product catalogue",
       applicableAnimals: "Cattle, Buffalo, Sheep, Goat",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
     },
-    relatedSlugs: ["worms-ok", "fendivibe-plus", "flukevibe-ds"],
+    relatedSlugs: ["fendivibe-plus", "flukevibe-ds", "liver-ok"],
   },
   {
     slug: "cattlemin",
@@ -481,7 +457,7 @@ export const products: Product[] = [
       storage: "Store in a cool, dry place",
     },
     featured: true,
-    relatedSlugs: ["cattlestar-ds", "cattlestar-gel", "cattlemin"],
+    relatedSlugs: ["cattlestar-ds", "cattlestar-gold", "cattlestar-gel"],
   },
   {
     slug: "cattlestar-ds",
@@ -504,7 +480,62 @@ export const products: Product[] = [
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store in a cool, dry place",
     },
-    relatedSlugs: ["cattlestar", "cattlestar-gel", "cattle-phos"],
+    relatedSlugs: ["cattlestar", "cattlestar-gold", "cattle-phos"],
+  },
+  {
+    slug: "cattlestar-gold",
+    name: "CATTLESTAR GOLD",
+    category: "Calcium & Milk Support",
+    formulation: "Liquid",
+    animals: [
+      "Cattle",
+      "Buffalo",
+      "Horse",
+      "Calf",
+      "Pig",
+      "Sheep",
+      "Goat",
+      "Dog",
+      "Poultry",
+    ],
+    healthConcerns: [
+      "Calcium & Minerals",
+      "Milk Productivity",
+      "Hypocalcemia Support",
+    ],
+    shortDescription:
+      "Liquid calcium and nutritional supplement formulated to support calcium balance, milk productivity, rumen health, immunity and overall livestock performance.",
+    description:
+      "CATTLESTAR GOLD is a liquid calcium and nutritional supplement formulated to support dairy animals during periods of increased calcium demand, particularly around and after calving. It supports optimal calcium levels, milk production, dry matter intake, rumen health, bone strength, immunity and uterine health. The catalog also positions it for helping mitigate the effects of milk fever and subclinical hypocalcemia.",
+    benefits: [
+      "Improves dry matter intake by improving rumen health",
+      "Improves milk production and percentage of fat in milk",
+      "Helps maintain optimum calcium levels in lactating cows",
+      "Increases milk production after calving",
+      "Improves growth rate of calves",
+      "Improves health of uterus",
+      "Supports bone strength",
+      "Boosts immunity",
+      "Helps reduce the risk/effects of milk fever",
+      "Helps mitigate subclinical hypocalcemia",
+      "Supports overall livestock health and productivity",
+    ],
+    info: {
+      productPositioning: "Strongest Milk Booster Formula",
+      composition:
+        "Per 100 ml: Calcium 6100 mg, Phosphorus 3050 mg, Vitamin D3 12000 I.U., Vitamin B12 100 mcg, Vitamin E 1000 I.U., Vitamin H (Biotin) 30 mg, Carbohydrate 30000 mg, Zinc 1500 mg, Chromium 5 mg, Copper 500 mg, Shatavari Extract 1500 mg, Jivanti 1500 mg, Silymarin 450 mg, Piper Longum 400 mg",
+      dosage:
+        "Calf, Foal & Pig: 40 ml daily | Sheep, Goat & Dog: 20 ml daily | Cattle & Horses: 100 ml daily | Chicks & Broilers: 10 ml per 100 birds daily | Growers: 20 ml per 100 birds daily | Layers: 50 ml per 100 birds daily | Or as directed by the Veterinary Consultant",
+      presentation: "1 L, 2 L, 5 L, 10 L & 20 L",
+      applicableAnimals:
+        "Cattle, Buffalo, Horse, Calf, Foal, Pig, Sheep, Goat, Dog, Chicks, Broilers, Growers, Layers",
+      safetyClassification:
+        "For Animal Feed Supplement Only · Strictly Not for Medicinal/Human Use",
+      storage:
+        "Keep in a cool and dry place. Store below 30°C. Keep protected from direct sunlight",
+    },
+    featured: false,
+    relatedSlugs: ["cattlestar", "cattlestar-ds", "cattlestar-advance-gel"],
   },
 ];
 

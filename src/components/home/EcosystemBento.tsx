@@ -38,6 +38,7 @@ const PILLARS: PillarData[] = [
       { name: "Cattlemin", href: "/products/cattlemin" },
       { name: "Cattlestar", href: "/products/cattlestar" },
       { name: "Cattlestar-DS", href: "/products/cattlestar-ds" },
+      { name: "Cattlestar Gold", href: "/products/cattlestar-gold" },
     ],
     href: "/solutions#animal-nutrition",
     specs: [
