@@ -189,8 +189,8 @@ export const images = {
   heroVideo: "/videos/hero-upscaled.mp4",
   heroVideoWebm: "/videos/hero.webm",
   heroAudio: "/audio/hero.mp3",
-  heroPoster: "/videos/hero-poster.webp",
-  heroPosterMobile: "/videos/hero-poster.webp",
+  heroPoster: "/images/indian-cow-shelter-ground.jpg",
+  heroPosterMobile: "/images/indian-cow-shelter-ground.jpg",
   heroPosterFallback:
     "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=85",
   aboutHero:

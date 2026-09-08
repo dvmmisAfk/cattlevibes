@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -500,20 +500,10 @@ export function LifecycleAnatomy() {
         <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-deep-navy px-8 py-12">
           <div className="mx-auto w-full max-w-[1340px]">
             
-            {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
-            <div className="mb-6 flex items-center justify-between border-t border-white/10 pt-3">
-              <span className="font-mono text-xs font-medium uppercase tracking-wider text-white/40">
-                Herd Lifecycle Intelligence · 06 Sequential Stages
-              </span>
-              <span className="font-mono text-xs font-semibold tracking-wider text-white/40">
-                {String(activeStageIndex + 1).padStart(2, "0")} <span className="text-white/20">/</span> 06
-              </span>
-            </div>
-
             {/* Section Sub-heading Header */}
             <div className="mb-8 flex flex-col items-start justify-between gap-4 border-b border-white/[0.08] pb-5 sm:flex-row sm:items-end">
               <div>
-                <h2 className="font-heading text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                   Built around the moments that matter.
                 </h2>
               </div>
@@ -654,19 +644,9 @@ export function LifecycleAnatomy() {
       <section className="block lg:hidden bg-deep-navy px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-lg sm:max-w-xl">
           
-          {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
-          <div className="mb-4 flex items-center justify-between border-t border-white/10 pt-2.5">
-            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-white/40">
-              Herd Lifecycle Intelligence
-            </span>
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-white/40">
-              {String(mobileStageIndex + 1).padStart(2, "0")} / 06
-            </span>
-          </div>
-
           {/* Section Heading - Without AI Eyebrow */}
           <div className="border-b border-white/[0.08] pb-4">
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Built around the moments that matter.
             </h2>
             <p className="mt-2 text-xs leading-relaxed text-white/75">

@@ -242,7 +242,7 @@ export function EcosystemBento() {
         {/* ─── Editorial Section Heading & Carousel Controls ─── */}
         <div className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <motion.h2
-            className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-[2.65rem] font-extrabold leading-tight tracking-tight text-deep-navy"
+            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-deep-navy"
             initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -255,7 +255,7 @@ export function EcosystemBento() {
             <span className="font-mono text-sm sm:text-base font-bold tracking-wider text-deep-navy">
               {currentPillar.index} <span className="text-cadet-blue/40">/</span> 05
             </span>
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <button
                 type="button"
                 onClick={handlePrev}
@@ -286,7 +286,18 @@ export function EcosystemBento() {
             animate={prefersReduced ? { opacity: 1 } : "center"}
             exit={prefersReduced ? { opacity: 0 } : "exit"}
             transition={prefersReduced ? { duration: 0 } : appleSprings.criticallyDamped}
-            className="rounded-xl border border-border bg-white overflow-hidden shadow-sm"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={(_, { offset, velocity }) => {
+              const swipe = Math.abs(offset.x) * velocity.x;
+              if (swipe < -80 || offset.x < -60) {
+                handleNext();
+              } else if (swipe > 80 || offset.x > 60) {
+                handlePrev();
+              }
+            }}
+            className="rounded-xl border border-border bg-white overflow-hidden shadow-sm touch-pan-y"
           >
             {/* ── Desktop Layout (lg: and above) ── */}
             <div className="hidden lg:grid lg:grid-cols-12">
@@ -441,32 +452,6 @@ export function EcosystemBento() {
 
           </motion.div>
         </AnimatePresence>
-
-        {/* Mobile bottom navigation bar for quick thumb switching */}
-        <div className="mt-5 flex items-center justify-between sm:hidden px-1">
-          <span className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70">
-            {currentPillar.index} <span className="text-cadet-blue/30">/</span> 05
-          </span>
-
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous pillar"
-              className="flex min-h-[40px] min-w-[40px] items-center justify-center rounded-md border border-border bg-white text-deep-navy active:scale-95 cursor-pointer hover:bg-light-pebble touch-manipulation"
-            >
-              <ChevronLeft className="h-4 w-4" strokeWidth={2} />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next pillar"
-              className="flex min-h-[40px] min-w-[40px] items-center justify-center rounded-md border border-border bg-white text-deep-navy active:scale-95 cursor-pointer hover:bg-light-pebble touch-manipulation"
-            >
-              <ChevronRight className="h-4 w-4" strokeWidth={2} />
-            </button>
-          </div>
-        </div>
 
       </div>
     </section>

@@ -46,7 +46,7 @@ const FAQS: FAQItem[] = [
 ];
 
 export function FAQAccordion() {
-  const [openId, setOpenId] = useState<string | null>(FAQS[0].id);
+  const [openId, setOpenId] = useState<string | null>(null);
   const prefersReduced = useReducedMotion();
 
   const toggle = (id: string) => {
