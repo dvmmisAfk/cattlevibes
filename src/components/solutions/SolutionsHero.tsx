@@ -21,15 +21,18 @@ function HeroBackground() {
         alt="Veterinary doctor examining cattle with digital telemetry in modern farm environment — Cattlevibes Solutions"
         fill
         priority
-        sizes="(max-width: 1600px) 100vw, 1600px"
+        sizes="100vw"
         className="object-cover object-[70%_center] sm:object-[65%_center] lg:object-[60%_center] scale-[1.02] transition-transform duration-1000 ease-out"
       />
 
       {/* Controlled Directional Gradient: Deep navy to transparent (left-to-right) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#172333]/95 via-[#172333]/85 sm:via-[#172333]/65 lg:via-[#172333]/55 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#172333]/95 via-[#172333]/85 sm:via-[#172333]/65 lg:via-[#172333]/50 to-transparent pointer-events-none" />
+
+      {/* Top Gradient for seamless Navbar integration & legibility */}
+      <div className="absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-[#172333]/80 via-[#172333]/35 to-transparent pointer-events-none" />
 
       {/* Vertical Gradient for Bottom Indicator Contrast & Natural Vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/90 via-transparent to-black/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/90 via-transparent to-black/20 pointer-events-none" />
 
       {/* Subtle Agricultural Contour Lines (under 3% opacity) */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.03] overflow-hidden">
@@ -150,7 +153,7 @@ function ProductComposition() {
   return (
     <>
       {/* Editorial Field Label in Upper Right */}
-      <div className="absolute top-6 right-6 z-20 hidden sm:inline-flex items-center gap-2 rounded-lg bg-[#172333]/80 px-3.5 py-1.5 text-xs text-[#F6F3EC] backdrop-blur-md border border-white/15 shadow-sm">
+      <div className="absolute top-24 sm:top-28 right-5 sm:right-8 lg:right-12 z-20 hidden sm:inline-flex items-center gap-2 rounded-lg bg-[#172333]/80 px-3.5 py-1.5 text-xs text-[#F6F3EC] backdrop-blur-md border border-white/15 shadow-sm">
         <span className="h-1.5 w-1.5 rounded-full bg-[#60785B]" />
         <span className="font-mono text-[10px] font-bold tracking-widest uppercase">
           FORMULATED FOR MODERN LIVESTOCK CARE
@@ -158,7 +161,7 @@ function ProductComposition() {
       </div>
 
       {/* Realistic Foreground Arrangement of Actual Approved Cattlevibes Products */}
-      <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-12 z-20 hidden md:flex items-end gap-2 pointer-events-none select-none">
+      <div className="absolute bottom-6 right-5 sm:right-8 lg:bottom-10 lg:right-12 z-20 hidden md:flex items-end gap-2 pointer-events-none select-none">
         {/* Product 1: LIVER-OK Liquid */}
         <div className="relative h-44 w-32 lg:h-56 lg:w-40 drop-shadow-[0_15px_25px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-105 pointer-events-auto">
           <Image
@@ -268,14 +271,14 @@ export function SolutionsHero() {
   };
 
   return (
-    <section className="bg-[#F6F3EC] pt-24 pb-8 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14 px-4 sm:px-6 lg:px-8">
-      {/* Contained Hero Banner */}
-      <div className="relative mx-auto max-w-[1600px] min-h-[680px] lg:h-[740px] rounded-[28px] overflow-hidden border border-[#DCE4D6]/70 shadow-xl flex flex-col justify-between p-6 sm:p-10 lg:p-14">
-        {/* Full-bleed Cinematic Livestock Background & Directional Gradients */}
-        <HeroBackground />
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-[#172333] flex flex-col justify-between pt-[calc(var(--nav-height,5rem)+1.5rem)] pb-12 sm:pb-16 lg:pb-20">
+      {/* Full-bleed Cinematic Livestock Background & Directional Gradients */}
+      <HeroBackground />
 
+      {/* Hero Inner Content Container */}
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12 flex-1 flex flex-col justify-between">
         {/* Left Content Area & CTAs */}
-        <div className="relative z-10 pt-2 sm:pt-4">
+        <div className="pt-2 sm:pt-6 lg:pt-10">
           <HeroContent />
           <HeroActions onExplore={scrollToPillars} />
         </div>
@@ -284,7 +287,9 @@ export function SolutionsHero() {
         <ProductComposition />
 
         {/* Bottom Left Trust Indicators Strip */}
-        <TrustIndicators />
+        <div className="pt-10 sm:pt-12">
+          <TrustIndicators />
+        </div>
       </div>
     </section>
   );
