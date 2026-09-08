@@ -3,11 +3,12 @@ import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import { TherapeuticBento } from "@/components/solutions/TherapeuticBento";
 import { OvineBreakout } from "@/components/solutions/OvineBreakout";
 import { SpeciesIndex } from "@/components/solutions/SpeciesIndex";
+import { SolutionsCTA } from "@/components/solutions/SolutionsCTA";
 
 export const metadata: Metadata = {
-  title: "Solutions",
+  title: "Veterinary Healthcare Solutions",
   description:
-    "Therapeutic architectures for veterinary medicines, nutrition, digestive health, parasite control, calcium support, and ovine flock economics.",
+    "Six clinical architectures spanning veterinary medicines, animal nutrition, hepatic support, reproductive care, parasite control, and metabolic calcium yield — engineered for daily livestock operations.",
 };
 
 export default function SolutionsPage() {
@@ -17,6 +18,8 @@ export default function SolutionsPage() {
       <TherapeuticBento />
       <OvineBreakout />
       <SpeciesIndex />
+      <SolutionsCTA />
     </>
   );
 }
+

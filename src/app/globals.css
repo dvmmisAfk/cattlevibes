@@ -48,6 +48,15 @@
   --border-subtle: var(--color-border-light);
   --content-max: 1320px;
   --nav-height: 4.25rem;
+
+  /* ── Modern Veterinary Field Lab Palette ── */
+  --midnight-navy: #172333;
+  --warm-ivory: #F5F1E8;
+  --harvest-amber: #EE9B16;
+  --pasture-green: #587653;
+  --muted-sage: #B8C5AE;
+  --sage-light: #E8EDE4;
+  --charcoal: #252B34;
 }
 
 @media (min-width: 768px) {
@@ -57,6 +66,15 @@
 }
 
 @theme inline {
+  /* Modern Veterinary Field Lab */
+  --color-midnight-navy: var(--midnight-navy);
+  --color-warm-ivory: var(--warm-ivory);
+  --color-harvest-amber: var(--harvest-amber);
+  --color-pasture-green: var(--pasture-green);
+  --color-muted-sage: var(--muted-sage);
+  --color-sage-light: var(--sage-light);
+  --color-charcoal: var(--charcoal);
+
   /* Semantic Tokens */
   --color-surface-canvas: var(--surface-canvas);
   --color-surface-card: var(--surface-card);
@@ -224,6 +242,26 @@ h3 {
     -webkit-backdrop-filter: none !important;
     background-color: var(--deep-navy) !important;
   }
+}
+
+/* ─── Modern Veterinary Field Lab Patterns ─── */
+.bg-lab-grid-light {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(37, 43, 52, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 43, 52, 0.04) 1px, transparent 1px);
+}
+
+.bg-lab-grid-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(245, 241, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 241, 232, 0.05) 1px, transparent 1px);
+}
+
+.bg-lab-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(238, 155, 22, 0.25) 1px, transparent 1px);
 }
 
 /* ─── Browser extension video controls suppression for background hero video ─── */
