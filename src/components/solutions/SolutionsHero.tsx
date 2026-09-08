@@ -17,12 +17,12 @@ function HeroBackground() {
     <div className="absolute inset-0 z-0 overflow-hidden">
       {/* High-Resolution Livestock & Modern Farm Visual */}
       <Image
-        src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=1920&q=85"
-        alt="Healthy cattle in vibrant, modern pastoral farm environment — Cattlevibes Solutions"
+        src="/images/solutions-hero.jpg"
+        alt="Veterinary doctor examining cattle with digital telemetry in modern farm environment — Cattlevibes Solutions"
         fill
         priority
         sizes="(max-width: 1600px) 100vw, 1600px"
-        className="object-cover object-[75%_center] sm:object-[68%_center] lg:object-[80%_center] scale-[1.02] transition-transform duration-1000 ease-out"
+        className="object-cover object-[70%_center] sm:object-[65%_center] lg:object-[60%_center] scale-[1.02] transition-transform duration-1000 ease-out"
       />
 
       {/* Controlled Directional Gradient: Deep navy to transparent (left-to-right) */}
