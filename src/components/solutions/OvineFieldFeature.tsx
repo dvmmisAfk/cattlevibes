@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Compass, ShieldAlert, TrendingUp, LucideIcon } from "lucide-react";
 import { images } from "@/data/site";
+import { ScrollReveal } from "./react-bits/ScrollReveal";
+import { AnimatedContent } from "./react-bits/AnimatedContent";
+import { Magnet } from "./react-bits/Magnet";
 
 interface ProtocolStepProps {
   number: string;
@@ -23,20 +26,20 @@ export function ProtocolStep({
   isLast = false,
 }: ProtocolStepProps) {
   return (
-    <div className="relative flex items-start gap-5">
-      {/* Indicator Circle & Connecting Line */}
+    <div className="relative flex items-start gap-4 sm:gap-5">
+      {/* Indicator Circle & Connecting Protocol Line */}
       <div className="flex flex-col items-center">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-[#EE9B16] ring-1 ring-white/15">
           <Icon className="h-4 w-4" />
         </div>
         {!isLast && (
-          <div className="my-2 h-14 w-px bg-gradient-to-b from-[#EE9B16]/50 to-white/10" />
+          <div className="my-2 h-12 w-px bg-gradient-to-b from-[#EE9B16]/60 to-white/10" />
         )}
       </div>
 
-      {/* Step Content */}
-      <div className="pb-4">
-        <div className="flex flex-wrap items-center gap-3">
+      {/* Content */}
+      <div className="pb-3">
+        <div className="flex flex-wrap items-center gap-2.5">
           <span className="font-mono text-sm font-extrabold text-[#EE9B16]">
             {number}
           </span>
@@ -47,7 +50,7 @@ export function ProtocolStep({
             {metric}
           </span>
         </div>
-        <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/75">
+        <p className="mt-1 max-w-xl text-sm leading-relaxed text-white/75">
           {copy}
         </p>
       </div>
@@ -82,7 +85,7 @@ const ovineProtocols = [
 export function OvineFieldFeature() {
   return (
     <section className="relative overflow-hidden bg-[#172333] py-20 text-white md:py-28 lg:py-32">
-      {/* Background Contour Graphics & Plotting Marks */}
+      {/* Background Subtle Contour Map Graphics */}
       <div className="pointer-events-none absolute inset-0 opacity-15">
         <svg
           viewBox="0 0 1000 600"
@@ -113,8 +116,8 @@ export function OvineFieldFeature() {
       </div>
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        {/* Top Header Label */}
-        <div className="mb-12 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+        {/* Top Field Tag */}
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
           <div className="flex items-center gap-3">
             <span className="h-2 w-2 rounded-full bg-[#EE9B16] animate-pulse" />
             <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
@@ -127,57 +130,69 @@ export function OvineFieldFeature() {
         </div>
 
         {/* Editorial Split Layout */}
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Asymmetric Sheep Farming Image Frame */}
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          {/* Asymmetric Sheep Farming Image Frame with AnimatedContent */}
           <div className="lg:col-span-6">
-            <div className="relative overflow-hidden rounded-tl-[48px] rounded-br-[48px] rounded-tr-xl rounded-bl-xl border-2 border-white/15 bg-white/5 p-3 shadow-2xl backdrop-blur-xs">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden rounded-tl-[40px] rounded-br-[40px] rounded-tr-lg rounded-bl-lg">
-                <Image
-                  src={images.farmWide}
-                  alt="Ovine flock on open pasture — Cattlevibes sheep health programme"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center brightness-95"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/85 via-[#172333]/20 to-transparent" />
+            <AnimatedContent delay={0.15} distance={20}>
+              <div className="relative overflow-hidden rounded-tl-[44px] rounded-br-[44px] rounded-tr-xl rounded-bl-xl border-2 border-white/15 bg-white/5 p-2.5 shadow-2xl backdrop-blur-xs">
+                <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden rounded-tl-[36px] rounded-br-[36px] rounded-tr-lg rounded-bl-lg">
+                  <Image
+                    src={images.farmWide}
+                    alt="Ovine flock on open pasture — Cattlevibes sheep health programme"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center brightness-95 transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/85 via-[#172333]/20 to-transparent" />
 
-                {/* Overlaid Sheep Cutout Silhouette / Telemetry Card */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                  <div className="rounded-xl bg-[#172333]/90 p-3.5 backdrop-blur-md border border-white/15">
-                    <p className="font-mono text-[9px] font-bold tracking-widest text-[#EE9B16] uppercase">
-                      GRAZING RESILIENCE
-                    </p>
-                    <p className="font-heading text-xs font-bold text-white">
-                      Ewe Body Condition Score +14%
-                    </p>
+                  {/* Floating Field-Note Label over Image */}
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-flex items-center gap-2 rounded-lg bg-[#172333]/90 px-3 py-1 font-mono text-[10px] font-bold tracking-wider text-[#EE9B16] backdrop-blur-md border border-white/15">
+                      FIELD PROTOCOL / OVINE
+                    </span>
                   </div>
-                  <span className="font-mono text-[10px] font-semibold text-white/70 bg-white/10 px-2.5 py-1 rounded-md">
-                    PROTOCOL: OVIS-24
-                  </span>
+
+                  {/* Bottom Telemetry Card */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                    <div className="rounded-xl bg-[#172333]/90 p-3 backdrop-blur-md border border-white/15">
+                      <p className="font-mono text-[9px] font-bold tracking-widest text-[#EE9B16] uppercase">
+                        GRAZING RESILIENCE
+                      </p>
+                      <p className="font-heading text-xs font-bold text-white">
+                        Ewe Body Condition Score +14%
+                      </p>
+                    </div>
+                    <span className="font-mono text-[10px] font-semibold text-white/70 bg-white/10 px-2.5 py-1 rounded-md">
+                      PROTOCOL: OVIS-24
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimatedContent>
           </div>
 
-          {/* Text and Diagnostic Protocol Information */}
+          {/* Text and Diagnostic Protocol Rows */}
           <div className="lg:col-span-6">
             <div className="inline-block rounded-md bg-[#EE9B16]/20 px-3 py-1 font-mono text-[11px] font-bold text-[#EE9B16]">
               CLINICAL FLOCK ECONOMICS
             </div>
 
-            <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
-              Ovine Health &amp;{" "}
-              <span className="text-[#EE9B16]">Flock Economics.</span>
-            </h2>
+            {/* ScrollReveal only for the main heading */}
+            <ScrollReveal delay={0.1}>
+              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.15rem] lg:leading-[1.1]">
+                Ovine Health &amp;{" "}
+                <span className="text-[#EE9B16]">Flock Economics.</span>
+              </h2>
+            </ScrollReveal>
 
-            <p className="mt-5 font-body text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="mt-4 font-body text-base leading-relaxed text-white/80 sm:text-lg">
               Sheep farming is a daily management system — not a seasonal afterthought.
               Parasite pressure, flock resilience, and lambing yield determine whether a
               flock compounds or quietly loses margin.
             </p>
 
-            {/* Indexed Vertical Process with Connecting Line */}
-            <div className="mt-8 space-y-1">
+            {/* Indexed Vertical Process Rows with AnimatedContent */}
+            <AnimatedContent delay={0.25} distance={16} className="mt-8 space-y-1">
               {ovineProtocols.map((protocol, index) => (
                 <ProtocolStep
                   key={protocol.number}
@@ -189,18 +204,20 @@ export function OvineFieldFeature() {
                   isLast={index === ovineProtocols.length - 1}
                 />
               ))}
-            </div>
+            </AnimatedContent>
 
-            {/* Open Ovine Formulary CTA */}
+            {/* Open Ovine Formulary CTA with Magnet Arrow */}
             <div className="mt-8">
               <Link
                 href="/products?category=Parasite+Control"
                 className="group inline-flex items-center gap-3 rounded-full bg-[#EE9B16] px-7 py-3.5 text-sm font-bold text-[#172333] shadow-md transition-all hover:bg-[#EE9B16]/90 hover:shadow-lg active:scale-[0.98]"
               >
                 <span>Open ovine formulary</span>
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#172333] text-white transition-transform duration-200 group-hover:translate-x-1">
-                  <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
-                </span>
+                <Magnet strength={0.3} maxDistance={40}>
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#172333] text-white transition-transform duration-200 group-hover:translate-x-0.5">
+                    <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+                  </span>
+                </Magnet>
               </Link>
             </div>
           </div>

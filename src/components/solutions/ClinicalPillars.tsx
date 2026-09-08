@@ -12,6 +12,8 @@ import {
   SolutionCategory,
   SolutionCategoryCard,
 } from "./SolutionCategoryCard";
+import { MagicBento } from "./react-bits/MagicBento";
+import { ScrollReveal } from "./react-bits/ScrollReveal";
 import { images } from "@/data/site";
 
 const solutionCategories: SolutionCategory[] = [
@@ -33,6 +35,7 @@ const solutionCategories: SolutionCategory[] = [
     href: "/products?category=Veterinary+Medicines",
     icon: Syringe,
     theme: "navy",
+    colSpanClass: "lg:col-span-6",
   },
   {
     id: "animal-nutrition",
@@ -45,6 +48,7 @@ const solutionCategories: SolutionCategory[] = [
     href: "/products?category=Nutritional+Supplements",
     icon: Wheat,
     theme: "ivory",
+    colSpanClass: "lg:col-span-6",
   },
   {
     id: "digestive-liver",
@@ -62,6 +66,7 @@ const solutionCategories: SolutionCategory[] = [
     href: "/products?category=Digestive+%26+Liver+Health",
     icon: Activity,
     theme: "sage",
+    colSpanClass: "lg:col-span-3",
   },
   {
     id: "reproductive",
@@ -74,6 +79,7 @@ const solutionCategories: SolutionCategory[] = [
     href: "/products?category=Reproductive+%26+Uterine+Care",
     icon: HeartPulse,
     theme: "ivory",
+    colSpanClass: "lg:col-span-3",
   },
   {
     id: "parasite-control",
@@ -86,6 +92,7 @@ const solutionCategories: SolutionCategory[] = [
     href: "/products?category=Parasite+Control",
     icon: ShieldCheck,
     theme: "sage",
+    colSpanClass: "lg:col-span-3",
   },
   {
     id: "calcium-milk",
@@ -105,6 +112,7 @@ const solutionCategories: SolutionCategory[] = [
     icon: Droplets,
     theme: "image",
     bgImage: images.aboutHero,
+    colSpanClass: "lg:col-span-3",
   },
 ];
 
@@ -112,49 +120,54 @@ export function ClinicalPillars() {
   return (
     <section
       id="clinical-pillars"
-      className="relative bg-white py-20 md:py-28 lg:py-32 scroll-mt-20"
+      className="relative bg-white py-20 md:py-24 lg:py-28 scroll-mt-20"
     >
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        {/* Clean Two-Column Introduction */}
-        <div className="border-b border-[#DCE4D6] pb-10">
+        {/* Two-Column Introduction Row */}
+        <div className="border-b border-[#DCE4D6] pb-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              {/* Numbered Classification Label */}
+              {/* Small Label */}
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-extrabold tracking-widest text-[#EE9B16] uppercase">
                   01 / FORMULATION SYSTEM
                 </span>
                 <span className="h-px w-8 bg-[#EE9B16]" />
                 <span className="rounded-full bg-[#F6F3EC] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#60785B]">
-                  6 SPECIALISED CATEGORIES
+                  06 specialised categories
                 </span>
               </div>
 
-              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
-                Six architectures. One healthcare standard.
-              </h2>
+              {/* ScrollReveal applied to Heading */}
+              <ScrollReveal delay={0.1}>
+                <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
+                  Six architectures. One healthcare standard.
+                </h2>
+              </ScrollReveal>
             </div>
 
             <div className="max-w-md">
-              <p className="font-body text-base leading-relaxed text-[#292F39]/80">
-                Precision-formulated veterinary solutions structured around physiological
-                stress windows, metabolic recovery, and daily farm productivity.
-              </p>
-              {/* Thin Amber Rule / Measurement Line */}
-              <div className="mt-4 flex items-center gap-2">
-                <div className="h-[2px] w-16 bg-[#EE9B16]" />
-                <div className="h-[1px] flex-1 bg-[#DCE4D6]" />
-              </div>
+              <ScrollReveal delay={0.2}>
+                <p className="font-body text-base leading-relaxed text-[#292F39]/80">
+                  Precision-formulated veterinary solutions structured around physiological
+                  stress windows, metabolic recovery, and daily farm productivity.
+                </p>
+                {/* Thin Amber Scientific Measurement Line */}
+                <div className="mt-4 flex items-center gap-2">
+                  <div className="h-[2px] w-16 bg-[#EE9B16]" />
+                  <div className="h-[1px] flex-1 bg-[#DCE4D6]" />
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
 
-        {/* Responsive Editorial Grid: 3 columns on desktop, 2 on tablet, 1 on mobile */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* MagicBento Grid with Editorial Proportions: 2 larger on row 1, 4 compact on row 2 */}
+        <MagicBento className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
           {solutionCategories.map((category) => (
             <SolutionCategoryCard key={category.id} category={category} />
           ))}
-        </div>
+        </MagicBento>
       </div>
     </section>
   );
