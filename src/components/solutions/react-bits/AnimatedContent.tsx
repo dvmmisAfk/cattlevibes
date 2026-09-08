@@ -9,6 +9,7 @@ interface AnimatedContentProps {
   delay?: number;
   direction?: "up" | "down" | "left" | "right";
   distance?: number;
+  duration?: number;
 }
 
 export function AnimatedContent({
@@ -17,6 +18,7 @@ export function AnimatedContent({
   delay = 0,
   direction = "up",
   distance = 16,
+  duration = 0.45,
 }: AnimatedContentProps) {
   const prefersReduced = useReducedMotion();
 
@@ -35,10 +37,9 @@ export function AnimatedContent({
     <motion.div
       className={className}
       initial={{ opacity: 0, ...initialPosition }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{
-        duration: 0.45,
+        duration,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
