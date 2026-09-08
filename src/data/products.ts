@@ -150,7 +150,7 @@ export const products: Product[] = [
     name: "PYROVIBE Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
-    animals: ["Cattle", "Buffalo", "Horse"],
+    animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Fever & Inflammation"],
     shortDescription:
       "Anti-inflammatory and antipyretic injection for veterinary use in large animals.",
@@ -494,13 +494,9 @@ export const products: Product[] = [
     animals: [
       "Cattle",
       "Buffalo",
-      "Horse",
       "Calf",
-      "Pig",
       "Sheep",
       "Goat",
-      "Dog",
-      "Poultry",
     ],
     healthConcerns: [
       "Calcium & Minerals",

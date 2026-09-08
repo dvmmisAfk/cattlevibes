@@ -239,42 +239,10 @@ export function EcosystemBento() {
     <section className="bg-light-pebble py-14 md:py-20 lg:py-24">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         
-        {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
-        <div className="flex items-center justify-between border-t border-border/80 pt-3.5 pb-6 md:pb-8">
-          <span className="font-mono text-xs font-medium uppercase tracking-wider text-cadet-blue/50">
-            Formulary Framework · System Architecture
-          </span>
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70">
-              {currentPillar.index} <span className="text-cadet-blue/30">/</span> 05
-            </span>
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handlePrev}
-                aria-label="Previous pillar"
-                className="flex h-8 w-8 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy transition-colors hover:bg-light-pebble hover:border-cadet-blue/30 active:scale-95 touch-manipulation cursor-pointer"
-              >
-                <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                aria-label="Next pillar"
-                className="flex h-8 w-8 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy transition-colors hover:bg-light-pebble hover:border-cadet-blue/30 active:scale-95 touch-manipulation cursor-pointer"
-              >
-                <ChevronRight className="h-4 w-4" strokeWidth={1.75} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* ─── Editorial Section Heading ─── */}
-        <div className="mb-8 md:mb-10">
-
-          {/* Heading on One Single Line */}
+        {/* ─── Editorial Section Heading & Carousel Controls ─── */}
+        <div className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <motion.h2
-            className="mt-3.5 font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.65rem] font-extrabold leading-tight tracking-tight text-deep-navy sm:whitespace-nowrap"
+            className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-[2.65rem] font-extrabold leading-tight tracking-tight text-deep-navy"
             initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -283,16 +251,29 @@ export function EcosystemBento() {
             Five connected pillars. One veterinary standard.
           </motion.h2>
 
-          {/* Subtitle Paragraph */}
-          <motion.p
-            className="mt-2.5 max-w-3xl text-sm leading-relaxed text-text-muted sm:text-base md:text-lg"
-            initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            A complete herd care framework designed to sustain peak milk yields, speed up recovery after illness or calving, and keep your cattle healthy across every season.
-          </motion.p>
+          <div className="flex items-center gap-4 sm:gap-5 shrink-0 pb-1">
+            <span className="font-mono text-sm sm:text-base font-bold tracking-wider text-deep-navy">
+              {currentPillar.index} <span className="text-cadet-blue/40">/</span> 05
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous pillar"
+                className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg border border-border bg-white text-deep-navy transition-all hover:bg-deep-navy hover:text-white hover:border-deep-navy active:scale-95 touch-manipulation cursor-pointer shadow-xs"
+              >
+                <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next pillar"
+                className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg border border-border bg-white text-deep-navy transition-all hover:bg-deep-navy hover:text-white hover:border-deep-navy active:scale-95 touch-manipulation cursor-pointer shadow-xs"
+              >
+                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} />
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* ─── Main Clinical Dossier Stage (Interactive Card with Left/Right Transition) ─── */}

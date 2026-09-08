@@ -1,5 +1,4 @@
 import { CinematicHero } from "@/components/home/CinematicHero";
-import { StickyScrollSequence } from "@/components/home/StickyScrollSequence";
 import { TrustGovernanceStrip } from "@/components/home/TrustGovernanceStrip";
 import { EcosystemBento } from "@/components/home/EcosystemBento";
 import { LifecycleAnatomy } from "@/components/home/LifecycleAnatomy";
@@ -11,7 +10,6 @@ export default function HomePage() {
   return (
     <SmoothScroll>
       <CinematicHero />
-      <StickyScrollSequence />
       <TrustGovernanceStrip />
       <EcosystemBento />
       <LifecycleAnatomy />

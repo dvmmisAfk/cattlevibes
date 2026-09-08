@@ -32,10 +32,7 @@
 ### By Target Animal Species
 - **Cattle & Buffalo (Ruminants):** 21/21 products (100% portfolio coverage)
 - **Sheep & Goat (Small Ruminants):** 8 products (`LIVER-OK`, `RUMI-OK Powder`, `FENDIVIBE PLUS`, `FLUKEVIBE DS`, `WORMS-OK PLUS`, `CATTLEMIN`, `CATTLESTAR GOLD`, `PYROVIBE Bolus`)
-- **Equine (Horse / Foal):** 2 products (`PYROVIBE Injection`, `CATTLESTAR GOLD`)
-- **Swine (Pig):** 1 product (`CATTLESTAR GOLD`)
-- **Canine (Dog):** 1 product (`CATTLESTAR GOLD`)
-- **Poultry (Chicks, Broilers, Growers, Layers):** 1 product (`CATTLESTAR GOLD`)
+- **Calf:** 1 product (`CATTLESTAR GOLD`)
 
 ---
 
@@ -49,7 +46,7 @@
 | 04 | **RUMI-OK Powder** | `rumi-ok-powder` | Powder | Digestive & Liver Health | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (2x) |
 | 05 | **RUMI-OK Bolus** | `rumi-ok-bolus` | Bolus | Digestive & Liver Health | Cattle, Buffalo | No | Official Packshot |
 | 06 | **CATTLESPAS** | `cattlespas` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
-| 07 | **PYROVIBE Injection** | `pyrovibe-injection` | Injection | Veterinary Medicines | Cattle, Buffalo, Horse | Yes | Official Packshot |
+| 07 | **PYROVIBE Injection** | `pyrovibe-injection` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot |
 | 08 | **PYROVIBE Bolus** | `pyrovibe-bolus` | Bolus | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
 | 09 | **MEGLUVIBE** | `megluvibe` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
 | 10 | **CATTLE PHOS** | `cattle-phos` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot (2x) |
@@ -63,7 +60,7 @@
 | 18 | **CATTLESTAR ADVANCE GEL** | `cattlestar-advance-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
 | 19 | **CATTLESTAR** | `cattlestar` | Liquid | Calcium & Milk Support | Cattle, Buffalo | Yes | Official Packshot (3x) |
 | 20 | **CATTLESTAR-DS** | `cattlestar-ds` | Liquid | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot (2x) |
-| 21 | **CATTLESTAR GOLD** | `cattlestar-gold` | Liquid | Calcium & Milk Support | Cattle, Buffalo, Horse, Calf, Pig, Sheep, Goat, Dog, Poultry | No | Official Packshot (5L, 2L, 1L) |
+| 21 | **CATTLESTAR GOLD** | `cattlestar-gold` | Liquid | Calcium & Milk Support | Cattle, Buffalo, Calf, Sheep, Goat | No | Official Packshot (5L, 2L, 1L) |
 
 ---
 
@@ -80,7 +77,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
 - **Category:** Calcium & Milk Support
 - **Formulation:** Liquid
 - **Product Positioning:** Strongest Milk Booster Formula
-- **Target Animals:** Cattle, Buffalo, Horse, Calf, Foal, Pig, Sheep, Goat, Dog, Chicks, Broilers, Growers, Layers
+- **Target Animals:** Cattle, Buffalo, Calf, Sheep, Goat
 - **Health Concerns:** Calcium & Minerals, Milk Productivity, Hypocalcemia Support
 - **Featured Product:** No
 - **Short Description:** Liquid calcium and nutritional supplement formulated to support calcium balance, milk productivity, rumen health, immunity and overall livestock performance.

@@ -151,11 +151,7 @@ export const animalCategories = [
   { name: "Buffalo", image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400&q=80" },
   { name: "Goat", image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80" },
   { name: "Sheep", image: "https://images.unsplash.com/photo-1484558830667-5e7daf3f3e6b?w=400&q=80" },
-  { name: "Horse", image: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5f?w=400&q=80" },
   { name: "Calf", image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&q=80" },
-  { name: "Pig", image: "https://images.unsplash.com/photo-1598439210620-c8500d0f1811?w=400&q=80" },
-  { name: "Poultry", image: "https://images.unsplash.com/photo-1548550020-6b7c384ea1f3?w=400&q=80" },
-  { name: "Aqua", image: "https://images.unsplash.com/photo-1544551763-77a840bbdeea?w=400&q=80" },
 ];
 
 export const faqItems = [
@@ -189,6 +185,7 @@ export const faqItems = [
 export const images = {
   logo: "/images/cattlevibes-mark.png",
   logoWhite: "/images/cattlevibes-mark-white.png",
+  heroImage: "/images/hero-pastoral.jpg",
   heroVideo: "/videos/hero-upscaled.mp4",
   heroVideoWebm: "/videos/hero.webm",
   heroAudio: "/audio/hero.mp3",

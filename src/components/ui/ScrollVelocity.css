@@ -1,0 +1,22 @@
+/* ─── React Bits ScrollVelocity Component Styles ─── */
+.parallax {
+  overflow: hidden;
+  letter-spacing: inherit;
+  line-height: 1.25;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.parallax .scroller {
+  font-family: var(--font-heading, "Manrope", sans-serif);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  user-select: none;
+  will-change: transform;
+}

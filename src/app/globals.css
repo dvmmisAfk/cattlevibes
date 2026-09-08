@@ -226,7 +226,6 @@ h3 {
   }
 }
 
-/* ─── Browser extension video controls suppression for background hero video ─── */
 #PlayBackRatePanelYPSC,
 .PlayBackRatePanelYPSC,
 .vsc-controller {
@@ -234,4 +233,28 @@ h3 {
   opacity: 0 !important;
   pointer-events: none !important;
   visibility: hidden !important;
+}
+
+/* ─── Sleek slender scrollbar for sidebars, filters & drawers ─── */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(49, 56, 65, 0.2) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(49, 56, 65, 0.18);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(49, 56, 65, 0.35);
 }

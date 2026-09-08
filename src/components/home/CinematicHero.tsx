@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { images, siteConfig } from "@/data/site";
@@ -37,36 +37,6 @@ function AnimatedWord({ children, delay }: AnimatedWordProps) {
 
 export function CinematicHero() {
   const prefersReduced = useReducedMotion();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.muted = true;
-    video.defaultMuted = true;
-
-    if (!video.paused) {
-      setIsPlaying(true);
-      return;
-    }
-
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          // Autoplay policy or low power mode; poster remains visible
-        });
-    }
-  }, [isMounted, prefersReduced]);
 
   // Original brand head tagline
   const line1Words = ["Complete", "Animal"];
@@ -77,57 +47,33 @@ export function CinematicHero() {
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy"
       suppressHydrationWarning
     >
-      {/* ─── Instant Poster Background (0ms initial HTML paint) ─── */}
-      <img
-        src={images.heroPoster}
-        alt=""
-        aria-hidden="true"
-        fetchPriority="high"
-        loading="eager"
-        decoding="sync"
-        className={`absolute inset-0 h-full w-full object-cover pointer-events-none transition-opacity duration-700 ease-out ${
-          isPlaying ? "opacity-0" : "opacity-100"
-        }`}
-      />
-
-      {/* ─── Faststart Video Background (mounted on client to prevent browser extension hydration mismatches) ─── */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {isMounted && !prefersReduced && (
-          <video
-            ref={videoRef}
-            className="hero-video-bg absolute inset-0 h-full w-full object-cover"
-            poster={images.heroPoster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            tabIndex={-1}
-            onPlaying={() => setIsPlaying(true)}
-            onPlay={() => setIsPlaying(true)}
-          >
-            {images.heroVideoWebm && (
-              <source src={images.heroVideoWebm} type="video/webm" />
-            )}
-            <source src={images.heroVideo} type="video/mp4" />
-          </video>
-        )}
+      {/* ─── High-Fidelity Pastoral Hero Image Background ─── */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <Image
+          src={images.heroImage}
+          alt="Pastoral grazing landscape with livestock under a sunny sky"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center transform scale-[1.01]"
+        />
       </div>
 
-      {/* ─── Vignette overlays ─── */}
-      <div className="absolute inset-0 bg-deep-navy/60" aria-hidden="true" />
+      {/* ─── Architectural Scrim & Vignette Overlays for Contrast & Readability ─── */}
+      <div className="absolute inset-0 bg-deep-navy/45" aria-hidden="true" />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(49,56,65,0.88)_100%)]"
+        className="absolute inset-0 bg-gradient-to-t from-deep-navy/80 via-deep-navy/25 to-deep-navy/40"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(49,56,65,0.75)_100%)]"
         aria-hidden="true"
       />
 
       {/* ─── Content ─── */}
       <div className="relative z-10 mx-auto flex max-w-[1320px] flex-col items-center px-5 pt-16 text-center lg:px-8">
         {/* Massive Centered Head Tagline with Animated Translate */}
-        <h1 className="max-w-5xl font-heading text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
+        <h1 className="max-w-5xl font-heading text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-white [text-shadow:_0_2px_24px_rgba(0,0,0,0.45)]">
           <span className="block space-x-3 md:space-x-5">
             {line1Words.map((word, i) => (
               <AnimatedWord key={word} delay={0.25 + i * 0.12}>
@@ -146,7 +92,7 @@ export function CinematicHero() {
 
         {/* Refined Subtitle */}
         <motion.p
-          className="mt-6 max-w-2xl text-base font-normal leading-relaxed text-white/80 md:mt-8 md:text-xl"
+          className="mt-6 max-w-2xl text-base font-normal leading-relaxed text-white/90 md:mt-8 md:text-xl [text-shadow:_0_1px_16px_rgba(0,0,0,0.4)]"
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -163,11 +109,11 @@ export function CinematicHero() {
         transition={{ delay: 1.4, duration: 0.6 }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/80 [text-shadow:_0_1px_8px_rgba(0,0,0,0.4)]">
             Scroll
           </span>
           <ChevronDown
-            className="h-4 w-4 animate-scroll-hint text-white/70"
+            className="h-4 w-4 animate-scroll-hint text-white/80"
             strokeWidth={2}
           />
         </div>
@@ -175,3 +121,5 @@ export function CinematicHero() {
     </section>
   );
 }
+
+export default CinematicHero;
