@@ -4,7 +4,11 @@ export const productImageMap: Record<string, string[]> = {
     "/images/products/liver-ok-2.png",
     "/images/products/liver-ok-3.png",
   ],
-  "liver-ok-injection": ["/images/products/liver-ok-injection.png"],
+  "liver-ok-injection": [
+    "/images/products/liver-ok-injection-1.png",
+    "/images/products/liver-ok-injection-2.png",
+    "/images/products/liver-ok-injection-3.png",
+  ],
   utrovibe: [
     "/images/products/utrovibe-1.png",
     "/images/products/utrovibe-2.png",
@@ -19,9 +23,13 @@ export const productImageMap: Record<string, string[]> = {
   "pyrovibe-injection": ["/images/products/pyrovibe-injection.png"],
   "pyrovibe-bolus": ["/images/products/pyrovibe-bolus.png"],
   megluvibe: ["/images/products/megluvibe.png"],
-  "cattle-phos": ["/images/products/cattle-phos.png"],
+  "cattle-phos": [
+    "/images/products/cattle-phos-1.png",
+    "/images/products/cattle-phos-2.png",
+  ],
   "cattle-cef": ["/images/products/cattle-cef.png"],
   "cattlecef-sb": ["/images/products/cattlecef-sb.png"],
+  "fendivibe-plus": ["/images/products/fendivibe-plus.png"],
   "flukevibe-ds": ["/images/products/flukevibe-ds.png"],
   "worms-ok-plus": ["/images/products/worms-ok-plus.png"],
   cattlemin: [
@@ -37,6 +45,7 @@ export const productImageMap: Record<string, string[]> = {
     "/images/products/cattlestar-ds-1.png",
     "/images/products/cattlestar-ds-2.png",
   ],
+  "cattlestar-gel": ["/images/products/cattlestar-gel.png"],
   "cattlestar-advance-gel": ["/images/products/cattlestar-advance-gel.png"],
   "cattlestar-gold": ["/images/products/cattlestar-gold-1.png"],
 };
