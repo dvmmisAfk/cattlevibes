@@ -10,6 +10,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { CinematicCanvas } from "./CinematicCanvas";
+import { appleSprings } from "@/lib/apple-motion";
 
 export interface ParadigmPhase {
   id: string;
@@ -74,6 +75,16 @@ export function StickyScrollSequence() {
 
   const currentPhase = PHASES[activeIndex];
 
+  const scrollToPhase = (index: number) => {
+    setActiveIndex(index);
+    if (containerRef.current) {
+      const top = containerRef.current.offsetTop;
+      const height = containerRef.current.offsetHeight - window.innerHeight;
+      const targetScroll = top + (index / (PHASES.length - 1)) * height;
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
+
   if (prefersReduced) {
     return (
       <section className="relative bg-light-pebble py-24 md:py-32">
@@ -82,13 +93,10 @@ export function StickyScrollSequence() {
           {PHASES.map((phase) => (
             <div key={phase.id} className="grid items-center gap-12 lg:grid-cols-12">
               <div className="lg:col-span-7">
-                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-yam-orange">
-                  {phase.badge}
-                </span>
-                <h2 className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-deep-navy md:text-6xl">
+                <h2 className="font-heading text-4xl font-extrabold tracking-tight text-deep-navy md:text-6xl">
                   {phase.headline}
                 </h2>
-                <p className="mt-6 max-w-xl font-body text-lg font-normal leading-relaxed text-cadet-blue/80">
+                <p className="mt-6 max-w-xl font-body text-lg font-normal leading-relaxed text-cadet-blue">
                   {phase.subheadline}
                 </p>
               </div>
@@ -125,52 +133,56 @@ export function StickyScrollSequence() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={prefersReduced ? { duration: 0 } : appleSprings.criticallyDamped}
                   className="flex flex-col"
                 >
-                  {/* Eyebrow: Raw, tracked-out text without distracting dots or lines */}
-                  <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-yam-orange">
-                    {currentPhase.badge}
-                  </span>
-
-                  {/* Header: Manrope, massive and authoritative */}
-                  <h2 className="mt-4 font-heading text-4xl font-extrabold tracking-tight text-deep-navy sm:text-5xl lg:text-7xl">
+                  {/* Header: Manrope, massive and authoritative (Eyebrow Eradicated) */}
+                  <h2 className="font-heading text-4xl font-extrabold tracking-tight text-deep-navy sm:text-5xl lg:text-7xl">
                     {currentPhase.headline}
                   </h2>
 
                   {/* Subheader: Inter, generous leading, high-contrast cadet-blue */}
-                  <p className="mt-6 max-w-xl font-body text-base font-normal leading-relaxed text-cadet-blue/80 sm:text-lg lg:text-xl">
+                  <p className="mt-6 max-w-xl font-body text-base font-normal leading-relaxed text-cadet-blue sm:text-lg lg:text-xl">
                     {currentPhase.subheadline}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Minimalist Sequence Telemetry Indicator */}
-              <div className="mt-12 flex items-center gap-6">
-                <div className="flex items-center gap-3 font-mono text-xs font-semibold tracking-wider text-cadet-blue/60">
-                  {PHASES.map((p, idx) => (
-                    <span
+              {/* Interactive Direct-Jump Phase Indicator Controls */}
+              <div className="mt-10 flex flex-wrap items-center gap-2.5 sm:gap-3" role="tablist" aria-label="Sequence phases">
+                {PHASES.map((p, idx) => {
+                  const isActive = idx === activeIndex;
+                  return (
+                    <button
                       key={p.id}
-                      className={`transition-colors duration-300 ${
-                        idx === activeIndex
-                          ? "font-bold text-yam-orange"
-                          : "text-cadet-blue/30"
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => scrollToPhase(idx)}
+                      className={`group flex min-h-[44px] items-center gap-2 rounded-md px-3.5 py-2 text-xs font-medium transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-deep-navy touch-manipulation active:scale-[0.97] ${
+                        isActive
+                          ? "bg-deep-navy text-white"
+                          : "border border-border/80 bg-white text-cadet-blue hover:border-deep-navy/40 hover:text-deep-navy"
                       }`}
                     >
-                      {p.step}
-                    </span>
-                  ))}
-                </div>
+                      <span
+                        className={`font-mono text-[11px] ${
+                          isActive ? "text-white/70" : "text-cadet-blue/50 group-hover:text-deep-navy"
+                        }`}
+                      >
+                        {p.step}
+                      </span>
+                      <span>{p.id.charAt(0).toUpperCase() + p.id.slice(1)}</span>
+                    </button>
+                  );
+                })}
 
-                <div className="relative h-[2px] w-32 overflow-hidden rounded-full bg-border">
+                <div className="ml-2 hidden h-[2px] w-24 overflow-hidden bg-border/60 sm:block">
                   <motion.div
-                    className="h-full bg-yam-orange"
+                    className="h-full bg-deep-navy"
                     initial={false}
                     animate={{
                       width: `${((activeIndex + 1) / PHASES.length) * 100}%`,

@@ -19,13 +19,13 @@ export function ProductCard({
   return (
     <Link
       href={`/products/${product.slug}`}
-      className={`group flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-yam-orange/50 ${className}`}
+      className={`group flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-yam-orange/50 touch-manipulation active:scale-[0.98] ${className}`}
     >
       <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-soft-white p-6 transition-colors group-hover:bg-warm-cream/30">
         <ProductPackshot src={cover} alt={product.name} />
         {product.formulation && (
           <div className="pointer-events-none absolute top-3 left-3">
-            <span className="rounded-md border border-border/50 bg-white/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-deep-navy shadow-xs backdrop-blur-xs">
+            <span className="rounded-md border border-white/60 border-t-white/90 bg-white/85 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-deep-navy shadow-sm backdrop-blur-md">
               {product.formulation}
             </span>
           </div>
@@ -34,7 +34,7 @@ export function ProductCard({
 
       <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-wider text-brand-orange">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-cadet-blue/70">
             {product.category}
           </p>
           <h3 className="mt-1.5 font-heading text-lg font-bold text-deep-navy transition-colors group-hover:text-brand-orange">
@@ -48,7 +48,7 @@ export function ProductCard({
                   key={benefit}
                   className="flex items-start gap-2 text-xs leading-relaxed text-text-muted"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-cadet-blue/60" />
                   <span>{benefit}</span>
                 </li>
               ))}

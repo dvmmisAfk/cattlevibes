@@ -8,7 +8,8 @@ export type ButtonVariant =
   | "accent"
   | "outline"
   | "ghost"
-  | "pill";
+  | "pill"
+  | "whiteOutline";
 
 export type ButtonSize = "sm" | "md" | "lg";
 
@@ -31,23 +32,25 @@ export interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-deep-navy text-pure-white hover:bg-deep-navy/95 hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent",
+    "bg-deep-navy text-pure-white hover:bg-deep-navy/95 hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-white/10 border-t-white/20 active:scale-[0.97] transition-all duration-200",
   secondary:
-    "border border-primary-navy/25 bg-white/90 text-primary-navy hover:bg-white hover:border-brand-orange/40 hover:-translate-y-0.5 shadow-sm",
+    "border border-primary-navy/25 border-t-primary-navy/35 bg-white/90 backdrop-blur-sm text-primary-navy hover:bg-white hover:border-brand-orange/40 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
   accent:
-    "bg-brand-orange text-white hover:bg-brand-orange/90 hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent",
+    "bg-brand-orange text-white hover:bg-[#d88410] hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent active:scale-[0.97] transition-all duration-200",
   outline:
-    "border-2 border-deep-navy bg-transparent text-deep-navy hover:bg-deep-navy hover:text-white transition-colors",
+    "border-2 border-deep-navy bg-transparent text-deep-navy hover:bg-deep-navy hover:text-white transition-colors active:scale-[0.97]",
   ghost:
-    "bg-transparent text-primary-navy hover:text-brand-orange hover:bg-warm-cream/50",
+    "bg-transparent text-primary-navy hover:text-brand-orange hover:bg-warm-cream/50 active:scale-[0.97] transition-all duration-200",
   pill:
-    "rounded-xl bg-deep-navy text-white hover:-translate-y-0.5 hover:shadow-md px-5 py-2",
+    "rounded-xl bg-deep-navy text-white hover:-translate-y-0.5 hover:shadow-md px-5 py-2 active:scale-[0.97] transition-all duration-200",
+  whiteOutline:
+    "border border-white/25 border-t-white/45 bg-white/[0.07] backdrop-blur-md text-white hover:border-white/50 hover:bg-white/14 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-xs font-semibold rounded-lg gap-1.5",
-  md: "px-6 py-3 text-sm font-semibold rounded-xl gap-2",
-  lg: "px-7 py-3.5 text-sm font-semibold rounded-xl gap-2.5",
+  sm: "px-4 py-2 text-xs font-semibold rounded-lg gap-1.5 min-h-[36px]",
+  md: "px-6 py-3 text-sm font-semibold rounded-xl gap-2 min-h-[44px]",
+  lg: "px-8 py-4 text-sm sm:text-base font-bold rounded-xl gap-2.5 min-h-[48px]",
 };
 
 export function Button({
@@ -67,7 +70,7 @@ export function Button({
   "aria-label": ariaLabel,
 }: ButtonProps) {
   const baseClasses =
-    "group inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed";
+    "group inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-brand-orange focus-visible:outline-offset-2 touch-manipulation";
   const vClass = variantStyles[variant];
   const sClass = variant === "pill" ? "" : sizeStyles[size];
 

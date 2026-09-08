@@ -66,7 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="video/mp4"
         />
       </head>
-      <body className="min-h-screen bg-soft-white font-body text-text-primary antialiased">
+      <body className="min-h-screen bg-soft-white font-body text-text-primary antialiased" suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Buttons";
 
 interface EnquiryFormProps {
@@ -11,6 +11,10 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [product, setProduct] = useState(initialProduct);
 
+  useEffect(() => {
+    setProduct(initialProduct);
+  }, [initialProduct]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
@@ -18,61 +22,68 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
 
   if (submitted) {
     return (
-      <div className="rounded-xl border border-border bg-white p-8 text-center md:p-10">
-        <h3 className="text-xl font-bold text-deep-navy">Thank you for your enquiry</h3>
-        <p className="mt-3 text-sm text-text-muted">
-          Our team will get back to you shortly.
+      <div className="w-full max-w-md text-left">
+        <h3 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy">
+          Enquiry received.
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-cadet-blue">
+          Our commercial desk will respond with catalogue or formulation detail
+          shortly.
         </p>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-xl border border-border bg-white p-6 md:p-8"
-    >
-      <h3 className="text-xl font-bold text-deep-navy">Product Enquiry</h3>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <Field label="Name" name="name" required placeholder="Dr. Rajesh Kumar" />
-        <Field label="Phone" name="phone" type="tel" required placeholder="+91 98765 43210" />
+    <form onSubmit={handleSubmit} className="w-full max-w-md">
+      <h2 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy md:text-3xl">
+        Product Enquiry
+      </h2>
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <Field label="Name" name="name" required placeholder="Dr. / Mr. / Ms. Full Name" />
+        <Field label="Phone" name="phone" type="tel" required placeholder="+91 00000 00000" />
         <Field
           label="Email"
           name="email"
           type="email"
           required
+          placeholder="veterinary@institution.com"
           className="sm:col-span-2"
-          placeholder="rajesh@example.com"
         />
-        <Field label="Company / Farm" name="company" placeholder="Green Valley Dairy" />
-        <Field label="Location" name="location" placeholder="Punjab, India" />
+        <Field label="Company / Farm" name="company" placeholder="e.g. Sunrise Dairy Farm" />
+        <Field label="Location" name="location" placeholder="City, State" />
         <Field
-          label="Product Interested In"
+          label="Product / Dossier"
           name="product"
           value={product}
           onChange={(e) => setProduct(e.target.value)}
+          placeholder="e.g. CAL-D3 Oral Susp or Mastitis Care"
           className="sm:col-span-2"
-          placeholder="e.g. LIVER-OK, CATTLESTAR"
         />
       </div>
+
       <div className="mt-4">
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-text-primary">
-          Message
+        <label
+          htmlFor="message"
+          className="block text-xs font-bold uppercase tracking-wider text-cadet-blue mb-1.5"
+        >
+          Message / Requirement
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
-          placeholder="Please share specific requirements, quantities, or livestock health concerns..."
-          className="w-full rounded-xl border border-border px-4 py-3 text-sm outline-none transition-colors focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+          placeholder="Specify batch quantities, dosage queries, or institutional requirements..."
+          className="w-full resize-none rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-yam-orange focus:outline-none focus:ring-2 focus:ring-yam-orange/20"
         />
       </div>
+
       <div className="mt-6">
         <Button
           type="submit"
           variant="primary"
           size="lg"
-          className="w-full"
+          className="w-full justify-center"
         >
           Send Enquiry
         </Button>
@@ -102,9 +113,12 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={name} className="mb-1.5 block text-sm font-medium text-text-primary">
+      <label
+        htmlFor={name}
+        className="block text-xs font-bold uppercase tracking-wider text-cadet-blue mb-1.5"
+      >
         {label}
-        {required && <span className="text-brand-orange"> *</span>}
+        {required && <span className="text-yam-orange font-bold"> *</span>}
       </label>
       <input
         id={name}
@@ -114,7 +128,7 @@ function Field({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-border px-4 py-2.5 text-sm outline-none transition-colors focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+        className="w-full rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-yam-orange focus:outline-none focus:ring-2 focus:ring-yam-orange/20"
       />
     </div>
   );

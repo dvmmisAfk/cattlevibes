@@ -14,9 +14,6 @@ export default function PrivacyPage() {
         <Breadcrumbs className="mb-8" />
 
         <div className="border-b border-border pb-8">
-          <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-yam-orange mb-3">
-            Compliance &middot; Enterprise Data Protection
-          </p>
           <h1 className="font-heading text-3xl font-extrabold tracking-tight text-deep-navy sm:text-4xl md:text-5xl">
             Privacy Policy
           </h1>

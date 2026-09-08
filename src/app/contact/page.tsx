@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import Image from "next/image";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { siteConfig } from "@/data/site";
+import { images, siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Cattlevibes for institutional supply, commercial procurement, and veterinary product enquiries.",
+  description:
+    "Commercial and clinical enquiries for CattleVibes institutional supply, procurement, and veterinary product detail.",
 };
 
 interface ContactPageProps {
@@ -19,107 +18,64 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const initialProduct = params.product || "";
 
   return (
-    <>
-      <section className="bg-light-pebble pt-(--nav-height)">
-        <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-20 lg:px-8">
-          <Breadcrumbs className="mb-8" />
-          <FadeIn>
-            <div className="text-center">
-              <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-yam-orange mb-3">
-                Commercial Enquiries &middot; Institutional Procurement
-              </p>
-              <h1 className="text-3xl font-extrabold font-heading text-deep-navy md:text-5xl">
-                Commercial & Clinical Enquiries
-              </h1>
-              <p className="mx-auto mt-4 max-w-xl text-base text-cadet-blue md:text-lg">
-                Connect with our veterinary support team for bulk distribution agreements, formulation specifications, or institutional tender procurement.
-              </p>
+    <section className="grid min-h-[100svh] lg:grid-cols-2">
+      <div className="relative flex flex-col justify-end overflow-hidden bg-deep-navy px-6 pb-16 pt-[calc(var(--nav-height)+2.5rem)] md:px-10 lg:min-h-[100svh] lg:px-14 lg:pb-20">
+        <Image
+          src={images.farmAtmospheric}
+          alt=""
+          fill
+          className="object-cover opacity-35"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-deep-navy/75" />
+
+        <div className="relative max-w-xl">
+          <h1 className="font-heading text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl lg:leading-[0.95]">
+            Commercial & Clinical Enquiries.
+          </h1>
+          <dl className="mt-12 space-y-8 border-t border-white/15 pt-8">
+            <div>
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+                Phone
+              </dt>
+              <dd className="mt-2">
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                  className="font-heading text-lg font-semibold text-white md:text-xl"
+                >
+                  {siteConfig.phone}
+                </a>
+              </dd>
             </div>
-          </FadeIn>
+            <div>
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+                Email
+              </dt>
+              <dd className="mt-2">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="font-heading text-lg font-semibold text-white md:text-xl"
+                >
+                  {siteConfig.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+                Address
+              </dt>
+              <dd className="mt-2 font-heading text-lg font-semibold text-white md:text-xl">
+                {siteConfig.address}
+              </dd>
+            </div>
+          </dl>
         </div>
-      </section>
-
-      <section className="bg-white pb-16 md:pb-24">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <FadeIn>
-              <div>
-                <h2 className="text-xl font-bold text-deep-navy">Contact Information</h2>
-                <p className="mt-4 text-sm leading-relaxed text-text-muted">
-                  Reach out to {siteConfig.name} for product enquiries, catalogue requests,
-                  and distribution information.
-                </p>
-
-                <div className="mt-8 space-y-6">
-                  <ContactItem
-                    icon={Phone}
-                    label="Call Us"
-                    value={siteConfig.phone}
-                    href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  />
-                  <ContactItem
-                    icon={Mail}
-                    label="Email Us"
-                    value={siteConfig.email}
-                    href={`mailto:${siteConfig.email}`}
-                  />
-                  <ContactItem
-                    icon={MapPin}
-                    label="Address"
-                    value={siteConfig.address}
-                  />
-                </div>
-
-                <div className="mt-10 rounded-xl border border-border bg-light-pebble/60 p-6">
-                  <h3 className="font-bold text-deep-navy">Product Enquiries</h3>
-                  <p className="mt-2 text-sm text-text-muted">
-                    For specific product information, please include the product name in your
-                    enquiry. Our team will provide brochure-derived details and guidance.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <EnquiryForm initialProduct={initialProduct} />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
-function ContactItem({
-  icon: Icon,
-  label,
-  value,
-  href,
-}: {
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  label: string;
-  value: string;
-  href?: string;
-}) {
-  const content = (
-    <div className="flex items-start gap-4">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-warm-cream">
-        <Icon className="h-5 w-5 text-brand-orange" strokeWidth={1.5} />
       </div>
-      <div>
-        <p className="text-xs font-bold uppercase tracking-wider text-brand-orange">{label}</p>
-        <p className="mt-1 text-sm font-medium text-text-primary">{value}</p>
+
+      <div className="flex items-center justify-center bg-white px-6 py-16 md:px-10 lg:min-h-[100svh] lg:px-14">
+        <EnquiryForm initialProduct={initialProduct} />
       </div>
-    </div>
+    </section>
   );
-
-  if (href) {
-    return (
-      <a href={href} className="block transition-opacity hover:opacity-80">
-        {content}
-      </a>
-    );
-  }
-
-  return content;
 }

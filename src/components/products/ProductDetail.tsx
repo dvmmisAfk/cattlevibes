@@ -47,10 +47,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <p className="mb-2 text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
-            {product.category}
-          </p>
-          <h1 className="mt-2 text-3xl font-bold text-deep-navy md:text-4xl">
+          <h1 className="text-3xl font-bold text-deep-navy md:text-4xl">
             {product.name}
           </h1>
           <p className="mt-4 text-base leading-relaxed text-text-muted">
@@ -67,7 +64,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
             <ul className="mt-4 space-y-2">
               {product.benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-2 text-sm text-text-muted">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-cadet-blue/60" />
                   {benefit}
                 </li>
               ))}
@@ -83,7 +80,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
             {Object.entries(product.info).map(([key, value]) =>
               value ? (
                 <div key={key} className="border-b border-border pb-4">
-                  <dt className="text-xs font-bold uppercase tracking-wider text-yam-orange">
+                  <dt className="font-mono text-xs font-semibold uppercase tracking-wider text-cadet-blue/70">
                     {formatLabel(key)}
                   </dt>
                   <dd className="mt-1 text-sm text-text-primary">{value}</dd>
@@ -149,31 +146,21 @@ function DetailImageSlider({ product }: { product: Product }) {
             onClick={() =>
               setSlide((value) => (value - 1 + images.length) % images.length)
             }
-            className="absolute top-1/2 left-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-deep-navy"
+            className="absolute top-1/2 left-3 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:border-deep-navy/40 active:scale-95 cursor-pointer"
             aria-label="Previous image"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
           </button>
           <button
             type="button"
             onClick={() => setSlide((value) => (value + 1) % images.length)}
-            className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-deep-navy"
+            className="absolute top-1/2 right-3 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:border-deep-navy/40 active:scale-95 cursor-pointer"
             aria-label="Next image"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
           </button>
-          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5">
-            {images.map((src, index) => (
-              <button
-                key={src}
-                type="button"
-                onClick={() => setSlide(index)}
-                aria-label={`Show image ${index + 1}`}
-                className={`h-2 rounded-full ${
-                  index === slide ? "w-6 bg-brand-orange" : "w-2 bg-deep-navy/25"
-                }`}
-              />
-            ))}
+          <div className="absolute bottom-3 right-3 z-10 rounded border border-border/60 bg-white/90 px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue backdrop-blur-xs">
+            {String(slide + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </div>
         </>
       )}

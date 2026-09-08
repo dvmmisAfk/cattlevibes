@@ -12,12 +12,7 @@ export default function NotFound() {
         404
       </span>
 
-      {/* Atmospheric Hairline Frame */}
       <div className="relative z-10 mx-auto max-w-2xl">
-        <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-yam-orange mb-4">
-          Error 404 &middot; Formulary Index
-        </p>
-
         <h1 className="font-heading text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
           Formulation Not Found.
         </h1>

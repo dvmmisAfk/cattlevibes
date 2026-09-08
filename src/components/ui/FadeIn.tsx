@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { appleSprings } from "@/lib/apple-motion";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -13,13 +14,17 @@ export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
 
   return (
     <motion.div
-      initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : delay,
-      }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : {
+              ...appleSprings.criticallyDamped,
+              delay,
+            }
+      }
       className={className}
     >
       {children}

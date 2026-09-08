@@ -189,9 +189,9 @@ export function ProductsCatalogue({
       <button
         type="button"
         onClick={clearAll}
-        className="font-heading flex items-center gap-2 text-sm font-bold tracking-[0.02em] text-brand-orange uppercase transition-colors hover:text-deep-navy"
+        className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-cadet-blue transition-colors hover:text-deep-navy cursor-pointer"
       >
-        <RotateCcw className="h-[18px] w-[18px]" strokeWidth={2} />
+        <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
         Clear all filters
       </button>
     </div>
@@ -487,27 +487,20 @@ function CatalogueProductCard({
               type="button"
               onClick={showPrevious}
               aria-label="Previous image"
-              className="absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-deep-navy/70 opacity-80 shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:text-deep-navy md:opacity-0 md:group-hover:opacity-100"
+              className="absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
             >
-              <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
+              <ChevronLeft className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
             <button
               type="button"
               onClick={showNext}
               aria-label="Next image"
-              className="absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-deep-navy/70 opacity-80 shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:text-deep-navy md:opacity-0 md:group-hover:opacity-100"
+              className="absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
             >
-              <ChevronRight className="h-4 w-4" strokeWidth={1.75} />
+              <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
-            <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1">
-              {images.map((src, index) => (
-                <span
-                  key={src}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === slide ? "w-3 bg-brand-orange" : "w-1.5 bg-deep-navy/25"
-                  }`}
-                />
-              ))}
+            <div className="pointer-events-none absolute bottom-2 right-2 z-10 rounded border border-border/60 bg-white/90 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-cadet-blue backdrop-blur-xs">
+              0{slide + 1} / 0{images.length}
             </div>
           </>
         )}

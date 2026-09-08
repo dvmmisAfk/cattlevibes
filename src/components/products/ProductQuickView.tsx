@@ -154,7 +154,7 @@ export function ProductQuickView({
   }, []);
 
   const navButtonClass =
-    "relative z-20 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-deep-navy shadow-[0_8px_24px_rgba(49,56,65,0.16)] transition-[transform,box-shadow] duration-200 hover:scale-110 hover:shadow-[0_12px_32px_rgba(49,56,65,0.22)] active:scale-95 disabled:pointer-events-none disabled:opacity-50";
+    "relative z-20 flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/20 bg-deep-navy/80 text-white backdrop-blur-md transition-all duration-200 hover:bg-deep-navy hover:border-white/40 active:scale-95 disabled:pointer-events-none disabled:opacity-30 cursor-pointer";
 
   return (
     <div className="fixed inset-0 z-[130] flex items-center justify-center gap-2 p-3 md:gap-5 md:p-6 lg:p-10">
@@ -174,12 +174,12 @@ export function ProductQuickView({
           onClick={showPreviousProduct}
           aria-label="Previous product"
           disabled={sharedLayout}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.94 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.18, ease: slideEase }}
           className={navButtonClass}
         >
-          <ChevronLeft className="h-6 w-6" />
+          <ChevronLeft className="h-5 w-5" />
         </motion.button>
       )}
 
@@ -232,36 +232,20 @@ export function ProductQuickView({
                 type="button"
                 onClick={showPreviousImage}
                 aria-label="Previous image"
-                className="absolute top-1/2 left-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-deep-navy/75 shadow-sm backdrop-blur-sm transition-all hover:scale-110 hover:bg-white hover:text-deep-navy active:scale-95"
+                className="absolute top-1/2 left-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
               >
-                <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+                <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
               </button>
               <button
                 type="button"
                 onClick={showNextImage}
                 aria-label="Next image"
-                className="absolute top-1/2 right-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-deep-navy/75 shadow-sm backdrop-blur-sm transition-all hover:scale-110 hover:bg-white hover:text-deep-navy active:scale-95"
+                className="absolute top-1/2 right-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
               >
-                <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+                <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
               </button>
-              <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
-                {images.map((src, imageIndex) => (
-                  <button
-                    key={src}
-                    type="button"
-                    aria-label={`Show image ${imageIndex + 1}`}
-                    onClick={() => {
-                      if (imageIndex === currentIndex) return;
-                      if (!beginTransition(imageIndex > currentIndex ? 1 : -1)) return;
-                      setSlide(imageIndex);
-                    }}
-                    className={`h-2 rounded-full transition-all ${
-                      imageIndex === currentIndex
-                        ? "w-6 bg-brand-orange"
-                        : "w-2 bg-deep-navy/25"
-                    }`}
-                  />
-                ))}
+              <div className="absolute bottom-3 right-3 z-10 rounded border border-border/60 bg-white/90 px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue backdrop-blur-xs">
+                {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
               </div>
             </>
           )}
@@ -270,7 +254,7 @@ export function ProductQuickView({
         <div className="flex min-h-0 flex-col overflow-y-auto p-6 md:p-8 lg:p-10">
           <div className="mb-4 flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-bold tracking-wider text-brand-orange uppercase">
+              <p className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70 uppercase">
                 {product.category}
               </p>
               <h2
@@ -303,7 +287,7 @@ export function ProductQuickView({
                   key={benefit}
                   className="flex items-start gap-2 text-sm text-text-muted"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-cadet-blue/60" />
                   {benefit}
                 </li>
               ))}

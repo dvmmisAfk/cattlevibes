@@ -2,10 +2,9 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/motion/MagneticButton";
+import { Button } from "@/components/ui/Buttons";
 import { images } from "@/data/site";
 
 export function CinematicCTA() {
@@ -53,27 +52,14 @@ export function CinematicCTA() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          {/* Editorial Eyebrow */}
-          <motion.div
-            initial={prefersReduced ? {} : { opacity: 0, y: -10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-            className="mb-4 flex items-center gap-2.5"
-          >
-            <span className="block h-1.5 w-1.5 rounded-full bg-yam-orange" aria-hidden="true" />
-            <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-yam-orange">
-              The Veterinary Standard &middot; GMP & ISO 9001:2015
-            </p>
-          </motion.div>
-
-          {/* Massive Typographic Headline */}
-          <h2 className="mt-7 font-heading text-5xl font-extrabold tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[1.05]">
+          {/* Massive Typographic Headline - Without AI Eyebrow */}
+          <h2 className="font-heading text-5xl font-extrabold tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[1.05]">
             Performance, <br className="hidden sm:inline" />
             <span className="text-white">Formulated.</span>
           </h2>
 
           {/* Editorial Subtext */}
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg md:text-xl md:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl md:leading-relaxed">
             Explore the Cattlevibes range of veterinary medicines and nutritional
             solutions designed around livestock health, rapid metabolic recovery,
             and sustained productivity.
@@ -88,30 +74,26 @@ export function CinematicCTA() {
           >
             {/* Primary CTA Button */}
             <MagneticButton strength={0.3}>
-              <Link
+              <Button
                 href="/solutions"
-                className="group inline-flex items-center gap-3 rounded-xl bg-yam-orange px-9 py-4 text-sm font-bold tracking-wide text-white border border-transparent transition-all duration-200 hover:bg-[#d88410] hover:-translate-y-0.5 sm:text-base sm:py-4.5"
+                variant="accent"
+                size="lg"
+                className="px-9 py-4 sm:py-4.5"
               >
                 Explore Solutions
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                  strokeWidth={2}
-                />
-              </Link>
+              </Button>
             </MagneticButton>
 
             {/* Secondary Hairline CTA Button */}
             <MagneticButton strength={0.3}>
-              <Link
+              <Button
                 href="/contact"
-                className="group inline-flex items-center gap-3 rounded-xl border border-white/25 bg-white/[0.04] px-9 py-4 text-sm font-bold tracking-wide text-white transition-all duration-200 hover:border-white/50 hover:bg-white/10 hover:-translate-y-0.5 sm:text-base sm:py-4.5"
+                variant="whiteOutline"
+                size="lg"
+                className="px-9 py-4 sm:py-4.5"
               >
                 Get In Touch
-                <ArrowRight
-                  className="h-4 w-4 text-white/70 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white"
-                  strokeWidth={2}
-                />
-              </Link>
+              </Button>
             </MagneticButton>
           </motion.div>
         </motion.div>

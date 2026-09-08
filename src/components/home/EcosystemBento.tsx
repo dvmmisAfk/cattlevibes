@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { appleSprings } from "@/lib/apple-motion";
 
 interface PillarData {
   id: string;
@@ -17,8 +18,7 @@ interface PillarData {
   packshotAlt: string;
   formulations: { name: string; href: string }[];
   href: string;
-  specs: { label: string; value: string; note: string }[];
-  dosage: string;
+  specs: { label: string; value: string }[];
   regulatoryStandard: string;
 }
 
@@ -26,10 +26,11 @@ const PILLARS: PillarData[] = [
   {
     id: "nutrition",
     index: "01",
-    category: "Metabolic Foundation & Chelation",
-    title: "Bio-available chelation engineered for sustained lactation curves.",
+    category: "Nutrition & Vitality",
+    regulatoryStandard: "Premium Feed Supplement",
+    title: "Sustained strength and peak milk production.",
     description:
-      "Eliminating the acute postpartum metabolic deficit through high-potency calcium kinetics and organic trace mineral chelation. Formulated to sustain peak lactation persistence without physiological depletion.",
+      "High-potency calcium and essential minerals to support steady milk yield and post-calving strength.",
     packshot: "/images/products/cattlestar-1.png",
     secondaryPackshot: "/images/products/cattlemin-1.png",
     packshotAlt: "Cattlestar and Cattlemin veterinary nutritional formulations",
@@ -40,21 +41,20 @@ const PILLARS: PillarData[] = [
     ],
     href: "/solutions#animal-nutrition",
     specs: [
-      { label: "Absorption Index", value: "98.4%", note: "Zero ruminal precipitation lag" },
-      { label: "Ca : P Ratio", value: "2.1 : 1", note: "Targeted ionic equilibrium" },
-      { label: "Lactation Retention", value: "+19.2%", note: "Sustained post-peak yield" },
-      { label: "Chelation Carrier", value: "Bis-glycinate", note: "Organic molecular stability" },
+      { value: "Fast Uptake", label: "High Absorption" },
+      { value: "Balanced", label: "Calcium & Phosphorus" },
+      { value: "Sustained", label: "Peak Milk Yield" },
+      { value: "Post-Calving", label: "Rapid Recovery" },
     ],
-    dosage: "High-yielding dairy cattle: 100ml daily oral administration. Post-calving: 100ml BID for 5 consecutive days.",
-    regulatoryStandard: "GMP Certified &middot; Feed Supplement Grade A",
   },
   {
     id: "hepatic",
     index: "02",
-    category: "Hepatic & Rumen Health",
-    title: "Rumen stabilization and cellular hepatoprotection.",
+    category: "Digestion & Liver Health",
+    regulatoryStandard: "Quality Assured Supplements",
+    title: "Better appetite and healthy digestion.",
     description:
-      "Targeted phytogenic silymarin complexes and buffering agents engineered to reverse hepatic lipidosis, stabilize ruminal microflora, and maximize metabolic feed conversion in intensive dairy operations.",
+      "Natural herbal extracts that protect the liver, stimulate appetite, and optimize feed conversion.",
     packshot: "/images/products/liver-ok-1.png",
     packshotAlt: "Liver-OK herbal liver tonic and rumen conditioner",
     formulations: [
@@ -64,21 +64,20 @@ const PILLARS: PillarData[] = [
     ],
     href: "/solutions#digestive-liver",
     specs: [
-      { label: "Rumen pH Window", value: "6.4 – 6.8", note: "Acidosis neutralization" },
-      { label: "Hepatoprotection", value: "Silymarin 80%", note: "Phytogenic membrane stabilization" },
-      { label: "Feed Conversion", value: "+14.8%", note: "Enhanced ruminal VFA synthesis" },
-      { label: "Cellular Recovery", value: "< 72 Hours", note: "Hepatic enzyme normalization" },
+      { value: "Herbal Action", label: "Liver Protection" },
+      { value: "Optimized", label: "Feed Conversion" },
+      { value: "Stimulated", label: "Healthy Appetite" },
+      { value: "Balanced", label: "Rumen Function" },
     ],
-    dosage: "Clinical anorexia or ketosis: 50ml daily for 7–10 days. General herd conditioning: 30ml daily.",
-    regulatoryStandard: "ISO 9001:2015 &middot; Veterinary Pharmacopeia Compliant",
   },
   {
     id: "maternal",
     index: "03",
-    category: "Maternal Cycle & Uterine Involution",
-    title: "Accelerating complete uterine involution when timing governs yield.",
+    category: "Reproduction & Recovery",
+    regulatoryStandard: "Safe Herbal Formulation",
+    title: "Safe, natural recovery after calving.",
     description:
-      "Standardized ecbolic phytogenic formulations designed to facilitate timely lochia evacuation, restore myometrial muscular tone, and reduce days open for optimized calving-to-conception intervals.",
+      "Specialized herbal formulas to naturally cleanse the uterus, restore tone, and prepare for the next cycle.",
     packshot: "/images/products/utrovibe-1.png",
     packshotAlt: "Utrovibe uterine cleansing tonic",
     formulations: [
@@ -87,21 +86,20 @@ const PILLARS: PillarData[] = [
     ],
     href: "/solutions#reproductive",
     specs: [
-      { label: "Involution Window", value: "24 – 28 Days", note: "Accelerated anatomical recovery" },
-      { label: "Lochia Clearance", value: "> 96%", note: "Complete endometrial evacuation" },
-      { label: "Conception Interval", value: "-18 Days", note: "Reduced calving-to-service days" },
-      { label: "Uterine Tone", value: "Grade 1 Response", note: "Synchronized myometrial motility" },
+      { value: "Non-Hormonal", label: "Herbal Formulation" },
+      { value: "Thorough", label: "Uterine Cleansing" },
+      { value: "Accelerated", label: "Postpartum Recovery" },
+      { value: "Optimal", label: "Breeding Readiness" },
     ],
-    dosage: "Post-parturition: 100ml immediately post-calving; repeat 100ml on Day 2 and Day 3.",
-    regulatoryStandard: "Veterinary Herbal Formulation &middot; Non-Hormonal",
   },
   {
     id: "antipyretic",
     index: "04",
-    category: "Clinical Relief & Anti-Inflammatory",
-    title: "Rapid antipyresis with zero metabolic interruption.",
+    category: "Relief & Comfort",
+    regulatoryStandard: "Veterinary Medicine",
+    title: "Fast relief from pain and fever.",
     description:
-      "Synergistic non-steroidal anti-inflammatory formulations providing rapid analgesia and pyrexia reduction in acute bovine mastitis, respiratory distress, and musculoskeletal trauma.",
+      "Fast-acting veterinary medicines providing rapid relief from fever, pain, and systemic inflammation.",
     packshot: "/images/products/pyrovibe-injection.png",
     packshotAlt: "Pyrovibe Injection veterinary analgesic and antipyretic",
     formulations: [
@@ -110,21 +108,20 @@ const PILLARS: PillarData[] = [
     ],
     href: "/solutions#veterinary-medicines",
     specs: [
-      { label: "Onset Kinetics", value: "< 45 Mins", note: "Rapid peak plasma concentration" },
-      { label: "Therapeutic Half-Life", value: "26 Hours", note: "Sustained clinical resolution" },
-      { label: "Pyrexia Reduction", value: "-2.2°F / 2h", note: "Controlled physiological cooling" },
-      { label: "Anti-Endotoxin", value: "Confirmed", note: "Neutralizes systemic lipopolysaccharides" },
+      { value: "Fast-Acting", label: "Rapid Pain Relief" },
+      { value: "Effective", label: "Fever Reduction" },
+      { value: "Targeted", label: "Swelling Control" },
+      { value: "Minimized", label: "Animal Downtime" },
     ],
-    dosage: "Deep intramuscular injection: 15ml to 20ml per 350kg body weight under veterinary direction.",
-    regulatoryStandard: "Schedule H Veterinary Medicine &middot; Sterile Injectable",
   },
   {
     id: "anti-infective",
     index: "05",
-    category: "Systemic Anti-Infective & Parasitology",
-    title: "Broad-spectrum microbiological eradication and parasite control.",
+    category: "Infection & Parasite Control",
+    regulatoryStandard: "Veterinary Medicine",
+    title: "Complete protection from the inside out.",
     description:
-      "Advanced beta-lactamase stable cephalosporins and broad-spectrum anthelmintics engineered for definitive microbial clearance and systemic parasite eradication across intensive dairy herds.",
+      "Broad-spectrum antibiotics and dewormers designed to clear harmful pathogens and protect herd health.",
     packshot: "/images/products/cattle-cef.png",
     secondaryPackshot: "/images/products/worms-ok-plus.png",
     packshotAlt: "Cattle-Cef and Worms-OK Plus veterinary anti-infective formulations",
@@ -136,13 +133,11 @@ const PILLARS: PillarData[] = [
     ],
     href: "/solutions#anti-infectives",
     specs: [
-      { label: "Bacterial Clearance", value: "MIC90 < 0.5 µg/mL", note: "High tissue permeability" },
-      { label: "Parasite Efficacy", value: "99.8%", note: "Ovicidal & adulticidal action" },
-      { label: "Withdrawal Period", value: "Milk: 0 Days", note: "Non-disruptive dairy protocol" },
-      { label: "Spectrum", value: "Gram+ & Gram-", note: "Broad systemic coverage" },
+      { value: "Broad Spectrum", label: "Infection Control" },
+      { value: "Complete", label: "Internal Deworming" },
+      { value: "Protected", label: "Herd Biosecurity" },
+      { value: "Systemic", label: "Full-Body Action" },
     ],
-    dosage: "Cattle-Cef: 1mg/kg body weight IM/SC once daily for 3–5 days. Worms-OK Plus: 5–7.5mg/kg single oral dose.",
-    regulatoryStandard: "Schedule H Veterinary Antibiotic &middot; Schedule M GMP",
   },
 ];
 
@@ -152,7 +147,7 @@ const PILLARS: PillarData[] = [
 function PillarPackshotStage({
   currentPillar,
   className = "",
-  stageHeight = "h-72 sm:h-80 md:h-96",
+  stageHeight = "h-56 sm:h-64 md:h-72",
 }: {
   currentPillar: PillarData;
   className?: string;
@@ -162,29 +157,29 @@ function PillarPackshotStage({
     <div className={`relative flex flex-col items-center justify-center bg-soft-white p-6 sm:p-8 ${className}`}>
       <div className={`relative flex w-full max-w-[280px] items-center justify-center ${stageHeight}`}>
         {currentPillar.secondaryPackshot ? (
-          <div className="flex items-end justify-center gap-2 w-full h-full">
-            <div className="relative h-52 w-26 sm:h-64 sm:w-32 md:h-72 md:w-36 transition-transform duration-300 hover:scale-105">
+          <div className="flex items-center justify-center gap-2 w-full h-full">
+            <div className="relative h-44 w-22 sm:h-52 sm:w-26 md:h-56 md:w-28 transition-transform duration-300 hover:scale-105">
               <Image
                 src={currentPillar.packshot}
                 alt={currentPillar.packshotAlt}
                 fill
                 sizes="(max-width: 768px) 140px, 160px"
-                className="object-contain object-bottom drop-shadow-[0_12px_24px_rgba(49,56,65,0.14)]"
+                className="object-contain object-center drop-shadow-[0_12px_24px_rgba(49,56,65,0.14)]"
                 priority
               />
             </div>
-            <div className="relative -ml-6 h-44 w-22 sm:h-56 sm:w-28 md:h-64 md:w-32 transition-transform duration-300 hover:scale-105">
+            <div className="relative -ml-4 h-36 w-18 sm:h-44 sm:w-22 md:h-48 md:w-24 transition-transform duration-300 hover:scale-105">
               <Image
                 src={currentPillar.secondaryPackshot}
                 alt={`${currentPillar.packshotAlt} secondary view`}
                 fill
                 sizes="(max-width: 768px) 112px, 128px"
-                className="object-contain object-bottom drop-shadow-[0_12px_24px_rgba(49,56,65,0.12)]"
+                className="object-contain object-center drop-shadow-[0_12px_24px_rgba(49,56,65,0.12)]"
               />
             </div>
           </div>
         ) : (
-          <div className="relative h-full w-full transition-transform duration-300 hover:scale-105">
+          <div className="relative h-44 sm:h-52 md:h-56 w-full transition-transform duration-300 hover:scale-105">
             <Image
               src={currentPillar.packshot}
               alt={currentPillar.packshotAlt}
@@ -207,24 +202,78 @@ function PillarPackshotStage({
 
 export function EcosystemBento() {
   const [activePillarIndex, setActivePillarIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const prefersReduced = useReducedMotion();
   const currentPillar = PILLARS[activePillarIndex];
 
+  const handlePrev = () => {
+    setDirection(-1);
+    setActivePillarIndex((prev) => (prev === 0 ? PILLARS.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setDirection(1);
+    setActivePillarIndex((prev) => (prev === PILLARS.length - 1 ? 0 : prev + 1));
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 32 : dir < 0 ? -32 : 0,
+      opacity: 0,
+      scale: 0.99,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -32 : dir < 0 ? 32 : 0,
+      opacity: 0,
+      scale: 0.99,
+    }),
+  };
+
   return (
-    <section className="bg-light-pebble py-16 md:py-28 lg:py-36">
+    <section className="bg-light-pebble py-14 md:py-20 lg:py-24">
       <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         
-        {/* ─── Editorial Section Header ─── */}
-        <div className="mb-10 max-w-3xl md:mb-16">
-          <div className="flex items-center gap-2.5">
-            <span className="block h-1.5 w-1.5 rounded-full bg-yam-orange" aria-hidden="true" />
-            <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.2em] text-yam-orange">
-              The Clinical Ecosystem &middot; Enterprise Formulary
-            </p>
+        {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
+        <div className="flex items-center justify-between border-t border-border/80 pt-3.5 pb-6 md:pb-8">
+          <span className="font-mono text-xs font-medium uppercase tracking-wider text-cadet-blue/50">
+            Formulary Framework · System Architecture
+          </span>
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70">
+              {currentPillar.index} <span className="text-cadet-blue/30">/</span> 05
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous pillar"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy transition-colors hover:bg-light-pebble hover:border-cadet-blue/30 active:scale-95 touch-manipulation cursor-pointer"
+              >
+                <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next pillar"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy transition-colors hover:bg-light-pebble hover:border-cadet-blue/30 active:scale-95 touch-manipulation cursor-pointer"
+              >
+                <ChevronRight className="h-4 w-4" strokeWidth={1.75} />
+              </button>
+            </div>
           </div>
+        </div>
 
+        {/* ─── Editorial Section Heading ─── */}
+        <div className="mb-8 md:mb-10">
+
+          {/* Heading on One Single Line */}
           <motion.h2
-            className="mt-3 font-heading text-2xl font-extrabold leading-[1.12] tracking-tight text-deep-navy sm:text-4xl md:text-5xl"
+            className="mt-3.5 font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.65rem] font-extrabold leading-tight tracking-tight text-deep-navy sm:whitespace-nowrap"
             initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -233,124 +282,72 @@ export function EcosystemBento() {
             Five connected pillars. One veterinary standard.
           </motion.h2>
 
+          {/* Subtitle Paragraph */}
           <motion.p
-            className="mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base md:text-lg"
+            className="mt-2.5 max-w-3xl text-sm leading-relaxed text-text-muted sm:text-base md:text-lg"
             initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            A cohesive therapeutic framework engineered to eliminate postpartum metabolic drops,
-            accelerate clinical resolution, and safeguard herd longevity across every production cycle.
+            A complete herd care framework designed to sustain peak milk yields, speed up recovery after illness or calving, and keep your cattle healthy across every season.
           </motion.p>
         </div>
 
-        {/* ─── Architectural Pillar Navigation Bar ─── */}
-        <div className="mb-8 overflow-x-auto border-b border-border scrollbar-none -mx-5 px-5 sm:mx-0 sm:px-0">
-          <div className="flex min-w-max gap-2 sm:gap-6">
-            {PILLARS.map((pillar, idx) => {
-              const isActive = idx === activePillarIndex;
-
-              return (
-                <button
-                  key={pillar.id}
-                  type="button"
-                  onClick={() => setActivePillarIndex(idx)}
-                  className={`relative pb-3 text-xs font-bold uppercase tracking-wider transition-colors sm:pb-4 sm:text-sm cursor-pointer ${
-                    isActive ? "text-deep-navy" : "text-cadet-blue/60 hover:text-deep-navy"
-                  }`}
-                >
-                  <span className="font-mono text-[11px] text-yam-orange mr-1.5 font-bold">
-                    {pillar.index}
-                  </span>
-                  {pillar.category.split("&")[0].trim()}
-
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-pillar-indicator"
-                      className="absolute inset-x-0 bottom-0 h-0.5 bg-yam-orange"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ─── Main Clinical Dossier Stage ─── */}
-        <AnimatePresence mode="wait">
+        {/* ─── Main Clinical Dossier Stage (Interactive Card with Left/Right Transition) ─── */}
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentPillar.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-xl border border-border bg-white overflow-hidden"
+            custom={direction}
+            variants={prefersReduced ? undefined : slideVariants}
+            initial={prefersReduced ? { opacity: 0 } : "enter"}
+            animate={prefersReduced ? { opacity: 1 } : "center"}
+            exit={prefersReduced ? { opacity: 0 } : "exit"}
+            transition={prefersReduced ? { duration: 0 } : appleSprings.criticallyDamped}
+            className="rounded-xl border border-border bg-white overflow-hidden shadow-sm"
           >
             {/* ── Desktop Layout (lg: and above) ── */}
             <div className="hidden lg:grid lg:grid-cols-12">
-              {/* Left Column (7 cols): Narrative & Pharmacological Kinetics */}
-              <div className="flex flex-col justify-between p-8 md:p-10 lg:col-span-7 lg:border-r lg:border-border">
+              {/* Left Column (7 cols): Narrative & Specifications */}
+              <div className="flex flex-col justify-between p-7 lg:p-8 lg:col-span-7 lg:border-r lg:border-border">
                 <div>
-                  {/* Category Header */}
-                  <div className="flex items-center justify-between border-b border-border pb-4">
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-yam-orange">
-                      Pillar {currentPillar.index} &middot; {currentPillar.category}
-                    </span>
-                    <span className="text-xs font-medium text-text-muted" dangerouslySetInnerHTML={{ __html: currentPillar.regulatoryStandard }} />
-                  </div>
-
                   {/* Title & Narrative */}
-                  <h3 className="mt-5 font-heading text-2xl font-extrabold tracking-tight text-deep-navy sm:text-3xl">
+                  <h3 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy sm:text-[1.65rem] leading-snug">
                     {currentPillar.title}
                   </h3>
 
-                  <p className="mt-3.5 text-sm leading-relaxed text-cadet-blue md:text-base">
+                  <p className="mt-2.5 text-sm leading-relaxed text-cadet-blue md:text-base">
                     {currentPillar.description}
                   </p>
 
-                  {/* Pharmacological Kinetics */}
-                  <div className="mt-8">
-                    <p className="text-xs font-bold uppercase tracking-wider text-deep-navy mb-3">
-                      Pharmacological Kinetics & Laboratory Endpoints
+                  {/* Key Specifications / Highlights */}
+                  <div className="mt-6">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-deep-navy mb-2.5">
+                      Key Highlights &amp; Benefits
                     </p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-2.5">
                       {currentPillar.specs.map((spec) => (
                         <div
                           key={spec.label}
-                          className="rounded-lg border border-border bg-light-pebble/60 p-3.5"
+                          className="rounded-lg border border-border bg-light-pebble/60 px-3.5 py-2"
                         >
-                          <span className="font-heading text-xl font-extrabold text-deep-navy">
+                          <span className="font-heading text-sm sm:text-base font-extrabold text-deep-navy">
                             {spec.value}
                           </span>
-                          <p className="text-xs font-bold text-cadet-blue mt-0.5">
+                          <p className="text-[11px] font-medium text-cadet-blue mt-0.5">
                             {spec.label}
-                          </p>
-                          <p className="text-[11px] text-text-muted mt-0.5">
-                            {spec.note}
                           </p>
                         </div>
                       ))}
                     </div>
                   </div>
-
-                  {/* Administration Protocol */}
-                  <div className="mt-6 border-t border-border pt-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-deep-navy">
-                      Administration Protocol
-                    </p>
-                    <p className="mt-1.5 text-xs leading-relaxed text-cadet-blue">
-                      {currentPillar.dosage}
-                    </p>
-                  </div>
                 </div>
 
                 {/* Footer Zone: Formulations & Link */}
-                <div className="mt-8 flex items-center justify-between gap-4 border-t border-border pt-6">
+                <div className="mt-6 flex items-center justify-between gap-4 border-t border-border pt-5">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">
-                      Clinical Formulations
+                      Featured Formulations
                     </span>
                     <p className="mt-1 text-xs sm:text-sm font-semibold text-cadet-blue">
                       {currentPillar.formulations.map((item, fIdx) => (
@@ -381,77 +378,57 @@ export function EcosystemBento() {
               <PillarPackshotStage
                 currentPillar={currentPillar}
                 className="lg:col-span-5"
-                stageHeight="h-80 md:h-96"
+                stageHeight="h-60 sm:h-64 md:h-72"
               />
             </div>
 
             {/* ── Mobile Layout (< lg): Optimized Visual Hierarchy ── */}
             <div className="block lg:hidden">
-              {/* Category Header */}
-              <div className="flex items-center justify-between border-b border-border p-5">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-yam-orange">
-                  Pillar {currentPillar.index} &middot; {currentPillar.category.split("&")[0].trim()}
-                </span>
-                <span className="text-[11px] font-medium text-text-muted" dangerouslySetInnerHTML={{ __html: currentPillar.regulatoryStandard }} />
-              </div>
 
               {/* Packshot Presentation Stage directly below header */}
               <PillarPackshotStage
                 currentPillar={currentPillar}
-                stageHeight="h-56 sm:h-64"
+                stageHeight="h-48 sm:h-56"
                 className="border-b border-border"
               />
 
-              {/* Narrative & Kinetics Content */}
-              <div className="p-5 sm:p-7">
-                <h3 className="font-heading text-xl font-extrabold tracking-tight text-deep-navy sm:text-2xl">
+              {/* Narrative & Specifications Content */}
+              <div className="p-4 sm:p-6">
+                <h3 className="font-heading text-lg font-extrabold tracking-tight text-deep-navy sm:text-xl">
                   {currentPillar.title}
                 </h3>
 
-                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-cadet-blue">
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-cadet-blue">
                   {currentPillar.description}
                 </p>
 
-                {/* Compact 2x2 Pharmacological Kinetics Grid */}
-                <div className="mt-6">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-deep-navy mb-2.5">
-                    Pharmacological Kinetics & Laboratory Endpoints
+                {/* Compact 2x2 Specifications Grid */}
+                <div className="mt-4">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-deep-navy mb-2">
+                    Key Highlights &amp; Benefits
                   </p>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                     {currentPillar.specs.map((spec) => (
                       <div
                         key={spec.label}
-                        className="rounded-lg border border-border bg-light-pebble/60 p-3"
+                        className="rounded-lg border border-border bg-light-pebble/60 px-3 py-1.5"
                       >
-                        <span className="font-heading text-lg font-extrabold text-deep-navy sm:text-xl">
+                        <span className="font-heading text-sm font-extrabold text-deep-navy">
                           {spec.value}
                         </span>
-                        <p className="text-[11px] font-bold text-cadet-blue mt-0.5 leading-tight sm:text-xs">
+                        <p className="text-[10px] font-medium text-cadet-blue mt-0.5">
                           {spec.label}
-                        </p>
-                        <p className="text-[10px] text-text-muted mt-0.5 line-clamp-1">
-                          {spec.note}
                         </p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Administration Protocol */}
-                <div className="mt-5 border-t border-border pt-4">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-deep-navy">
-                    Administration Protocol
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-cadet-blue">
-                    {currentPillar.dosage}
-                  </p>
-                </div>
-
                 {/* Formulations & Link */}
-                <div className="mt-6 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-5 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">
-                      Clinical Formulations
+                      Featured Formulations
                     </span>
                     <p className="mt-1 text-xs font-semibold text-cadet-blue">
                       {currentPillar.formulations.map((item, fIdx) => (
@@ -479,52 +456,38 @@ export function EcosystemBento() {
               </div>
             </div>
 
+
           </motion.div>
         </AnimatePresence>
 
-        {/* ─── Secondary Structured Overview Matrix (4 Alternate Pillars) ─── */}
-        {/* On mobile: Touch-snap horizontal swipe deck. On tablet/desktop: Multi-column grid */}
-        <div className="mt-8 flex overflow-x-auto snap-x snap-mandatory gap-3 pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 scrollbar-none">
-          {PILLARS.filter((_, idx) => idx !== activePillarIndex).map((altPillar) => (
-            <div
-              key={altPillar.id}
-              className="min-w-[260px] sm:min-w-0 snap-start flex-1 rounded-xl border border-border bg-white p-5 transition-all duration-200 hover:border-yam-orange/40 hover:-translate-y-0.5 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono font-bold text-yam-orange">{altPillar.index}</span>
-                  <span className="font-bold uppercase tracking-wider text-text-muted text-[10px]">
-                    Pillar
-                  </span>
-                </div>
-                <h4 className="mt-2 font-heading text-sm font-bold text-deep-navy line-clamp-2">
-                  {altPillar.category}
-                </h4>
-                <p className="mt-2 text-xs text-text-muted line-clamp-2">
-                  {altPillar.description}
-                </p>
-              </div>
+        {/* Mobile bottom navigation bar for quick thumb switching */}
+        <div className="mt-5 flex items-center justify-between sm:hidden px-1">
+          <span className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70">
+            {currentPillar.index} <span className="text-cadet-blue/30">/</span> 05
+          </span>
 
-              <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    const foundIdx = PILLARS.findIndex((p) => p.id === altPillar.id);
-                    if (foundIdx !== -1) setActivePillarIndex(foundIdx);
-                  }}
-                  className="text-xs font-bold text-yam-orange hover:underline cursor-pointer"
-                >
-                  View Dossier
-                </button>
-                <span className="text-[11px] text-cadet-blue/70">
-                  {altPillar.formulations.length} Formulations
-                </span>
-              </div>
-            </div>
-          ))}
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous pillar"
+              className="flex min-h-[40px] min-w-[40px] items-center justify-center rounded-md border border-border bg-white text-deep-navy active:scale-95 cursor-pointer hover:bg-light-pebble touch-manipulation"
+            >
+              <ChevronLeft className="h-4 w-4" strokeWidth={2} />
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next pillar"
+              className="flex min-h-[40px] min-w-[40px] items-center justify-center rounded-md border border-border bg-white text-deep-navy active:scale-95 cursor-pointer hover:bg-light-pebble touch-manipulation"
+            >
+              <ChevronRight className="h-4 w-4" strokeWidth={2} />
+            </button>
+          </div>
         </div>
 
       </div>
     </section>
   );
 }
+

@@ -39,8 +39,14 @@ export function CinematicHero() {
   const prefersReduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -60,14 +66,17 @@ export function CinematicHero() {
           // Autoplay policy or low power mode; poster remains visible
         });
     }
-  }, [prefersReduced]);
+  }, [isMounted, prefersReduced]);
 
   // Original brand head tagline
   const line1Words = ["Complete", "Animal"];
   const line2Words = ["Healthcare", "Solutions."];
 
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy">
+    <section
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy"
+      suppressHydrationWarning
+    >
       {/* ─── Instant Poster Background (0ms initial HTML paint) ─── */}
       <img
         src={images.heroPoster}
@@ -81,27 +90,32 @@ export function CinematicHero() {
         }`}
       />
 
-      {/* ─── Faststart Video Background ─── */}
-      {!prefersReduced && (
-        <video
-          ref={videoRef}
-          className="hero-video-bg absolute inset-0 h-full w-full object-cover"
-          poster={images.heroPoster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          onPlaying={() => setIsPlaying(true)}
-          onPlay={() => setIsPlaying(true)}
-        >
-          {images.heroVideoWebm && (
-            <source src={images.heroVideoWebm} type="video/webm" />
-          )}
-          <source src={images.heroVideo} type="video/mp4" />
-        </video>
-      )}
+      {/* ─── Faststart Video Background (mounted on client to prevent browser extension hydration mismatches) ─── */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        {isMounted && !prefersReduced && (
+          <video
+            ref={videoRef}
+            className="hero-video-bg absolute inset-0 h-full w-full object-cover"
+            poster={images.heroPoster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            tabIndex={-1}
+            onPlaying={() => setIsPlaying(true)}
+            onPlay={() => setIsPlaying(true)}
+          >
+            {images.heroVideoWebm && (
+              <source src={images.heroVideoWebm} type="video/webm" />
+            )}
+            <source src={images.heroVideo} type="video/mp4" />
+          </video>
+        )}
+      </div>
 
       {/* ─── Vignette overlays ─── */}
       <div className="absolute inset-0 bg-deep-navy/60" aria-hidden="true" />
@@ -112,19 +126,6 @@ export function CinematicHero() {
 
       {/* ─── Content ─── */}
       <div className="relative z-10 mx-auto flex max-w-[1320px] flex-col items-center px-5 pt-16 text-center lg:px-8">
-        {/* Editorial Eyebrow */}
-        <motion.div
-          initial={prefersReduced ? {} : { opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="mb-6 flex items-center gap-2.5"
-        >
-          <span className="block h-1.5 w-1.5 rounded-full bg-brand-orange animate-pulse" aria-hidden="true" />
-          <p className="text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-white/90">
-            Veterinary Grade &middot; Clinical Nutrition
-          </p>
-        </motion.div>
-
         {/* Massive Centered Head Tagline with Animated Translate */}
         <h1 className="max-w-5xl font-heading text-[clamp(2.75rem,7vw,6.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
           <span className="block space-x-3 md:space-x-5">
@@ -145,7 +146,7 @@ export function CinematicHero() {
 
         {/* Refined Subtitle */}
         <motion.p
-          className="mt-6 max-w-2xl text-base font-normal leading-relaxed text-white/70 md:mt-8 md:text-xl"
+          className="mt-6 max-w-2xl text-base font-normal leading-relaxed text-white/80 md:mt-8 md:text-xl"
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -162,11 +163,11 @@ export function CinematicHero() {
         transition={{ delay: 1.4, duration: 0.6 }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
             Scroll
           </span>
           <ChevronDown
-            className="h-4 w-4 animate-scroll-hint text-white/50"
+            className="h-4 w-4 animate-scroll-hint text-white/70"
             strokeWidth={2}
           />
         </div>

@@ -15,7 +15,7 @@ export function Footer() {
             >
               <BrandLogo variant="white" />
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/85">
               {siteConfig.shortName} &middot; {siteConfig.subtitle}. Delivering premium
               veterinary medicines and nutritional supplements for livestock health and
               productivity.
@@ -23,7 +23,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-brand-orange">
+            <h4 className="mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-white/40">
               Company
             </h4>
             <ul className="space-y-3">
@@ -37,7 +37,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/75 transition-colors hover:text-white"
+                    className="text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -47,7 +47,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-brand-orange">
+            <h4 className="mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-white/40">
               Products
             </h4>
             <ul className="space-y-3">
@@ -55,7 +55,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/75 transition-colors hover:text-white"
+                    className="text-sm text-white/80 transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -65,10 +65,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-bold uppercase tracking-wider text-brand-orange">
+            <h4 className="mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-white/40">
               Contact
             </h4>
-            <ul className="space-y-3 text-sm text-white/75">
+            <ul className="space-y-3 text-sm text-white/80">
               <li>
                 <a href={`tel:${siteConfig.phone}`} className="transition-colors hover:text-white">
                   {siteConfig.phone}
@@ -85,25 +85,25 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-white/70" suppressHydrationWarning>
+          <p className="text-xs text-white/75" suppressHydrationWarning>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
             >
               Terms of Service
             </Link>
             <Link
               href="/contact"
-              className="text-xs text-white/70 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
             >
               Commercial Enquiries
             </Link>
