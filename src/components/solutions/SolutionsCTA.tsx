@@ -1,86 +1,83 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageSquare, PhoneCall, Sparkles } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { images, siteConfig } from "@/data/site";
+import { ArrowRight, MessageSquare, Compass } from "lucide-react";
 
 export function SolutionsCTA() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-8 lg:px-12">
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-[32px] bg-midnight-navy p-8 sm:p-12 md:p-16 lg:p-20 shadow-2xl">
-            {/* Background Photographic Ambience with Overlay */}
-            <div className="absolute inset-0">
-              <Image
-                src={images.farmAtmospheric}
-                alt="Pastoral livestock agricultural landscape"
-                fill
-                className="object-cover object-center opacity-25"
-                sizes="(max-width: 1440px) 100vw, 1440px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-midnight-navy via-midnight-navy/95 to-midnight-navy/80" />
-            </div>
+    <section className="relative overflow-hidden bg-white py-16 md:py-20">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        {/* Creative Split-Background Treatment: Warm Ivory & Amber Accent Card */}
+        <div className="relative overflow-hidden rounded-3xl border-2 border-[#DCE4D6] bg-gradient-to-br from-[#F6F3EC] via-[#F6F3EC] to-[#EE9B16]/15 p-8 sm:p-12 md:p-14 shadow-md">
+          {/* Subtle Scientific Measurement Pattern in Background */}
+          <div className="pointer-events-none absolute inset-0 opacity-20">
+            <svg
+              className="h-full w-full"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+            >
+              <defs>
+                <pattern
+                  id="cta-grid"
+                  width="32"
+                  height="32"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="2" cy="2" r="1" fill="#172333" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#cta-grid)" />
+            </svg>
+          </div>
 
-            {/* Technical Lab Grid Accent in Background */}
-            <div className="pointer-events-none absolute inset-0 bg-lab-grid-dark opacity-30" />
-
-            <div className="relative z-10 max-w-3xl">
-              {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-harvest-amber/30 bg-harvest-amber/10 px-4 py-1.5 backdrop-blur-xs">
-                <Sparkles className="h-3.5 w-3.5 text-harvest-amber" />
-                <span className="font-mono text-[11px] font-bold tracking-wider text-harvest-amber uppercase">
+          <div className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+            <div className="max-w-2xl">
+              {/* Eyebrow */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#EE9B16] ring-1 ring-[#DCE4D6]">
+                <Compass className="h-3.5 w-3.5 text-[#EE9B16]" />
+                <span className="font-mono text-[11px] tracking-wider uppercase">
                   CLINICAL CONSULTATION &amp; DISTRIBUTION
                 </span>
               </div>
 
-              {/* Main Heading */}
-              <h2 className="mt-6 font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Build a healthier,{" "}
-                <span className="text-harvest-amber">more productive herd.</span>
+              {/* Heading */}
+              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
+                Better animal health starts with the{" "}
+                <span className="text-[#EE9B16]">right formulation.</span>
               </h2>
 
-              {/* Supporting Text */}
-              <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-white/80 sm:text-lg">
-                Whether managing progressive dairy operations, veterinary distribution
-                networks, or commercial livestock enterprises, our veterinary team works
-                with you to identify and supply the right therapeutic formulations.
+              {/* Supporting Copy */}
+              <p className="mt-4 font-body text-base leading-relaxed text-[#292F39]/80 sm:text-lg">
+                Whether managing dairy herds, commercial feedlots, or pastoral flocks,
+                our veterinary specialists work directly with producers and distributors
+                to match clinical needs with proven formulations.
               </p>
+            </div>
 
-              {/* Action Buttons */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-3 rounded-full bg-harvest-amber px-8 py-4 text-sm font-bold text-midnight-navy shadow-lg touch-manipulation active:scale-[0.97] transition-all hover:bg-harvest-amber/90 hover:shadow-xl"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Enquire Now</span>
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                    strokeWidth={2.5}
-                  />
-                </Link>
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-4 shrink-0">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#172333] px-8 py-4 text-sm font-bold text-white shadow-md transition-all hover:bg-[#172333]/90 hover:shadow-lg active:scale-[0.98]"
+              >
+                <MessageSquare className="h-4 w-4 text-[#EE9B16]" />
+                <span>Enquire Now</span>
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                  strokeWidth={2.5}
+                />
+              </Link>
 
-                <Link
-                  href="/products"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-semibold text-white backdrop-blur-xs touch-manipulation active:scale-[0.97] transition-all hover:border-white/40 hover:bg-white/15"
-                >
-                  <span>Explore Products</span>
-                </Link>
-
-                <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="hidden sm:inline-flex items-center gap-2.5 px-4 py-4 text-sm font-mono text-white/70 hover:text-harvest-amber transition-colors"
-                >
-                  <PhoneCall className="h-4 w-4 text-harvest-amber" />
-                  <span>{siteConfig.phone}</span>
-                </a>
-              </div>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#172333]/20 bg-white px-7 py-4 text-sm font-bold text-[#172333] transition-all hover:border-[#172333] hover:bg-[#F6F3EC] active:scale-[0.98]"
+              >
+                <span>Explore Products</span>
+              </Link>
             </div>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );
