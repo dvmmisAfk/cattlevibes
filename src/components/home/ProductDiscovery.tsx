@@ -69,10 +69,10 @@ export function ProductDiscovery() {
     // Default to featured products if all products selected with no query
     if (!query.trim() && selectedFilter === "all") {
       const featured = list.filter((p) => p.featured);
-      return featured.length >= 6 ? featured.slice(0, 6) : list.slice(0, 6);
+      return featured.length >= 4 ? featured.slice(0, 4) : list.slice(0, 4);
     }
 
-    return list.slice(0, 6);
+    return list.slice(0, 4);
   }, [query, selectedFilter]);
 
   return (
@@ -126,11 +126,11 @@ export function ProductDiscovery() {
           </div>
         </div>
 
-        {/* 6 Product Cards Grid */}
+        {/* 4 Product Cards Grid - Spanning 4 in one row on desktop */}
         {filteredProducts.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+              <ProductCard key={product.slug} product={product} compact />
             ))}
           </div>
         ) : (

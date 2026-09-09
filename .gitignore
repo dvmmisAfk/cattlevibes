@@ -42,3 +42,4 @@ next-env.d.ts
 
 # experimental local copy, not part of the live site
 /hero section/
+scratch/

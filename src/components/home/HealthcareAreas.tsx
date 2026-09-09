@@ -23,8 +23,8 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     number: "01",
     title: "Veterinary Medicines",
     description: "Therapeutic solutions for livestock healthcare.",
-    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1400&q=85",
-    alt: "Healthy livestock herd grazing in pastoral dairy field",
+    image: "/images/veterinary-medicines-stage.jpg",
+    alt: "Indian veterinary doctor examining a Gir dairy cow in an authentic open-air shelter",
     href: "/products?category=Veterinary+Medicines",
   },
   {
@@ -32,8 +32,8 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     number: "02",
     title: "Nutrition & Mineral Support",
     description: "Calcium, mineral, vitamin and nutritional support.",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1400&q=85",
-    alt: "Livestock nutrition and mineral feed management",
+    image: "/images/nutrition-mineral-stage.jpg",
+    alt: "Healthy Indian cattle feeding on fresh green fodder and minerals in concrete troughs",
     href: "/products?category=Nutritional+Supplements",
   },
   {
@@ -41,8 +41,8 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     number: "03",
     title: "Preventive Healthcare",
     description: "Solutions supporting digestive, reproductive and parasite-management needs.",
-    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=85",
-    alt: "Preventive veterinary care and digestive wellness in livestock",
+    image: "/images/preventive-healthcare-stage.jpg",
+    alt: "Veterinarian and farmer conducting preventive health checkup on a newborn calf and mother cow",
     href: "/products",
   },
   {
@@ -50,8 +50,8 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     number: "04",
     title: "Commercial Supply",
     description: "Solutions for veterinarians, dairy farms, distributors and institutional buyers.",
-    image: "/images/indian-cow-shelter-ground.jpg",
-    alt: "Commercial dairy farm facility and livestock housing",
+    image: "/images/cattlevibes-products-table.jpg",
+    alt: "CattleVibes veterinary medicines, supplements, and clinical formulations arranged on a wooden consultation table",
     href: "/contact?subject=commercial-supply",
   },
 ];
@@ -136,20 +136,10 @@ export function HealthcareAreas() {
                 />
 
                 {/* Editorial Live Datum Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex items-end justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-white/70">
-                      Healthcare Solutions
-                    </span>
-                    <h3 className="font-heading text-lg sm:text-xl font-bold text-white leading-tight">
-                      {activeItem.title}
-                    </h3>
-                  </div>
-
-                  <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-deep-navy px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition-colors duration-200 group-hover:bg-brand-orange shrink-0">
-                    <span>Explore</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-white" />
-                  </span>
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white leading-tight">
+                    {activeItem.title}
+                  </h3>
                 </div>
               </Link>
             </div>

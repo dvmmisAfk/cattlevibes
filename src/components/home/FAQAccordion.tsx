@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, Plus, Minus } from "lucide-react";
 import Link from "next/link";
-import { appleSprings } from "@/lib/apple-motion";
 
 interface FAQItem {
   id: string;
@@ -105,77 +104,70 @@ export function FAQAccordion() {
             </div>
           </div>
 
-          {/* ─── Right Column: FAQ Accordion Stack ─── */}
-          <div className="lg:col-span-7 flex flex-col space-y-4" role="region" aria-label="Accordion items">
-            {FAQS.map((faq, idx) => {
-              const isOpen = openId === faq.id;
-              const buttonId = `faq-btn-${faq.id}`;
-              const panelId = `faq-panel-${faq.id}`;
+          {/* ─── Right Column: Editorial Hairline Accordion Stack ─── */}
+          <div className="lg:col-span-7" role="region" aria-label="Accordion items">
+            <div className="border-t border-border/80">
+              {FAQS.map((faq, idx) => {
+                const isOpen = openId === faq.id;
+                const buttonId = `faq-btn-${faq.id}`;
+                const panelId = `faq-panel-${faq.id}`;
+                const number = String(idx + 1).padStart(2, "0");
 
-              return (
-                <div
-                  key={faq.id}
-                  className={`overflow-hidden border transition-all duration-200 ${
-                    isOpen
-                      ? "border-brand-orange/50 bg-white shadow-xs"
-                      : "border-border/80 bg-white/70 hover:bg-white hover:border-cadet-blue/40"
-                  }`}
-                >
-                  <h3>
-                    <button
-                      id={buttonId}
-                      type="button"
-                      onClick={() => toggle(faq.id)}
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                      className="flex w-full min-h-[60px] items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-orange focus-visible:outline-offset-1 active:scale-[0.995] transition-transform duration-100"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="font-mono text-xs font-bold text-cadet-blue/60 mt-1 shrink-0">
-                          0{idx + 1}
-                        </span>
-                        <span className="font-heading text-base sm:text-lg font-bold text-deep-navy leading-snug">
-                          {faq.question}
-                        </span>
-                      </div>
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center border border-border bg-white text-deep-navy transition-all duration-300 ${
-                          isOpen
-                            ? "rotate-180 bg-deep-navy text-white border-deep-navy"
-                            : "hover:border-cadet-blue/40"
-                        }`}
-                        style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
-                        aria-hidden="true"
+                return (
+                  <div key={faq.id} className="border-b border-border/80">
+                    <h3>
+                      <button
+                        id={buttonId}
+                        type="button"
+                        onClick={() => toggle(faq.id)}
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                        className="w-full flex items-start justify-between gap-6 py-6 sm:py-7 text-left transition-colors hover:text-brand-orange group cursor-pointer"
                       >
-                        <ChevronDown className="h-4 w-4" strokeWidth={2.2} />
-                      </span>
-                    </button>
-                  </h3>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        id={panelId}
-                        role="region"
-                        aria-labelledby={buttonId}
-                        initial={prefersReduced ? { opacity: 1 } : { height: 0, opacity: 0 }}
-                        animate={prefersReduced ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-                        exit={prefersReduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                        transition={prefersReduced ? { duration: 0 } : appleSprings.drawer}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-5 pb-6 pt-1 sm:px-6 sm:pb-7 pl-12 sm:pl-14 text-sm sm:text-base leading-relaxed text-cadet-blue border-t border-border/60">
-                          {faq.answer}
+                        <div className="flex items-start gap-5 sm:gap-7">
+                          <span className="font-mono text-sm sm:text-base font-bold text-cadet-blue/70 pt-0.5 group-hover:text-brand-orange transition-colors shrink-0">
+                            {number}
+                          </span>
+                          <span className="font-heading text-base sm:text-lg lg:text-xl font-bold text-deep-navy group-hover:text-brand-orange transition-colors leading-snug">
+                            {faq.question}
+                          </span>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+
+                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border/80 text-deep-navy transition-colors group-hover:border-brand-orange group-hover:text-brand-orange">
+                          {isOpen ? (
+                            <Minus className="h-4 w-4" strokeWidth={2} />
+                          ) : (
+                            <Plus className="h-4 w-4" strokeWidth={2} />
+                          )}
+                        </div>
+                      </button>
+                    </h3>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={buttonId}
+                          initial={prefersReduced ? { opacity: 1 } : { height: 0, opacity: 0 }}
+                          animate={prefersReduced ? { opacity: 1 } : { height: "auto", opacity: 1 }}
+                          exit={prefersReduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-7 pl-10 sm:pl-14 pr-4 sm:pr-8 text-sm sm:text-base text-cadet-blue leading-relaxed">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
 
             {/* Mobile Contact Callout (Shown below accordions on mobile) */}
-            <div className="mt-8 pt-6 border-t border-border text-center text-xs sm:text-sm text-cadet-blue lg:hidden">
+            <div className="mt-8 pt-6 border-t border-border/80 text-center text-xs sm:text-sm text-cadet-blue lg:hidden">
               Have an unlisted query or custom bulk inquiry?{" "}
               <Link
                 href="/contact"

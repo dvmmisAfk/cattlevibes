@@ -46,7 +46,7 @@ export function MagneticButton({
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
-      className={`inline-block ${className}`}
+      className={`inline-flex items-center justify-center ${className}`}
     >
       {children}
     </motion.div>

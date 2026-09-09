@@ -50,7 +50,7 @@ export function Navbar() {
           className={`pill-nav--cattlevibes ${isHeroInitial ? "pill-nav--hero-initial" : "pill-nav--scrolled"}`}
           ease="power2.easeOut"
           baseColor="#313841"
-          pillColor="#ffffff"
+          pillColor="#f0f2f5"
           pillTextColor="#313841"
           hoveredPillTextColor="#ffffff"
           initialLoadAnimation={!isHome}

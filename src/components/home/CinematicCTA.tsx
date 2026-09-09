@@ -62,9 +62,9 @@ export function CinematicCTA() {
             Explore formulations, request product documentation, or connect directly with our commercial team.
           </p>
 
-          {/* Refined Magnetic Button Row - 3 Commercial Actions */}
+          {/* Refined Magnetic Button Row - 2 Commercial Actions */}
           <motion.div
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-4 md:mt-12 flex-wrap"
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 md:mt-12"
             initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -75,7 +75,7 @@ export function CinematicCTA() {
                 href="/products"
                 variant="accent"
                 size="lg"
-                className="px-8 py-3.5 sm:py-4"
+                className="w-full sm:w-auto min-w-[210px] h-13 min-h-[52px] px-8 flex items-center justify-center"
               >
                 Explore Products
               </Button>
@@ -87,21 +87,9 @@ export function CinematicCTA() {
                 href="/contact?subject=catalogue"
                 variant="whiteOutline"
                 size="lg"
-                className="px-8 py-3.5 sm:py-4"
+                className="w-full sm:w-auto min-w-[210px] h-13 min-h-[52px] px-8 flex items-center justify-center"
               >
                 Request Catalogue
-              </Button>
-            </MagneticButton>
-
-            {/* Sales Contact Action */}
-            <MagneticButton strength={0.3}>
-              <Button
-                href="/contact?subject=sales"
-                variant="whiteOutline"
-                size="lg"
-                className="px-8 py-3.5 sm:py-4"
-              >
-                Talk to Sales
               </Button>
             </MagneticButton>
           </motion.div>
