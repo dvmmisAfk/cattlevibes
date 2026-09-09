@@ -188,11 +188,11 @@ export function ClinicalPillars() {
   return (
     <section
       id="clinical-pillars"
-      className="relative bg-white py-16 md:py-20 lg:py-24 scroll-mt-20"
+      className="relative bg-white py-12 md:py-16 lg:py-20 scroll-mt-20"
     >
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         {/* Section Introduction */}
-        <div className="max-w-3xl mb-10 sm:mb-12">
+        <div className="max-w-5xl mb-5 sm:mb-6">
           {/* Category Eyebrow */}
           <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
             Clinical Formulations
@@ -200,14 +200,14 @@ export function ClinicalPillars() {
 
           {/* Heading */}
           <ScrollReveal delay={0.1}>
-            <h2 className="mt-3 font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
+            <h2 className="mt-3 font-heading text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12] lg:whitespace-nowrap">
               Six clinical pillars. One healthcare standard.
             </h2>
           </ScrollReveal>
 
           {/* Description */}
           <ScrollReveal delay={0.2}>
-            <p className="mt-4 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#292F39]/80">
+            <p className="mt-3 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#292F39]/80">
               Precision-formulated veterinary solutions structured around physiological
               stress windows, metabolic recovery, and daily farm productivity.
             </p>
@@ -215,7 +215,7 @@ export function ClinicalPillars() {
         </div>
 
         {/* React Bits ScrollStack Section */}
-        <div className="mt-8 sm:mt-10">
+        <div className="mt-1 sm:mt-2">
           <ScrollStack
             useWindowScroll={true}
             itemDistance={70}

@@ -18,25 +18,29 @@
 }
 
 .scroll-stack-inner {
-  padding: 10vh 1rem 32rem;
+  padding: 0.5rem 1rem 32rem;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .scroll-stack-inner {
-    padding: 14vh 2.5rem 38rem;
+    padding: 0.75rem 2.5rem 38rem;
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-inner {
-    padding: 18vh 4rem 45rem;
+    padding: 1rem 4rem 45rem;
   }
 }
 
 .scroll-stack-card-wrapper {
   position: relative;
+}
+
+.scroll-stack-card-wrapper:first-child .scroll-stack-card {
+  margin-top: 0;
 }
 
 .scroll-stack-card {
@@ -47,7 +51,7 @@
   box-shadow: 0 16px 36px -12px rgba(23, 35, 51, 0.14);
   min-height: 22rem;
   width: 100%;
-  margin: 24px 0;
+  margin: 20px 0;
   padding: 1.75rem;
   border-radius: 28px;
   box-sizing: border-box;
