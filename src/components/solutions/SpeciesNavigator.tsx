@@ -32,7 +32,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Bos taurus",
     description:
       "Dairy and draught programmes: ruminal health, lactation minerals, and post-calving recovery.",
-    image: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=1000&q=80",
+    image: "/images/species/cattle.jpg",
     href: "/products",
     clinicalFocus: [
       "Ruminal Microflora Buffering",
@@ -49,7 +49,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Bubalus bubalis",
     description:
       "High-yield milk systems requiring calcium kinetics, hepatic support, and uterine care.",
-    image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1000&q=80",
+    image: "/images/species/water-buffalo.jpg",
     href: "/products",
     clinicalFocus: [
       "High-Fat Lactation Bio-Kinetics",
@@ -66,7 +66,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Ovis aries",
     description:
       "Flock-scale parasite control, ewe resilience, and lambing economics as a continuous programme.",
-    image: "https://images.unsplash.com/photo-1484558830667-5e7daf3f3e6b?w=1000&q=80",
+    image: "/images/species/ovine-flock.jpg",
     href: "/products?category=Parasite+Control",
     clinicalFocus: [
       "Fasciola & Nematode Synchronization",
@@ -198,84 +198,71 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
   const protocolIcons = [ShieldCheck, Activity, Dna];
 
   return (
-    <div className="rounded-3xl border-2 border-[#DCE4D6] bg-white p-6 sm:p-7 shadow-lg relative overflow-hidden">
-      <AnimatedContent key={current.id} distance={10} duration={0.35}>
+    <div className="rounded-3xl border-2 border-[#DCE4D6] bg-white p-5 sm:p-6 shadow-md relative overflow-hidden h-full flex flex-col justify-between">
+      <AnimatedContent key={current.id} distance={8} duration={0.25} className="flex flex-col h-full justify-between">
         {/* Detail Header */}
-        <div className="flex items-center justify-between border-b border-[#DCE4D6] pb-3.5">
+        <div className="flex items-center justify-between border-b border-[#DCE4D6] pb-2.5">
           <span className="text-sm font-bold text-[#172333]">
             {current.name} Care Programme
           </span>
-          <span className="rounded-full bg-[#EBF1E8] px-3 py-0.5 text-xs font-semibold text-[#60785B]">
+          <span className="rounded-full bg-[#EBF1E8] px-2.5 py-0.5 text-xs font-semibold text-[#60785B]">
             Selected
           </span>
         </div>
 
-        {/* Large Visual Frame */}
-        <div className="relative my-5 aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#F6F3EC] border border-[#DCE4D6]">
+        {/* Visual Frame */}
+        <div className="relative my-3 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#F6F3EC] border border-[#DCE4D6]">
           <Image
             src={current.image}
             alt={`${current.name} (${current.scientificName}) — Cattlevibes species classification`}
             fill
             sizes="(max-width: 1024px) 100vw, 42vw"
-            priority={current.id === "cattle"}
-            className="object-cover object-center transition-all duration-500"
+            priority
+            className="object-cover object-center transition-all duration-300"
           />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/70 via-transparent to-transparent pointer-events-none" />
         </div>
 
-        {/* Protocol Summary */}
-        <div>
-          <div className="flex items-baseline gap-3">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#172333]">
+        {/* Protocol Summary & Targets */}
+        <div className="space-y-2">
+          <div className="flex items-baseline gap-2">
+            <h3 className="font-heading text-xl font-extrabold text-[#172333]">
               {current.name}
             </h3>
-            <p className="font-body text-sm font-semibold text-[#EE9B16] italic">
+            <span className="font-body text-xs font-semibold text-[#EE9B16] italic">
               {current.scientificName}
-            </p>
+            </span>
           </div>
 
-          <p className="mt-2 font-body text-xs sm:text-sm leading-relaxed text-[#292F39]/80">
+          <p className="font-body text-xs leading-relaxed text-[#292F39]/80 line-clamp-2">
             {current.description}
           </p>
 
-          {/* Care Focus Points with Outlined Icons */}
-          <div className="mt-5 rounded-2xl bg-[#F6F3EC] p-4 border border-[#DCE4D6]">
-            <div className="mb-2.5 flex items-center gap-2">
-              <span className="text-xs font-bold tracking-wider text-[#172333] uppercase">
-                Clinical Care Targets
-              </span>
-            </div>
-            <ul className="space-y-2">
-              {current.clinicalFocus.map((focus, idx) => {
-                const IconComponent = protocolIcons[idx % protocolIcons.length] ?? ShieldCheck;
-                return (
-                  <li
-                    key={focus}
-                    className="flex items-center gap-2.5 text-xs font-medium text-[#292F39]/85"
-                  >
-                    <IconComponent className="h-3.5 w-3.5 text-[#60785B] shrink-0" />
-                    <span>{focus}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* View Full Protocols CTA with Magnet on Arrow */}
-          <div className="mt-6 pt-4 border-t border-[#DCE4D6]">
-            <Link
-              href={current.href}
-              className="group inline-flex items-center gap-3 rounded-full bg-[#172333] px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-[#172333]/90 active:scale-[0.98]"
-            >
-              <span>View full protocols</span>
-              <Magnet strength={0.35} range={40}>
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EE9B16] text-[#172333] transition-transform duration-200 group-hover:translate-x-0.5">
-                  <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+          {/* Clinical Targets as compact inline pill chips */}
+          <div className="flex flex-wrap gap-1.5 pt-0.5">
+            {current.clinicalFocus.map((focus, idx) => {
+              const IconComponent = protocolIcons[idx % protocolIcons.length] ?? ShieldCheck;
+              return (
+                <span
+                  key={focus}
+                  className="inline-flex items-center gap-1 rounded-md bg-[#F6F3EC] px-2 py-0.5 text-[11px] font-medium text-[#292F39] border border-[#DCE4D6]"
+                >
+                  <IconComponent className="h-3 w-3 text-[#60785B] shrink-0" />
+                  <span>{focus}</span>
                 </span>
-              </Magnet>
-            </Link>
+              );
+            })}
           </div>
+        </div>
+
+        {/* View Full Protocols CTA */}
+        <div className="mt-3 pt-3 border-t border-[#DCE4D6]">
+          <Link
+            href={current.href}
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#172333] py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#172333]/90 active:scale-[0.98]"
+          >
+            <span>View {current.name.toLowerCase()} protocols</span>
+            <ArrowRight className="h-3.5 w-3.5 text-[#EE9B16] transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
+          </Link>
         </div>
       </AnimatedContent>
     </div>
@@ -417,9 +404,9 @@ export function SpeciesNavigator() {
         <SpeciesSectionHeader />
 
         {/* Desktop Master-Detail Layout (lg:grid) */}
-        <div className="mt-14 hidden lg:grid lg:grid-cols-12 lg:gap-8 items-start">
-          {/* Left Column: ~58% interactive cards list (7 cols) */}
-          <div className="lg:col-span-7 space-y-4">
+        <div className="mt-12 hidden lg:grid lg:grid-cols-12 lg:gap-8 items-stretch">
+          {/* Left Column: 3 interactive cards (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
             {speciesList.map((item, index) => (
               <SpeciesCard
                 key={item.id}
@@ -430,8 +417,8 @@ export function SpeciesNavigator() {
             ))}
           </div>
 
-          {/* Right Column: ~42% sticky dynamic visual & protocol panel (5 cols) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
+          {/* Right Column: Matched height dynamic visual & protocol postcard (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col">
             <SpeciesDetailPanel current={current} />
           </div>
         </div>
