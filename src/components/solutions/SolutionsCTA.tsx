@@ -36,13 +36,8 @@ export function SolutionsCTA() {
 
             <div className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                {/* Eyebrow */}
-                <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-                  Veterinary Consultation &amp; Distribution
-                </p>
-
                 {/* Heading */}
-                <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
+                <h2 className="font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
                   Better animal health starts with the{" "}
                   <span className="text-[#EE9B16]">right formulation.</span>
                 </h2>

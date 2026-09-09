@@ -84,14 +84,9 @@ export const speciesList: SpeciesItem[] = [
 function SpeciesSectionHeader() {
   return (
     <div className="max-w-3xl">
-      {/* Category Eyebrow */}
-      <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-        Livestock Species
-      </p>
-
       {/* Section Heading with ScrollReveal */}
       <ScrollReveal direction="up" distance={20} duration={0.6}>
-        <h2 className="mt-3 font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
           Healthcare formulations by species.
         </h2>
       </ScrollReveal>
@@ -207,7 +202,7 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
       <AnimatedContent key={current.id} distance={10} duration={0.35}>
         {/* Detail Header */}
         <div className="flex items-center justify-between border-b border-[#DCE4D6] pb-3.5">
-          <span className="text-xs font-bold tracking-wider text-[#EE9B16] uppercase">
+          <span className="text-sm font-bold text-[#172333]">
             {current.name} Care Programme
           </span>
           <span className="rounded-full bg-[#EBF1E8] px-3 py-0.5 text-xs font-semibold text-[#60785B]">

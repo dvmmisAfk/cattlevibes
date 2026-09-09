@@ -12,7 +12,6 @@ interface ProtocolStepProps {
   number: string;
   title: string;
   copy: string;
-  metric: string;
   icon: LucideIcon;
   isLast?: boolean;
 }
@@ -21,7 +20,6 @@ export function ProtocolStep({
   number,
   title,
   copy,
-  metric,
   icon: Icon,
   isLast = false,
 }: ProtocolStepProps) {
@@ -39,16 +37,13 @@ export function ProtocolStep({
 
       {/* Content */}
       <div className="pb-3">
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex items-center gap-2.5">
           <span className="font-heading text-sm font-extrabold text-[#EE9B16]">
             {number}
           </span>
           <h3 className="font-heading text-lg font-bold text-white">
             {title}
           </h3>
-          <span className="rounded-md bg-white/10 px-2 py-0.5 font-body text-xs font-medium text-[#DCE4D6]">
-            {metric}
-          </span>
         </div>
         <p className="mt-1 max-w-xl text-sm leading-relaxed text-white/75">
           {copy}
@@ -63,21 +58,18 @@ const ovineProtocols = [
     number: "01",
     title: "Parasite control",
     copy: "Anthelmintic and flukicide coverage timed to grazing cycles, not guesswork.",
-    metric: "Nematode & Fluke Eradication",
     icon: ShieldAlert,
   },
   {
     number: "02",
     title: "Flock resilience",
     copy: "Hepatic support and mineral balance to keep ewes productive through stress windows.",
-    metric: "Metabolic Buffer",
     icon: Compass,
   },
   {
     number: "03",
     title: "Yield discipline",
     copy: "Nutrition and recovery protocols that protect lambing outcomes and wool-body condition.",
-    metric: "Lambing Ratio Protection",
     icon: TrendingUp,
   },
 ];
@@ -131,15 +123,6 @@ export function OvineFieldFeature() {
                     className="object-cover object-center brightness-95 transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/85 via-[#172333]/20 to-transparent" />
-
-                  {/* Bottom Field Note Card */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                    <div className="rounded-xl bg-[#172333]/90 px-4 py-2.5 backdrop-blur-md border border-white/15">
-                      <p className="font-heading text-xs font-bold text-white">
-                        Ewe Body Condition Score +14%
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </AnimatedContent>
@@ -147,13 +130,9 @@ export function OvineFieldFeature() {
 
           {/* Text and Diagnostic Protocol Rows */}
           <div className="lg:col-span-6">
-            <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-              Flock Healthcare Programme
-            </p>
-
             {/* ScrollReveal only for the main heading */}
             <ScrollReveal delay={0.1}>
-              <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.15rem] lg:leading-[1.1]">
+              <h2 className="font-heading text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.15rem] lg:leading-[1.1]">
                 Ovine Health &amp;{" "}
                 <span className="text-[#EE9B16]">Flock Economics.</span>
               </h2>
@@ -173,7 +152,6 @@ export function OvineFieldFeature() {
                   number={protocol.number}
                   title={protocol.title}
                   copy={protocol.copy}
-                  metric={protocol.metric}
                   icon={protocol.icon}
                   isLast={index === ovineProtocols.length - 1}
                 />
