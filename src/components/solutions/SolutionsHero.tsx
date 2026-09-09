@@ -18,10 +18,11 @@ export function SolutionsHero() {
     <section className="relative w-full h-screen min-h-[520px] max-h-[1080px] overflow-hidden bg-white select-none">
       {/* 1. Farm photograph with increased brightness & contrast so it doesn't look faded */}
       <Image
-        src="/images/solutions-pastoral-cow-hero.jpg"
+        src="/images/solutions-pastoral-cow-hd.jpg"
         alt="Cow grazing on a rolling green pasture beside a rustic wooden barn"
         fill
         priority
+        quality={95}
         sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover object-[72%_bottom] md:object-center pointer-events-none"
         style={{
