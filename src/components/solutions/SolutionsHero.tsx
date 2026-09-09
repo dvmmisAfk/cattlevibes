@@ -29,43 +29,34 @@ export function SolutionsHero() {
 
       {/* ─── 2. Directional Cinematic Tonal Scrim (Darker on Left for White Text, Natural on Right) ─── */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/92 via-deep-navy/62 via-44% to-transparent lg:from-deep-navy/90 lg:via-deep-navy/48 lg:via-45% lg:to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/92 via-deep-navy/65 via-50% to-transparent lg:from-deep-navy/90 lg:via-deep-navy/52 lg:via-55% lg:to-transparent"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/55 via-transparent to-deep-navy/25 lg:hidden"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/60 via-transparent to-deep-navy/20 lg:hidden"
         aria-hidden="true"
       />
 
-      {/* ─── 3. Left-Aligned Editorial Content Block (Occupies Left ~42-45%) ─── */}
+      {/* ─── 3. Left-Aligned Editorial Content Block (Matched to Resources Hero System) ─── */}
       <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl lg:max-w-[540px]">
-          {/* Main Headline */}
+        <div className="max-w-3xl lg:max-w-[850px] xl:max-w-[920px]">
+          {/* Main Headline (Matched to Resources Hero Font Size & Scale) */}
           <motion.h1
             id="solutions-hero-title"
-            className="font-heading text-3xl font-extrabold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
+            className="font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
             initial={prefersReduced ? {} : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Formulations for the <br className="hidden sm:inline" />
-            Modern Farm.
+            Formulations for the Modern Farm
           </motion.h1>
 
-          {/* Restrained CattleVibes Orange Accent Line */}
-          <motion.div
-            className="my-5 sm:my-6 h-[2px] w-12 bg-brand-orange origin-left"
-            initial={prefersReduced ? {} : { scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          />
-
-          {/* Supporting Copy (Compact Editorial 2-Line Block) */}
+          {/* Supporting Copy (Single crisp line on desktop, matched to Resources Hero) */}
           <motion.p
-            className="max-w-[460px] text-base sm:text-lg leading-relaxed text-white/85"
+            className="mt-6 sm:mt-7 max-w-none text-base sm:text-lg lg:text-[1.125rem] font-medium leading-normal tracking-[-0.01em] text-white/90 antialiased lg:whitespace-nowrap"
             initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             Targeted veterinary formulations and clinical herd protocols engineered for daily livestock operations.
           </motion.p>
