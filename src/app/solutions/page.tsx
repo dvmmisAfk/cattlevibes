@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white [&_h1]:font-oldenburg [&_h2]:font-oldenburg [&_h3]:font-oldenburg">
       <SolutionsHero />
       <ClinicalPillars />
       <OvineFieldFeature />

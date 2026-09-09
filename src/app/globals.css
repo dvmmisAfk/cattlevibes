@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Oldenburg';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/oldenburg.woff2') format('woff2'),
+       url('/fonts/oldenburg.ttf') format('truetype');
+}
+
 :root {
   /* ── Tier 1: Primitive Palette (Figma Design Basics tokens) ── */
   --color-navy-800: #313841;     /* High Tide / Deep Navy */
@@ -102,6 +111,11 @@
   --color-border-subtle: var(--border-subtle);
   --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
+  --font-oldenburg: 'Oldenburg', var(--font-manrope), serif;
+}
+
+.font-oldenburg {
+  font-family: 'Oldenburg', var(--font-manrope), serif;
 }
 
 body {
