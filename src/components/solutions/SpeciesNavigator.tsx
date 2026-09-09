@@ -66,7 +66,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Ovis aries",
     description:
       "Flock-scale parasite control, ewe resilience, and lambing economics as a continuous programme.",
-    image: "/images/species/ovine-sheep.jpg",
+    image: "/images/species/ovine-pasture.jpg",
     href: "/products?category=Parasite+Control",
     clinicalFocus: [
       "Fasciola & Nematode Synchronization",
