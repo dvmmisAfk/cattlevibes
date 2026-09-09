@@ -32,7 +32,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Bos taurus",
     description:
       "Dairy and draught programmes: ruminal health, lactation minerals, and post-calving recovery.",
-    image: "/images/species/cattle.jpg",
+    image: "/images/species/cattle-framed.jpg",
     href: "/products",
     clinicalFocus: [
       "Ruminal Microflora Buffering",
@@ -66,7 +66,7 @@ export const speciesList: SpeciesItem[] = [
     scientificName: "Ovis aries",
     description:
       "Flock-scale parasite control, ewe resilience, and lambing economics as a continuous programme.",
-    image: "/images/species/ovine-flock.jpg",
+    image: "/images/species/ovine-sheep.jpg",
     href: "/products?category=Parasite+Control",
     clinicalFocus: [
       "Fasciola & Nematode Synchronization",
@@ -123,7 +123,7 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
         type="button"
         onClick={onSelect}
         onMouseEnter={onSelect}
-        className={`group relative flex w-full flex-col justify-between p-5 text-left transition-all sm:p-6 cursor-pointer ${
+        className={`group relative flex w-full flex-col justify-between px-5 py-6 sm:px-6 sm:py-6.5 text-left transition-all cursor-pointer ${
           isActive ? "border-l-4 border-l-[#EE9B16]" : ""
         }`}
         aria-selected={isActive}
@@ -211,7 +211,7 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
         </div>
 
         {/* Visual Frame */}
-        <div className="relative my-3 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#F6F3EC] border border-[#DCE4D6]">
+        <div className="relative my-3.5 aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#F6F3EC] border border-[#DCE4D6]">
           <Image
             src={current.image}
             alt={`${current.name} (${current.scientificName}) — Cattlevibes species classification`}
@@ -339,13 +339,13 @@ function MobileSpeciesAccordion({
                 </p>
 
                 {/* Specimen Visual */}
-                <div className="relative my-4 aspect-[16/10] w-full overflow-hidden rounded-xl bg-white border border-[#DCE4D6]">
+                <div className="relative my-4 aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#F6F3EC] border border-[#DCE4D6]">
                   <Image
                     src={item.image}
                     alt={`${item.name} (${item.scientificName})`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 400px"
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                 </div>
 
@@ -406,7 +406,7 @@ export function SpeciesNavigator() {
         {/* Desktop Master-Detail Layout (lg:grid) */}
         <div className="mt-12 hidden lg:grid lg:grid-cols-12 lg:gap-8 items-stretch">
           {/* Left Column: 3 interactive cards (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-4">
+          <div className="lg:col-span-7 flex flex-col justify-between">
             {speciesList.map((item, index) => (
               <SpeciesCard
                 key={item.id}
