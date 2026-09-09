@@ -18,20 +18,20 @@
 }
 
 .scroll-stack-inner {
-  padding: 0.5rem 1rem 32rem;
-  min-height: 100vh;
+  padding: 0.5rem 1rem 12rem;
+  min-height: auto;
   box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .scroll-stack-inner {
-    padding: 0.75rem 2.5rem 38rem;
+    padding: 0.75rem 2.5rem 14rem;
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-inner {
-    padding: 1rem 4rem 45rem;
+    padding: 1rem 4rem 16rem;
   }
 }
 

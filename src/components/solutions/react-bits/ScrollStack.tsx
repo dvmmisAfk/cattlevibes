@@ -155,6 +155,26 @@ export const ScrollStack: React.FC<ScrollStackProps> = ({
 
     const endElementTop = endElement ? getElementOffset(endElement) : 0;
 
+    const inner = (
+      useWindowScroll
+        ? document.querySelector(".scroll-stack-inner")
+        : scrollerRef.current?.querySelector(".scroll-stack-inner")
+    ) as HTMLElement | null;
+
+    const innerBottom = inner
+      ? getElementOffset(inner) + inner.offsetHeight
+      : endElementTop;
+
+    const lastCard = cardsRef.current[cardsRef.current.length - 1];
+    const lastCardHeight = lastCard ? lastCard.offsetHeight : 400;
+    const lastCardOffset = itemStackDistance * (cardsRef.current.length - 1);
+
+    // Release cleanly with a comfortable ~48px gap to the bottom of the section
+    const pinEnd = Math.max(
+      0,
+      innerBottom - lastCardHeight - stackPositionPx - lastCardOffset - 48
+    );
+
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
@@ -163,7 +183,6 @@ export const ScrollStack: React.FC<ScrollStackProps> = ({
         cardTop - stackPositionPx - itemStackDistance * i;
       const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop - containerHeight / 2;
 
       const scaleProgress = calculateProgress(
         scrollTop,
