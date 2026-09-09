@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { FoldText } from "@/components/ui/FoldText";
 
 export interface SecondaryPageHeroProps {
   title: string;
@@ -50,9 +51,15 @@ export function SecondaryPageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Large Centered Primary Heading */}
+          {/* Large Centered Primary Heading with FoldText */}
           <h1 className="font-heading text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.12]">
-            {title}
+            <FoldText
+              text={title}
+              trigger="mount"
+              hinge="top"
+              duration={0.7}
+              stagger={0.035}
+            />
           </h1>
 
           {/* Optional Supporting Copy */}

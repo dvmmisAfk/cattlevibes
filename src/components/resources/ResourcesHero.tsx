@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { FoldText } from "@/components/ui/FoldText";
 
 export function ResourcesHero() {
   const prefersReduced = useReducedMotion();
@@ -36,16 +37,20 @@ export function ResourcesHero() {
       {/* ─── 3. Left-Aligned Editorial Content Block ─── */}
       <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl lg:max-w-[850px] xl:max-w-[920px]">
-          {/* Main Headline (Matched to Home Hero Font Size & Scale) */}
-          <motion.h1
+          {/* Main Headline with FoldText */}
+          <h1
             id="resources-hero-title"
             className="font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
-            initial={prefersReduced ? {} : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Knowledge for Better Animal Healthcare
-          </motion.h1>
+            <FoldText
+              text="Knowledge for Better Animal Healthcare"
+              trigger="mount"
+              hinge="top"
+              duration={0.7}
+              stagger={0.035}
+              creaseShading={0.45}
+            />
+          </h1>
 
           {/* Supporting Copy (Single crisp line on desktop) */}
           <motion.p

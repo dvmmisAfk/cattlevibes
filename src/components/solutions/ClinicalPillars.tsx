@@ -195,7 +195,7 @@ export function ClinicalPillars() {
         <div className="max-w-5xl mb-5 sm:mb-6">
           {/* Heading */}
           <ScrollReveal delay={0.1}>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12] lg:whitespace-nowrap">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
               Six clinical pillars. One healthcare standard.
             </h2>
           </ScrollReveal>

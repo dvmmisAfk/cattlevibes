@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { FoldText } from "@/components/ui/FoldText";
 
 export function SolutionsHero() {
   const prefersReduced = useReducedMotion();
 
   return (
     <section
-      className="relative flex min-h-[640px] sm:min-h-[680px] lg:h-[740px] lg:min-h-[720px] xl:h-[760px] xl:min-h-[740px] items-center overflow-hidden bg-deep-navy pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-24 lg:pb-20 select-none"
+      className="relative flex min-h-screen min-h-[100svh] items-center overflow-hidden bg-deep-navy pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-28 lg:pb-20 select-none"
       aria-labelledby="solutions-hero-title"
     >
       {/* ─── 1. Mirrored Farm Photograph (Hut & Cow on the Right, Open Atmospheric Space on Left) ─── */}
@@ -40,16 +41,20 @@ export function SolutionsHero() {
       {/* ─── 3. Left-Aligned Editorial Content Block (Matched to Resources Hero System) ─── */}
       <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl lg:max-w-[850px] xl:max-w-[920px]">
-          {/* Main Headline (Matched to Resources Hero Font Size & Scale) */}
-          <motion.h1
+          {/* Main Headline (FoldText Unfold Animation) */}
+          <h1
             id="solutions-hero-title"
             className="font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
-            initial={prefersReduced ? {} : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Formulations for the Modern Farm
-          </motion.h1>
+            <FoldText
+              text="Formulations for the Modern Farm"
+              trigger="mount"
+              hinge="top"
+              duration={0.7}
+              stagger={0.035}
+              creaseShading={0.45}
+            />
+          </h1>
 
           {/* Supporting Copy (Single crisp line on desktop, matched to Resources Hero) */}
           <motion.p
