@@ -79,11 +79,11 @@ export function SolutionCategoryCard({ category }: SolutionCategoryCardProps) {
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="font-mono text-2xl font-extrabold text-[#EE9B16]">
+              <span className="font-heading text-xl font-extrabold text-[#EE9B16]">
                 {category.number}
               </span>
               <p
-                className={`mt-1 font-mono text-[9px] font-bold tracking-[0.18em] uppercase ${
+                className={`mt-1 text-xs font-bold tracking-wider uppercase ${
                   isNavy || isImage ? "text-white/60" : "text-[#292F39]/60"
                 }`}
               >
@@ -130,7 +130,7 @@ export function SolutionCategoryCard({ category }: SolutionCategoryCardProps) {
             {category.products.map((product) => (
               <span
                 key={product}
-                className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold tracking-wide transition-colors ${
+                className={`rounded-md px-2 py-0.5 font-body text-xs font-bold tracking-wide transition-colors ${
                   isNavy || isImage
                     ? "bg-white/10 text-white/90 group-hover:bg-white/20"
                     : "bg-white text-[#172333] ring-1 ring-[#DCE4D6] group-hover:ring-[#EE9B16]"

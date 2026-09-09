@@ -102,18 +102,15 @@ function SpeciesSectionHeader() {
   return (
     <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div>
-        {/* Technical Eyebrow */}
-        <div className="inline-flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#60785B]" />
-          <span className="font-mono text-xs font-bold tracking-widest text-[#292F39]/70 uppercase">
-            SPECIES PROTOCOLS / 04 CLASSIFICATIONS
-          </span>
-        </div>
+        {/* Category Eyebrow */}
+        <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+          Livestock Species
+        </p>
 
         {/* Section Heading with ScrollReveal */}
         <ScrollReveal direction="up" distance={20} duration={0.6}>
           <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
-            Laboratory classification, not a photo gallery.
+            Healthcare formulations by species.
           </h2>
         </ScrollReveal>
       </div>
@@ -159,7 +156,7 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
           {/* Index & Names */}
           <div className="flex items-baseline gap-4">
             <span
-              className={`font-mono text-2xl sm:text-3xl font-extrabold transition-colors ${
+              className={`font-heading text-xl sm:text-2xl font-extrabold transition-colors ${
                 isActive ? "text-[#EE9B16]" : "text-[#292F39]/35"
               }`}
             >
@@ -175,12 +172,12 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
                   {item.name}
                 </h3>
                 {isActive && (
-                  <span className="hidden sm:inline-block rounded bg-[#EBF1E8] px-2 py-0.5 font-mono text-[9px] font-bold text-[#60785B]">
-                    ACTIVE SPECIES
+                  <span className="hidden sm:inline-block rounded-full bg-[#EBF1E8] px-2.5 py-0.5 font-body text-xs font-semibold text-[#60785B]">
+                    Active
                   </span>
                 )}
               </div>
-              <p className="font-mono text-xs font-semibold tracking-wider text-[#EE9B16] italic">
+              <p className="font-body text-xs font-semibold text-[#EE9B16] italic">
                 {item.scientificName}
               </p>
             </div>
@@ -227,27 +224,18 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
   return (
     <div className="rounded-3xl border-2 border-[#DCE4D6] bg-white p-6 sm:p-7 shadow-lg relative overflow-hidden">
       <AnimatedContent key={current.id} distance={10} duration={0.35}>
-        {/* Technical Header */}
+        {/* Detail Header */}
         <div className="flex items-center justify-between border-b border-[#DCE4D6] pb-3.5">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#60785B] animate-pulse" />
-            <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-wider text-[#292F39]/75 uppercase">
-              ANIMAL // {current.number} · {current.categoryLabel}
-            </span>
-          </div>
-          <span className="rounded-md bg-[#EBF1E8] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#60785B]">
-            ACTIVE SPECIES
+          <span className="text-xs font-bold tracking-wider text-[#EE9B16] uppercase">
+            {current.name} Care Programme
+          </span>
+          <span className="rounded-full bg-[#EBF1E8] px-3 py-0.5 text-xs font-semibold text-[#60785B]">
+            Selected
           </span>
         </div>
 
-        {/* Large Visual Frame with Restrained Measurement Markers */}
+        {/* Large Visual Frame */}
         <div className="relative my-5 aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#F6F3EC] border border-[#DCE4D6]">
-          {/* Corner Framing Markers */}
-          <span aria-hidden="true" className="pointer-events-none absolute top-2 left-2 h-3 w-3 border-t-2 border-l-2 border-[#EE9B16] z-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute top-2 right-2 h-3 w-3 border-t-2 border-r-2 border-[#EE9B16] z-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-[#EE9B16] z-10" />
-          <span aria-hidden="true" className="pointer-events-none absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-[#EE9B16] z-10" />
-
           <Image
             src={current.image}
             alt={`${current.name} (${current.scientificName}) — Cattlevibes species classification`}
@@ -256,11 +244,6 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
             priority={current.id === "cattle"}
             className="object-cover object-center transition-all duration-500"
           />
-
-          {/* Floating Specimen Code Tag */}
-          <div className="absolute top-3 right-3 rounded-md bg-[#172333]/85 px-2.5 py-1 text-white backdrop-blur-xs font-mono text-[9px] font-bold border border-white/15">
-            {current.specimenCode}
-          </div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/70 via-transparent to-transparent pointer-events-none" />
         </div>
@@ -271,7 +254,7 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
             <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#172333]">
               {current.name}
             </h3>
-            <p className="font-mono text-sm font-semibold tracking-wider text-[#EE9B16] italic">
+            <p className="font-body text-sm font-semibold text-[#EE9B16] italic">
               {current.scientificName}
             </p>
           </div>
@@ -283,8 +266,8 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
           {/* Care Focus Points with Outlined Icons */}
           <div className="mt-5 rounded-2xl bg-[#F6F3EC] p-4 border border-[#DCE4D6]">
             <div className="mb-2.5 flex items-center gap-2">
-              <span className="font-mono text-[10px] font-bold tracking-wider text-[#172333] uppercase">
-                CLINICAL CARE TARGETS
+              <span className="text-xs font-bold tracking-wider text-[#172333] uppercase">
+                Clinical Care Targets
               </span>
             </div>
             <ul className="space-y-2">
@@ -360,14 +343,14 @@ function MobileSpeciesAccordion({
               className="flex w-full items-center justify-between gap-4 p-5 text-left cursor-pointer"
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-mono text-xl font-extrabold text-[#EE9B16]">
+                <span className="font-heading text-lg font-extrabold text-[#EE9B16]">
                   {item.number}
                 </span>
                 <div>
                   <h3 className="font-heading text-lg font-bold text-[#172333]">
                     {item.name}
                   </h3>
-                  <p className="font-mono text-xs italic text-[#EE9B16]">
+                  <p className="font-body text-xs italic text-[#EE9B16]">
                     {item.scientificName}
                   </p>
                 </div>
@@ -401,15 +384,12 @@ function MobileSpeciesAccordion({
                     sizes="(max-width: 1024px) 100vw, 400px"
                     className="object-cover"
                   />
-                  <div className="absolute top-2.5 right-2.5 rounded bg-[#172333]/85 px-2 py-0.5 font-mono text-[9px] text-white">
-                    {item.specimenCode}
-                  </div>
                 </div>
 
                 {/* Protocols list */}
                 <div className="rounded-xl bg-white p-3.5 border border-[#DCE4D6] my-3">
-                  <p className="font-mono text-[10px] font-bold text-[#172333] uppercase mb-2">
-                    CLINICAL CARE TARGETS
+                  <p className="text-xs font-bold text-[#172333] uppercase tracking-wider mb-2">
+                    Clinical Care Targets
                   </p>
                   <ul className="space-y-1.5">
                     {item.clinicalFocus.map((focus, fIdx) => {
@@ -455,7 +435,7 @@ export function SpeciesNavigator() {
   const current = speciesList[activeSpecies] ?? speciesList[0];
 
   return (
-    <section className="relative overflow-hidden bg-[#F6F3EC] py-20 md:py-28 lg:py-32">
+    <section id="species-navigator" className="relative overflow-hidden bg-[#F6F3EC] py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         {/* Section Header */}
         <SpeciesSectionHeader />

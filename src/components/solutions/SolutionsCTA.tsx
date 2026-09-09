@@ -37,12 +37,9 @@ export function SolutionsCTA() {
             <div className="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 {/* Eyebrow */}
-                <div className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1 text-xs font-bold text-[#EE9B16] ring-1 ring-[#DCE4D6]">
-                  <Compass className="h-3.5 w-3.5 text-[#EE9B16]" />
-                  <span className="font-mono text-[11px] tracking-wider uppercase">
-                    CLINICAL CONSULTATION &amp; DISTRIBUTION
-                  </span>
-                </div>
+                <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+                  Veterinary Consultation &amp; Distribution
+                </p>
 
                 {/* Heading */}
                 <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">

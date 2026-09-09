@@ -40,13 +40,13 @@ export function ProtocolStep({
       {/* Content */}
       <div className="pb-3">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="font-mono text-sm font-extrabold text-[#EE9B16]">
+          <span className="font-heading text-sm font-extrabold text-[#EE9B16]">
             {number}
           </span>
           <h3 className="font-heading text-lg font-bold text-white">
             {title}
           </h3>
-          <span className="rounded-md bg-white/10 px-2 py-0.5 font-mono text-[10px] font-medium text-[#DCE4D6]">
+          <span className="rounded-md bg-white/10 px-2 py-0.5 font-body text-xs font-medium text-[#DCE4D6]">
             {metric}
           </span>
         </div>
@@ -84,7 +84,7 @@ const ovineProtocols = [
 
 export function OvineFieldFeature() {
   return (
-    <section className="relative overflow-hidden bg-[#172333] py-20 text-white md:py-28 lg:py-32">
+    <section id="ovine-feature" className="relative overflow-hidden bg-[#172333] py-20 text-white md:py-28 lg:py-32">
       {/* Background Subtle Contour Map Graphics */}
       <div className="pointer-events-none absolute inset-0 opacity-15">
         <svg
@@ -116,19 +116,6 @@ export function OvineFieldFeature() {
       </div>
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        {/* Top Field Tag */}
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
-          <div className="flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full bg-[#EE9B16] animate-pulse" />
-            <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-              FIELD RESEARCH REPORT // OVINE HEALTH
-            </span>
-          </div>
-          <div className="font-mono text-xs text-white/50">
-            LAT: 30°54&apos;N · ELEVATION: 420M · ROTATIONAL GRAZING
-          </div>
-        </div>
-
         {/* Editorial Split Layout */}
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           {/* Asymmetric Sheep Farming Image Frame with AnimatedContent */}
@@ -145,26 +132,13 @@ export function OvineFieldFeature() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#172333]/85 via-[#172333]/20 to-transparent" />
 
-                  {/* Floating Field-Note Label over Image */}
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center gap-2 rounded-lg bg-[#172333]/90 px-3 py-1 font-mono text-[10px] font-bold tracking-wider text-[#EE9B16] backdrop-blur-md border border-white/15">
-                      FIELD PROTOCOL / OVINE
-                    </span>
-                  </div>
-
-                  {/* Bottom Telemetry Card */}
+                  {/* Bottom Field Note Card */}
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                    <div className="rounded-xl bg-[#172333]/90 p-3 backdrop-blur-md border border-white/15">
-                      <p className="font-mono text-[9px] font-bold tracking-widest text-[#EE9B16] uppercase">
-                        GRAZING RESILIENCE
-                      </p>
+                    <div className="rounded-xl bg-[#172333]/90 px-4 py-2.5 backdrop-blur-md border border-white/15">
                       <p className="font-heading text-xs font-bold text-white">
                         Ewe Body Condition Score +14%
                       </p>
                     </div>
-                    <span className="font-mono text-[10px] font-semibold text-white/70 bg-white/10 px-2.5 py-1 rounded-md">
-                      PROTOCOL: OVIS-24
-                    </span>
                   </div>
                 </div>
               </div>
@@ -173,9 +147,9 @@ export function OvineFieldFeature() {
 
           {/* Text and Diagnostic Protocol Rows */}
           <div className="lg:col-span-6">
-            <div className="inline-block rounded-md bg-[#EE9B16]/20 px-3 py-1 font-mono text-[11px] font-bold text-[#EE9B16]">
-              CLINICAL FLOCK ECONOMICS
-            </div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+              Flock Healthcare Programme
+            </p>
 
             {/* ScrollReveal only for the main heading */}
             <ScrollReveal delay={0.1}>

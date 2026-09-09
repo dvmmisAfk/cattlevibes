@@ -195,21 +195,15 @@ export function ClinicalPillars() {
         <div className="border-b border-[#DCE4D6] pb-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              {/* Small Label */}
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-extrabold tracking-widest text-[#EE9B16] uppercase">
-                  01 / FORMULATION SYSTEM
-                </span>
-                <span className="h-px w-8 bg-[#EE9B16]" />
-                <span className="rounded-full bg-[#F6F3EC] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#60785B]">
-                  06 specialised categories
-                </span>
-              </div>
+              {/* Category Eyebrow */}
+              <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+                Clinical Formulations
+              </p>
 
               {/* ScrollReveal applied to Heading */}
               <ScrollReveal delay={0.1}>
                 <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
-                  Six architectures. One healthcare standard.
+                  Six clinical pillars. One healthcare standard.
                 </h2>
               </ScrollReveal>
             </div>
@@ -220,11 +214,6 @@ export function ClinicalPillars() {
                   Precision-formulated veterinary solutions structured around physiological
                   stress windows, metabolic recovery, and daily farm productivity.
                 </p>
-                {/* Thin Amber Scientific Measurement Line */}
-                <div className="mt-4 flex items-center gap-2">
-                  <div className="h-[2px] w-16 bg-[#EE9B16]" />
-                  <div className="h-[1px] flex-1 bg-[#DCE4D6]" />
-                </div>
               </ScrollReveal>
             </div>
           </div>
@@ -283,28 +272,28 @@ export function ClinicalPillars() {
                     {/* Left Column (7 cols): Architecture details & formulary products */}
                     <div className="md:col-span-7 flex flex-col justify-between h-full">
                       <div>
-                        {/* Top Diagnostic Identifier Bar */}
+                        {/* Top Pillar Header */}
                         <div className="flex items-center justify-between border-b pb-3.5 border-current/15">
-                          <div className="flex items-center gap-3">
-                            <span className="font-mono text-2xl sm:text-3xl font-extrabold text-[#EE9B16]">
+                          <div className="flex items-baseline gap-3">
+                            <span className="font-heading text-xl sm:text-2xl font-extrabold text-[#EE9B16]">
                               {pillar.number}
                             </span>
                             <span
-                              className={`font-mono text-[10px] sm:text-[11px] font-extrabold tracking-[0.18em] uppercase ${
-                                isDark ? "text-white/70" : "text-[#292F39]/70"
+                              className={`text-xs font-bold tracking-wider uppercase ${
+                                isDark ? "text-white/70" : "text-[#172333]/70"
                               }`}
                             >
                               {pillar.metadataLabel}
                             </span>
                           </div>
                           <span
-                            className={`rounded-md px-2.5 py-0.5 font-mono text-[10px] font-bold ${
+                            className={`rounded-full px-3 py-0.5 text-xs font-semibold ${
                               isDark
-                                ? "bg-white/10 text-[#EE9B16] border border-white/15"
-                                : "bg-white text-[#60785B] ring-1 ring-[#DCE4D6]"
+                                ? "bg-white/10 text-white/90"
+                                : "bg-[#F6F3EC] text-[#172333] ring-1 ring-[#DCE4D6]"
                             }`}
                           >
-                            ARCHITECTURE #{pillar.number}
+                            Category {pillar.number}
                           </span>
                         </div>
 
@@ -327,7 +316,7 @@ export function ClinicalPillars() {
                         {/* Formulation Product Badges */}
                         <div className="mt-4">
                           <span
-                            className={`block font-mono text-[9px] font-bold tracking-wider uppercase mb-2 ${
+                            className={`block font-body text-xs font-semibold tracking-wider uppercase mb-2 ${
                               isDark ? "text-white/60" : "text-[#292F39]/60"
                             }`}
                           >
@@ -337,7 +326,7 @@ export function ClinicalPillars() {
                             {pillar.products.map((product) => (
                               <span
                                 key={product}
-                                className={`rounded-lg px-2.5 py-1 font-mono text-[10px] sm:text-[11px] font-bold tracking-wide transition-all ${
+                                className={`rounded-lg px-2.5 py-1 font-body text-xs font-bold tracking-wide transition-all ${
                                   isDark
                                     ? "bg-white/10 text-white/90 ring-1 ring-white/15 hover:bg-white/20"
                                     : "bg-white text-[#172333] ring-1 ring-[#DCE4D6] hover:ring-[#EE9B16]"
@@ -396,14 +385,13 @@ export function ClinicalPillars() {
                               <IconComponent className="h-4 w-4" />
                             </div>
                             <span
-                              className={`font-mono text-[10px] font-bold uppercase tracking-wider ${
+                              className={`text-xs font-bold uppercase tracking-wider ${
                                 isDark ? "text-white/80" : "text-[#172333]"
                               }`}
                             >
-                              CLINICAL METRIC
+                              Key Highlights
                             </span>
                           </div>
-                          <span className="h-2 w-2 rounded-full bg-[#60785B] animate-pulse" />
                         </div>
 
                         {/* Metric Highlights */}
@@ -418,7 +406,7 @@ export function ClinicalPillars() {
                               }`}
                             >
                               <span
-                                className={`block font-mono text-[9px] uppercase tracking-wider ${
+                                className={`block text-[11px] font-medium uppercase tracking-wider ${
                                   isDark ? "text-white/60" : "text-[#292F39]/60"
                                 }`}
                               >
