@@ -107,7 +107,7 @@ export function OvineFieldFeature() {
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+      <div className="relative mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Editorial Split Layout */}
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           {/* Asymmetric Sheep Farming Image Frame with AnimatedContent */}

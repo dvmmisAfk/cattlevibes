@@ -190,7 +190,7 @@ export function ClinicalPillars() {
       id="clinical-pillars"
       className="relative bg-white pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-8 lg:pb-10 scroll-mt-20"
     >
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Section Introduction */}
         <div className="max-w-5xl mb-5 sm:mb-6">
           {/* Heading */}

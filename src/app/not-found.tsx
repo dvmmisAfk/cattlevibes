@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-deep-navy px-5 pt-(--nav-height) text-center lg:px-8">
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-deep-navy px-4 pt-(--nav-height) text-center sm:px-6 lg:px-8">
       {/* Faint Architectural 404 Watermark */}
       <span
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-heading text-[12rem] font-black tracking-tighter text-white/[0.03] md:text-[18rem] lg:text-[22rem]"

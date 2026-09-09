@@ -10,18 +10,24 @@ import { Button } from "@/components/ui/Buttons";
 interface FilterOption {
   label: string;
   value: string;
-  type?: "species" | "formulation" | "all";
+  type?: "formulation" | "all";
 }
 
 const FILTER_OPTIONS: FilterOption[] = [
   { label: "All Products", value: "all", type: "all" },
-  { label: "Cattle", value: "cattle", type: "species" },
-  { label: "Buffalo", value: "buffalo", type: "species" },
-  { label: "Sheep & Goat", value: "small-ruminants", type: "species" },
   { label: "Injectables", value: "injection", type: "formulation" },
   { label: "Liquids", value: "liquid", type: "formulation" },
   { label: "Powders", value: "powder", type: "formulation" },
   { label: "Boluses", value: "bolus", type: "formulation" },
+];
+
+const DISCOVERY_ORDERED_SLUGS = [
+  "pyrovibe-injection",
+  "pyrovibe-bolus",
+  "cattlestar-gold",
+  "liver-ok",
+  "cattle-cef",
+  "utrovibe",
 ];
 
 export function ProductDiscovery() {
@@ -47,32 +53,25 @@ export function ProductDiscovery() {
     // Quick filter
     if (selectedFilter !== "all") {
       const filterConfig = FILTER_OPTIONS.find((f) => f.value === selectedFilter);
-      if (filterConfig) {
-        if (filterConfig.type === "species") {
-          if (selectedFilter === "cattle") {
-            list = list.filter((p) => p.animals.includes("Cattle"));
-          } else if (selectedFilter === "buffalo") {
-            list = list.filter((p) => p.animals.includes("Buffalo"));
-          } else if (selectedFilter === "small-ruminants") {
-            list = list.filter(
-              (p) => p.animals.includes("Sheep") || p.animals.includes("Goat"),
-            );
-          }
-        } else if (filterConfig.type === "formulation") {
-          list = list.filter((p) =>
-            p.formulation.toLowerCase().includes(selectedFilter),
-          );
-        }
+      if (filterConfig && filterConfig.type === "formulation") {
+        list = list.filter((p) =>
+          p.formulation.toLowerCase().includes(selectedFilter),
+        );
       }
     }
 
-    // Default to featured products if all products selected with no query
+    // Default to the 6 curated products in exact requested order
     if (!query.trim() && selectedFilter === "all") {
-      const featured = list.filter((p) => p.featured);
-      return featured.length >= 4 ? featured.slice(0, 4) : list.slice(0, 4);
+      const ordered = DISCOVERY_ORDERED_SLUGS.map((slug) =>
+        products.find((p) => p.slug === slug),
+      ).filter((p): p is (typeof products)[number] => p !== undefined);
+
+      if (ordered.length >= 6) {
+        return ordered;
+      }
     }
 
-    return list.slice(0, 4);
+    return list.slice(0, 6);
   }, [query, selectedFilter]);
 
   return (
@@ -80,7 +79,7 @@ export function ProductDiscovery() {
       className="bg-[#F7F5F0] py-20 md:py-28 border-b border-border"
       aria-label="Product Discovery"
     >
-      <div className="mx-auto max-w-[1320px] px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Primary Section Heading - Strictly single heading per editorial guidelines */}
         <div className="mb-10 md:mb-12 border-b border-border pb-6">
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight">
@@ -126,11 +125,11 @@ export function ProductDiscovery() {
           </div>
         </div>
 
-        {/* 4 Product Cards Grid - Spanning 4 in one row on desktop */}
+        {/* 6 Product Cards Grid - 3 columns on desktop, 2 on tablet, 1 on mobile */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.slug} product={product} compact />
+              <ProductCard key={product.slug} product={product} />
             ))}
           </div>
         ) : (

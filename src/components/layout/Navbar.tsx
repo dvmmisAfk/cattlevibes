@@ -41,7 +41,7 @@ export function Navbar() {
 
   return (
     <header className="pointer-events-none fixed top-0 z-[100] w-full bg-transparent">
-      <div className="pointer-events-auto mx-auto h-(--nav-height) max-w-[1320px] px-5 md:px-10 lg:px-14">
+      <div className="pointer-events-auto mx-auto h-(--nav-height) max-w-[1800px] px-4 sm:px-6 lg:px-8">
         <PillNav
           logo={images.logo}
           logoAlt={siteConfig.name}

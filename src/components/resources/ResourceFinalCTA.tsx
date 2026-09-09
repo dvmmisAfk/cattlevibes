@@ -14,7 +14,7 @@ export function ResourceFinalCTA() {
     <section className="relative overflow-hidden bg-deep-navy py-24 sm:py-32" aria-label="Resource Conversion">
       <div
         ref={containerRef}
-        className="relative z-10 mx-auto max-w-[1320px] px-6 text-center lg:px-8"
+        className="relative z-10 mx-auto w-full max-w-[1800px] px-4 text-center sm:px-6 lg:px-8"
       >
         <motion.div
           className="mx-auto flex max-w-3xl flex-col items-center"

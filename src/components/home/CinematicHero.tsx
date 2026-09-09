@@ -39,7 +39,7 @@ export function CinematicHero() {
       />
 
       {/* ─── Content ─── */}
-      <div className="relative z-10 mx-auto flex max-w-[1320px] flex-col items-center px-5 pt-16 text-center lg:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1800px] flex-col items-center px-4 pt-16 text-center sm:px-6 lg:px-8">
         {/* Two-Line Centered Head Tagline with Brand Yam Accent Word */}
         <motion.h1
           className="max-w-6xl font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"

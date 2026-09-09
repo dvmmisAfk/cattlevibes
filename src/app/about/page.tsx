@@ -67,7 +67,7 @@ export default function AboutPage() {
       <AboutHero />
 
       <section className="bg-white py-24 md:py-32">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <FadeIn className="lg:col-span-5">
               <h2 className="font-heading text-3xl font-extrabold tracking-tight text-deep-navy md:text-4xl">
@@ -95,7 +95,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-white pb-24">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <p className="max-w-4xl font-heading text-3xl font-extrabold tracking-tight text-deep-navy md:text-5xl md:leading-[1.05]">
               Advancing Animal Health Through Clinical Science.
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-t border-border bg-white py-24">
-        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <h2 className="max-w-2xl font-heading text-3xl font-extrabold tracking-tight text-deep-navy md:text-4xl">
               Pharmacological compliance, without ornament.
@@ -147,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-t border-border bg-light-pebble py-16">
-        <div className="mx-auto flex max-w-[1320px] flex-col gap-6 px-5 md:flex-row md:items-center md:justify-between lg:px-8">
+        <div className="mx-auto flex w-full max-w-[1800px] flex-col gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy">
             Explore the formulary.
           </h2>

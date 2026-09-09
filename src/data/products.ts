@@ -25,6 +25,7 @@ export const products: Product[] = [
       storage: "Store in a cool, dry place away from direct sunlight",
     },
     featured: true,
+    bestseller: true,
     relatedSlugs: ["rumi-ok-powder", "cattlemin", "liver-ok-injection"],
   },
   {
@@ -58,6 +59,7 @@ export const products: Product[] = [
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Reproductive Health"],
+    bestseller: true,
     shortDescription:
       "Veterinary medicine for reproductive and uterine health management in dairy animals.",
     description:
@@ -168,6 +170,7 @@ export const products: Product[] = [
       storage: "Store as directed on product label",
     },
     featured: true,
+    bestseller: true,
     relatedSlugs: ["pyrovibe-bolus", "cattlespas", "cattle-cef"],
   },
   {
@@ -192,6 +195,8 @@ export const products: Product[] = [
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
     },
+    featured: true,
+    bestseller: true,
     relatedSlugs: ["pyrovibe-injection", "cattlespas", "megluvibe"],
   },
   {
@@ -249,6 +254,7 @@ export const products: Product[] = [
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Antibiotic"],
+    bestseller: true,
     shortDescription:
       "Ceftiofur-based antibiotic injection for bacterial infections in livestock.",
     description:
@@ -534,7 +540,8 @@ export const products: Product[] = [
       storage:
         "Keep in a cool and dry place. Store below 30°C. Keep protected from direct sunlight",
     },
-    featured: false,
+    featured: true,
+    bestseller: true,
     relatedSlugs: ["cattlestar", "cattlestar-ds", "cattlestar-advance-gel"],
   },
 ];

@@ -30,7 +30,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <section className="bg-white pt-(--nav-height)">
-      <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-16 lg:px-8 lg:py-20">
+      <div className="mx-auto w-full max-w-[1800px] px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-20">
         <ProductDetailView product={product} />
       </div>
     </section>

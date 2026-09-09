@@ -15,10 +15,11 @@ import {
   Filter,
 } from "lucide-react";
 import { categoryFilterMap, products } from "@/data/products";
-import type { AnimalType, HealthConcern, Product } from "@/lib/types";
+import type { HealthConcern, Product } from "@/lib/types";
 import { CatalogueEnquiryDrawer } from "./CatalogueEnquiryDrawer";
 import { ProductPackshot } from "./ProductPackshot";
 import { ProductQuickView } from "./ProductQuickView";
+import { BestsellerRibbon } from "./BestsellerRibbon";
 
 const PAGE_SIZE = 9;
 
@@ -52,14 +53,6 @@ export function ProductsCatalogue({
     () => [...new Set(products.flatMap((product) => product.healthConcerns))],
     [],
   );
-  const animals = useMemo(
-    () =>
-      [...new Set(products.flatMap((product) => product.animals))].filter(
-        (animal) =>
-          !["Horse", "Pig", "Dog", "Poultry"].includes(animal),
-      ),
-    [],
-  );
 
   const [query, setQuery] = useState(initialQuery);
   const [forms, setForms] = useState<string[]>([]);
@@ -68,7 +61,6 @@ export function ProductsCatalogue({
       ? [initialCategory]
       : [],
   );
-  const [selectedAnimals, setSelectedAnimals] = useState<string[]>([]);
   const [categoryGroup, setCategoryGroup] = useState(
     categoryFilterMap[initialCategory] ? initialCategory : "",
   );
@@ -131,16 +123,8 @@ export function ProductsCatalogue({
       );
     }
 
-    if (selectedAnimals.length > 0) {
-      result = result.filter((product) =>
-        selectedAnimals.some((animal) =>
-          product.animals.includes(animal as AnimalType),
-        ),
-      );
-    }
-
     return result;
-  }, [categories, categoryGroup, forms, query, selectedAnimals]);
+  }, [categories, categoryGroup, forms, query]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
@@ -151,22 +135,20 @@ export function ProductsCatalogue({
 
   useEffect(() => {
     setPage(1);
-  }, [query, forms, categories, selectedAnimals, categoryGroup]);
+  }, [query, forms, categories, categoryGroup]);
 
   const chips = useMemo(() => {
     const list: { group: string; value: string }[] = [];
     if (categoryGroup) list.push({ group: "group", value: categoryGroup });
     forms.forEach((value) => list.push({ group: "form", value }));
     categories.forEach((value) => list.push({ group: "category", value }));
-    selectedAnimals.forEach((value) => list.push({ group: "animal", value }));
     return list;
-  }, [categoryGroup, forms, categories, selectedAnimals]);
+  }, [categoryGroup, forms, categories]);
 
   const clearAll = () => {
     setQuery("");
     setForms([]);
     setCategories([]);
-    setSelectedAnimals([]);
     setCategoryGroup("");
   };
 
@@ -174,8 +156,6 @@ export function ProductsCatalogue({
     if (group === "form") setForms((current) => current.filter((item) => item !== value));
     if (group === "category")
       setCategories((current) => current.filter((item) => item !== value));
-    if (group === "animal")
-      setSelectedAnimals((current) => current.filter((item) => item !== value));
     if (group === "group") setCategoryGroup("");
   };
 
@@ -197,21 +177,12 @@ export function ProductsCatalogue({
         }
         defaultOpen={true}
       />
-      <FilterGroup
-        title="Animal"
-        options={animals}
-        selected={selectedAnimals}
-        onToggle={(value) =>
-          setSelectedAnimals((current) => toggleValue(current, value as AnimalType))
-        }
-        defaultOpen={false}
-      />
     </div>
   );
 
   return (
     <LayoutGroup>
-      <div className="relative mx-auto flex min-h-screen max-w-[1320px] gap-10 px-6 py-12">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1800px] gap-8 px-4 py-12 sm:px-6 lg:gap-10 lg:px-8">
         <aside className="hidden w-[280px] flex-shrink-0 md:block">
           <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2 custom-scrollbar">
             <div className="flex items-center justify-between border-b border-border/70 pb-3 mb-2">
@@ -648,6 +619,7 @@ function CatalogueProductCard({
   return (
     <div className="group flex min-h-[460px] h-full flex-col justify-between rounded-xl border border-border/80 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-orange/40 hover:shadow-sm">
       <div className="relative h-[250px] shrink-0 rounded-t-xl bg-soft-white overflow-hidden">
+        {product.bestseller && <BestsellerRibbon />}
         <button
           type="button"
           onClick={() => onView(slide)}

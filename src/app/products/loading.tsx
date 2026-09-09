@@ -3,7 +3,7 @@ import { ProductCardSkeleton, Skeleton } from "@/components/ui/Skeleton";
 export default function ProductsLoading() {
   return (
     <div className="bg-soft-white pt-(--nav-height)">
-      <div className="mx-auto max-w-[1320px] px-5 py-12 md:py-20 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 py-12 sm:px-6 md:py-20 lg:px-8">
         {/* Header Skeleton */}
         <div className="mb-12 max-w-2xl">
           <Skeleton className="mb-3 h-4 w-32" />

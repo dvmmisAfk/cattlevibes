@@ -158,7 +158,7 @@ export const faqItems = [
   {
     question: "How can I find a specific Cattlevibes product?",
     answer:
-      "Browse our Products page where you can search by name, filter by category, formulation, animal type, or health concern. Each product has a dedicated detail page with brochure-derived information.",
+      "Browse our Products page where you can search by name, filter by category, formulation, or health concern. Each product has a dedicated detail page with brochure-derived information.",
   },
   {
     question: "Where can I download the product catalogue?",

@@ -19,7 +19,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
   return (
     <section className="grid min-h-[100svh] lg:grid-cols-2">
-      <div className="relative flex flex-col justify-end overflow-hidden bg-deep-navy px-6 pb-16 pt-[calc(var(--nav-height)+2.5rem)] md:px-10 lg:min-h-[100svh] lg:px-14 lg:pb-20">
+      <div className="relative flex flex-col justify-end overflow-hidden bg-deep-navy px-4 pb-16 pt-[calc(var(--nav-height)+2.5rem)] sm:px-6 md:px-8 lg:min-h-[100svh] lg:px-8 xl:px-10 lg:pb-20">
         <Image
           src={images.farmAtmospheric}
           alt=""
@@ -73,7 +73,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         </div>
       </div>
 
-      <div className="flex items-center justify-center bg-white px-6 py-16 md:px-10 lg:min-h-[100svh] lg:px-14">
+      <div className="flex items-center justify-center bg-white px-4 py-16 sm:px-6 md:px-8 lg:min-h-[100svh] lg:px-8 xl:px-10">
         <EnquiryForm initialProduct={initialProduct} />
       </div>
     </section>

@@ -399,7 +399,7 @@ export function SpeciesNavigator() {
 
   return (
     <section id="species-navigator" className="relative overflow-hidden bg-[#F6F3EC] py-20 md:py-28 lg:py-32">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SpeciesSectionHeader />
 

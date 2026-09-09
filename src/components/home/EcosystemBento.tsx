@@ -136,7 +136,7 @@ export function EcosystemBento() {
       className="bg-[#E5E9E9] py-20 md:py-28 border-b border-border"
       aria-label="Five Connected Pillars of Herd Health"
     >
-      <div className="mx-auto max-w-[1320px] px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Section Heading & Carousel Controls - Strictly single heading */}
         <div className="mb-8 md:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-border pb-6">
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-deep-navy">

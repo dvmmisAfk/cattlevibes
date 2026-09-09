@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductPackshot } from "@/components/products/ProductPackshot";
+import { BestsellerRibbon } from "@/components/products/BestsellerRibbon";
 import { PrimaryButton } from "@/components/ui/Buttons";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getRelatedProducts } from "@/data/products";
@@ -136,7 +137,8 @@ function DetailImageSlider({ product }: { product: Product }) {
   const current = images[slide];
 
   return (
-    <div className="relative flex aspect-square items-center justify-center p-8 md:aspect-[4/3]">
+    <div className="relative flex aspect-square items-center justify-center p-8 md:aspect-[4/3] overflow-hidden">
+      {product.bestseller && <BestsellerRibbon />}
       <ProductPackshot src={current} alt={product.name} />
       {images.length > 1 && (
         <>

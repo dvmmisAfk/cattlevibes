@@ -8,7 +8,7 @@ import { Magnet } from "./react-bits/Magnet";
 export function SolutionsCTA() {
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Creative Split-Background Treatment: Warm Ivory & Amber Accent Card */}
         <ScrollReveal direction="up" distance={30} duration={0.65}>
           <div className="relative overflow-hidden rounded-3xl border-2 border-[#DCE4D6] bg-gradient-to-br from-[#F6F3EC] via-[#F6F3EC] to-[#EE9B16]/15 p-8 sm:p-12 md:p-14 shadow-md">

@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, X, ArrowRight } from "lucide-react";
 import { getProductImages } from "@/data/product-images";
 import type { Product } from "@/lib/types";
 import { ProductPackshot } from "./ProductPackshot";
+import { BestsellerRibbon } from "./BestsellerRibbon";
 
 const SLIDE_MS = 520;
 const slideEase = [0.65, 0, 0.35, 1] as const;
@@ -194,6 +195,7 @@ export function ProductQuickView({
         className="relative z-10 grid h-[min(92vh,820px)] w-full max-w-[1240px] shrink grid-rows-[minmax(280px,48%)_1fr] overflow-hidden rounded-2xl bg-white shadow-[0_32px_100px_rgba(49,56,65,0.38)] md:grid-cols-[1.15fr_1fr] md:grid-rows-1"
       >
         <div className="relative min-h-0 overflow-hidden rounded-t-2xl bg-soft-white md:rounded-t-none md:rounded-l-2xl">
+          {product.bestseller && <BestsellerRibbon />}
           {sharedLayout ? (
             <motion.div
               layoutId={`product-packshot-${product.slug}`}

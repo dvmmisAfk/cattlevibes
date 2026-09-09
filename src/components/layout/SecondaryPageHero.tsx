@@ -43,7 +43,7 @@ export function SecondaryPageHero({
       </div>
 
       {/* ─── 2. Centered Editorial Typography ─── */}
-      <div className="relative z-10 mx-auto w-full max-w-[1320px] px-6 text-center lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 text-center sm:px-6 lg:px-8">
         <motion.div
           className="mx-auto flex max-w-4xl flex-col items-center"
           initial={prefersReduced ? {} : { opacity: 0, y: 24 }}

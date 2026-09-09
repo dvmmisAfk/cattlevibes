@@ -78,7 +78,7 @@ export function HealthcareAreas() {
       className="bg-[#EEF0F0] py-20 md:py-28 border-b border-border"
       aria-label="Animal Healthcare Areas"
     >
-      <div className="mx-auto max-w-[1320px] px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Section Heading - Strictly single heading with no subtitle */}
         <div className="mb-10 md:mb-14 border-b border-border pb-6">
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight">

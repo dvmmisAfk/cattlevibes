@@ -2,11 +2,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Product } from "@/lib/types";
 import { ProductPackshot } from "./ProductPackshot";
+import { BestsellerRibbon } from "./BestsellerRibbon";
 
 interface ProductCardProps {
   product: Product;
   showBenefits?: boolean;
   compact?: boolean;
+  bestseller?: boolean;
   className?: string;
 }
 
@@ -14,9 +16,11 @@ export function ProductCard({
   product,
   showBenefits = false,
   compact = false,
+  bestseller,
   className = "",
 }: ProductCardProps) {
   const cover = product.images?.[0];
+  const isBestseller = bestseller ?? product.bestseller ?? false;
 
   return (
     <Link
@@ -28,6 +32,7 @@ export function ProductCard({
           compact ? "aspect-[4/3] p-3.5 sm:p-4" : "aspect-[4/3] p-6"
         }`}
       >
+        {isBestseller && <BestsellerRibbon />}
         <ProductPackshot src={cover} alt={product.name} />
       </div>
 
@@ -79,13 +84,10 @@ export function ProductCard({
         </div>
 
         <div
-          className={`flex items-center justify-between border-t border-border/50 ${
+          className={`flex items-center justify-end border-t border-border/50 ${
             compact ? "mt-3.5 pt-2.5" : "mt-5 pt-3.5"
           }`}
         >
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
-            {product.animals?.slice(0, 2).join(" · ") || "Livestock"}
-          </span>
           <span className="inline-flex items-center gap-1 text-xs font-bold text-deep-navy transition-colors group-hover:text-brand-orange">
             Details
             <ArrowRight

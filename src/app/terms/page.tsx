@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="bg-soft-white pt-(--nav-height)">
-      <div className="mx-auto max-w-[1000px] px-5 py-12 md:py-20 lg:px-8">
+      <div className="mx-auto w-full max-w-[1400px] px-4 py-12 sm:px-6 md:py-20 lg:px-8">
         <Breadcrumbs className="mb-8" />
 
         <div className="border-b border-border pb-8">

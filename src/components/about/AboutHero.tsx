@@ -52,7 +52,7 @@ export function AboutHero() {
         <div className="absolute inset-0 bg-deep-navy/80" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1320px] px-5 text-center lg:px-8">
+      <div className="relative mx-auto w-full max-w-[1800px] px-4 text-center sm:px-6 lg:px-8">
         <Breadcrumbs theme="dark" className="mb-10 justify-center" />
         <h1 className="mx-auto max-w-5xl font-heading text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-[4.75rem] lg:leading-[0.95]">
           <RevealedLine text="Advancing Animal Health" delay={0.1} />

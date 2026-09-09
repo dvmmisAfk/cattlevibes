@@ -38,7 +38,7 @@ export function ResourceRequestSection() {
       className="bg-light-pebble/60 py-20 md:py-28 border-b border-border/70 scroll-mt-20"
       aria-labelledby="dossier-heading"
     >
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           {/* ─── Left Column (40%): Editorial Context ─── */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">

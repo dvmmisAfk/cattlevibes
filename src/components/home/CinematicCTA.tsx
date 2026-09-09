@@ -41,7 +41,7 @@ export function CinematicCTA() {
       {/* ─── 2. Main Content Container ─── */}
       <div
         ref={containerRef}
-        className="relative z-10 mx-auto w-full max-w-[1320px] px-6 text-center lg:px-8"
+        className="relative z-10 mx-auto w-full max-w-[1800px] px-4 text-center sm:px-6 lg:px-8"
       >
         <motion.div
           className="mx-auto flex max-w-4xl flex-col items-center"

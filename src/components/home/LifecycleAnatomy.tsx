@@ -394,8 +394,8 @@ export function LifecycleAnatomy() {
     <>
       {/* ─── Desktop 400vh Pinned Sequence (lg: and above) ─── */}
       <section ref={containerRef} className="relative hidden lg:block h-[400vh] bg-deep-navy">
-        <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-deep-navy px-8 py-12">
-          <div className="mx-auto w-full max-w-[1340px]">
+        <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-deep-navy px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mx-auto w-full max-w-[1800px]">
             
             {/* Section Header - Single Heading Directive */}
             <div className="mb-8 border-b border-white/[0.08] pb-5">

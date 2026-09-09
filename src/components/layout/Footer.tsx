@@ -5,7 +5,7 @@ import { BrandLogo } from "./BrandLogo";
 export function Footer() {
   return (
     <footer className="bg-deep-navy text-white">
-      <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link

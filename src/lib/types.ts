@@ -63,6 +63,7 @@ export interface Product {
   benefits: string[];
   info: ProductInfo;
   featured?: boolean;
+  bestseller?: boolean;
   relatedSlugs?: string[];
   images?: string[];
 }

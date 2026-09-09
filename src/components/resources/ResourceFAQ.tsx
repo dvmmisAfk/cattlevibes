@@ -57,7 +57,7 @@ export function ResourceFAQ() {
       className="bg-[#F8F7F4] py-20 md:py-28 border-b border-border/70 scroll-mt-20"
       aria-label="Frequently Asked Questions"
     >
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* ─── Header ─── */}
         <div className="max-w-3xl mb-12 md:mb-16">
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-deep-navy leading-tight">

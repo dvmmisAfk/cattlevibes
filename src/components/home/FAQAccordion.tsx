@@ -75,7 +75,7 @@ export function FAQAccordion() {
       className="bg-[#F3F1EC] py-20 md:py-28 border-b border-border/80"
       aria-label="Frequently Asked Questions"
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           
           {/* ─── Left Column: Section Heading & Support Info (Sticky on desktop) ─── */}
