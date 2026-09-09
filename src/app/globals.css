@@ -296,9 +296,9 @@ h3 {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(255, 255, 255, 0.055) 42%,
-    rgba(255, 255, 255, 0.025) 100%
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.14) 100%
   );
 }
 
@@ -313,8 +313,8 @@ h3 {
   z-index: 2;
   background: radial-gradient(
     ellipse at center,
-    rgba(22, 34, 48, 0.16) 0%,
-    rgba(22, 34, 48, 0.07) 48%,
+    rgba(17, 35, 52, 0.25) 0%,
+    rgba(17, 35, 52, 0.10) 48%,
     transparent 75%
   );
 }
@@ -326,46 +326,38 @@ h3 {
   top: 50%;
   transform: translate(-50%, -50%);
 
-  width: min(1500px, 88vw);
+  width: min(1400px, 90vw);
   margin: 0;
 
-  color: #fffdf7;
+  color: #ffffff;
   text-align: center;
 
-  font-family:
-    var(--font-oldenburg),
-    "Oldenburg",
-    "Recoleta",
-    "Fraunces",
-    "DM Serif Display",
-    Georgia,
-    serif;
-
-  font-size: clamp(48px, 14vw, 72px);
-  font-style: normal;
-  font-weight: 400;
+  font-family: var(--font-heading), var(--font-manrope), system-ui, -apple-system, sans-serif;
+  font-weight: 800;
   line-height: 0.98;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   word-spacing: 0;
   opacity: 1;
   text-shadow:
-    0 2px 2px rgba(13, 24, 36, 0.14),
-    0 10px 35px rgba(13, 24, 36, 0.12);
+    0 2px 4px rgba(13, 24, 36, 0.35),
+    0 8px 32px rgba(13, 24, 36, 0.45);
+
+  font-size: clamp(42px, 9vw, 68px);
 }
 
 @media (min-width: 640px) {
   .solutionsHeroHeading {
-    font-size: clamp(72px, 9vw, 112px);
-    line-height: 0.96;
-    letter-spacing: -0.04em;
+    font-size: clamp(56px, 8vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
   }
 }
 
 @media (min-width: 1024px) {
   .solutionsHeroHeading {
-    font-size: clamp(88px, 8.2vw, 158px);
-    line-height: 0.94;
-    letter-spacing: -0.045em;
+    font-size: clamp(76px, 7.2vw, 128px);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
   }
 }
 
@@ -374,5 +366,5 @@ h3 {
 }
 
 .solutionsHeroHeading span + span {
-  margin-top: 0;
+  margin-top: 0.15em;
 }

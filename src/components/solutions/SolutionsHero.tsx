@@ -16,7 +16,7 @@ import { SplitText } from "./react-bits/SplitText";
 export function SolutionsHero() {
   return (
     <section className="relative w-full h-screen min-h-[520px] max-h-[1080px] overflow-hidden bg-[#112334] select-none">
-      {/* 1. Farm photograph with small brightness and colour correction */}
+      {/* 1. Farm photograph with increased brightness & contrast so it doesn't look faded */}
       <Image
         src="/images/solutions-cattle-farm-panoramic.jpg"
         alt="Veterinarian inspecting cattle at a modern livestock farm"
@@ -25,26 +25,23 @@ export function SolutionsHero() {
         sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover object-bottom md:object-center pointer-events-none"
         style={{
-          filter: "brightness(1.07) contrast(0.98) saturate(1.03)",
+          filter: "brightness(1.14) contrast(1.04) saturate(1.08)",
         }}
       />
 
-      {/* 2. Subtle white-tint overlay (0.04 - 0.10 opacity, refined atmospheric tint) */}
+      {/* 2. Light white tint overlay on the background */}
       <div className="solutionsHeroWhiteTint" />
 
-      {/* 3. Local text-contrast gradient behind the heading only */}
+      {/* 3. Local text contrast gradient behind the center heading */}
       <div className="solutionsHeroTextContrast" />
 
-      {/* 4. Main heading with exact three-line composition */}
+      {/* 4. Main heading in absolute center using Manrope font from previous prompt */}
       <h1 className="solutionsHeroHeading">
         <span>
-          <SplitText text="Formulations for" delay={0.12} />
+          <SplitText text="Formulations for the" delay={0.15} />
         </span>
         <span>
-          <SplitText text="the" delay={0.22} />
-        </span>
-        <span>
-          <SplitText text="Modern Farm." delay={0.32} />
+          <SplitText text="Modern Farm." delay={0.35} />
         </span>
       </h1>
     </section>
