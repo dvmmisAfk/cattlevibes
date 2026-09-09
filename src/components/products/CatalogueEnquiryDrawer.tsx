@@ -43,7 +43,7 @@ export function CatalogueEnquiryDrawer({
     <>
       <div
         id="modal-overlay"
-        className={`fixed inset-0 z-[110] bg-deep-navy/40 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[110] bg-deep-navy/60 transition-opacity duration-300 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}

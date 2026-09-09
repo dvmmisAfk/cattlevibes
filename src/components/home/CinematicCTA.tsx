@@ -16,24 +16,24 @@ export function CinematicCTA() {
     <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-deep-navy py-32 lg:min-h-[85vh] lg:py-44">
       {/* ─── 1. Cinematic Full-Bleed Backdrop ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
-        {/* High-Resolution Pastoral Landscape */}
+        {/* Authentic Open-Air Indian Cow Shelter and Farm View */}
         <Image
-          src={images.heroPoster || "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=85"}
-          alt="Cattlevibes Pastoral Veterinary Horizon"
+          src="/images/indian-cow-shelter-ground.jpg"
+          alt="Authentic open-air Indian cow shelter (gaushala) and rural dairy farm"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center brightness-90"
+          className="object-cover object-center"
         />
 
-        {/* Deep Navy Heavy Atmosphere Overlay */}
-        <div className="absolute inset-0 bg-deep-navy/85" />
+        {/* Deep Navy Atmospheric Scrim for High-Contrast Legibility */}
+        <div className="absolute inset-0 bg-deep-navy/65" />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(49,56,65,0.7)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_15%,rgba(49,56,65,0.85)_100%)]"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep-navy via-deep-navy/60 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep-navy via-deep-navy/70 to-transparent"
           aria-hidden="true"
         />
       </div>
@@ -52,47 +52,56 @@ export function CinematicCTA() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          {/* Massive Typographic Headline - Without AI Eyebrow */}
-          <h2 className="font-heading text-5xl font-extrabold tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[1.05]">
-            Performance, <br className="hidden sm:inline" />
-            <span className="text-white">Formulated.</span>
+          {/* Typographic Headline matching unified homepage scale - Single heading */}
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Find Your Veterinary Solution
           </h2>
 
-          {/* Editorial Subtext */}
+          {/* Supporting Copy */}
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl md:leading-relaxed">
-            Explore the Cattlevibes range of veterinary medicines and nutritional
-            solutions designed around livestock health, rapid metabolic recovery,
-            and sustained productivity.
+            Explore formulations, request product documentation, or connect directly with our commercial team.
           </p>
 
-          {/* Refined Magnetic Button Row */}
+          {/* Refined Magnetic Button Row - 3 Commercial Actions */}
           <motion.div
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 md:mt-12"
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-4 md:mt-12 flex-wrap"
             initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Primary CTA Button */}
+            {/* Primary Action */}
             <MagneticButton strength={0.3}>
               <Button
-                href="/solutions"
+                href="/products"
                 variant="accent"
                 size="lg"
-                className="px-9 py-4 sm:py-4.5"
+                className="px-8 py-3.5 sm:py-4"
               >
-                Explore Solutions
+                Explore Products
               </Button>
             </MagneticButton>
 
-            {/* Secondary Hairline CTA Button */}
+            {/* Catalogue Request Action */}
             <MagneticButton strength={0.3}>
               <Button
-                href="/contact"
+                href="/contact?subject=catalogue"
                 variant="whiteOutline"
                 size="lg"
-                className="px-9 py-4 sm:py-4.5"
+                className="px-8 py-3.5 sm:py-4"
               >
-                Get In Touch
+                Request Catalogue
+              </Button>
+            </MagneticButton>
+
+            {/* Sales Contact Action */}
+            <MagneticButton strength={0.3}>
+              <Button
+                href="/contact?subject=sales"
+                variant="whiteOutline"
+                size="lg"
+                className="px-8 py-3.5 sm:py-4"
+              >
+                Talk to Sales
               </Button>
             </MagneticButton>
           </motion.div>

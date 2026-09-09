@@ -27,6 +27,8 @@ export function ProductPackshot({
       key={src}
       src={src}
       alt={alt}
+      loading="lazy"
+      decoding="async"
       className={`max-h-full max-w-full object-contain drop-shadow-[0_12px_28px_rgba(49,56,65,0.12)] ${className}`}
     />
   );

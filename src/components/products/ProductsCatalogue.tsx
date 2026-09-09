@@ -11,6 +11,8 @@ import {
   SlidersHorizontal,
   X,
   ArrowRight,
+  ChevronDown,
+  Filter,
 } from "lucide-react";
 import { categoryFilterMap, products } from "@/data/products";
 import type { AnimalType, HealthConcern, Product } from "@/lib/types";
@@ -51,7 +53,11 @@ export function ProductsCatalogue({
     [],
   );
   const animals = useMemo(
-    () => [...new Set(products.flatMap((product) => product.animals))],
+    () =>
+      [...new Set(products.flatMap((product) => product.animals))].filter(
+        (animal) =>
+          !["Horse", "Pig", "Dog", "Poultry"].includes(animal),
+      ),
     [],
   );
 
@@ -73,6 +79,20 @@ export function ProductsCatalogue({
   const [openedSlide, setOpenedSlide] = useState(0);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+  useEffect(() => {
+    if (!mobileFiltersOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileFiltersOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [mobileFiltersOpen]);
+
   const handleZoomSettled = useCallback(() => {
     setLayoutOriginSlug(null);
   }, []);
@@ -93,7 +113,9 @@ export function ProductsCatalogue({
           product.shortDescription.toLowerCase().includes(lower) ||
           product.category.toLowerCase().includes(lower) ||
           product.formulation.toLowerCase().includes(lower) ||
-          (product.info.composition ?? "").toLowerCase().includes(lower),
+          (product.info.composition ?? "").toLowerCase().includes(lower) ||
+          (product.info.indications ?? "").toLowerCase().includes(lower) ||
+          product.animals.some((animal) => animal.toLowerCase().includes(lower)),
       );
     }
 
@@ -157,43 +179,33 @@ export function ProductsCatalogue({
     if (group === "group") setCategoryGroup("");
   };
 
-  const filterPanel = (
-    <div className="space-y-8">
-      <div>
-        <h3 className="font-heading mb-4 border-b border-border/70 pb-2 text-xl font-bold text-deep-navy">
-          Filters
-        </h3>
-        <FilterGroup
-          title="Form"
-          options={formulations}
-          selected={forms}
-          onToggle={(value) => setForms((current) => toggleValue(current, value))}
-        />
-        <FilterGroup
-          title="Category"
-          options={healthConcerns}
-          selected={categories}
-          onToggle={(value) =>
-            setCategories((current) => toggleValue(current, value))
-          }
-        />
-        <FilterGroup
-          title="Animal"
-          options={animals}
-          selected={selectedAnimals}
-          onToggle={(value) =>
-            setSelectedAnimals((current) => toggleValue(current, value as AnimalType))
-          }
-        />
-      </div>
-      <button
-        type="button"
-        onClick={clearAll}
-        className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-cadet-blue transition-colors hover:text-deep-navy cursor-pointer"
-      >
-        <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
-        Clear all filters
-      </button>
+  const filterList = (
+    <div className="divide-y divide-border/60">
+      <FilterGroup
+        title="Form"
+        options={formulations}
+        selected={forms}
+        onToggle={(value) => setForms((current) => toggleValue(current, value))}
+        defaultOpen={true}
+      />
+      <FilterGroup
+        title="Category"
+        options={healthConcerns}
+        selected={categories}
+        onToggle={(value) =>
+          setCategories((current) => toggleValue(current, value))
+        }
+        defaultOpen={true}
+      />
+      <FilterGroup
+        title="Animal"
+        options={animals}
+        selected={selectedAnimals}
+        onToggle={(value) =>
+          setSelectedAnimals((current) => toggleValue(current, value as AnimalType))
+        }
+        defaultOpen={false}
+      />
     </div>
   );
 
@@ -201,58 +213,102 @@ export function ProductsCatalogue({
     <LayoutGroup>
       <div className="relative mx-auto flex min-h-screen max-w-[1320px] gap-10 px-6 py-12">
         <aside className="hidden w-[280px] flex-shrink-0 md:block">
-          <div className="sticky top-24 max-h-[calc(100vh-7rem)] space-y-8 overflow-y-auto pr-2">
-            {filterPanel}
+          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="flex items-center justify-between border-b border-border/70 pb-3 mb-2">
+              <h3 className="font-heading text-lg font-bold text-deep-navy flex items-center gap-2">
+                <span>Filters</span>
+                {chips.length > 0 && (
+                  <span className="font-mono text-xs font-bold text-brand-orange">
+                    ({chips.length})
+                  </span>
+                )}
+              </h3>
+              {(chips.length > 0 || query.trim().length > 0) && (
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  className="flex items-center gap-1 font-mono text-xs font-semibold text-cadet-blue hover:text-brand-orange cursor-pointer transition-colors"
+                >
+                  <RotateCcw className="h-3 w-3" strokeWidth={1.75} />
+                  Clear
+                </button>
+              )}
+            </div>
+            {filterList}
           </div>
         </aside>
 
         <div className="min-w-0 flex-1">
-          <div className="mb-10">
-            <h1 className="font-heading mb-2 text-[32px] leading-tight font-bold text-deep-navy md:text-[40px]">
+          <div className="mb-8 border-b border-border/60 pb-6">
+            <h1 className="font-heading mb-2 text-3xl font-extrabold tracking-tight text-deep-navy md:text-4xl leading-tight">
               Clinical Products Catalogue
             </h1>
-            <p className="mb-8 text-primary-navy">
-              High-density, enquiry-led clinical catalogue for verifiable veterinary outcomes.
+            <p className="max-w-2xl text-sm leading-relaxed text-cadet-blue md:text-base">
+              Explore CattleVibes veterinary medicines, nutritional support and preventive healthcare products.
             </p>
-            <div className="relative h-14 w-full max-w-2xl">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-primary-navy/70">
-                <Search className="h-5 w-5" strokeWidth={1.75} />
+
+            <div className="mt-6 flex flex-col gap-3.5">
+              <div className="flex items-center gap-2.5 max-w-2xl">
+                <div className="relative h-12 md:h-13 flex-1">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-cadet-blue/70">
+                    <Search className="h-4.5 w-4.5" strokeWidth={1.75} />
+                  </div>
+                  <input
+                    type="search"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="Search product or molecule..."
+                    className="h-full w-full rounded-xl border border-border/80 bg-white pr-4 pl-11 text-sm md:text-base text-deep-navy shadow-xs transition-all outline-none placeholder:text-text-muted focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMobileFiltersOpen(true)}
+                  className="glare-button flex h-12 items-center gap-2 rounded-xl border border-border/80 bg-white px-3.5 text-sm font-semibold text-deep-navy md:hidden shadow-xs hover:border-brand-orange active:scale-95 transition-all cursor-pointer shrink-0"
+                  aria-label="Open filters sidebar"
+                >
+                  <SlidersHorizontal className="h-4 w-4 text-brand-orange" />
+                  <span className="text-xs uppercase tracking-wider">Filters</span>
+                  {chips.length > 0 && (
+                    <span className="font-mono text-xs font-bold text-brand-orange">
+                      ({chips.length})
+                    </span>
+                  )}
+                </button>
               </div>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search by product name or molecule..."
-                className="h-full w-full rounded-xl border border-border/80 bg-white pr-4 pl-12 text-deep-navy shadow-sm transition-all outline-none placeholder:text-primary-navy/60 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
-              />
+
+              {/* Dynamic Product Count & Clear Filters Row */}
+              <div className="flex items-center justify-between pt-1">
+                <div className="font-mono text-xs font-bold uppercase tracking-wider text-cadet-blue">
+                  {filtered.length} {filtered.length === 1 ? "PRODUCT" : "PRODUCTS"}
+                </div>
+
+                {(chips.length > 0 || query.trim().length > 0) && (
+                  <button
+                    type="button"
+                    onClick={clearAll}
+                    className="inline-flex items-center gap-1 font-mono text-xs font-bold text-brand-orange hover:underline cursor-pointer transition-colors"
+                  >
+                    <span>Clear filters</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </button>
+                )}
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setMobileFiltersOpen(true)}
-              className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border/80 bg-white px-4 py-2.5 text-sm font-medium text-deep-navy md:hidden shadow-sm"
-            >
-              <SlidersHorizontal className="h-4 w-4" />
-              Filters
-              {chips.length > 0 && (
-                <span className="rounded-md bg-brand-orange px-1.5 py-0.5 text-[11px] font-bold text-white">
-                  {chips.length}
-                </span>
-              )}
-            </button>
           </div>
 
           {chips.length > 0 && (
-            <div className="mb-8 flex flex-wrap gap-2">
+            <div className="mb-6 flex flex-wrap gap-2">
               {chips.map((chip) => (
                 <span
                   key={`${chip.group}-${chip.value}`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-white px-2.5 py-1 text-xs font-medium text-primary-navy shadow-xs"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-white px-2.5 py-1 text-xs font-medium text-deep-navy shadow-xs"
                 >
-                  {chip.value}
+                  <span>{chip.value}</span>
                   <button
                     type="button"
                     onClick={() => removeChip(chip.group, chip.value)}
-                    className="text-primary-navy hover:text-brand-orange"
+                    className="text-cadet-blue hover:text-brand-orange transition-colors cursor-pointer"
                     aria-label={`Remove ${chip.value}`}
                   >
                     <X className="h-3.5 w-3.5" strokeWidth={2} />
@@ -263,20 +319,20 @@ export function ProductsCatalogue({
           )}
 
           {filtered.length === 0 ? (
-            <div className="mt-12 flex flex-col items-center justify-center rounded-xl border border-border bg-white p-12 text-center">
-              <Search className="mb-4 h-12 w-12 text-primary-navy/40" strokeWidth={1.25} />
-              <h3 className="font-heading mb-2 text-xl font-bold text-deep-navy">
-                No clinical products match these criteria.
-              </h3>
-              <p className="mb-6 text-text-muted">
-                Try adjusting your filters or search terms.
+            <div className="mt-8 flex flex-col items-center justify-center rounded-xl border border-border bg-white p-12 text-center">
+              <h2 className="font-heading mb-2 text-xl font-bold text-deep-navy">
+                No products found
+              </h2>
+              <p className="mb-6 text-sm text-text-muted">
+                Try removing a filter or searching for another product.
               </p>
               <button
                 type="button"
                 onClick={clearAll}
-                className="font-heading rounded-xl bg-brand-orange px-6 py-2.5 text-sm font-bold tracking-[0.02em] text-white uppercase transition-colors hover:bg-deep-navy"
+                className="inline-flex items-center gap-1 font-mono text-xs font-bold uppercase tracking-wider text-brand-orange hover:underline cursor-pointer"
               >
-                Clear All Filters
+                <span>Clear filters</span>
+                <span aria-hidden="true">&rarr;</span>
               </button>
             </div>
           ) : (
@@ -335,29 +391,119 @@ export function ProductsCatalogue({
         </div>
       </div>
 
-      {mobileFiltersOpen && (
-        <div className="fixed inset-0 z-[105] md:hidden">
-          <button
-            type="button"
-            className="absolute inset-0 bg-deep-navy/40"
-            aria-label="Close filters"
-            onClick={() => setMobileFiltersOpen(false)}
-          />
-          <div className="absolute inset-y-0 left-0 w-[min(100%,320px)] overflow-y-auto bg-white p-6 border-r border-border">
-            <div className="mb-6 flex items-center justify-between">
-              <p className="font-heading text-lg font-bold text-deep-navy">Filters</p>
-              <button
-                type="button"
-                onClick={() => setMobileFiltersOpen(false)}
-                aria-label="Close filters"
-              >
-                <X className="h-5 w-5 text-deep-navy" />
-              </button>
-            </div>
-            {filterPanel}
+      {/* Mobile Floating Filter Button when browsing */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
+        <button
+          type="button"
+          onClick={() => setMobileFiltersOpen(true)}
+          className="pointer-events-auto flex items-center gap-2 rounded-xl border border-white/20 bg-deep-navy px-5 py-2.5 text-xs font-bold tracking-wide uppercase text-white shadow-2xl transition-transform active:scale-95 cursor-pointer"
+          aria-label="Open filter options"
+        >
+          <SlidersHorizontal className="h-3.5 w-3.5 text-brand-orange" />
+          <span>Filters</span>
+          {chips.length > 0 ? (
+            <span className="font-mono text-xs font-bold text-brand-orange">
+              ({chips.length})
+            </span>
+          ) : (
+            <span className="text-white/60 font-mono text-[11px]">({filtered.length})</span>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Collapsible Filter Sidebar Drawer */}
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <div className="fixed inset-0 z-[120] md:hidden">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute inset-0 bg-deep-navy/65 cursor-pointer"
+              onClick={() => setMobileFiltersOpen(false)}
+              aria-label="Close filters backdrop"
+            />
+
+            {/* Collapsible Sidebar Drawer with Apple-style fluid spring physics & drag dismiss */}
+            <motion.aside
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 300, mass: 0.8 }}
+              drag="x"
+              dragConstraints={{ left: -340, right: 0 }}
+              dragElastic={0.05}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -60 || info.velocity.x < -250) {
+                  setMobileFiltersOpen(false);
+                }
+              }}
+              className="absolute inset-y-0 left-0 flex w-[min(100%,340px)] flex-col bg-white shadow-2xl border-r border-border"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Filter catalogue products"
+            >
+              {/* Header with Title, Count, Reset & Close */}
+              <div className="flex items-center justify-between border-b border-border/80 px-5 py-4 bg-soft-white/70">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-deep-navy/5 text-deep-navy">
+                    <SlidersHorizontal className="h-4 w-4 text-brand-orange" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-deep-navy leading-none">
+                      Filters
+                    </h3>
+                    {chips.length > 0 && (
+                      <span className="font-mono text-[11px] font-medium text-brand-orange">
+                        {chips.length} active {chips.length === 1 ? "filter" : "filters"}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {chips.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={clearAll}
+                      className="px-2.5 py-1 text-xs font-semibold text-cadet-blue hover:text-brand-orange transition-colors cursor-pointer"
+                    >
+                      Reset
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setMobileFiltersOpen(false)}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-deep-navy/70 hover:text-deep-navy hover:bg-black/5 transition-colors cursor-pointer active:scale-90"
+                    aria-label="Close filters"
+                  >
+                    <X className="h-5 w-5" strokeWidth={1.75} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Scrollable Filter Body */}
+              <div className="flex-1 overflow-y-auto px-5 py-2 custom-scrollbar divide-y divide-border/60">
+                {filterList}
+              </div>
+
+              {/* Sticky Footer with Show Products Button */}
+              <div className="border-t border-border/80 bg-white p-4 shadow-[0_-4px_16px_rgba(0,0,0,0.04)]">
+                <button
+                  type="button"
+                  onClick={() => setMobileFiltersOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-deep-navy py-3 px-4 font-heading text-sm font-bold tracking-wide text-white transition-all hover:bg-brand-orange active:scale-[0.98] shadow-sm cursor-pointer"
+                >
+                  <span>Show {filtered.length} {filtered.length === 1 ? "Product" : "Products"}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </motion.aside>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {viewProduct && (
@@ -394,33 +540,78 @@ function FilterGroup({
   options,
   selected,
   onToggle,
+  defaultOpen = true,
 }: {
   title: string;
   options: string[];
   selected: string[];
   onToggle: (value: string) => void;
+  defaultOpen?: boolean;
 }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
   return (
-    <div className="mb-6">
-      <h4 className="font-heading mb-3 font-medium text-primary-navy">{title}</h4>
-      <div className="space-y-2">
-        {options.map((option) => (
-          <label
-            key={option}
-            className="group flex cursor-pointer items-center gap-3"
-          >
-            <input
-              type="checkbox"
-              checked={selected.includes(option)}
-              onChange={() => onToggle(option)}
-              className="h-5 w-5 cursor-pointer rounded-md border-border text-brand-orange focus:ring-brand-orange focus:ring-offset-0"
-            />
-            <span className="text-sm text-text-muted transition-colors group-hover:text-deep-navy">
-              {option}
+    <div className="py-3.5 first:pt-1 last:pb-1">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full items-center justify-between py-1 text-left group cursor-pointer select-none"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-2">
+          <h4 className="font-heading font-semibold text-deep-navy text-sm tracking-wider uppercase">
+            {title}
+          </h4>
+          {selected.length > 0 && (
+            <span className="font-mono text-xs font-bold text-brand-orange">
+              ({selected.length})
             </span>
-          </label>
-        ))}
-      </div>
+          )}
+        </div>
+        <ChevronDown
+          className={`h-4 w-4 text-cadet-blue/70 transition-transform duration-200 group-hover:text-deep-navy ${
+            isOpen ? "rotate-180 text-deep-navy" : ""
+          }`}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="pt-2 pb-1 space-y-1">
+              {options.map((option) => {
+                const isChecked = selected.includes(option);
+                return (
+                  <label
+                    key={option}
+                    className={`group flex min-h-[38px] cursor-pointer items-center justify-between rounded-md py-1.5 pr-2.5 transition-colors active:scale-[0.99] ${
+                      isChecked
+                        ? "border-l-2 border-brand-orange bg-brand-orange/8 pl-3 font-semibold text-deep-navy"
+                        : "border-l-2 border-transparent pl-3 text-text-muted hover:bg-soft-white/70 hover:text-deep-navy"
+                    }`}
+                  >
+                    <span className="text-sm select-none truncate pr-2">
+                      {option}
+                    </span>
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => onToggle(option)}
+                      className="h-4 w-4 rounded border-border/80 text-brand-orange accent-brand-orange focus:ring-brand-orange/20 cursor-pointer"
+                    />
+                  </label>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -455,7 +646,7 @@ function CatalogueProductCard({
   const packshot = <ProductPackshot src={current} alt={product.name} />;
 
   return (
-    <div className="group flex min-h-[460px] h-full flex-col justify-between rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-yam-orange/50">
+    <div className="group flex min-h-[460px] h-full flex-col justify-between rounded-xl border border-border/80 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-orange/40 hover:shadow-sm">
       <div className="relative h-[250px] shrink-0 rounded-t-xl bg-soft-white overflow-hidden">
         <button
           type="button"
@@ -477,7 +668,7 @@ function CatalogueProductCard({
           )}
         </button>
         <div className="pointer-events-none absolute top-4 left-4">
-          <span className="rounded-lg bg-white/90 px-2.5 py-1 text-xs font-bold text-deep-navy backdrop-blur shadow-sm border border-border/40">
+          <span className="rounded-lg bg-white px-2.5 py-1 text-xs font-bold text-deep-navy shadow-xs border border-border/70">
             {product.formulation}
           </span>
         </div>
@@ -487,7 +678,7 @@ function CatalogueProductCard({
               type="button"
               onClick={showPrevious}
               aria-label="Previous image"
-              className="absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
+              className="absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
             >
               <ChevronLeft className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
@@ -495,11 +686,11 @@ function CatalogueProductCard({
               type="button"
               onClick={showNext}
               aria-label="Next image"
-              className="absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
+              className="absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 cursor-pointer md:opacity-0 md:group-hover:opacity-100"
             >
               <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
-            <div className="pointer-events-none absolute bottom-2 right-2 z-10 rounded border border-border/60 bg-white/90 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-cadet-blue backdrop-blur-xs">
+            <div className="pointer-events-none absolute bottom-2 right-2 z-10 rounded border border-border/70 bg-white px-1.5 py-0.5 font-mono text-[10px] font-semibold text-cadet-blue shadow-xs">
               0{slide + 1} / 0{images.length}
             </div>
           </>
@@ -507,6 +698,9 @@ function CatalogueProductCard({
       </div>
       <div className="flex flex-1 flex-col justify-between p-5">
         <div>
+          <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-cadet-blue mb-1">
+            {product.category}
+          </p>
           <Link
             href={`/products/${product.slug}`}
             className="group/title block text-left"
@@ -521,16 +715,16 @@ function CatalogueProductCard({
           <button
             type="button"
             onClick={() => onView(slide)}
-            className="flex-1 flex h-10 items-center justify-center gap-1 rounded-xl border border-primary-navy/25 bg-white text-xs font-semibold text-deep-navy transition-all hover:border-brand-orange hover:text-brand-orange hover:shadow-sm cursor-pointer"
+            className="flex-1 flex h-10 items-center justify-center gap-1 rounded-xl border border-border/90 bg-white text-xs font-bold text-deep-navy transition-all hover:border-brand-orange hover:text-brand-orange cursor-pointer"
           >
             Quick View
           </button>
           <Link
             href={`/products/${product.slug}`}
-            className="group/btn flex-1 flex h-10 items-center justify-center gap-1 rounded-xl bg-deep-navy text-xs font-semibold text-white transition-all hover:bg-deep-navy/90 hover:shadow-sm"
+            className="glare-button group/btn flex-1 flex h-10 items-center justify-center gap-1 rounded-xl bg-deep-navy text-xs font-bold text-white transition-all hover:bg-brand-orange"
           >
-            Details
-            <ArrowRight className="h-3.5 w-3.5 text-brand-orange transition-transform group-hover/btn:translate-x-1" strokeWidth={2} />
+            <span>Details</span>
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" strokeWidth={2} />
           </Link>
         </div>
       </div>

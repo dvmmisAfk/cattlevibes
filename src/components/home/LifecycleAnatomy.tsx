@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -21,10 +21,9 @@ interface StageData {
   label: string;
   shortDesc: string;
   organName: string;
-  anatomicalAxis: string;
-  clinicalFocus: string;
-  narrative: string;
-  biomarkers: string[];
+  challenge: string;
+  solution: string;
+  products: { name: string; href: string }[];
   cx: number;
   cy: number;
   rx: number;
@@ -39,132 +38,114 @@ const STAGES: StageData[] = [
     stageNumber: "01",
     label: "Grow",
     shortDesc: "Growth & Bone Strength",
-    organName: "Bones & Skeletal Frame",
-    anatomicalAxis: "Healthy Skeletal Growth",
-    clinicalFocus: "Essential minerals and vitamins to build strong bones, sturdy frames, and healthy calves.",
-    narrative:
-      "Easily absorbed minerals support steady bone growth and healthy weight gain, helping calves develop into strong, high-yielding cattle without stress on their bodies.",
-    biomarkers: [
-      "Bone Development: Strong & Sturdy",
-      "Mineral Uptake: High Absorption",
-      "Calf Growth: Steady & Healthy",
+    organName: "Skeletal & Muscular Frame",
+    challenge: "Rapid growth phases place heavy strain on developing bones and calf immunity.",
+    solution: "Easily absorbed ionic minerals that build dense bones and healthy calf weight without metabolic stress.",
+    products: [
+      { name: "Cattlemin", href: "/products/cattlemin" },
+      { name: "Cattlestar Gold", href: "/products/cattlestar-gold" },
     ],
     cx: 295,
     cy: 88,
     rx: 80,
     ry: 32,
     callout: { x: 295, y: 35, label: "Spine & Skeletal Frame" },
-    href: "/solutions#animal-nutrition",
+    href: "/products?category=Nutritional+Supplements",
   },
   {
     id: "digest",
     stageNumber: "02",
     label: "Digest",
     shortDesc: "Healthy Stomach & Liver",
-    organName: "Stomach & Liver Care",
-    anatomicalAxis: "Digestion & Feed Conversion",
-    clinicalFocus: "Protects the liver and balances digestion to help cattle get the most from their daily feed.",
-    narrative:
-      "Natural herbal extracts keep the stomach balanced, support liver health, and encourage a strong appetite so cattle convert daily feed into more milk and energy.",
-    biomarkers: [
-      "Stomach Balance: Settled & Stable",
-      "Feed Utilization: Better Nutrient Uptake",
-      "Liver Health: Natural Herbal Protection",
+    organName: "Rumen & Hepatic System",
+    challenge: "Acidosis, sluggish digestion, and hepatic stress sharply reduce daily feed efficiency.",
+    solution: "Protective herbal extracts that shield liver cells, restore appetite, and stabilize rumen flora.",
+    products: [
+      { name: "LIVER-OK", href: "/products/liver-ok" },
+      { name: "RUMI-OK", href: "/products/rumi-ok-powder" },
     ],
     cx: 370,
     cy: 180,
     rx: 62,
     ry: 48,
     callout: { x: 370, y: 110, label: "Stomach & Digestion" },
-    href: "/solutions#digestion-liver",
+    href: "/products?category=Digestive+%26+Liver+Health",
   },
   {
     id: "calve",
     stageNumber: "03",
     label: "Calve",
     shortDesc: "Safe Calving & Cleansing",
-    organName: "Calving Care & Cleansing",
-    anatomicalAxis: "Post-Calving Cleansing & Recovery",
-    clinicalFocus: "Safe herbal tonics and minerals to help cows cleanse naturally and recover after calving.",
-    narrative:
-      "Natural, hormone-free herbal care clears uterine discharge smoothly and restores essential calcium, helping cows bounce back quickly and get ready for the next cycle.",
-    biomarkers: [
-      "Post-Calving Cleansing: Fast & Natural",
-      "Calcium Levels: Rapidly Restored",
-      "Next Breeding: On Time & Ready",
+    organName: "Reproductive Tract",
+    challenge: "Delayed uterine cleansing and retained lochia lengthen calving-to-conception intervals.",
+    solution: "Hormone-free herbal uterotonics that clear lochia and restore uterine tone for on-time breeding.",
+    products: [
+      { name: "UTROVIBE", href: "/products/utrovibe" },
+      { name: "CATTLESPAS", href: "/products/cattlespas" },
     ],
     cx: 485,
     cy: 220,
     rx: 46,
     ry: 36,
     callout: { x: 540, y: 160, label: "Uterine Recovery & Cleansing" },
-    href: "/solutions#reproductive-care",
+    href: "/products?category=Reproductive+%26+Uterine+Care",
   },
   {
     id: "produce",
     stageNumber: "04",
     label: "Produce",
     shortDesc: "Daily Milk Yield & Vitality",
-    organName: "Udder Health & Milk Output",
-    anatomicalAxis: "Sustained Milk Production",
-    clinicalFocus: "Fast-absorbing calcium and minerals to sustain peak milk yield and protect body reserves.",
-    narrative:
-      "High-grade minerals and ionic calcium sustain daily milk production and guard against milk fever, keeping high-yielding cows strong, healthy, and energized.",
-    biomarkers: [
-      "Daily Milk Yield: Steady Peak Output",
-      "Udder Vitality: Daily Protection",
-      "Energy Reserves: Prevents Milk Drops",
+    organName: "Udder & Lactation System",
+    challenge: "Peak lactation drains calcium and phosphorus reserves, triggering subclinical hypocalcemia.",
+    solution: "High-potency calcium gels and oral suspensions that sustain peak yields and prevent sudden drops.",
+    products: [
+      { name: "CATTLESTAR", href: "/products/cattlestar" },
+      { name: "CATTLESTAR-DS", href: "/products/cattlestar-ds" },
     ],
     cx: 520,
     cy: 268,
     rx: 40,
     ry: 28,
     callout: { x: 585, y: 240, label: "Udder & Milk Production" },
-    href: "/solutions#lactation-management",
+    href: "/products?category=Calcium+%26+Mineral+Support",
   },
   {
     id: "protect",
     stageNumber: "05",
     label: "Protect",
     shortDesc: "Udder & Infection Defense",
-    organName: "Udder Care & Infection Control",
-    anatomicalAxis: "Infection Shield & Udder Health",
-    clinicalFocus: "Targeted veterinary solutions to clear infections quickly and relieve painful swelling.",
-    narrative:
-      "Fast-acting anti-infectives and soothing formulas stop harmful bacteria and reduce painful swelling, clearing infections quickly so cattle recover safely.",
-    biomarkers: [
-      "Infection Defense: Fast-Acting Relief",
-      "Swelling & Pain: Rapidly Reduced",
-      "Udder Health: Actively Protected",
+    organName: "Immune & Teat Defense",
+    challenge: "Bacterial pathogen entry into teat canals causes acute mastitis and irreversible tissue loss.",
+    solution: "Targeted third-generation cephalosporins and anti-infectives providing rapid bacterial clearance.",
+    products: [
+      { name: "CATTLE-CEF", href: "/products/cattle-cef" },
+      { name: "CATTLECEF-SB", href: "/products/cattlecef-sb" },
     ],
     cx: 528,
     cy: 290,
     rx: 30,
     ry: 20,
     callout: { x: 590, y: 325, label: "Udder & Teat Defense" },
-    href: "/solutions#infection-control",
+    href: "/products?category=Veterinary+Medicines",
   },
   {
     id: "recover",
     stageNumber: "06",
     label: "Recover",
     shortDesc: "Pain Relief & Fast Recovery",
-    organName: "Pain & Fever Relief",
-    anatomicalAxis: "Comfort & Quick Recovery",
-    clinicalFocus: "Fast relief from high fever, muscle pain, and inflammation to restore mobility and appetite.",
-    narrative:
-      "Trusted fever reducers and pain relievers keep animals comfortable during illness or injury, helping them regain appetite and return to normal production quickly.",
-    biomarkers: [
-      "Fever Relief: Fast Temperature Drop",
-      "Pain & Swelling: Soothed Fast",
-      "Full Recovery: Back on Feet Faster",
+    organName: "Systemic Recovery & Pain Relief",
+    challenge: "High pyrexia, severe musculoskeletal pain, and trauma suppress appetite and mobility.",
+    solution: "Rapid veterinary antipyretics and NSAIDs that swiftly bring down fever and restore active feeding.",
+    products: [
+      { name: "PYROVIBE Injection", href: "/products/pyrovibe-injection" },
+      { name: "MEGLUVIBE", href: "/products/megluvibe" },
     ],
     cx: 265,
     cy: 195,
     rx: 55,
     ry: 45,
     callout: { x: 200, y: 135, label: "Fever & Pain Relief" },
-    href: "/solutions#critical-care",
+    href: "/products?category=Veterinary+Medicines",
   },
 ];
 
@@ -187,43 +168,19 @@ function AnatomicalCowStage({
         aria-hidden="true"
       />
 
-      {/* Unified SVG Canvas: Image and glowing reticle share the exact same coordinate engine */}
+      {/* Unified SVG Canvas: Image and clinical reticle share the exact same coordinate engine */}
       <svg
         viewBox="0 0 690 460"
         className="pointer-events-none h-full w-full overflow-visible"
         aria-hidden="true"
       >
         <defs>
-          {/* Volumetric Organ Highlight Gradient */}
-          <radialGradient id="organ-core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#fff2cc" stopOpacity="0.85" />
-            <stop offset="40%" stopColor="#ea9216" stopOpacity="0.55" />
-            <stop offset="80%" stopColor="#ea9216" stopOpacity="0.15" />
+          {/* Subtle Clinical Organ Highlight Gradient */}
+          <radialGradient id="organ-zone-tint" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ea9216" stopOpacity="0.25" />
+            <stop offset="65%" stopColor="#ea9216" stopOpacity="0.08" />
             <stop offset="100%" stopColor="#ea9216" stopOpacity="0" />
           </radialGradient>
-
-          {/* Micro HUD Glow */}
-          <filter id="hud-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-
-          <filter id="luminous-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur1" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="28" result="blur2" />
-            <feMerge>
-              <feMergeNode in="blur2" />
-              <feMergeNode in="blur1" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-
-          <filter id="soft-blur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
-          </filter>
         </defs>
 
         {/* 1. Base Anatomical Cow Model: Locked to exact (0,0,690,460) viewBox */}
@@ -234,26 +191,11 @@ function AnatomicalCowStage({
           width="690"
           height="460"
           preserveAspectRatio="xMidYMid meet"
-          style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
+          style={{ filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.45))" }}
         />
 
-        {/* 2. Anatomical Zone Volumetric Illumination */}
+        {/* 2. Anatomical Zone Focal Highlight */}
         <g>
-          {/* Ambient Volumetric Glow Cloud */}
-          <motion.ellipse
-            initial={false}
-            animate={{
-              cx: activeStage.cx,
-              cy: activeStage.cy,
-              rx: activeStage.rx * 1.2,
-              ry: activeStage.ry * 1.2,
-            }}
-            transition={{ type: "spring", stiffness: 120, damping: 22 }}
-            fill="url(#organ-core-glow)"
-            filter="url(#luminous-glow)"
-            opacity={0.65}
-          />
-
           {/* Calibrated Anatomical Highlight Core */}
           <motion.ellipse
             initial={false}
@@ -264,12 +206,10 @@ function AnatomicalCowStage({
               ry: activeStage.ry,
             }}
             transition={{ type: "spring", stiffness: 140, damping: 22 }}
-            fill="url(#organ-core-glow)"
-            filter="url(#soft-blur)"
-            opacity={0.7}
+            fill="url(#organ-zone-tint)"
           />
 
-          {/* Segmented Technical Target Contour (Precision CAD Stippling) */}
+          {/* Clean Technical Target Contour (Precision Surgical Stippling) */}
           <motion.ellipse
             initial={false}
             animate={{
@@ -281,12 +221,12 @@ function AnatomicalCowStage({
             transition={{ type: "spring", stiffness: 140, damping: 22 }}
             fill="none"
             stroke="#ea9216"
-            strokeWidth="1.5"
-            strokeDasharray="8 5 2 5"
-            className="drop-shadow-[0_0_6px_rgba(234,146,22,0.7)]"
+            strokeWidth="1.2"
+            strokeDasharray="4 4"
+            strokeOpacity="0.75"
           />
 
-          {/* Expanding Sonar Telemetry Pulse */}
+          {/* Subtle Expanding Precision Ring */}
           <motion.ellipse
             key={`pulse-${activeStage.id}`}
             cx={activeStage.cx}
@@ -294,119 +234,78 @@ function AnatomicalCowStage({
             rx={activeStage.rx}
             ry={activeStage.ry}
             fill="none"
-            stroke="#ffc266"
+            stroke="#ea9216"
             strokeWidth="1"
-            initial={{ scale: 0.96, opacity: 0.8 }}
-            animate={{ scale: 1.35, opacity: 0 }}
+            initial={{ scale: 0.98, opacity: 0.6 }}
+            animate={{ scale: 1.15, opacity: 0 }}
             transition={{
-              duration: 2.4,
+              duration: 2.2,
               repeat: Infinity,
               ease: "easeOut",
             }}
           />
         </g>
 
-        {/* 3. Ultra-Premium Clinical HUD Cursor & Crosshair Reticle */}
+        {/* 3. High-Precision Clinical Reticle */}
         <motion.g
           initial={false}
           animate={{ x: activeStage.cx, y: activeStage.cy }}
           transition={{ type: "spring", stiffness: 140, damping: 22 }}
         >
-          {/* Subtle Outer Rotating Scanner Ring */}
-          <motion.circle
-            r="26"
+          {/* Precision Outer Stippled Aperture */}
+          <circle
+            r="18"
             fill="none"
             stroke="#ea9216"
-            strokeWidth="1.2"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="4 8"
-            strokeOpacity="0.5"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-          />
-
-          {/* Precision 4-Point Target Aperture Ring */}
-          <circle
-            r="16"
-            fill="none"
-            stroke="rgba(255, 255, 255, 0.4)"
             strokeWidth="1"
             vectorEffect="non-scaling-stroke"
-            strokeDasharray="2 4"
+            strokeDasharray="3 3"
+            strokeOpacity="0.6"
           />
 
-          {/* Tactical Crosshairs (N, S, E, W) */}
-          <g stroke="#ea9216" strokeWidth="1.5" strokeLinecap="round" filter="url(#hud-glow)">
-            {/* North fin */}
-            <line x1="0" y1="-8" x2="0" y2="-22" vectorEffect="non-scaling-stroke" />
-            <line x1="-3" y1="-22" x2="3" y2="-22" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
-
-            {/* South fin */}
-            <line x1="0" y1="8" x2="0" y2="22" vectorEffect="non-scaling-stroke" />
-            <line x1="-3" y1="22" x2="3" y2="22" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
-
-            {/* West fin */}
-            <line x1="-8" y1="0" x2="-22" y2="0" vectorEffect="non-scaling-stroke" />
-            <line x1="-22" y1="-3" x2="-22" y2="3" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
-
-            {/* East fin */}
-            <line x1="8" y1="0" x2="22" y2="0" vectorEffect="non-scaling-stroke" />
-            <line x1="22" y1="-3" x2="22" y2="3" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
+          {/* Clean Medical Crosshairs (N, S, E, W) */}
+          <g stroke="#ea9216" strokeWidth="1.2" strokeLinecap="square">
+            <line x1="0" y1="-8" x2="0" y2="-18" vectorEffect="non-scaling-stroke" />
+            <line x1="0" y1="8" x2="0" y2="18" vectorEffect="non-scaling-stroke" />
+            <line x1="-8" y1="0" x2="-18" y2="0" vectorEffect="non-scaling-stroke" />
+            <line x1="8" y1="0" x2="18" y2="0" vectorEffect="non-scaling-stroke" />
           </g>
 
-          {/* Inner Optics Lens (High-Grade Crystal Reticle) */}
+          {/* Center Precision Pinpoint */}
           <circle
-            r="7"
-            fill="rgba(234, 146, 22, 0.25)"
-            stroke="#ffffff"
-            strokeWidth="1.5"
-            vectorEffect="non-scaling-stroke"
-            className="drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]"
+            r="3"
+            fill="#ea9216"
           />
-
-          {/* Inner Amber Focus Ring */}
           <circle
-            r="4"
-            fill="none"
-            stroke="#ea9216"
-            strokeWidth="1.2"
-            vectorEffect="non-scaling-stroke"
-          />
-
-          {/* Center Precision Micro-Pinpoint */}
-          <circle
-            r="2"
+            r="1.5"
             fill="#ffffff"
-            className="drop-shadow-[0_0_6px_#ffffff]"
           />
 
-          {/* Micro HUD Telemetry Badge Floating next to Crosshair */}
+          {/* Technical Telemetry Tag */}
           {activeStage.cx > 460 ? (
             <g transform="translate(-144, -24)" className="hidden sm:block">
-              {/* Angled Leader Line from Reticle */}
+              {/* Leader Line from Reticle */}
               <path
                 d="M 126 12 L 114 0 L 100 0"
                 fill="none"
                 stroke="#ea9216"
-                strokeWidth="1.2"
-                strokeOpacity="0.75"
+                strokeWidth="1"
+                strokeOpacity="0.6"
               />
-              {/* Telemetry Badge Container */}
+              {/* Technical Container */}
               <rect
                 x="-8"
                 y="-12"
                 width="108"
                 height="24"
-                rx="4"
-                fill="#101827"
-                fillOpacity="0.88"
+                rx="3"
+                fill="#1a2027"
                 stroke="#ea9216"
                 strokeWidth="1"
-                strokeOpacity="0.6"
-                className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                strokeOpacity="0.4"
               />
-              {/* Live Telemetry Beacon Dot */}
-              <circle cx="1" cy="0" r="2.5" fill="#ea9216" className="animate-pulse" />
+              {/* Active Marker Dot */}
+              <circle cx="1" cy="0" r="2" fill="#ea9216" />
               {/* Stage Callout Text */}
               <text
                 x="9"
@@ -414,7 +313,7 @@ function AnatomicalCowStage({
                 fill="#ffffff"
                 fontSize="8.5"
                 fontFamily="monospace"
-                fontWeight="bold"
+                fontWeight="600"
                 letterSpacing="0.08em"
               >
                 LOC: {activeStage.label.toUpperCase()} · {activeStage.stageNumber}
@@ -422,30 +321,28 @@ function AnatomicalCowStage({
             </g>
           ) : (
             <g transform="translate(32, -24)" className="hidden sm:block">
-              {/* Angled Leader Line from Reticle */}
+              {/* Leader Line from Reticle */}
               <path
                 d="M -14 12 L -2 0 L 10 0"
                 fill="none"
                 stroke="#ea9216"
-                strokeWidth="1.2"
-                strokeOpacity="0.75"
+                strokeWidth="1"
+                strokeOpacity="0.6"
               />
-              {/* Telemetry Badge Container */}
+              {/* Technical Container */}
               <rect
                 x="10"
                 y="-12"
                 width="108"
                 height="24"
-                rx="4"
-                fill="#101827"
-                fillOpacity="0.88"
+                rx="3"
+                fill="#1a2027"
                 stroke="#ea9216"
                 strokeWidth="1"
-                strokeOpacity="0.6"
-                className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                strokeOpacity="0.4"
               />
-              {/* Live Telemetry Beacon Dot */}
-              <circle cx="19" cy="0" r="2.5" fill="#ea9216" className="animate-pulse" />
+              {/* Active Marker Dot */}
+              <circle cx="19" cy="0" r="2" fill="#ea9216" />
               {/* Stage Callout Text */}
               <text
                 x="27"
@@ -453,7 +350,7 @@ function AnatomicalCowStage({
                 fill="#ffffff"
                 fontSize="8.5"
                 fontFamily="monospace"
-                fontWeight="bold"
+                fontWeight="600"
                 letterSpacing="0.08em"
               >
                 LOC: {activeStage.label.toUpperCase()} · {activeStage.stageNumber}
@@ -500,28 +397,11 @@ export function LifecycleAnatomy() {
         <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-deep-navy px-8 py-12">
           <div className="mx-auto w-full max-w-[1340px]">
             
-            {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
-            <div className="mb-6 flex items-center justify-between border-t border-white/10 pt-3">
-              <span className="font-mono text-xs font-medium uppercase tracking-wider text-white/40">
-                Herd Lifecycle Intelligence · 06 Sequential Stages
-              </span>
-              <span className="font-mono text-xs font-semibold tracking-wider text-white/40">
-                {String(activeStageIndex + 1).padStart(2, "0")} <span className="text-white/20">/</span> 06
-              </span>
-            </div>
-
-            {/* Section Sub-heading Header */}
-            <div className="mb-8 flex flex-col items-start justify-between gap-4 border-b border-white/[0.08] pb-5 sm:flex-row sm:items-end">
-              <div>
-                <h2 className="font-heading text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                  Built around the moments that matter.
-                </h2>
-              </div>
-
-              <p className="max-w-md text-sm leading-relaxed text-white/75">
-                Scroll through the lifecycle to see how targeted veterinary solutions
-                protect your herd's health and productivity at every stage.
-              </p>
+            {/* Section Header - Single Heading Directive */}
+            <div className="mb-8 border-b border-white/[0.08] pb-5">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Animal Healthcare Lifecycle
+              </h2>
             </div>
 
             {/* Main 2-Column Stage Layout */}
@@ -543,8 +423,8 @@ export function LifecycleAnatomy() {
                           onClick={() => setActiveStageIndex(idx)}
                           className={`group relative flex flex-col items-center rounded-xl px-2.5 py-2.5 transition-all duration-200 cursor-pointer touch-manipulation active:scale-[0.95] ${
                             isActive
-                              ? "bg-white/[0.12] shadow-[0_4px_16px_rgba(234,146,22,0.2)] border border-brand-orange/40"
-                              : "bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.08]"
+                              ? "bg-white/10 border border-brand-orange text-white"
+                              : "bg-white/[0.03] border border-white/10 hover:bg-white/[0.08]"
                           }`}
                         >
                           <span
@@ -588,55 +468,72 @@ export function LifecycleAnatomy() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -16 }}
                     transition={prefersReduced ? { duration: 0 } : appleSprings.criticallyDamped}
-                    className="rounded-2xl border border-white/15 border-t-white/30 bg-white/[0.06] backdrop-blur-xl p-8 lg:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                    className="rounded-2xl border border-white/10 bg-[#222A31] p-8 lg:p-9 shadow-lg"
                   >
                     {/* Stage Headline & Anatomical Target */}
-                    <h3 className="font-heading text-3xl font-black tracking-tight text-white sm:text-4xl">
-                      {activeStage.label}
-                    </h3>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="font-heading text-3xl font-black tracking-tight text-white sm:text-4xl">
+                        {activeStage.label}
+                      </h3>
+                      <span className="font-mono text-xs font-semibold text-brand-orange">
+                        STAGE {activeStage.stageNumber}
+                      </span>
+                    </div>
 
-                    <div className="mt-2.5 flex items-center gap-2">
-                      <span className="block h-1 w-1 rounded-sm bg-white/60" aria-hidden="true" />
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="block h-1.5 w-1.5 rounded-sm bg-brand-orange" aria-hidden="true" />
                       <span className="font-mono text-xs font-medium text-white/70">
                         Target: <span className="text-white">{activeStage.organName}</span>
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-medium leading-relaxed text-white/90 sm:text-sm">
-                      {activeStage.clinicalFocus}
-                    </p>
+                    {/* Commercial Challenge & Solution */}
+                    <div className="mt-6 space-y-4 border-t border-white/[0.08] pt-5">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                          The Challenge
+                        </span>
+                        <p className="mt-1 text-sm font-medium leading-relaxed text-white/90">
+                          {activeStage.challenge}
+                        </p>
+                      </div>
 
-                    <p className="mt-3 text-xs leading-relaxed text-white/75 sm:text-sm">
-                      {activeStage.narrative}
-                    </p>
-
-                    {/* Biomarkers / Key Health Indicators */}
-                    <div className="mt-6 border-t border-white/[0.08] pt-5">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                        Key Health Indicators &amp; Benefits
-                      </span>
-                      <ul className="mt-3 space-y-2.5">
-                        {activeStage.biomarkers.map((bm, bIdx) => (
-                          <li
-                            key={bIdx}
-                            className="flex items-center gap-3 text-xs font-medium text-white/80 sm:text-sm"
-                          >
-                            <span className="font-mono text-[11px] font-medium text-white/40 shrink-0">
-                              {String(bIdx + 1).padStart(2, "0")}
-                            </span>
-                            <span>{bm}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-orange">
+                          CattleVibes Solution
+                        </span>
+                        <p className="mt-1 text-sm leading-relaxed text-white/80">
+                          {activeStage.solution}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Action Link to Pillar Solutions */}
-                    <div className="mt-7 border-t border-white/[0.08] pt-5">
+                    {/* Targeted Products */}
+                    <div className="mt-6 border-t border-white/[0.08] pt-5">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                        Recommended Formulations
+                      </span>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {activeStage.products.map((p) => (
+                          <Link
+                            key={p.name}
+                            href={p.href}
+                            className="group flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-brand-orange/60 hover:bg-brand-orange/10 hover:text-brand-orange"
+                          >
+                            <span>{p.name}</span>
+                            <ArrowUpRight className="h-3 w-3 text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-orange" />
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Link */}
+                    <div className="mt-6 border-t border-white/[0.08] pt-4">
                       <Link
                         href={activeStage.href}
                         className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-brand-orange"
                       >
-                        Explore {activeStage.label} Solutions
+                        Explore {activeStage.label} Products
                         <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </Link>
                     </div>
@@ -654,24 +551,11 @@ export function LifecycleAnatomy() {
       <section className="block lg:hidden bg-deep-navy px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-lg sm:max-w-xl">
           
-          {/* ─── Architectural Datum Line (Top Section Anchor) ─── */}
-          <div className="mb-4 flex items-center justify-between border-t border-white/10 pt-2.5">
-            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-white/40">
-              Herd Lifecycle Intelligence
-            </span>
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-white/40">
-              {String(mobileStageIndex + 1).padStart(2, "0")} / 06
-            </span>
-          </div>
-
-          {/* Section Heading - Without AI Eyebrow */}
+          {/* Section Heading - Single Heading Directive */}
           <div className="border-b border-white/[0.08] pb-4">
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              Built around the moments that matter.
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Animal Healthcare Lifecycle
             </h2>
-            <p className="mt-2 text-xs leading-relaxed text-white/75">
-              Tap each stage below to see how targeted veterinary solutions protect your herd's health and productivity at every stage.
-            </p>
           </div>
 
           {/* 6-Stage Touch Selector (3x2 grid on mobile, 6 cols on sm) */}
@@ -686,8 +570,8 @@ export function LifecycleAnatomy() {
                     onClick={() => setMobileStageIndex(idx)}
                     className={`flex flex-col items-center justify-center rounded-md px-2 py-2 transition-all duration-200 cursor-pointer touch-manipulation active:scale-[0.96] ${
                       isActive
-                        ? "bg-white/[0.12] border border-white/25 text-white"
-                        : "bg-white/[0.03] border border-white/[0.06] text-white/70 hover:bg-white/[0.08]"
+                        ? "bg-white/10 border border-brand-orange text-white"
+                        : "bg-white/[0.03] border border-white/10 text-white/70 hover:bg-white/[0.08]"
                     }`}
                   >
                     <span
@@ -734,54 +618,70 @@ export function LifecycleAnatomy() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={prefersReduced ? { duration: 0 } : appleSprings.snappy}
-              className="rounded-2xl border border-white/15 border-t-white/30 bg-white/[0.06] backdrop-blur-xl p-5 sm:p-6 shadow-[0_16px_40px_rgba(0,0,0,0.28)]"
+              className="rounded-2xl border border-white/10 bg-[#222A31] p-5 sm:p-6 shadow-md"
             >
-              <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                {mobileStage.label}
-              </h3>
+              <div className="flex items-baseline justify-between gap-4">
+                <h3 className="font-heading text-2xl font-black tracking-tight text-white">
+                  {mobileStage.label}
+                </h3>
+                <span className="font-mono text-[11px] font-semibold text-brand-orange">
+                  STAGE {mobileStage.stageNumber}
+                </span>
+              </div>
 
               <div className="mt-1.5 flex items-center gap-1.5">
-                <span className="block h-1 w-1 rounded-sm bg-white/60" aria-hidden="true" />
+                <span className="block h-1.5 w-1.5 rounded-sm bg-brand-orange" aria-hidden="true" />
                 <span className="font-mono text-xs font-medium text-white/70">
                   Target: <span className="text-white">{mobileStage.organName}</span>
                 </span>
               </div>
 
-              <p className="mt-3 text-xs font-medium leading-relaxed text-white/90">
-                {mobileStage.clinicalFocus}
-              </p>
+              <div className="mt-4 space-y-3 border-t border-white/[0.08] pt-3.5">
+                <div>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
+                    The Challenge
+                  </span>
+                  <p className="mt-1 text-xs font-medium leading-relaxed text-white/90">
+                    {mobileStage.challenge}
+                  </p>
+                </div>
 
-              <p className="mt-2 text-[11px] leading-relaxed text-white/75">
-                {mobileStage.narrative}
-              </p>
+                <div>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-orange">
+                    CattleVibes Solution
+                  </span>
+                  <p className="mt-1 text-xs leading-relaxed text-white/80">
+                    {mobileStage.solution}
+                  </p>
+                </div>
+              </div>
 
-              {/* Biomarkers in 2-Column Grid */}
-              <div className="mt-4 border-t border-white/[0.08] pt-3.5">
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/70">
-                  Key Health Indicators &amp; Benefits
+              {/* Targeted Products */}
+              <div className="mt-4 border-t border-white/[0.08] pt-3">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
+                  Recommended Formulations
                 </span>
-                <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                  {mobileStage.biomarkers.map((bm, bIdx) => (
-                    <div
-                      key={bIdx}
-                      className="flex items-center gap-2 rounded-lg bg-white/[0.03] border border-white/[0.05] px-2.5 py-1.5 text-xs text-white/80"
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {mobileStage.products.map((p) => (
+                    <Link
+                      key={p.name}
+                      href={p.href}
+                      className="group flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-semibold text-white transition-colors hover:border-brand-orange/60 hover:bg-brand-orange/10 hover:text-brand-orange"
                     >
-                      <span className="font-mono text-[10px] font-medium text-white/40 shrink-0">
-                        0{bIdx + 1}
-                      </span>
-                      <span className="truncate text-[11px]">{bm}</span>
-                    </div>
+                      <span>{p.name}</span>
+                      <ArrowUpRight className="h-3 w-3 text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-orange" />
+                    </Link>
                   ))}
                 </div>
               </div>
 
               {/* Action Link */}
-              <div className="mt-4 border-t border-white/[0.08] pt-3.5">
+              <div className="mt-4 border-t border-white/[0.08] pt-3">
                 <Link
                   href={mobileStage.href}
                   className="group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-brand-orange"
                 >
-                  Explore {mobileStage.label} Solutions
+                  Explore {mobileStage.label} Products
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>

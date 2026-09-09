@@ -154,14 +154,14 @@ export function ProductQuickView({
   }, []);
 
   const navButtonClass =
-    "relative z-20 flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/20 bg-deep-navy/80 text-white backdrop-blur-md transition-all duration-200 hover:bg-deep-navy hover:border-white/40 active:scale-95 disabled:pointer-events-none disabled:opacity-30 cursor-pointer";
+    "relative z-20 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-deep-navy text-white shadow-lg transition-all duration-200 hover:bg-brand-orange hover:border-brand-orange active:scale-95 disabled:pointer-events-none disabled:opacity-30 cursor-pointer";
 
   return (
     <div className="fixed inset-0 z-[130] flex items-center justify-center gap-2 p-3 md:gap-5 md:p-6 lg:p-10">
       <motion.button
         type="button"
         aria-label="Close product details"
-        className="absolute inset-0 bg-deep-navy/70 backdrop-blur-md"
+        className="absolute inset-0 bg-deep-navy/75 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -232,7 +232,7 @@ export function ProductQuickView({
                 type="button"
                 onClick={showPreviousImage}
                 aria-label="Previous image"
-                className="absolute top-1/2 left-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+                className="absolute top-1/2 left-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
               >
                 <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
               </button>
@@ -240,85 +240,119 @@ export function ProductQuickView({
                 type="button"
                 onClick={showNextImage}
                 aria-label="Next image"
-                className="absolute top-1/2 right-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+                className="absolute top-1/2 right-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
               >
                 <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
               </button>
-              <div className="absolute bottom-3 right-3 z-10 rounded border border-border/60 bg-white/90 px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue backdrop-blur-xs">
+              <div className="absolute bottom-3 right-3 z-10 rounded border border-border/70 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
                 {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
               </div>
             </>
           )}
         </div>
 
-        <div className="flex min-h-0 flex-col overflow-y-auto p-6 md:p-8 lg:p-10">
-          <div className="mb-4 flex items-start justify-between gap-4">
-            <div>
-              <p className="font-mono text-xs font-semibold tracking-wider text-cadet-blue/70 uppercase">
-                {product.category}
-              </p>
-              <h2
-                id="product-quickview-title"
-                className="font-heading mt-1 text-2xl font-bold text-deep-navy md:text-3xl"
-              >
-                {product.name}
-              </h2>
-              <p className="mt-1 text-sm text-primary-navy/80">{product.formulation}</p>
-            </div>
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-lg p-1 text-primary-navy transition-transform hover:scale-105 hover:text-deep-navy active:scale-95"
-              aria-label="Close"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-
-          <p className="text-sm leading-relaxed text-text-muted">
-            {product.shortDescription}
-          </p>
-
-          <div className="mt-6">
-            <h3 className="text-sm font-bold text-deep-navy">Key Benefits</h3>
-            <ul className="mt-3 space-y-2">
-              {product.benefits.map((benefit) => (
-                <li
-                  key={benefit}
-                  className="flex items-start gap-2 text-sm text-text-muted"
+        <div className="flex min-h-0 flex-col justify-between overflow-y-auto p-6 md:p-8 lg:p-10 custom-scrollbar">
+          <div>
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div>
+                <p className="font-mono text-xs font-bold tracking-wider text-cadet-blue uppercase">
+                  {product.category} · {product.formulation}
+                </p>
+                <h2
+                  id="product-quickview-title"
+                  className="font-heading mt-1 text-2xl font-bold text-deep-navy md:text-3xl"
                 >
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-cadet-blue/60" />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
+                  {product.name}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-cadet-blue hover:text-deep-navy hover:bg-soft-white transition-colors cursor-pointer"
+                aria-label="Close"
+              >
+                <X className="h-5 w-5" strokeWidth={2} />
+              </button>
+            </div>
+
+            <p className="text-sm leading-relaxed text-text-muted">
+              {product.shortDescription}
+            </p>
+
+            <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl border border-border/70 bg-soft-white/60 p-4">
+              {product.info.composition && (
+                <div className="col-span-2 border-b border-border/50 pb-2.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                    Active Composition
+                  </span>
+                  <span className="text-xs font-semibold text-deep-navy leading-snug block mt-0.5">
+                    {product.info.composition}
+                  </span>
+                </div>
+              )}
+              <div>
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                  Formulation
+                </span>
+                <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
+                  {product.formulation}
+                </span>
+              </div>
+              <div>
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                  Suitable For
+                </span>
+                <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
+                  {product.info.applicableAnimals || product.animals.join(", ")}
+                </span>
+              </div>
+              {product.info.presentation && (
+                <div>
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                    Presentation
+                  </span>
+                  <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
+                    {product.info.presentation}
+                  </span>
+                </div>
+              )}
+              <div>
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                  Category
+                </span>
+                <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
+                  {product.category}
+                </span>
+              </div>
+            </div>
+
+            {product.benefits && product.benefits.length > 0 && (
+              <div className="mt-5">
+                <h4 className="font-mono text-[11px] font-bold uppercase tracking-wider text-deep-navy">
+                  Clinical Highlights
+                </h4>
+                <ul className="mt-2.5 space-y-1.5">
+                  {product.benefits.slice(0, 3).map((benefit) => (
+                    <li
+                      key={benefit}
+                      className="flex items-start gap-2 text-xs leading-relaxed text-text-muted"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
-          {product.info.applicableAnimals && (
-            <p className="mt-6 text-sm text-primary-navy">
-              <span className="font-semibold text-deep-navy">Animals: </span>
-              {product.info.applicableAnimals}
-            </p>
-          )}
-
-          <p className="mt-4 text-sm leading-relaxed text-text-muted">
-            {product.description}
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={() => onEnquire(product)}
-              className="flex-1 flex h-12 items-center justify-center rounded-xl bg-brand-orange text-sm font-semibold text-white transition-all hover:bg-brand-orange/90 hover:shadow-md"
-            >
-              Enquire Now
-            </button>
+          <div className="mt-8 pt-4 border-t border-border/60">
             <Link
               href={`/products/${product.slug}`}
-              className="group flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-primary-navy/25 bg-white text-sm font-semibold text-deep-navy transition-all hover:border-brand-orange hover:text-brand-orange"
+              className="glare-button flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-deep-navy text-sm font-bold text-white transition-all hover:bg-brand-orange shadow-sm"
             >
-              Full Details
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 text-brand-orange" />
+              <span>Details</span>
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </Link>
           </div>
         </div>
