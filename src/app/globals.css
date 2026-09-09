@@ -114,10 +114,6 @@
   --font-oldenburg: 'Oldenburg', var(--font-manrope), serif;
 }
 
-.font-oldenburg {
-  font-family: 'Oldenburg', var(--font-manrope), serif;
-}
-
 body {
   background: var(--soft-white);
   color: var(--text-primary);
@@ -286,4 +282,97 @@ h3 {
   opacity: 0 !important;
   pointer-events: none !important;
   visibility: hidden !important;
+}
+
+.font-oldenburg {
+  font-family: 'Oldenburg', var(--font-manrope), serif;
+}
+
+/* ─── Solutions Hero Visual Treatment & Typography ─── */
+.solutionsHeroWhiteTint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(255, 255, 255, 0.055) 42%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+}
+
+.solutionsHeroTextContrast {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(1350px, 90vw);
+  height: 70%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(22, 34, 48, 0.16) 0%,
+    rgba(22, 34, 48, 0.07) 48%,
+    transparent 75%
+  );
+}
+
+.solutionsHeroHeading {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: min(1500px, 88vw);
+  margin: 0;
+
+  color: #fffdf7;
+  text-align: center;
+
+  font-family:
+    var(--font-oldenburg),
+    "Oldenburg",
+    "Recoleta",
+    "Fraunces",
+    "DM Serif Display",
+    Georgia,
+    serif;
+
+  font-size: clamp(48px, 14vw, 72px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  word-spacing: 0;
+  opacity: 1;
+  text-shadow:
+    0 2px 2px rgba(13, 24, 36, 0.14),
+    0 10px 35px rgba(13, 24, 36, 0.12);
+}
+
+@media (min-width: 640px) {
+  .solutionsHeroHeading {
+    font-size: clamp(72px, 9vw, 112px);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .solutionsHeroHeading {
+    font-size: clamp(88px, 8.2vw, 158px);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+  }
+}
+
+.solutionsHeroHeading span {
+  display: block;
+}
+
+.solutionsHeroHeading span + span {
+  margin-top: 0;
 }
