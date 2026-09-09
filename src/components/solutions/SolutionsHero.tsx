@@ -18,14 +18,14 @@ export function SolutionsHero() {
     <section className="relative w-full h-screen min-h-[520px] max-h-[1080px] overflow-hidden bg-white select-none">
       {/* 1. Farm photograph with increased brightness & contrast so it doesn't look faded */}
       <Image
-        src="/images/solutions-cattle-farm-panoramic.jpg"
-        alt="Veterinarian inspecting cattle at a modern livestock farm"
+        src="/images/solutions-pastoral-cow-hero.jpg"
+        alt="Cow grazing on a rolling green pasture beside a rustic wooden barn"
         fill
         priority
         sizes="100vw"
-        className="absolute inset-0 w-full h-full object-cover object-bottom md:object-center pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover object-[72%_bottom] md:object-center pointer-events-none"
         style={{
-          filter: "brightness(1.14) contrast(1.04) saturate(1.08)",
+          filter: "brightness(1.06) contrast(1.04) saturate(1.05)",
         }}
       />
 
