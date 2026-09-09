@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ProductsCatalogue } from "@/components/products/ProductsCatalogue";
 
 export const metadata: Metadata = {
-  title: "Clinical Products Catalogue",
+  title: "Clinical Veterinary Products Catalogue | CattleVibes",
   description:
-    "High-density, enquiry-led clinical catalogue for verifiable outcomes.",
+    "Explore CattleVibes veterinary medicines, nutritional support and preventive healthcare products.",
 };
 
 interface ProductsPageProps {

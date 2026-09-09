@@ -158,7 +158,7 @@ function DetailImageSlider({ product }: { product: Product }) {
           >
             <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
           </button>
-          <div className="absolute bottom-3 right-3 z-10 rounded border border-border/60 bg-white/90 px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue backdrop-blur-xs">
+          <div className="absolute bottom-3 right-3 z-10 rounded border border-border/70 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
             {String(slide + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </div>
         </>

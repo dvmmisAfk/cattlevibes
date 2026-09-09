@@ -52,47 +52,56 @@ export function CinematicCTA() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          {/* Typographic Headline matching unified homepage scale */}
+          {/* Typographic Headline matching unified homepage scale - Single heading */}
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Performance, <br className="hidden sm:inline" />
-            <span className="text-white">Formulated.</span>
+            Find Your Veterinary Solution
           </h2>
 
-          {/* Editorial Subtext */}
+          {/* Supporting Copy */}
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl md:leading-relaxed">
-            Explore the Cattlevibes range of veterinary medicines and nutritional
-            solutions designed around livestock health, rapid metabolic recovery,
-            and sustained productivity.
+            Explore formulations, request product documentation, or connect directly with our commercial team.
           </p>
 
-          {/* Refined Magnetic Button Row */}
+          {/* Refined Magnetic Button Row - 3 Commercial Actions */}
           <motion.div
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 md:mt-12"
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-4 md:mt-12 flex-wrap"
             initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Primary CTA Button */}
+            {/* Primary Action */}
             <MagneticButton strength={0.3}>
               <Button
-                href="/solutions"
+                href="/products"
                 variant="accent"
                 size="lg"
-                className="px-9 py-4 sm:py-4.5"
+                className="px-8 py-3.5 sm:py-4"
               >
-                Explore Solutions
+                Explore Products
               </Button>
             </MagneticButton>
 
-            {/* Secondary Hairline CTA Button */}
+            {/* Catalogue Request Action */}
             <MagneticButton strength={0.3}>
               <Button
-                href="/contact"
+                href="/contact?subject=catalogue"
                 variant="whiteOutline"
                 size="lg"
-                className="px-9 py-4 sm:py-4.5"
+                className="px-8 py-3.5 sm:py-4"
               >
-                Get In Touch
+                Request Catalogue
+              </Button>
+            </MagneticButton>
+
+            {/* Sales Contact Action */}
+            <MagneticButton strength={0.3}>
+              <Button
+                href="/contact?subject=sales"
+                variant="whiteOutline"
+                size="lg"
+                className="px-8 py-3.5 sm:py-4"
+              >
+                Talk to Sales
               </Button>
             </MagneticButton>
           </motion.div>

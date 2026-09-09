@@ -70,9 +70,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-white/80">
               <li>
-                <a href={`tel:${siteConfig.phone}`} className="transition-colors hover:text-white">
-                  {siteConfig.phone}
-                </a>
+                <Link href="/contact" className="transition-colors hover:text-white">
+                  Commercial Enquiries
+                </Link>
               </li>
               <li>
                 <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-white">
@@ -91,19 +91,19 @@ export function Footer() {
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
             >
               Terms of Service
             </Link>
             <Link
               href="/contact"
-              className="text-xs text-white/75 transition-colors hover:text-yam-orange"
+              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
             >
               Commercial Enquiries
             </Link>

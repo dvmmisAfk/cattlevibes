@@ -14,34 +14,52 @@ interface FAQItem {
 
 const FAQS: FAQItem[] = [
   {
-    id: "gmp-quality",
-    question: "What quality certifications and manufacturing standards back CattleVibes products?",
+    id: "product-types",
+    question: "What types of veterinary products does CattleVibes offer?",
     answer:
-      "All CattleVibes veterinary pharmaceuticals and nutritional supplements are formulated in Schedule M GMP-certified and ISO 9001:2015-audited facilities. Every batch undergoes rigorous testing for active potency, purity, and safety before release.",
+      "CattleVibes manufactures and supplies veterinary pharmaceuticals, nutritional supplements, intrauterine formulations, digestive stimulants, calcium therapies, and herd health formulations for livestock.",
   },
   {
-    id: "bioavailability",
-    question: "How are CattleVibes liquid supplements and boluses engineered for fast absorption?",
+    id: "species-supported",
+    question: "Which livestock species are supported?",
     answer:
-      "Our liquid formulations utilize micro-emulsified mineral chelates and stabilized vitamin carriers that resist rumen breakdown, ensuring direct intestinal absorption. In bolus forms, controlled disintegration delivers steady, sustained nutrient uptake.",
+      "Our formulations are developed for cattle, buffalo, sheep, goats, and calves, addressing species-specific metabolic, digestive, and reproductive requirements.",
   },
   {
-    id: "withdrawal-periods",
-    question: "What are the milk and meat withdrawal periods after administering treatments?",
+    id: "distributor-supply",
+    question: "Do you supply products to distributors?",
     answer:
-      "Withdrawal periods vary by specific active molecule and therapeutic classification. Complete pharmacological withdrawal guidelines are printed clearly on every product pack. We prioritize formulations with zero or minimal milk withdrawal times wherever possible.",
+      "Yes. We partner with veterinary distributors, wholesalers, and retail stockists across regional markets with dedicated territory support and batch reliability.",
   },
   {
-    id: "stability-storage",
-    question: "How does CattleVibes ensure product stability across diverse farm climates?",
+    id: "catalogue-request",
+    question: "Can I request the complete product catalogue?",
     answer:
-      "Each formulation undergoes accelerated stability testing for climatic zone IV conditions. High-density, light-protective packaging safeguards vitamin potency and chemical stability against heat and ambient humidity.",
+      "Yes. You can request our comprehensive veterinary product catalogue and product profile sheets directly through our catalogue request form or commercial desk.",
   },
   {
-    id: "procurement-bulk",
-    question: "How can dairy cooperatives, commercial farms, and veterinarians order in bulk?",
+    id: "technical-docs",
+    question: "Can I request technical product documentation?",
     answer:
-      "Commercial orders, institutional procurement, and distributor partnerships can be arranged directly through our Commercial Desk. We offer volume-tiered pricing, scheduled shipments, and full batch documentation.",
+      "Technical product specifications, compositions, certificates of analysis, and regulatory documentation are available upon request for veterinarians and commercial partners.",
+  },
+  {
+    id: "bulk-procurement",
+    question: "Do you support bulk or institutional requirements?",
+    answer:
+      "We support bulk procurement for dairy cooperatives, livestock commercial farms, veterinary institutions, and large-scale distributors with tiered commercial terms.",
+  },
+  {
+    id: "product-enquiry",
+    question: "How can I enquire about a specific product?",
+    answer:
+      "Every product page features a direct enquiry channel. You can also contact our commercial team directly with your required quantities and delivery schedules.",
+  },
+  {
+    id: "commercial-contact",
+    question: "How can I contact the CattleVibes commercial team?",
+    answer:
+      "You can submit an enquiry through our contact portal or reach our commercial sales desk directly through the sales enquiry channel.",
   },
 ];
 
@@ -55,7 +73,7 @@ export function FAQAccordion() {
 
   return (
     <section
-      className="bg-white py-20 md:py-28"
+      className="bg-[#F3F1EC] py-20 md:py-28 border-b border-border/80"
       aria-label="Frequently Asked Questions"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -99,8 +117,8 @@ export function FAQAccordion() {
                   key={faq.id}
                   className={`overflow-hidden border transition-all duration-200 ${
                     isOpen
-                      ? "border-brand-orange/50 bg-light-pebble/60 shadow-xs"
-                      : "border-border bg-white hover:border-cadet-blue/40"
+                      ? "border-brand-orange/50 bg-white shadow-xs"
+                      : "border-border/80 bg-white/70 hover:bg-white hover:border-cadet-blue/40"
                   }`}
                 >
                   <h3>

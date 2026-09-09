@@ -2,6 +2,9 @@ import Link from "next/link";
 import { ArrowRight, Loader2 } from "lucide-react";
 import React from "react";
 
+import "./GlareHover.css";
+export { GlareHover } from "./GlareHover";
+
 export type ButtonVariant =
   | "primary"
   | "secondary"
@@ -28,13 +31,14 @@ export interface ButtonProps {
   target?: string;
   rel?: string;
   "aria-label"?: string;
+  glare?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-deep-navy text-pure-white hover:bg-deep-navy/95 hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-white/10 border-t-white/20 active:scale-[0.97] transition-all duration-200",
   secondary:
-    "border border-primary-navy/25 border-t-primary-navy/35 bg-white/90 backdrop-blur-sm text-primary-navy hover:bg-white hover:border-brand-orange/40 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
+    "border border-primary-navy/25 bg-white text-primary-navy hover:bg-white hover:border-brand-orange/40 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
   accent:
     "bg-brand-orange text-white hover:bg-[#d88410] hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent active:scale-[0.97] transition-all duration-200",
   outline:
@@ -44,7 +48,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   pill:
     "rounded-xl bg-deep-navy text-white hover:-translate-y-0.5 hover:shadow-md px-5 py-2 active:scale-[0.97] transition-all duration-200",
   whiteOutline:
-    "border border-white/25 border-t-white/45 bg-white/[0.07] backdrop-blur-md text-white hover:border-white/50 hover:bg-white/14 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
+    "border border-white/30 bg-transparent text-white hover:bg-white hover:text-deep-navy transition-colors duration-200 active:scale-[0.97]",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -68,14 +72,16 @@ export function Button({
   target,
   rel,
   "aria-label": ariaLabel,
+  glare = true,
 }: ButtonProps) {
-  const baseClasses =
-    "group inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-brand-orange focus-visible:outline-offset-2 touch-manipulation";
+  const baseClasses = `group relative overflow-hidden inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-brand-orange focus-visible:outline-offset-2 touch-manipulation ${
+    glare ? "glare-button" : ""
+  }`;
   const vClass = variantStyles[variant];
   const sClass = variant === "pill" ? "" : sizeStyles[size];
 
   const content = (
-    <>
+    <span className="relative z-10 inline-flex items-center justify-center gap-2">
       {loading ? (
         <Loader2 className="h-4 w-4 animate-spin text-current" />
       ) : (
@@ -91,7 +97,7 @@ export function Button({
           <ArrowRight className="h-4 w-4 inline-block" strokeWidth={2} />
         </span>
       )}
-    </>
+    </span>
   );
 
   if (href && !disabled) {

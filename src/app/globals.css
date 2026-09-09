@@ -13,6 +13,13 @@
   --color-border-light: #e5e7eb; /* Fine Separator */
   --color-pure-white: #ffffff;
 
+  /* ── Editorial Homepage Palette Tokens ── */
+  --color-cool-neutral: #eef0f0;      /* 03 What We Do - Cool Clinical Neutral */
+  --color-warm-ivory: #f7f5f0;        /* 04 Product Discovery - Warm Ivory */
+  --color-cool-deep: #e5e9e9;         /* 05 Five Pillars - Cool Deep Neutral */
+  --color-deep-dark: #222a31;         /* 07 Distributor CTA - Deeper Dark */
+  --color-warm-neutral: #f3f1ec;      /* 08 Commercial FAQ - Warm Editorial White */
+
   /* ── Tier 2: Semantic Design Tokens ── */
   --surface-canvas: var(--color-pebble-100);
   --surface-card: var(--color-pure-white);
@@ -82,6 +89,11 @@
   --color-text-muted: var(--text-muted);
   --color-border: var(--border);
   --color-border-subtle: var(--border-subtle);
+  --color-cool-neutral: var(--color-cool-neutral);
+  --color-warm-ivory: var(--color-warm-ivory);
+  --color-cool-deep: var(--color-cool-deep);
+  --color-deep-dark: var(--color-deep-dark);
+  --color-warm-neutral: var(--color-warm-neutral);
   --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
 }

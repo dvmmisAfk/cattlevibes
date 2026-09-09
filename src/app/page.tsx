@@ -1,5 +1,7 @@
 import { CinematicHero } from "@/components/home/CinematicHero";
 import { TrustGovernanceStrip } from "@/components/home/TrustGovernanceStrip";
+import { HealthcareAreas } from "@/components/home/HealthcareAreas";
+import { ProductDiscovery } from "@/components/home/ProductDiscovery";
 import { EcosystemBento } from "@/components/home/EcosystemBento";
 import { LifecycleAnatomy } from "@/components/home/LifecycleAnatomy";
 import { FAQAccordion } from "@/components/home/FAQAccordion";
@@ -11,6 +13,8 @@ export default function HomePage() {
     <SmoothScroll>
       <CinematicHero />
       <TrustGovernanceStrip />
+      <HealthcareAreas />
+      <ProductDiscovery />
       <EcosystemBento />
       <LifecycleAnatomy />
       <FAQAccordion />

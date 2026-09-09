@@ -10,10 +10,10 @@ export function TrustGovernanceStrip() {
     >
       <ScrollVelocity
         texts={[
-          "ISO 9001:2015 CERTIFIED • SCHEDULE M GMP AUDITED • LAB GRADE ANALYSIS • BATCH VERIFIED •",
-          "WHO-GMP COMPLIANT • CLINICALLY VALIDATED • TRACEABLE INGREDIENTS • ZERO COMPROMISE •",
+          "ISO 9001:2015 CERTIFIED • SCHEDULE M GMP AUDITED • BATCH VERIFIED • TRACEABLE INPUTS •",
+          "QUALITY ASSURED FORMULATIONS • PHARMACEUTICAL STANDARDS • LABORATORY VERIFIED • VERIFIED PROVENANCE •",
         ]}
-        velocity={30}
+        velocity={28}
         className="text-xs sm:text-sm md:text-base font-extrabold tracking-wider text-deep-navy uppercase mx-3 md:mx-4"
       />
     </section>
