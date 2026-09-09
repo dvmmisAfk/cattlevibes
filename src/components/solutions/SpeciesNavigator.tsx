@@ -113,7 +113,7 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
     <SpotlightCard
       size={320}
       spotlightColor="rgba(238, 155, 22, 0.08)"
-      className={`rounded-2xl transition-all duration-200 ${
+      className={`flex-1 flex flex-col rounded-2xl transition-all duration-200 ${
         isActive
           ? "border-2 border-[#EE9B16]/60 bg-white shadow-md"
           : "border border-[#DCE4D6] bg-white/70 hover:border-[#EE9B16]/40 hover:bg-white"
@@ -123,54 +123,54 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
         type="button"
         onClick={onSelect}
         onMouseEnter={onSelect}
-        className={`group relative flex w-full flex-col justify-between px-5 py-6 sm:px-6 sm:py-6.5 text-left transition-all cursor-pointer ${
+        className={`group relative flex h-full w-full flex-col justify-between px-6 py-5 sm:px-7 sm:py-6 text-left transition-all cursor-pointer ${
           isActive ? "border-l-4 border-l-[#EE9B16]" : ""
         }`}
         aria-selected={isActive}
       >
         <div className="flex items-start justify-between gap-4 w-full">
           {/* Index & Names */}
-          <div className="flex items-baseline gap-4">
+          <div className="flex items-baseline gap-4 sm:gap-5">
             <span
-              className={`font-heading text-xl sm:text-2xl font-extrabold transition-colors ${
+              className={`font-heading text-3xl sm:text-4xl lg:text-[42px] font-extrabold transition-colors leading-none ${
                 isActive ? "text-[#EE9B16]" : "text-[#292F39]/35"
               }`}
             >
               {item.number}
             </span>
             <div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3">
                 <h3
-                  className={`font-heading text-xl sm:text-2xl font-bold transition-colors ${
+                  className={`font-heading text-2xl sm:text-3xl lg:text-[34px] font-bold transition-colors leading-none ${
                     isActive ? "text-[#172333] font-extrabold" : "text-[#172333]"
                   }`}
                 >
                   {item.name}
                 </h3>
                 {isActive && (
-                  <span className="hidden sm:inline-block rounded-full bg-[#EBF1E8] px-2.5 py-0.5 font-body text-xs font-semibold text-[#60785B]">
+                  <span className="hidden sm:inline-block rounded-full bg-[#EBF1E8] px-3 py-1 font-body text-xs sm:text-sm font-bold text-[#60785B]">
                     Active
                   </span>
                 )}
               </div>
-              <p className="font-body text-xs font-semibold text-[#EE9B16] italic">
+              <p className="font-body text-sm sm:text-[15px] font-semibold text-[#EE9B16] italic mt-1">
                 {item.scientificName}
               </p>
             </div>
           </div>
 
           {/* Action CTA Indicator */}
-          <div className="shrink-0 pt-1">
+          <div className="shrink-0 pt-0.5">
             {isActive ? (
-              <span className="inline-flex items-center gap-2 rounded-xl bg-[#172333] px-3.5 py-2 text-xs font-bold text-white shadow-xs">
+              <span className="inline-flex items-center gap-2 rounded-xl bg-[#172333] px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs">
                 <span>View protocols</span>
-                <ArrowRight className="h-3.5 w-3.5 text-[#EE9B16]" strokeWidth={2.5} />
+                <ArrowRight className="h-4 w-4 text-[#EE9B16]" strokeWidth={2.5} />
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#172333]/60 group-hover:text-[#EE9B16] transition-colors">
+              <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#172333]/60 group-hover:text-[#EE9B16] transition-colors">
                 <span>View protocols</span>
                 <ArrowRight
-                  className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
                   strokeWidth={2.5}
                 />
               </span>
@@ -179,7 +179,7 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
         </div>
 
         {/* Existing Species Description */}
-        <p className="mt-3.5 font-body text-xs sm:text-sm leading-relaxed text-[#292F39]/80 pl-10 sm:pl-12">
+        <p className="mt-3.5 font-body text-base sm:text-[17.5px] lg:text-[19px] leading-relaxed text-[#292F39]/85 pl-12 sm:pl-16">
           {item.description}
         </p>
       </button>
@@ -224,16 +224,16 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
 
         {/* Protocol Summary & Targets */}
         <div className="space-y-2">
-          <div className="flex items-baseline gap-2">
-            <h3 className="font-heading text-xl font-extrabold text-[#172333]">
+          <div className="flex items-baseline gap-2.5">
+            <h3 className="font-heading text-2xl font-extrabold text-[#172333]">
               {current.name}
             </h3>
-            <span className="font-body text-xs font-semibold text-[#EE9B16] italic">
+            <span className="font-body text-sm font-semibold text-[#EE9B16] italic">
               {current.scientificName}
             </span>
           </div>
 
-          <p className="font-body text-xs leading-relaxed text-[#292F39]/80 line-clamp-2">
+          <p className="font-body text-xs sm:text-sm leading-relaxed text-[#292F39]/80 line-clamp-2">
             {current.description}
           </p>
 
@@ -406,7 +406,7 @@ export function SpeciesNavigator() {
         {/* Desktop Master-Detail Layout (lg:grid) */}
         <div className="mt-12 hidden lg:grid lg:grid-cols-12 lg:gap-8 items-stretch">
           {/* Left Column: 3 interactive cards (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-4">
             {speciesList.map((item, index) => (
               <SpeciesCard
                 key={item.id}
