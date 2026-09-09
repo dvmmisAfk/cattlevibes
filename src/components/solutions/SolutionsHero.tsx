@@ -15,7 +15,7 @@ import { SplitText } from "./react-bits/SplitText";
  */
 export function SolutionsHero() {
   return (
-    <section className="relative w-full h-screen min-h-[520px] max-h-[1080px] overflow-hidden bg-[#112334] select-none">
+    <section className="relative w-full h-screen min-h-[520px] max-h-[1080px] overflow-hidden bg-white select-none">
       {/* 1. Farm photograph with increased brightness & contrast so it doesn't look faded */}
       <Image
         src="/images/solutions-cattle-farm-panoramic.jpg"
@@ -29,13 +29,10 @@ export function SolutionsHero() {
         }}
       />
 
-      {/* 2. Light white tint overlay on the background */}
+      {/* 2. Visible white tint shade layer across the background of the image */}
       <div className="solutionsHeroWhiteTint" />
 
-      {/* 3. Local text contrast gradient behind the center heading */}
-      <div className="solutionsHeroTextContrast" />
-
-      {/* 4. Main heading in absolute center using Manrope font from previous prompt */}
+      {/* 3. Main heading in absolute center using Manrope font from previous prompt */}
       <h1 className="solutionsHeroHeading">
         <span>
           <SplitText text="Formulations for the" delay={0.15} />
