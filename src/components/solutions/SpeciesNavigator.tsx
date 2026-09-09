@@ -76,23 +76,6 @@ export const speciesList: SpeciesItem[] = [
     specimenCode: "SPEC: VET-OVI-2026",
     categoryLabel: "FLOCK RESILIENCE",
   },
-  {
-    id: "poultry",
-    number: "04",
-    name: "Poultry",
-    scientificName: "Gallus gallus",
-    description:
-      "Unit-level nutrition and health protocols for commercial flocks. Catalogue on request.",
-    image: "https://images.unsplash.com/photo-1548550020-6b7c384ea1f3?w=1000&q=80",
-    href: "/contact?product=Poultry+Formulary",
-    clinicalFocus: [
-      "Eggshell Calcium Crystallization",
-      "Gastrointestinal Integrity Support",
-      "Metabolic Micronutrient Absorption",
-    ],
-    specimenCode: "SPEC: VET-GAL-2026",
-    categoryLabel: "AVIAN FORMULARY",
-  },
 ];
 
 /**
