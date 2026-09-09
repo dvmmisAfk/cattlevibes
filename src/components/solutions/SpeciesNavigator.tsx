@@ -100,22 +100,20 @@ export const speciesList: SpeciesItem[] = [
  */
 function SpeciesSectionHeader() {
   return (
-    <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-      <div>
-        {/* Category Eyebrow */}
-        <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-          Livestock Species
-        </p>
+    <div className="max-w-3xl">
+      {/* Category Eyebrow */}
+      <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+        Livestock Species
+      </p>
 
-        {/* Section Heading with ScrollReveal */}
-        <ScrollReveal direction="up" distance={20} duration={0.6}>
-          <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
-            Healthcare formulations by species.
-          </h2>
-        </ScrollReveal>
-      </div>
+      {/* Section Heading with ScrollReveal */}
+      <ScrollReveal direction="up" distance={20} duration={0.6}>
+        <h2 className="mt-3 font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
+          Healthcare formulations by species.
+        </h2>
+      </ScrollReveal>
 
-      <p className="max-w-md font-body text-sm leading-relaxed text-[#292F39]/80 md:text-base">
+      <p className="mt-4 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#292F39]/80">
         Products organised by species-specific digestive anatomy, metabolic
         dynamics, and commercial farm yields.
       </p>

@@ -191,32 +191,27 @@ export function ClinicalPillars() {
       className="relative bg-white py-16 md:py-20 lg:py-24 scroll-mt-20"
     >
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        {/* Two-Column Introduction Row */}
-        <div className="border-b border-[#DCE4D6] pb-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              {/* Category Eyebrow */}
-              <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
-                Clinical Formulations
-              </p>
+        {/* Section Introduction */}
+        <div className="max-w-3xl mb-10 sm:mb-12">
+          {/* Category Eyebrow */}
+          <p className="text-xs font-bold tracking-[0.2em] text-[#EE9B16] uppercase">
+            Clinical Formulations
+          </p>
 
-              {/* ScrollReveal applied to Heading */}
-              <ScrollReveal delay={0.1}>
-                <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-[#172333] sm:text-4xl md:text-5xl">
-                  Six clinical pillars. One healthcare standard.
-                </h2>
-              </ScrollReveal>
-            </div>
+          {/* Heading */}
+          <ScrollReveal delay={0.1}>
+            <h2 className="mt-3 font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
+              Six clinical pillars. One healthcare standard.
+            </h2>
+          </ScrollReveal>
 
-            <div className="max-w-md">
-              <ScrollReveal delay={0.2}>
-                <p className="font-body text-base leading-relaxed text-[#292F39]/80">
-                  Precision-formulated veterinary solutions structured around physiological
-                  stress windows, metabolic recovery, and daily farm productivity.
-                </p>
-              </ScrollReveal>
-            </div>
-          </div>
+          {/* Description */}
+          <ScrollReveal delay={0.2}>
+            <p className="mt-4 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#292F39]/80">
+              Precision-formulated veterinary solutions structured around physiological
+              stress windows, metabolic recovery, and daily farm productivity.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* React Bits ScrollStack Section */}
