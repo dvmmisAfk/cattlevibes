@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "./react-bits/ScrollReveal";
 import { ScrollStack, ScrollStackItem } from "./react-bits/ScrollStack";
 
@@ -212,9 +210,6 @@ export function ClinicalPillars() {
               const textMicroLabel = isDark ? "text-white/50" : "text-deep-navy/55";
               const textProducts = isDark ? "text-white" : "text-deep-navy";
               const productDotColor = isDark ? "text-white/30" : "text-deep-navy/30";
-              const ctaTextColor = isDark
-                ? "text-brand-orange hover:text-white"
-                : "text-deep-navy hover:text-brand-orange";
               const highlightRuleColor = isDark
                 ? "border-white/10 divide-white/10"
                 : "border-deep-navy/10 divide-deep-navy/10";
@@ -236,8 +231,8 @@ export function ClinicalPillars() {
                   >
                     {/* ─── DESKTOP / TABLET HORIZONTAL COMPOSITION (lg+) ─── */}
                     <div className="hidden lg:grid lg:grid-cols-12 items-stretch min-h-[300px] h-full">
-                      {/* Left Column (5 cols): Number, Category, Description, Products, Action */}
-                      <div className="lg:col-span-5 p-7 xl:p-8 flex flex-col justify-between relative z-10">
+                      {/* Left Column (5 cols): Number, Category, Description, Products */}
+                      <div className="lg:col-span-5 p-7 xl:p-8 flex flex-col justify-center relative z-10">
                         <div>
                           {/* Editorial Number & Simplified Eyebrow */}
                           <div className="flex items-baseline gap-3">
@@ -290,21 +285,6 @@ export function ClinicalPillars() {
                               ))}
                             </p>
                           </div>
-                        </div>
-
-                        {/* Open Formulary CTA */}
-                        <div className="mt-4 pt-3 border-t border-current/10">
-                          <Link
-                            href={pillar.href}
-                            className={`group/link inline-flex items-center gap-2 text-xs xl:text-sm font-bold tracking-wide transition-colors ${ctaTextColor}`}
-                          >
-                            <span>Open formulary</span>
-                            <ArrowRight
-                              className="h-3.5 w-3.5 xl:h-4 xl:w-4 transition-transform duration-300 group-hover/link:translate-x-1.5 text-[#ea9216]"
-                              strokeWidth={2.2}
-                              aria-hidden="true"
-                            />
-                          </Link>
                         </div>
                       </div>
 
@@ -389,85 +369,57 @@ export function ClinicalPillars() {
                       </div>
                     </div>
 
-                    {/* ─── MOBILE & TABLET VERTICAL STACK (< lg) ─── */}
-                    <div className="lg:hidden p-5 sm:p-7 flex flex-col gap-4">
+                    {/* ─── MOBILE & TABLET COMPACT HORIZONTAL COMPOSITION (< lg) ─── */}
+                    <div className="lg:hidden p-4 sm:p-5 flex flex-col gap-2.5">
                       {/* 1. Header: Number + Eyebrow */}
-                      <div className="flex items-baseline gap-3 border-b pb-3 border-current/10">
-                        <span className="font-heading text-2xl sm:text-3xl font-extrabold tracking-tight text-[#ea9216]">
+                      <div className="flex items-center gap-2 border-b pb-2 border-current/10">
+                        <span className="font-heading text-lg font-extrabold tracking-tight text-[#ea9216]">
                           {pillar.number}
                         </span>
-                        <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-[#ea9216]">
+                        <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#ea9216]">
                           {pillar.eyebrow}
                         </span>
                       </div>
 
                       {/* 2. Category Title */}
                       <h3
-                        className={`font-heading text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug ${textTitle}`}
+                        className={`font-heading text-lg sm:text-xl font-extrabold tracking-tight leading-tight ${textTitle}`}
                       >
                         {pillar.title}
                       </h3>
 
-                      {/* 3. Integrated Photography with Seamless Fading Edges */}
-                      <div
-                        className="relative w-full h-52 sm:h-64 overflow-hidden rounded-xl my-2"
-                      >
-                        <Image
-                          src={pillar.image}
-                          alt={pillar.imageAlt}
-                          fill
-                          sizes="(max-width: 1024px) 92vw, 600px"
-                          className="object-cover"
-                          style={{ objectPosition: pillar.imagePosition || "center" }}
-                        />
-
-                        {/* Top Feathered Edge */}
-                        <div
-                          className={`pointer-events-none absolute inset-x-0 top-0 h-12 sm:h-16 bg-gradient-to-b ${fadeClassFrom} to-transparent z-10`}
-                          aria-hidden="true"
-                        />
-
-                        {/* Bottom Feathered Edge */}
-                        <div
-                          className={`pointer-events-none absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t ${fadeClassFrom} to-transparent z-10`}
-                          aria-hidden="true"
-                        />
-
-                        {/* Left Feathered Edge */}
-                        <div
-                          className={`pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-14 bg-gradient-to-r ${fadeClassFrom} to-transparent z-10`}
-                          aria-hidden="true"
-                        />
-
-                        {/* Right Feathered Edge */}
-                        <div
-                          className={`pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-14 bg-gradient-to-l ${fadeClassFrom} to-transparent z-10`}
-                          aria-hidden="true"
-                        />
-
-                        {/* Soft Perimeter Vignette */}
-                        <div
-                          className={`pointer-events-none absolute inset-0 ${fadeRadial} z-10`}
-                          aria-hidden="true"
-                        />
+                      {/* 3. Media + Description Row: Compact Thumbnail + Clean Description */}
+                      <div className="flex items-center gap-3 sm:gap-4 my-0.5">
+                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-xl border border-current/10 shadow-xs">
+                          <Image
+                            src={pillar.image}
+                            alt={pillar.imageAlt}
+                            fill
+                            sizes="100px"
+                            className="object-cover"
+                            style={{ objectPosition: pillar.imagePosition || "center" }}
+                          />
+                          <div
+                            className={`pointer-events-none absolute inset-0 bg-gradient-to-t ${fadeClassFrom}/35 to-transparent`}
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <p
+                          className={`font-body text-xs leading-relaxed ${textBody} line-clamp-3 sm:line-clamp-4`}
+                        >
+                          {pillar.description}
+                        </p>
                       </div>
 
-                      {/* 4. Short Description */}
-                      <p
-                        className={`font-body text-xs sm:text-sm leading-relaxed ${textBody}`}
-                      >
-                        {pillar.description}
-                      </p>
-
-                      {/* 5. Formulation Products List */}
+                      {/* 4. Formulation Products List */}
                       <div className="pt-2 border-t border-current/10">
                         <span
-                          className={`block font-body text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase mb-1 ${textMicroLabel}`}
+                          className={`block font-body text-[10px] font-bold tracking-[0.18em] uppercase mb-0.5 ${textMicroLabel}`}
                         >
                           Formulation Products
                         </span>
                         <p
-                          className={`font-body text-xs sm:text-sm font-semibold tracking-wide leading-relaxed ${textProducts}`}
+                          className={`font-body text-xs font-semibold tracking-wide leading-snug line-clamp-2 ${textProducts}`}
                         >
                           {pillar.products.map((product, idx) => (
                             <React.Fragment key={product}>
@@ -487,50 +439,33 @@ export function ClinicalPillars() {
                         </p>
                       </div>
 
-                      {/* 6. Key Highlights */}
-                      <div className="pt-3 border-t border-current/10">
+                      {/* 5. Key Highlights: 3 clean, compact inline bullets */}
+                      <div className="pt-2 border-t border-current/10">
                         <span
-                          className={`block font-body text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase mb-2 ${textMicroLabel}`}
+                          className={`block font-body text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5 ${textMicroLabel}`}
                         >
                           Key Highlights
                         </span>
-                        <div
-                          className={`border-t divide-y ${highlightRuleColor}`}
-                        >
+                        <div className="space-y-1">
                           {pillar.keyBenefits.map((benefit, bIdx) => (
                             <div
                               key={benefit}
-                              className="py-2 flex items-start gap-2.5"
+                              className="flex items-center gap-2"
                             >
                               <span
-                                className="font-mono text-xs font-bold text-[#ea9216] shrink-0 pt-0.5"
+                                className="font-mono text-[10px] font-bold text-[#ea9216] shrink-0"
                                 aria-hidden="true"
                               >
                                 {`0${bIdx + 1}`}
                               </span>
                               <span
-                                className={`font-body text-xs sm:text-sm leading-snug font-medium ${highlightTextColor}`}
+                                className={`font-body text-xs font-medium ${highlightTextColor} truncate`}
                               >
                                 {benefit}
                               </span>
                             </div>
                           ))}
                         </div>
-                      </div>
-
-                      {/* 7. Open Formulary Action */}
-                      <div className="pt-3 border-t border-current/10">
-                        <Link
-                          href={pillar.href}
-                          className={`group/link inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wide transition-colors ${ctaTextColor}`}
-                        >
-                          <span>Open formulary</span>
-                          <ArrowRight
-                            className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 group-hover/link:translate-x-1.5 text-[#ea9216]"
-                            strokeWidth={2.2}
-                            aria-hidden="true"
-                          />
-                        </Link>
                       </div>
                     </div>
                   </article>

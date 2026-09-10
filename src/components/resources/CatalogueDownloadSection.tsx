@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Download, FileText, ExternalLink, ShieldCheck, CheckCircle2, Layers, BookOpen } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 export function CatalogueDownloadSection() {
@@ -18,163 +18,194 @@ export function CatalogueDownloadSection() {
       <span id="dossier-request" className="sr-only" aria-hidden="true" />
 
       <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center">
-          {/* ─── Left Column (55%): Editorial Description & Key Features ─── */}
-          <div className="lg:col-span-7 space-y-6">
-            <h2
-              id="catalogue-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight"
-            >
-              Download Our Product Catalogue
-            </h2>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-center">
+          {/* ─── Left Column (7 cols): Authoritative Veterinary Editorial ─── */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            <div>
+              <h2
+                id="catalogue-heading"
+                className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-[1.12]"
+              >
+                Download Our Complete Product Catalogue
+              </h2>
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-cadet-blue max-w-xl">
+                The authoritative veterinary compendium covering clinical pharmacology, target-species indications, standardized administration schedules, and pack sizes across all 21 formulations.
+              </p>
+            </div>
 
-            <p className="text-base sm:text-lg leading-relaxed text-cadet-blue max-w-xl">
-              Access verified compositions, indications, dosage protocols, and packaging across all 21 veterinary formulations.
-            </p>
-
-            {/* Feature Points Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-white/70 p-4">
-                <FileText className="h-5 w-5 text-black shrink-0 mt-0.5" strokeWidth={1.75} />
+            {/* Editorial Specification Matrix (Hairline Dividers, No Template Cards) */}
+            <div className="border-y border-border/80 divide-y divide-border/60">
+              <div className="py-4 sm:py-5 flex items-start gap-4">
+                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                  01
+                </span>
                 <div>
-                  <h3 className="font-heading text-sm font-bold text-deep-navy">
+                  <h3 className="font-heading text-sm sm:text-base font-bold text-deep-navy">
                     21 Complete Formulations
                   </h3>
                   <p className="text-xs sm:text-sm text-text-muted mt-0.5 leading-relaxed">
-                    Active molecules, indication profiles, and therapeutic action guidelines.
+                    Sterile injectables, broad-spectrum antimicrobials, anti-inflammatory therapeutics, intrauterine infusions, and nutritional digestive tonics.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-white/70 p-4">
-                <Layers className="h-5 w-5 text-black shrink-0 mt-0.5" strokeWidth={1.75} />
+              <div className="py-4 sm:py-5 flex items-start gap-4">
+                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                  02
+                </span>
                 <div>
-                  <h3 className="font-heading text-sm font-bold text-deep-navy">
-                    Dosages & Protocols
+                  <h3 className="font-heading text-sm sm:text-base font-bold text-deep-navy">
+                    Field-Tested Dosing Protocols
                   </h3>
                   <p className="text-xs sm:text-sm text-text-muted mt-0.5 leading-relaxed">
-                    Field-tested administration guides for dairy cattle, buffaloes, and sheep.
+                    Precise bodyweight-calibrated administration guidelines for dairy cattle, water buffaloes, sheep, and calves under veterinary guidance.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-white/70 p-4">
-                <ShieldCheck className="h-5 w-5 text-black shrink-0 mt-0.5" strokeWidth={1.75} />
+              <div className="py-4 sm:py-5 flex items-start gap-4">
+                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                  03
+                </span>
                 <div>
-                  <h3 className="font-heading text-sm font-bold text-deep-navy">
-                    Pack Sizes & SKUs
+                  <h3 className="font-heading text-sm sm:text-base font-bold text-deep-navy">
+                    Commercial Pack Specifications & Shelf-Life
                   </h3>
                   <p className="text-xs sm:text-sm text-text-muted mt-0.5 leading-relaxed">
-                    Complete packaging specifications, batch shelf-life, and presentation volumes.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-white/70 p-4">
-                <CheckCircle2 className="h-5 w-5 text-black shrink-0 mt-0.5" strokeWidth={1.75} />
-                <div>
-                  <h3 className="font-heading text-sm font-bold text-deep-navy">
-                    Instant Free Access
-                  </h3>
-                  <p className="text-xs sm:text-sm text-text-muted mt-0.5 leading-relaxed">
-                    Direct high-resolution PDF download without registration forms or delays.
+                    Exact presentation volumes, glass vial and HDPE can specifications, batch stability, and cold-chain storage parameters.
                   </p>
                 </div>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-cadet-blue/80 pt-1">
-              Looking for institutional tenders or bulk distribution? Email our desk at{" "}
+            {/* Institutional Tender Contact Note */}
+            <div className="text-xs sm:text-sm text-cadet-blue pt-1">
+              <span className="font-bold text-deep-navy">Institutional Tenders & Commercial Supply:</span>{" "}
+              For dairy cooperative supply, hospital requisitions, or C&F distribution, contact our commercial desk directly at{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="font-bold text-deep-navy hover:text-brand-orange underline underline-offset-2 transition-colors"
+                className="font-bold text-deep-navy hover:text-brand-orange underline underline-offset-4 transition-colors"
               >
                 {siteConfig.email}
               </a>
-            </p>
+            </div>
           </div>
 
-          {/* ─── Right Column (45%): Tactile Download Card ─── */}
+          {/* ─── Right Column (5 cols): The Manual Premium Publication Folio ─── */}
           <div className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-white p-6 sm:p-8 shadow-lg shadow-deep-navy/[0.04]">
-              {/* Subtle Warm Accent Flare */}
-              <div
-                className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-brand-orange/10 blur-3xl"
-                aria-hidden="true"
-              />
-
-              {/* Document Header */}
-              <div className="flex items-center justify-between border-b border-border/70 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-deep-navy text-white shadow-xs">
-                    <FileText className="h-6 w-6 text-white" strokeWidth={2} />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-base font-bold text-deep-navy">
-                      Product Catalogue Dossier
-                    </h3>
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-cadet-blue/70">
-                      2026 Edition • High Resolution
-                    </p>
-                  </div>
-                </div>
-                <span className="rounded-md bg-soft-white border border-border px-2.5 py-1 font-mono text-[11px] font-bold text-deep-navy">
-                  14.2 MB
-                </span>
+            <div className="relative rounded-2xl border border-border/80 bg-white p-6 sm:p-8 shadow-[0_20px_50px_-20px_rgba(49,56,65,0.12)] transition-shadow duration-300 hover:shadow-[0_24px_60px_-20px_rgba(49,56,65,0.16)]">
+              {/* Card Top Header */}
+              <div className="pb-4 border-b border-border/70">
+                <h3 className="font-heading text-base sm:text-lg font-bold text-deep-navy">
+                  Product Catalogue 2026
+                </h3>
               </div>
 
-              {/* Visual Dossier Preview Graphic */}
-              <div className="my-6 rounded-xl border border-border/60 bg-gradient-to-br from-soft-white via-white to-light-pebble/70 p-5 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-xs border border-border/70 mb-3">
-                  <Image
-                    src="/images/cattlevibes-mark.png"
-                    alt="CattleVibes logo mark"
-                    width={36}
-                    height={36}
-                    className="object-contain"
-                  />
-                </div>
-                <h4 className="font-heading text-base font-bold text-deep-navy">
-                  CattleVibes Healthcare Portfolio
-                </h4>
-                <p className="mt-1 text-xs text-text-muted">
-                  Comprehensive Clinical & Commercial Veterinary Guide
-                </p>
-              </div>
-
-              {/* Download & Preview Actions */}
-              <div className="space-y-3">
-                {/* Primary Download Button */}
-                <a
-                  href={catalogueHref}
-                  download={downloadFileName}
-                  className="glare-button relative flex w-full min-h-[48px] items-center justify-center gap-2.5 rounded-xl bg-deep-navy px-6 py-3.5 font-heading text-sm sm:text-base font-bold text-white shadow-md transition-all hover:bg-brand-orange hover:shadow-lg hover:shadow-brand-orange/20 active:scale-[0.98] cursor-pointer touch-manipulation"
-                  aria-label="Download CattleVibes Veterinary Product Catalogue PDF (14.2 MB)"
-                >
-                  <Download className="h-5 w-5 text-white transition-transform duration-300 group-hover:translate-y-0.5" strokeWidth={2.2} />
-                  <span>Download Catalogue (PDF)</span>
-                  <span className="ml-1 rounded bg-white/15 px-2 py-0.5 font-mono text-xs font-semibold text-white/90">
-                    14.2 MB
-                  </span>
-                </a>
-
-                {/* Secondary Preview In Tab Button */}
+              {/* Visual Centerpiece: Tactile Publication Folio with Physical Depth */}
+              <div className="my-5">
                 <a
                   href={catalogueHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-border bg-white px-5 py-2.5 font-heading text-xs sm:text-sm font-semibold text-deep-navy transition-all hover:border-brand-orange hover:text-brand-orange active:scale-[0.98] cursor-pointer touch-manipulation"
+                  className="group relative block w-full overflow-hidden rounded-xl border border-deep-navy/10 bg-[#F4F3EF] p-4 sm:p-5 transition-all duration-300 active:scale-[0.99] cursor-pointer"
+                  title="Click to preview the complete CattleVibes Product Catalogue in browser"
                 >
-                  <ExternalLink className="h-4 w-4" strokeWidth={2} />
-                  <span>Open & Preview in Browser</span>
+                  {/* Physical Book Shadow and Binding Depth */}
+                  <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-lg bg-white shadow-[0_12px_28px_-6px_rgba(49,56,65,0.22),0_4px_10px_rgba(49,56,65,0.08)] border border-black/10 transition-all duration-300 group-hover:shadow-[0_18px_38px_-8px_rgba(49,56,65,0.3),0_6px_14px_rgba(49,56,65,0.12)] group-hover:-translate-y-0.5">
+                    <Image
+                      src="/images/cattlevibes-catalogue-cover.jpg"
+                      alt="Official CattleVibes Veterinary Product Catalogue Cover"
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 40vw, 90vw"
+                      className="object-cover object-center"
+                    />
+
+                    {/* Book Spine Sheen / Tactile Binding Edge */}
+                    <div
+                      className="pointer-events-none absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/25 via-white/10 to-transparent"
+                      aria-hidden="true"
+                    />
+                    {/* Subtle page-fold corner highlight */}
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/[0.04] via-transparent to-white/15"
+                      aria-hidden="true"
+                    />
+
+                    {/* Hover State: "Click to preview" pill */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-deep-navy/0 opacity-0 transition-all duration-300 group-hover:bg-deep-navy/30 group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-xs font-bold text-deep-navy shadow-lg backdrop-blur-xs">
+                        <ExternalLink className="h-3.5 w-3.5 text-brand-orange" />
+                        Click to Preview
+                      </span>
+                    </div>
+                  </div>
                 </a>
               </div>
 
-              {/* Immediate Download Reassurance */}
-              <div className="mt-5 flex items-center justify-center gap-2 text-[11px] font-medium text-black border-t border-border/60 pt-4">
-                <CheckCircle2 className="h-3.5 w-3.5 text-black shrink-0" strokeWidth={2} />
-                <span>Direct PDF download • No signup or waiting period</span>
+              {/* Technical Specifications Grid (Clean 3-column metadata bar, NO floating pills) */}
+              <div className="grid grid-cols-3 gap-2 border-y border-border/70 py-3.5 text-center mb-6">
+                <div>
+                  <span className="block font-heading text-xs sm:text-sm font-bold text-deep-navy">
+                    21 SKUs
+                  </span>
+                  <span className="block text-[11px] text-text-muted">
+                    Formulations
+                  </span>
+                </div>
+                <div className="border-x border-border/70">
+                  <span className="block font-heading text-xs sm:text-sm font-bold text-deep-navy">
+                    Standardized
+                  </span>
+                  <span className="block text-[11px] text-text-muted">
+                    Dosing Guides
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-heading text-xs sm:text-sm font-bold text-deep-navy">
+                    Verified
+                  </span>
+                  <span className="block text-[11px] text-text-muted">
+                    Veterinary Grade
+                  </span>
+                </div>
               </div>
+
+              {/* Bespoke Action Controls */}
+              <div className="space-y-2.5">
+                {/* Primary Download Button */}
+                <a
+                  href={catalogueHref}
+                  download={downloadFileName}
+                  className="group relative flex w-full min-h-[50px] items-center justify-center gap-2.5 rounded-xl bg-deep-navy px-6 py-3.5 font-heading text-sm sm:text-base font-bold text-white shadow-md transition-all hover:bg-brand-orange hover:shadow-lg hover:shadow-brand-orange/25 active:scale-[0.98] cursor-pointer touch-manipulation"
+                  aria-label="Download CattleVibes Veterinary Product Catalogue PDF (14.2 MB)"
+                >
+                  <Download
+                    className="h-4.5 w-4.5 text-white transition-transform duration-200 group-hover:translate-y-0.5"
+                    strokeWidth={2.2}
+                  />
+                  <span>Download Catalogue PDF</span>
+                  <span className="ml-1 text-xs text-white/70 font-mono font-medium">
+                    (14.2 MB)
+                  </span>
+                </a>
+
+                {/* Secondary Preview Link */}
+                <a
+                  href={catalogueHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full min-h-[42px] items-center justify-center gap-2 rounded-xl border border-border bg-white px-5 py-2 font-heading text-xs sm:text-sm font-semibold text-deep-navy transition-all hover:border-deep-navy hover:bg-deep-navy/[0.02] active:scale-[0.98] cursor-pointer touch-manipulation"
+                >
+                  <ExternalLink className="h-4 w-4 text-cadet-blue" strokeWidth={1.75} />
+                  <span>Open & Preview in New Tab</span>
+                </a>
+              </div>
+
+              {/* Dignified Footnote */}
+              <p className="mt-4 text-center font-body text-[11px] text-text-muted">
+                Direct PDF document &middot; No registration or waitlist required
+              </p>
             </div>
           </div>
         </div>
