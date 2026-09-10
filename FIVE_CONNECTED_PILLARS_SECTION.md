@@ -115,8 +115,8 @@ The carousel uses a directional slide transition with Framer Motion:
   * **Cattlestar** (`/products/cattlestar`) — High-potency oral calcium gel
   * **Cattlestar-DS** (`/products/cattlestar-ds`) — Double-strength calcium suspension
 * **Packshot Assets:**
-  * Primary: `/images/products/cattlestar-1.png`
-  * Secondary: `/images/products/cattlemin-1.png`
+  * Primary: `/images/cattlestar-1.png`
+  * Secondary: `/images/cattlemin-1.png`
   * Alt Text: `"Cattlestar and Cattlemin veterinary nutritional formulations"`
 * **Deep Link:** [`/solutions#animal-nutrition`](file:///d:/coding/test/cattlevibes/src/app/solutions/page.tsx)
 
@@ -172,7 +172,7 @@ The carousel uses a directional slide transition with Framer Motion:
   * **Liver-OK Injection** (`/products/liver-ok-injection`) — Injectable B-complex liver booster
   * **Rumi-OK** (`/products/rumi-ok-powder`) — Live yeast & rumen buffering powder
 * **Packshot Assets:**
-  * Primary: `/images/products/liver-ok-1.png`
+  * Primary: `/images/liver-ok-1.png`
   * Alt Text: `"Liver-OK herbal liver tonic and rumen conditioner"`
 * **Deep Link:** [`/solutions#digestive-liver`](file:///d:/coding/test/cattlevibes/src/app/solutions/page.tsx)
 
@@ -227,7 +227,7 @@ The carousel uses a directional slide transition with Framer Motion:
   * **Utrovibe** (`/products/utrovibe`) — Ecbolic uterine restorative tonic
   * **Cattlespas** (`/products/cattlespas`) — Antispasmodic injection for smooth muscle relief
 * **Packshot Assets:**
-  * Primary: `/images/products/utrovibe-1.png`
+  * Primary: `/images/utrovibe-1.png`
   * Alt Text: `"Utrovibe uterine cleansing tonic"`
 * **Deep Link:** [`/solutions#reproductive`](file:///d:/coding/test/cattlevibes/src/app/solutions/page.tsx)
 
@@ -282,7 +282,7 @@ The carousel uses a directional slide transition with Framer Motion:
   * **Pyrovibe Injection** (`/products/pyrovibe-injection`) — Meloxicam + Paracetamol analgesic & antipyretic
   * **Megluvibe** (`/products/megluvibe`) — Flunixin meglumine potent anti-inflammatory
 * **Packshot Assets:**
-  * Primary: `/images/products/pyrovibe-injection.png`
+  * Primary: `/images/pyrovibe-injection.png`
   * Alt Text: `"Pyrovibe Injection veterinary analgesic and antipyretic"`
 * **Deep Link:** [`/solutions#veterinary-medicines`](file:///d:/coding/test/cattlevibes/src/app/solutions/page.tsx)
 
@@ -339,8 +339,8 @@ The carousel uses a directional slide transition with Framer Motion:
   * **Worms-OK Plus** (`/products/worms-ok-plus`) — Broad-spectrum deworming suspension
   * **Flukevibe-DS** (`/products/flukevibe-ds`) — Oxyclozanide + Levamisole flukicide bolus
 * **Packshot Assets:**
-  * Primary: `/images/products/cattle-cef.png`
-  * Secondary: `/images/products/worms-ok-plus.png`
+  * Primary: `/images/cattle-cef.png`
+  * Secondary: `/images/worms-ok-plus.png`
   * Alt Text: `"Cattle-Cef and Worms-OK Plus veterinary anti-infective formulations"`
 * **Deep Link:** [`/solutions#anti-infectives`](file:///d:/coding/test/cattlevibes/src/app/solutions/page.tsx)
 

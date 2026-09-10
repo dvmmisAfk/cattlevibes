@@ -3,7 +3,6 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import React from "react";
 
 import "./GlareHover.css";
-export { GlareHover } from "./GlareHover";
 
 export type ButtonVariant =
   | "primary"
@@ -40,7 +39,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   secondary:
     "border border-primary-navy/25 bg-white text-primary-navy hover:bg-white hover:border-brand-orange/40 hover:-translate-y-0.5 shadow-sm active:scale-[0.97] transition-all duration-200",
   accent:
-    "bg-brand-orange text-white hover:bg-[#d88410] hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent active:scale-[0.97] transition-all duration-200",
+    "bg-brand-orange text-deep-navy font-bold hover:bg-[#d88410] hover:-translate-y-0.5 hover:shadow-lg shadow-sm border border-transparent active:scale-[0.97] transition-all duration-200",
   outline:
     "border-2 border-deep-navy bg-transparent text-deep-navy hover:bg-deep-navy hover:text-white transition-colors active:scale-[0.97]",
   ghost:

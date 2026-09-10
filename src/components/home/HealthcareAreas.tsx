@@ -22,7 +22,7 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     id: "veterinary-medicines",
     number: "01",
     title: "Veterinary Medicines",
-    description: "Therapeutic solutions for livestock healthcare.",
+    description: "Advanced therapeutic treatments and clinical remedies for livestock.",
     image: "/images/veterinary-medicines-stage.jpg",
     alt: "Indian veterinary doctor examining a Gir dairy cow in an authentic open-air shelter",
     href: "/products?category=Veterinary+Medicines",
@@ -31,7 +31,7 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     id: "nutrition-mineral",
     number: "02",
     title: "Nutrition & Mineral Support",
-    description: "Calcium, mineral, vitamin and nutritional support.",
+    description: "Comprehensive calcium, vitamin, and essential mineral blends for optimal growth.",
     image: "/images/nutrition-mineral-stage.jpg",
     alt: "Healthy Indian cattle feeding on fresh green fodder and minerals in concrete troughs",
     href: "/products?category=Nutritional+Supplements",
@@ -40,7 +40,7 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     id: "preventive-healthcare",
     number: "03",
     title: "Preventive Healthcare",
-    description: "Solutions supporting digestive, reproductive and parasite-management needs.",
+    description: "Specialized solutions for digestive health, reproduction, and parasite management.",
     image: "/images/preventive-healthcare-stage.jpg",
     alt: "Veterinarian and farmer conducting preventive health checkup on a newborn calf and mother cow",
     href: "/products",
@@ -49,9 +49,9 @@ const HEALTHCARE_AREAS: HealthcareArea[] = [
     id: "commercial-supply",
     number: "04",
     title: "Commercial Supply",
-    description: "Solutions for veterinarians, dairy farms, distributors and institutional buyers.",
-    image: "/images/cattlevibes-products-table.jpg",
-    alt: "CattleVibes veterinary medicines, supplements, and clinical formulations arranged on a wooden consultation table",
+    description: "Scalable, end-to-end supply chain logistics designed to keep your veterinary business well-stocked and competitive.",
+    image: "/images/cattlevibes-commercial-supply-godown.jpg",
+    alt: "CattleVibes veterinary medicines and supplements packed in branded shipping cartons inside a distribution godown and loading bay",
     href: "/contact?subject=commercial-supply",
   },
 ];
@@ -76,6 +76,7 @@ export function HealthcareAreas() {
   return (
     <section
       className="bg-[#EEF0F0] py-20 md:py-28 border-b border-border"
+      data-theme="light"
       aria-label="Animal Healthcare Areas"
     >
       <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">

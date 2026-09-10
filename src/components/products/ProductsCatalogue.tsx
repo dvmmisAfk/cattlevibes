@@ -12,7 +12,6 @@ import {
   X,
   ArrowRight,
   ChevronDown,
-  Filter,
 } from "lucide-react";
 import { categoryFilterMap, products } from "@/data/products";
 import type { HealthConcern, Product } from "@/lib/types";
@@ -133,9 +132,12 @@ export function ProductsCatalogue({
     return filtered.slice(start, start + PAGE_SIZE);
   }, [currentPage, filtered]);
 
-  useEffect(() => {
+  const [prevFilterKey, setPrevFilterKey] = useState("");
+  const currentFilterKey = `${query}|${forms.join(",")}|${categories.join(",")}|${categoryGroup}`;
+  if (prevFilterKey !== currentFilterKey) {
+    setPrevFilterKey(currentFilterKey);
     setPage(1);
-  }, [query, forms, categories, categoryGroup]);
+  }
 
   const chips = useMemo(() => {
     const list: { group: string; value: string }[] = [];
@@ -226,6 +228,7 @@ export function ProductsCatalogue({
                   </div>
                   <input
                     type="search"
+                    aria-label="Search veterinary products or active molecules"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder="Search product or molecule..."
@@ -235,7 +238,7 @@ export function ProductsCatalogue({
                 <button
                   type="button"
                   onClick={() => setMobileFiltersOpen(true)}
-                  className="glare-button flex h-12 items-center gap-2 rounded-xl border border-border/80 bg-white px-3.5 text-sm font-semibold text-deep-navy md:hidden shadow-xs hover:border-brand-orange active:scale-95 transition-all cursor-pointer shrink-0"
+                  className="glare-button flex h-12 min-h-[44px] items-center gap-2 rounded-xl border border-border/80 bg-white px-3.5 text-sm font-semibold text-deep-navy md:hidden shadow-xs hover:border-brand-orange active:scale-[0.97] transition-all cursor-pointer shrink-0"
                   aria-label="Open filters sidebar"
                 >
                   <SlidersHorizontal className="h-4 w-4 text-brand-orange" />
@@ -258,7 +261,7 @@ export function ProductsCatalogue({
                   <button
                     type="button"
                     onClick={clearAll}
-                    className="inline-flex items-center gap-1 font-mono text-xs font-bold text-brand-orange hover:underline cursor-pointer transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-1.5 font-mono text-xs font-bold text-deep-navy hover:text-brand-orange hover:underline cursor-pointer transition-colors active:scale-[0.98] py-2"
                   >
                     <span>Clear filters</span>
                     <span aria-hidden="true">&rarr;</span>
@@ -273,13 +276,13 @@ export function ProductsCatalogue({
               {chips.map((chip) => (
                 <span
                   key={`${chip.group}-${chip.value}`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-white px-2.5 py-1 text-xs font-medium text-deep-navy shadow-xs"
+                  className="inline-flex items-center gap-1 rounded-lg border border-border/80 bg-white pl-2.5 pr-1 py-0.5 text-xs font-medium text-deep-navy shadow-xs"
                 >
                   <span>{chip.value}</span>
                   <button
                     type="button"
                     onClick={() => removeChip(chip.group, chip.value)}
-                    className="text-cadet-blue hover:text-brand-orange transition-colors cursor-pointer"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-md text-cadet-blue hover:text-brand-orange hover:bg-black/5 transition-colors cursor-pointer"
                     aria-label={`Remove ${chip.value}`}
                   >
                     <X className="h-3.5 w-3.5" strokeWidth={2} />
@@ -300,7 +303,7 @@ export function ProductsCatalogue({
               <button
                 type="button"
                 onClick={clearAll}
-                className="inline-flex items-center gap-1 font-mono text-xs font-bold uppercase tracking-wider text-brand-orange hover:underline cursor-pointer"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border bg-white px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-deep-navy shadow-xs hover:border-brand-orange hover:text-brand-orange cursor-pointer transition-all active:scale-[0.98]"
               >
                 <span>Clear filters</span>
                 <span aria-hidden="true">&rarr;</span>

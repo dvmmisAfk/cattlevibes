@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Button } from "@/components/ui/Buttons";
-import { images } from "@/data/site";
 
 export function CinematicCTA() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +12,7 @@ export function CinematicCTA() {
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-deep-navy py-32 lg:min-h-[85vh] lg:py-44">
+    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-deep-navy py-32 lg:min-h-[85vh] lg:py-44" data-theme="dark">
       {/* ─── 1. Cinematic Full-Bleed Backdrop ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         {/* Authentic Open-Air Indian Cow Shelter and Farm View */}
@@ -81,15 +80,15 @@ export function CinematicCTA() {
               </Button>
             </MagneticButton>
 
-            {/* Catalogue Request Action */}
+            {/* Catalogue Download Action */}
             <MagneticButton strength={0.3}>
               <Button
-                href="/contact?subject=catalogue"
+                href="/resources#download-catalogue"
                 variant="whiteOutline"
                 size="lg"
                 className="w-full sm:w-auto min-w-[210px] h-13 min-h-[52px] px-8 flex items-center justify-center"
               >
-                Request Catalogue
+                Download Catalogue
               </Button>
             </MagneticButton>
           </motion.div>

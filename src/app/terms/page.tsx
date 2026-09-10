@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="bg-soft-white pt-(--nav-height)">
-      <div className="mx-auto w-full max-w-[1400px] px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+      <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
         <Breadcrumbs className="mb-8" />
 
         <div className="border-b border-border pb-8">
@@ -22,7 +22,7 @@ export default function TermsPage() {
           </p>
         </div>
 
-        <div className="prose prose-slate mt-10 max-w-none space-y-10 text-sm leading-relaxed text-cadet-blue md:text-base">
+        <div className="prose prose-slate mt-10 max-w-none space-y-8 text-sm leading-relaxed text-cadet-blue md:text-base">
           {/* Section 1 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">

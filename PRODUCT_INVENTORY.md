@@ -126,7 +126,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - Store below 30°C
   - Keep protected from direct sunlight
 - **Product Images:**
-  - `/images/products/cattlestar-gold-1.png` (Official Chelated CATTLESTAR Gold 5 Ltr, 2 Ltr & 1 Ltr Lineup Packshot)
+  - `/images/cattlestar-gold-1.png` (Official Chelated CATTLESTAR Gold 5 Ltr, 2 Ltr & 1 Ltr Lineup Packshot)
 - **Related Formulary:** `cattlestar`, `cattlestar-ds`, `cattlestar-advance-gel`
 
 ---
@@ -150,9 +150,9 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/cattlestar-1.png`
-  - `/images/products/cattlestar-2.png`
-  - `/images/products/cattlestar-3.png`
+  - `/images/cattlestar-1.png`
+  - `/images/cattlestar-2.png`
+  - `/images/cattlestar-3.png`
 - **Related Formulary:** `cattlestar-ds`, `cattlestar-gold`, `cattlestar-gel`
 
 ---
@@ -175,8 +175,8 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo, Horses
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/cattlestar-ds-1.png`
-  - `/images/products/cattlestar-ds-2.png`
+  - `/images/cattlestar-ds-1.png`
+  - `/images/cattlestar-ds-2.png`
 - **Related Formulary:** `cattlestar`, `cattlestar-gold`, `cattle-phos`
 
 ---
@@ -199,7 +199,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/cattlestar-gel.png` (Official 300 g Ionic Calcium Rich Gel Packshot)
+  - `/images/cattlestar-gel.png` (Official 300 g Ionic Calcium Rich Gel Packshot)
 - **Related Formulary:** `cattlestar`, `cattlestar-advance-gel`, `cattlestar-ds`
 
 ---
@@ -222,7 +222,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/cattlestar-advance-gel.png`
+  - `/images/cattlestar-advance-gel.png`
 - **Related Formulary:** `cattlestar-gel`, `cattlestar`, `cattlestar-gold`
 
 ---
@@ -252,9 +252,9 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place away from direct sunlight
 - **Product Images:**
-  - `/images/products/liver-ok-1.png`
-  - `/images/products/liver-ok-2.png`
-  - `/images/products/liver-ok-3.png`
+  - `/images/liver-ok-1.png`
+  - `/images/liver-ok-2.png`
+  - `/images/liver-ok-3.png`
 - **Related Formulary:** `rumi-ok-powder`, `cattlemin`, `liver-ok-injection`
 
 ---
@@ -277,9 +277,9 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store protected from light & moisture
 - **Product Images:**
-  - `/images/products/liver-ok-injection-1.png` (Front Vial Packshot)
-  - `/images/products/liver-ok-injection-2.png` (Clinical Composition & Dosage Specifications)
-  - `/images/products/liver-ok-injection-3.png` (Batch, Pricing & Manufacturer Regulatory Details)
+  - `/images/liver-ok-injection-1.png` (Front Vial Packshot)
+  - `/images/liver-ok-injection-2.png` (Clinical Composition & Dosage Specifications)
+  - `/images/liver-ok-injection-3.png` (Batch, Pricing & Manufacturer Regulatory Details)
 - **Related Formulary:** `liver-ok`, `rumi-ok-powder`, `pyrovibe-injection`
 
 ---
@@ -303,8 +303,8 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/rumi-ok-powder-1.png`
-  - `/images/products/rumi-ok-powder-2.png`
+  - `/images/rumi-ok-powder-1.png`
+  - `/images/rumi-ok-powder-2.png`
 - **Related Formulary:** `rumi-ok-bolus`, `liver-ok`, `cattlemin`
 
 ---
@@ -327,7 +327,7 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/rumi-ok-bolus.png`
+  - `/images/rumi-ok-bolus.png`
 - **Related Formulary:** `rumi-ok-powder`, `liver-ok`, `cattlemin`
 
 ---
@@ -356,9 +356,9 @@ CATEGORY 03: REPRODUCTIVE & UTERINE CARE
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/utrovibe-1.png`
-  - `/images/products/utrovibe-2.png`
-  - `/images/products/utrovibe-3.png`
+  - `/images/utrovibe-1.png`
+  - `/images/utrovibe-2.png`
+  - `/images/utrovibe-3.png`
 - **Related Formulary:** `cattlespas`, `cattlestar`, `megluvibe`
 
 ---
@@ -387,7 +387,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/cattlespas.png`
+  - `/images/cattlespas.png`
 - **Related Formulary:** `utrovibe`, `megluvibe`, `pyrovibe-injection`
 
 ---
@@ -411,7 +411,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/pyrovibe-injection.png`
+  - `/images/pyrovibe-injection.png`
 - **Related Formulary:** `pyrovibe-bolus`, `cattlespas`, `cattle-cef`
 
 ---
@@ -435,7 +435,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/pyrovibe-bolus.png`
+  - `/images/pyrovibe-bolus.png`
 - **Related Formulary:** `pyrovibe-injection`, `cattlespas`, `megluvibe`
 
 ---
@@ -458,7 +458,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/megluvibe.png`
+  - `/images/megluvibe.png`
 - **Related Formulary:** `cattlespas`, `utrovibe`, `pyrovibe-injection`
 
 ---
@@ -481,8 +481,8 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store protected from direct light. Keep out of reach of children
 - **Product Images:**
-  - `/images/products/cattle-phos-1.png` (100 ml Glass Vial & Outer Carton Duo Packshot)
-  - `/images/products/cattle-phos-2.png` (Clinical Outer Carton Packaging Packshot)
+  - `/images/cattle-phos-1.png` (100 ml Glass Vial & Outer Carton Duo Packshot)
+  - `/images/cattle-phos-2.png` (Clinical Outer Carton Packaging Packshot)
 - **Related Formulary:** `cattlemin`, `cattlestar`, `cattlestar-ds`
 
 ---
@@ -506,7 +506,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/cattle-cef.png`
+  - `/images/cattle-cef.png`
 - **Related Formulary:** `cattlecef-sb`, `pyrovibe-injection`, `fendivibe-plus`
 
 ---
@@ -530,7 +530,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/products/cattlecef-sb.png`
+  - `/images/cattlecef-sb.png`
 - **Related Formulary:** `cattle-cef`, `pyrovibe-injection`, `fendivibe-plus`
 
 ---
@@ -560,7 +560,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - *Withdrawal Period:* Single dose therapy. As per product catalogue
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/fendivibe-plus.png` (Official 10x1x1 Bolus Box & 1x1 Bolus Unit Packshot)
+  - `/images/fendivibe-plus.png` (Official 10x1x1 Bolus Box & 1x1 Bolus Unit Packshot)
 - **Related Formulary:** `flukevibe-ds`, `worms-ok-plus`, `liver-ok`
 
 ---
@@ -584,7 +584,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/flukevibe-ds.png`
+  - `/images/flukevibe-ds.png`
 - **Related Formulary:** `fendivibe-plus`, `worms-ok-plus`, `liver-ok`
 
 ---
@@ -608,7 +608,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/products/worms-ok-plus.png` (Single High-Resolution Master Studio Packshot)
+  - `/images/worms-ok-plus.png` (Single High-Resolution Master Studio Packshot)
 - **Related Formulary:** `fendivibe-plus`, `flukevibe-ds`, `liver-ok`
 
 ---
@@ -641,8 +641,8 @@ CATEGORY 06: NUTRITIONAL SUPPLEMENTS
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place away from moisture
 - **Product Images:**
-  - `/images/products/cattlemin-1.png`
-  - `/images/products/cattlemin-2.png`
+  - `/images/cattlemin-1.png`
+  - `/images/cattlemin-2.png`
 - **Related Formulary:** `cattlestar`, `cattlestar-gold`, `cattle-phos`
 
 ---

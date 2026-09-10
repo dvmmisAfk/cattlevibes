@@ -16,19 +16,19 @@ interface ResourceIndexItem {
 const RESOURCES: ResourceIndexItem[] = [
   {
     number: "01",
-    title: "Product Catalogue",
+    title: "Online Product Portfolio",
     description:
-      "Explore the complete CattleVibes range of veterinary medicines, nutritional support and preventive healthcare products.",
+      "Explore the complete CattleVibes range of 21 veterinary medicines, nutritional supplements, and preventive healthcare products.",
     actionText: "Explore Products",
     href: "/products",
   },
   {
     number: "02",
-    title: "Clinical Dossiers",
+    title: "Download Product Catalogue",
     description:
-      "Request detailed product specifications, active formulations, and clinical documentation from our commercial desk.",
-    actionText: "Request Information",
-    href: "#dossier-request",
+      "Download the complete CattleVibes veterinary product catalogue PDF (14.2 MB) with therapeutic indications, dosages, and pack presentations.",
+    actionText: "Download PDF",
+    href: "#download-catalogue",
   },
   {
     number: "03",
@@ -52,7 +52,7 @@ export function ResourceIndex() {
             Resources for Better Animal Healthcare
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-cadet-blue">
-            Access the CattleVibes product catalogue and request product information or supporting documentation through the resources below.
+            Download the complete CattleVibes veterinary product catalogue PDF or explore clinical healthcare documentation through the resources below.
           </p>
         </div>
 

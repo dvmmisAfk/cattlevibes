@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 interface SpotlightCardProps {
   children: React.ReactNode;
@@ -12,20 +12,15 @@ interface SpotlightCardProps {
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(238, 155, 22, 0.08)",
+  spotlightColor = "rgba(234, 146, 22, 0.08)",
   size = 350,
 }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
-
-  useEffect(() => {
-    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isTouch || !cardRef.current) return;
+    if (!cardRef.current || (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches)) return;
     const rect = cardRef.current.getBoundingClientRect();
     setPosition({
       x: e.clientX - rect.left,
@@ -34,7 +29,9 @@ export function SpotlightCard({
   };
 
   const handleMouseEnter = () => {
-    if (!isTouch) setIsHovered(true);
+    if (typeof window !== "undefined" && !window.matchMedia("(pointer: coarse)").matches) {
+      setIsHovered(true);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -51,7 +48,7 @@ export function SpotlightCard({
       className={`group relative overflow-hidden transition-all duration-300 ${className}`}
     >
       {/* Soft Low-Opacity Mouse-Tracking Spotlight */}
-      {!isTouch && isHovered && position && (
+      {isHovered && position && (
         <div
           className="pointer-events-none absolute -inset-px z-1 rounded-[inherit] transition-opacity duration-300"
           style={{

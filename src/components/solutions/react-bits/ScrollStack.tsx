@@ -284,6 +284,17 @@ export const ScrollStack: React.FC<ScrollStackProps> = ({
 
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
+      const globalLenis = typeof window !== "undefined"
+        ? (window as unknown as { __lenis?: Lenis }).__lenis
+        : undefined;
+
+      if (globalLenis) {
+        globalLenis.on("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        lenisRef.current = globalLenis;
+        return globalLenis;
+      }
+
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -374,7 +385,16 @@ export const ScrollStack: React.FC<ScrollStackProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
       if (lenisRef.current) {
-        lenisRef.current.destroy();
+        const isGlobal =
+          typeof window !== "undefined" &&
+          (window as unknown as { __lenis?: Lenis }).__lenis ===
+            lenisRef.current;
+        if (isGlobal) {
+          lenisRef.current.off("scroll", handleScroll);
+          window.removeEventListener("scroll", handleScroll);
+        } else {
+          lenisRef.current.destroy();
+        }
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];

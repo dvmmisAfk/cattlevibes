@@ -10,6 +10,7 @@ export function ResourcesHero() {
   return (
     <section
       className="relative flex min-h-screen min-h-[100svh] items-center overflow-hidden bg-deep-navy pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-28 lg:pb-20"
+      data-theme="dark"
       aria-labelledby="resources-hero-title"
     >
       {/* ─── 1. Full-Bleed Authentic Pastoral Landscape Image (4K UHD Mountain Pasture) ─── */}
@@ -19,7 +20,7 @@ export function ResourcesHero() {
           alt="Herd of dairy cattle grazing on lush green pasture against snow-capped mountain range"
           fill
           priority
-          unoptimized
+          sizes="100vw"
           className="object-cover object-[center_65%] lg:object-[center_60%]"
         />
       </div>
@@ -43,7 +44,7 @@ export function ResourcesHero() {
             className="font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
           >
             <FoldText
-              text="Knowledge for Better Animal Healthcare"
+              text="Clinical Resources & Field Guidance"
               trigger="mount"
               hinge="top"
               duration={0.7}

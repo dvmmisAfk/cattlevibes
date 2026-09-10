@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, ArrowRight } from "lucide-react";
@@ -80,7 +80,7 @@ export function ProductQuickView({
   const current = images[currentIndex];
   const stageKey = `${product.slug}:${currentIndex}`;
 
-  const beginTransition = (nextDirection: number) => {
+  const beginTransition = useCallback((nextDirection: number) => {
     if (transitioning.current) return false;
     transitioning.current = true;
     setDirection(nextDirection);
@@ -88,19 +88,19 @@ export function ProductQuickView({
       transitioning.current = false;
     }, SLIDE_MS + 40);
     return true;
-  };
+  }, []);
 
-  const showPreviousProduct = () => {
+  const showPreviousProduct = useCallback(() => {
     if (!canBrowse || sharedLayout) return;
     if (!beginTransition(-1)) return;
     onSelect(products[(productIndex - 1 + products.length) % products.length]);
-  };
+  }, [beginTransition, canBrowse, onSelect, productIndex, products, sharedLayout]);
 
-  const showNextProduct = () => {
+  const showNextProduct = useCallback(() => {
     if (!canBrowse || sharedLayout) return;
     if (!beginTransition(1)) return;
     onSelect(products[(productIndex + 1) % products.length]);
-  };
+  }, [beginTransition, canBrowse, onSelect, productIndex, products, sharedLayout]);
 
   const showPreviousImage = () => {
     if (images.length < 2) return;
@@ -114,11 +114,13 @@ export function ProductQuickView({
     setSlide((value) => (value + 1) % images.length);
   };
 
-  actionsRef.current = {
-    onClose,
-    showNextProduct,
-    showPreviousProduct,
-  };
+  useEffect(() => {
+    actionsRef.current = {
+      onClose,
+      showNextProduct,
+      showPreviousProduct,
+    };
+  }, [onClose, showNextProduct, showPreviousProduct]);
 
   useEffect(() => {
     if (!sharedLayout) return;
@@ -234,19 +236,19 @@ export function ProductQuickView({
                 type="button"
                 onClick={showPreviousImage}
                 aria-label="Previous image"
-                className="absolute top-1/2 left-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+                className="absolute top-1/2 left-3 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-white/95 text-deep-navy shadow-xs transition-all hover:bg-white hover:border-brand-orange active:scale-95 cursor-pointer"
               >
-                <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
+                <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
               </button>
               <button
                 type="button"
                 onClick={showNextImage}
                 aria-label="Next image"
-                className="absolute top-1/2 right-3 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white text-deep-navy/80 transition-all hover:bg-white hover:text-deep-navy hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+                className="absolute top-1/2 right-3 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-white/95 text-deep-navy shadow-xs transition-all hover:bg-white hover:border-brand-orange active:scale-95 cursor-pointer"
               >
-                <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
+                <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
               </button>
-              <div className="absolute bottom-3 right-3 z-10 rounded border border-border/70 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
+              <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
                 {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
               </div>
             </>
@@ -270,7 +272,7 @@ export function ProductQuickView({
               <button
                 type="button"
                 onClick={onClose}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-cadet-blue hover:text-deep-navy hover:bg-soft-white transition-colors cursor-pointer"
+                className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-cadet-blue hover:text-deep-navy hover:bg-soft-white active:scale-95 transition-all cursor-pointer"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" strokeWidth={2} />
@@ -348,10 +350,19 @@ export function ProductQuickView({
             )}
           </div>
 
-          <div className="mt-8 pt-4 border-t border-border/60">
+          <div className="mt-8 pt-4 border-t border-border/60 flex items-center gap-3">
+            {onEnquire && (
+              <button
+                type="button"
+                onClick={() => onEnquire(product)}
+                className="flex h-12 flex-1 items-center justify-center rounded-xl bg-brand-orange text-sm font-bold text-deep-navy transition-all hover:bg-[#d88410] active:scale-[0.97] shadow-sm cursor-pointer"
+              >
+                Enquire Now
+              </button>
+            )}
             <Link
               href={`/products/${product.slug}`}
-              className="glare-button flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-deep-navy text-sm font-bold text-white transition-all hover:bg-brand-orange shadow-sm"
+              className="glare-button flex h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-white text-sm font-bold text-deep-navy transition-all hover:bg-soft-white active:scale-[0.97] shadow-sm"
             >
               <span>Details</span>
               <ArrowRight className="h-4 w-4" strokeWidth={2} />

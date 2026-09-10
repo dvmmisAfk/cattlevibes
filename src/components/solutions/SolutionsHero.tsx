@@ -10,6 +10,7 @@ export function SolutionsHero() {
   return (
     <section
       className="relative flex min-h-screen min-h-[100svh] items-center overflow-hidden bg-deep-navy pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-28 lg:pb-20 select-none"
+      data-theme="dark"
       aria-labelledby="solutions-hero-title"
     >
       {/* ─── 1. Mirrored Farm Photograph (Hut & Cow on the Right, Open Atmospheric Space on Left) ─── */}
@@ -56,9 +57,9 @@ export function SolutionsHero() {
             />
           </h1>
 
-          {/* Supporting Copy (Single crisp line on desktop, matched to Resources Hero) */}
+          {/* Supporting Copy */}
           <motion.p
-            className="mt-6 sm:mt-7 max-w-none text-base sm:text-lg lg:text-[1.125rem] font-medium leading-normal tracking-[-0.01em] text-white/90 antialiased lg:whitespace-nowrap"
+            className="mt-6 sm:mt-7 max-w-2xl text-base sm:text-lg lg:text-[1.125rem] font-medium leading-relaxed tracking-[-0.01em] text-white/90 antialiased"
             initial={prefersReduced ? {} : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}

@@ -47,10 +47,10 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className="text-3xl font-bold text-deep-navy md:text-4xl">
+          <h1 className="font-heading text-3xl font-extrabold text-deep-navy sm:text-4xl tracking-tight leading-tight">
             {product.name}
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-text-muted">
+          <p className="mt-4 text-base leading-relaxed text-cadet-blue">
             {product.shortDescription}
           </p>
           <div className="mt-8">
@@ -60,11 +60,11 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           </div>
 
           <div className="mt-10">
-            <h2 className="text-lg font-bold text-deep-navy">Key Benefits</h2>
+            <h2 className="font-heading text-lg font-bold text-deep-navy">Key Benefits</h2>
             <ul className="mt-4 space-y-2">
               {product.benefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-2 text-sm text-text-muted">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-cadet-blue/60" />
+                <li key={benefit} className="flex items-start gap-2 text-sm text-cadet-blue">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-sm bg-brand-orange" />
                   {benefit}
                 </li>
               ))}
@@ -75,7 +75,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 
       {infoEntries.length > 0 && (
         <section className="mt-16 rounded-xl border border-border bg-white p-6 md:p-8">
-          <h2 className="text-xl font-bold text-deep-navy">Product Information</h2>
+          <h2 className="font-heading text-xl font-bold text-deep-navy">Product Information</h2>
           <dl className="mt-6 grid gap-4 sm:grid-cols-2">
             {Object.entries(product.info).map(([key, value]) =>
               value ? (
@@ -92,9 +92,9 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       )}
 
       <section className="mt-12">
-        <h2 className="text-xl font-bold text-deep-navy">Product Details</h2>
+        <h2 className="font-heading text-xl font-bold text-deep-navy">Product Details</h2>
         <p className="mt-4 text-base leading-relaxed text-cadet-blue">{product.description}</p>
-        <p className="mt-4 text-sm italic text-text-muted">
+        <p className="mt-4 text-sm italic text-cadet-blue">
           For complete composition, indications, dosage, and presentation details, please refer
           to the official product catalogue or contact our team.
         </p>
@@ -102,7 +102,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
 
       {related.length > 0 && (
         <section className="mt-16">
-          <h2 className="text-2xl font-bold text-deep-navy">Related Products</h2>
+          <h2 className="font-heading text-2xl font-bold text-deep-navy">Related Products</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <ProductCard key={p.slug} product={p} />
@@ -112,8 +112,8 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       )}
 
       <section className="mt-16 rounded-xl border border-border bg-light-pebble/60 p-8 text-center md:p-12">
-        <h2 className="text-xl font-bold text-deep-navy">Need more information?</h2>
-        <p className="mt-3 text-sm text-text-muted">
+        <h2 className="font-heading text-xl font-bold text-deep-navy">Need more information?</h2>
+        <p className="mt-3 text-sm text-cadet-blue">
           Contact our team for detailed product information and enquiries.
         </p>
         <div className="mt-6">
@@ -147,20 +147,20 @@ function DetailImageSlider({ product }: { product: Product }) {
             onClick={() =>
               setSlide((value) => (value - 1 + images.length) % images.length)
             }
-            className="absolute top-1/2 left-3 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+            className="absolute top-1/2 left-3 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-white/95 text-deep-navy transition-all hover:bg-white hover:border-brand-orange active:scale-95 cursor-pointer shadow-xs"
             aria-label="Previous image"
           >
-            <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
+            <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
           </button>
           <button
             type="button"
             onClick={() => setSlide((value) => (value + 1) % images.length)}
-            className="absolute top-1/2 right-3 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-md border border-border/80 bg-white/95 text-deep-navy/80 transition-all hover:bg-white hover:border-deep-navy/40 active:scale-95 cursor-pointer"
+            className="absolute top-1/2 right-3 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-lg border border-border/80 bg-white/95 text-deep-navy transition-all hover:bg-white hover:border-brand-orange active:scale-95 cursor-pointer shadow-xs"
             aria-label="Next image"
           >
-            <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
+            <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
           </button>
-          <div className="absolute bottom-3 right-3 z-10 rounded border border-border/70 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
+          <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
             {String(slide + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </div>
         </>

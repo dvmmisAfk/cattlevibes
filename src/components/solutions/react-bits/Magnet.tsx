@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 
 interface MagnetProps {
@@ -19,18 +19,13 @@ export function Magnet({
   strength = 0.25,
 }: MagnetProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isTouch, setIsTouch] = useState(false);
 
   const activeDistance = range ?? maxDistance;
   const x = useSpring(0, { stiffness: 260, damping: 20 });
   const y = useSpring(0, { stiffness: 260, damping: 20 });
 
-  useEffect(() => {
-    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
-  }, []);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isTouch || !ref.current) return;
+    if (!ref.current || (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches)) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -52,10 +47,6 @@ export function Magnet({
     x.set(0);
     y.set(0);
   };
-
-  if (isTouch) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div

@@ -55,8 +55,13 @@ export default function PillNav({
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
 
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsMobileMenuOpen(false);
+  }
+
+  useEffect(() => {
     const menu = mobileMenuRef.current;
     if (menu) {
       gsap.set(menu, { visibility: "hidden", opacity: 0 });

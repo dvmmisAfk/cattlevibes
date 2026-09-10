@@ -9,6 +9,7 @@ interface ProductCardProps {
   showBenefits?: boolean;
   compact?: boolean;
   bestseller?: boolean;
+  mobileCompact?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export function ProductCard({
   showBenefits = false,
   compact = false,
   bestseller,
+  mobileCompact = false,
   className = "",
 }: ProductCardProps) {
   const cover = product.images?.[0];
@@ -25,43 +27,75 @@ export function ProductCard({
   return (
     <Link
       href={`/products/${product.slug}`}
-      className={`group flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/60 hover:shadow-lg hover:shadow-deep-navy/[0.06] touch-manipulation active:scale-[0.99] ${className}`}
+      className={`group flex h-full flex-col justify-between overflow-hidden rounded-lg sm:rounded-xl border border-border bg-white transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/60 hover:shadow-lg hover:shadow-deep-navy/[0.06] touch-manipulation active:scale-[0.98] ${className}`}
     >
       <div
         className={`relative flex items-center justify-center overflow-hidden bg-soft-white transition-colors group-hover:bg-warm-cream/30 ${
-          compact ? "aspect-[4/3] p-3.5 sm:p-4" : "aspect-[4/3] p-6"
+          mobileCompact
+            ? "aspect-square p-2 sm:aspect-[4/3] sm:p-5 md:p-6"
+            : compact
+            ? "aspect-[4/3] p-3.5 sm:p-4"
+            : "aspect-[4/3] p-6"
         }`}
       >
-        {isBestseller && <BestsellerRibbon />}
+        {isBestseller && (
+          <>
+            {mobileCompact ? (
+              <>
+                <span className="sm:hidden absolute top-1.5 right-1.5 z-20 inline-flex items-center gap-0.5 rounded bg-brand-orange px-1 py-0.5 font-heading text-[8px] font-bold text-white shadow-xs">
+                  <span className="text-[7px]">★</span> Best
+                </span>
+                <BestsellerRibbon className="hidden sm:block" />
+              </>
+            ) : (
+              <BestsellerRibbon />
+            )}
+          </>
+        )}
         <ProductPackshot src={cover} alt={product.name} />
       </div>
 
       <div
         className={`flex flex-1 flex-col justify-between ${
-          compact ? "p-4" : "p-5 md:p-6"
+          mobileCompact ? "p-2 sm:p-5 md:p-6" : compact ? "p-4" : "p-5 md:p-6"
         }`}
       >
         <div>
-          <div className="flex items-center justify-between gap-1.5">
-            <p className="font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-cadet-blue/70 truncate">
+          <div className="flex items-center justify-between gap-1">
+            <p
+              className={`font-mono font-semibold uppercase tracking-wider text-cadet-blue/70 truncate ${
+                mobileCompact ? "text-[8px] sm:text-[11px]" : "text-[10px] sm:text-[11px]"
+              }`}
+            >
               {product.category}
             </p>
             {product.formulation && (
-              <span className="font-mono text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-text-muted shrink-0">
+              <span
+                className={`font-mono font-semibold uppercase tracking-wider text-text-muted shrink-0 ${
+                  mobileCompact
+                    ? "hidden sm:inline-block text-[9px] sm:text-[10px]"
+                    : "text-[9px] sm:text-[10px]"
+                }`}
+              >
                 {product.formulation}
               </span>
             )}
           </div>
+
           <h3
-            className={`mt-1 font-heading font-bold text-deep-navy transition-colors group-hover:text-brand-orange ${
-              compact ? "text-base leading-snug line-clamp-1" : "text-lg"
+            className={`font-heading font-bold text-deep-navy transition-colors group-hover:text-brand-orange ${
+              mobileCompact
+                ? "mt-0.5 sm:mt-1 text-[11px] leading-snug sm:text-lg line-clamp-2"
+                : compact
+                ? "mt-1 text-base leading-snug line-clamp-1"
+                : "mt-1 text-lg"
             }`}
           >
             {product.name}
           </h3>
 
           {showBenefits && product.benefits?.length > 0 ? (
-            <ul className="mt-2.5 space-y-1">
+            <ul className={`space-y-1 ${mobileCompact ? "hidden sm:block mt-2.5" : "mt-2.5"}`}>
               {product.benefits.slice(0, 2).map((benefit) => (
                 <li
                   key={benefit}
@@ -74,8 +108,12 @@ export function ProductCard({
             </ul>
           ) : (
             <p
-              className={`mt-1.5 text-xs leading-relaxed text-text-muted ${
-                compact ? "line-clamp-2" : "line-clamp-2"
+              className={`leading-relaxed text-text-muted ${
+                mobileCompact
+                  ? "hidden sm:block mt-1.5 text-xs line-clamp-2"
+                  : compact
+                  ? "mt-1.5 text-xs line-clamp-2"
+                  : "mt-1.5 text-xs line-clamp-2"
               }`}
             >
               {product.shortDescription}
@@ -84,8 +122,12 @@ export function ProductCard({
         </div>
 
         <div
-          className={`flex items-center justify-end border-t border-border/50 ${
-            compact ? "mt-3.5 pt-2.5" : "mt-5 pt-3.5"
+          className={`items-center justify-end border-t border-border/50 ${
+            mobileCompact
+              ? "hidden sm:flex mt-5 pt-3.5"
+              : compact
+              ? "flex mt-3.5 pt-2.5"
+              : "flex mt-5 pt-3.5"
           }`}
         >
           <span className="inline-flex items-center gap-1 text-xs font-bold text-deep-navy transition-colors group-hover:text-brand-orange">

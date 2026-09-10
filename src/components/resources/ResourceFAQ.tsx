@@ -15,31 +15,31 @@ const RESOURCE_FAQS: FAQItem[] = [
     number: "01",
     question: "How can I access the complete product catalogue?",
     answer:
-      "You can explore our entire veterinary medicines and nutritional supplements lineup directly on our live Products page. If you require an offline dossier or comprehensive specification booklet, submit a request through the form above or reach out to our commercial desk.",
+      "You can download the complete, high-resolution CattleVibes Veterinary Product Catalogue PDF directly from the download section on this page, or explore our live product line on the Products page.",
   },
   {
     number: "02",
-    question: "Can I request information for a specific product?",
+    question: "Can I get detailed specifications for individual products?",
     answer:
-      "Yes. Every product in our catalogue has a dedicated detail page featuring verified active compositions, target animals, indications, and administration notes. If you need additional technical profile sheets, select the product in the request form above.",
+      "Yes. Every product in our portfolio has a dedicated live page featuring verified active compositions, target animals, indications, and administration notes. Additionally, our downloadable catalogue PDF includes comprehensive profile sheets for all 21 formulations.",
   },
   {
     number: "03",
     question: "Can I request product or formulation documentation?",
     answer:
-      "Yes. Technical formulation profiles, Certificates of Analysis (COA), and regulatory documentation are available upon verification for practicing veterinarians, commercial dairy operators, and authorized distribution partners.",
+      "Yes. Technical formulation profiles, Certificates of Analysis (COA), and regulatory documentation are available upon request for practicing veterinarians, commercial dairy operators, and authorized distribution partners via info@cattlevibes.com.",
   },
   {
     number: "04",
     question: "How do I enquire about commercial product supply?",
     answer:
-      "You can submit a request through the form above specifying your required batch sizes or visit our Contact gateway. Our commercial operations desk reviews institutional and wholesale requirements promptly.",
+      "You can reach out through our Contact page or email us directly at info@cattlevibes.com specifying your required batch sizes. Our commercial operations desk reviews institutional and wholesale requirements promptly.",
   },
   {
     number: "05",
     question: "Can distributors request territory product dossiers?",
     answer:
-      "Yes. We partner with veterinary stockists and regional distributors across India. In your request, please specify your distribution territory and current operational scale to receive the relevant commercial portfolio dossier.",
+      "Yes. We partner with veterinary stockists and regional distributors across India. Please contact our commercial advisory desk specifying your distribution territory and current operational scale to receive the relevant territory dossier.",
   },
 ];
 
@@ -75,10 +75,12 @@ export function ResourceFAQ() {
             return (
               <div key={faq.number} className="border-b border-border/80">
                 <button
+                  id={`resource-faq-btn-${faq.number}`}
                   type="button"
                   onClick={() => toggleItem(index)}
                   className="w-full flex items-start justify-between gap-6 py-6 sm:py-8 text-left transition-colors hover:text-brand-orange group cursor-pointer"
                   aria-expanded={isOpen}
+                  aria-controls={`resource-faq-panel-${faq.number}`}
                 >
                   <div className="flex items-start gap-5 sm:gap-8">
                     <span className="font-mono text-sm sm:text-base font-bold text-cadet-blue/70 pt-0.5 group-hover:text-brand-orange transition-colors shrink-0">
@@ -101,6 +103,9 @@ export function ResourceFAQ() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={`resource-faq-panel-${faq.number}`}
+                      role="region"
+                      aria-labelledby={`resource-faq-btn-${faq.number}`}
                       initial={prefersReduced ? { opacity: 1 } : { height: 0, opacity: 0 }}
                       animate={prefersReduced ? { opacity: 1 } : { height: "auto", opacity: 1 }}
                       exit={prefersReduced ? { opacity: 0 } : { height: 0, opacity: 0 }}

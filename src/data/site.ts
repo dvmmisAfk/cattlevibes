@@ -8,6 +8,12 @@ export const siteConfig = {
   phone: "+91 98765 43210",
   email: "info@cattlevibes.com",
   address: "India",
+  socials: {
+    whatsapp: "https://wa.me/",
+    email: "mailto:info@cattlevibes.com",
+    facebook: "https://facebook.com/",
+    instagram: "https://instagram.com/",
+  },
   urls: {
     home: "/",
     about: "/about",
@@ -23,7 +29,7 @@ export const navLinks = [
   { label: "Solutions", href: "/solutions" },
   { label: "Our Products", href: "/products" },
   { label: "Resources", href: "/resources" },
-  { label: "About Us", href: "/about" },
+  { label: "Why CattleVibes", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -37,9 +43,9 @@ export const productDropdownLinks = [
 ];
 
 export const resourceDropdownLinks = [
-  { label: "Product Catalogue", href: "/resources" },
+  { label: "Product Catalogue", href: "/resources#download-catalogue" },
   { label: "Product Information", href: "/resources" },
-  { label: "FAQs", href: "/resources" },
+  { label: "FAQs", href: "/resources#faq" },
 ];
 
 
@@ -188,13 +194,12 @@ export const images = {
   heroImage: "/images/hero-pastoral.jpg",
   heroVideo: "/videos/hero-upscaled.mp4",
   heroVideoWebm: "/videos/hero.webm",
-  heroAudio: "/audio/hero.mp3",
   heroPoster: "/images/indian-cow-shelter-ground.jpg",
   heroPosterMobile: "/images/indian-cow-shelter-ground.jpg",
   heroPosterFallback:
     "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=85",
   aboutHero:
-    "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1600&q=80",
+    "/images/about-hero.jpg",
   farmWide:
     "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80",
   farmAtmospheric:

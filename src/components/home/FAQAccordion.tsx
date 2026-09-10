@@ -73,6 +73,7 @@ export function FAQAccordion() {
   return (
     <section
       className="bg-[#F3F1EC] py-20 md:py-28 border-b border-border/80"
+      data-theme="light"
       aria-label="Frequently Asked Questions"
     >
       <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">

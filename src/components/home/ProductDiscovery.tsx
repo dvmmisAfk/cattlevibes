@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
-import { Search, ArrowRight } from "lucide-react";
+import { Search } from "lucide-react";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/Buttons";
@@ -76,19 +75,20 @@ export function ProductDiscovery() {
 
   return (
     <section
-      className="bg-[#F7F5F0] py-20 md:py-28 border-b border-border"
+      className="bg-[#F7F5F0] py-14 sm:py-20 md:py-28 border-b border-border"
+      data-theme="light"
       aria-label="Product Discovery"
     >
       <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
         {/* Primary Section Heading - Strictly single heading per editorial guidelines */}
-        <div className="mb-10 md:mb-12 border-b border-border pb-6">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight">
+        <div className="mb-6 sm:mb-10 md:mb-12 border-b border-border pb-4 sm:pb-6">
+          <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight">
             Find the Right Product
           </h2>
         </div>
 
         {/* Search and Quick Filters */}
-        <div className="mb-10 space-y-5">
+        <div className="mb-6 sm:mb-10 space-y-4 sm:space-y-5">
           {/* Prominent Search Input */}
           <div className="relative max-w-2xl">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-cadet-blue/70">
@@ -112,7 +112,8 @@ export function ProductDiscovery() {
                   key={filter.value}
                   type="button"
                   onClick={() => setSelectedFilter(filter.value)}
-                  className={`glare-button rounded-lg border px-3.5 py-2 text-xs sm:text-sm font-semibold transition-colors cursor-pointer select-none ${
+                  aria-pressed={isActive}
+                  className={`glare-button min-h-[44px] flex items-center rounded-lg border px-3.5 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all cursor-pointer select-none active:scale-[0.97] touch-manipulation ${
                     isActive
                       ? "border-deep-navy bg-deep-navy text-white shadow-xs"
                       : "border-border bg-white text-deep-navy hover:border-brand-orange hover:text-brand-orange"
@@ -125,11 +126,11 @@ export function ProductDiscovery() {
           </div>
         </div>
 
-        {/* 6 Product Cards Grid - 3 columns on desktop, 2 on tablet, 1 on mobile */}
+        {/* 6 Product Cards Grid - 3 boxes of 2 rows on mobile, 2 cols on tablet, 3 cols on laptop/desktop */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+              <ProductCard key={product.slug} product={product} mobileCompact />
             ))}
           </div>
         ) : (
@@ -143,7 +144,7 @@ export function ProductDiscovery() {
                 setQuery("");
                 setSelectedFilter("all");
               }}
-              className="mt-4 text-sm font-bold text-brand-orange hover:underline cursor-pointer"
+              className="mt-4 inline-flex min-h-[44px] items-center rounded-lg border border-border bg-white px-4 py-2 text-sm font-bold text-deep-navy shadow-xs hover:border-brand-orange hover:text-brand-orange cursor-pointer transition-all active:scale-[0.98]"
             >
               Reset filters
             </button>
@@ -151,14 +152,14 @@ export function ProductDiscovery() {
         )}
 
         {/* Final Catalogue CTA */}
-        <div className="mt-12 flex items-center justify-center pt-4">
+        <div className="mt-8 sm:mt-12 flex items-center justify-center pt-2 sm:pt-4">
           <Button
             href="/products"
             variant="primary"
             size="lg"
-            className="rounded-xl px-8 py-3.5"
+            className="rounded-xl px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base text-center"
           >
-            View Complete Catalogue
+            View Complete Product Range
           </Button>
         </div>
       </div>

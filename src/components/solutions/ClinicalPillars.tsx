@@ -3,36 +3,22 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Syringe,
-  Wheat,
-  Activity,
-  HeartPulse,
-  ShieldCheck,
-  Droplets,
-  ArrowRight,
-  CheckCircle2,
-  LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "./react-bits/ScrollReveal";
 import { ScrollStack, ScrollStackItem } from "./react-bits/ScrollStack";
-import { images } from "@/data/site";
 
 export interface ClinicalPillar {
   id: string;
   number: string;
   title: string;
-  metadataLabel: string;
+  eyebrow: string;
   description: string;
   products: string[];
   href: string;
-  icon: LucideIcon;
-  theme: "navy" | "ivory" | "sage" | "image";
-  bgImage?: string;
-  clinicalStats: {
-    label: string;
-    value: string;
-  }[];
+  theme: "dark" | "light";
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
   keyBenefits: string[];
 }
 
@@ -41,9 +27,9 @@ const clinicalPillars: ClinicalPillar[] = [
     id: "veterinary-medicines",
     number: "01",
     title: "Veterinary Medicines",
-    metadataLabel: "THERAPEUTIC PHARMACOPEIA",
+    eyebrow: "VETERINARY CARE",
     description:
-      "Our veterinary medicine range includes antibiotics, anti-inflammatory injections, and specialized formulations for professional livestock healthcare under veterinary guidance.",
+      "Veterinary medicines supporting common livestock health needs, from infection and pain relief to everyday clinical care.",
     products: [
       "CATTLESPAS",
       "PYROVIBE Injection",
@@ -53,46 +39,44 @@ const clinicalPillars: ClinicalPillar[] = [
       "CATTLECEF-SB",
     ],
     href: "/products?category=Veterinary+Medicines",
-    icon: Syringe,
-    theme: "navy",
-    clinicalStats: [
-      { label: "Standard", value: "Clinical Purity" },
-      { label: "Target", value: "Acute Treatment" },
-    ],
+    theme: "dark",
+    image: "/images/card-01-veterinary-medicines.jpg",
+    imageAlt:
+      "Professional veterinary livestock photograph of dairy cow in open pasture",
+    imagePosition: "center 45%",
     keyBenefits: [
-      "Broad-spectrum antibiotic & anti-infective coverage",
-      "Rapid anti-pyretic, analgesic & spasm relief",
-      "Field-tested veterinary surgical & hospital grade",
+      "Supports infection control",
+      "Fast pain and fever relief",
+      "Veterinary-grade formulations",
     ],
   },
   {
     id: "animal-nutrition",
     number: "02",
     title: "Animal Nutrition",
-    metadataLabel: "BIO-ACTIVE MINERAL MATRIX",
+    eyebrow: "ANIMAL NUTRITION",
     description:
-      "Complete vitamin and mineral supplements designed to meet the nutritional requirements of dairy and farm animals for improved productivity and wellbeing.",
+      "Essential vitamin and mineral supplements to support daily livestock growth, feed conversion, and herd vitality.",
     products: ["CATTLEMIN"],
     href: "/products?category=Nutritional+Supplements",
-    icon: Wheat,
-    theme: "ivory",
-    clinicalStats: [
-      { label: "Bioavailability", value: "Chelated Trace" },
-      { label: "Target", value: "Productivity" },
-    ],
+    theme: "light",
+    image: "/images/card-02-animal-nutrition.jpg",
+    imageAlt:
+      "Agricultural photograph of a dairy cow grazing with a young calf in pasture",
+    imagePosition: "center 50%",
     keyBenefits: [
-      "Precision dairy ration trace mineral balancing",
-      "Reinforced coat, skin & hoof structural tone",
-      "Optimized daily feed conversion & milk solids",
+      "Essential daily trace minerals",
+      "Supports healthy coat and hooves",
+      "Improves feed conversion",
     ],
   },
   {
     id: "digestive-liver",
     number: "03",
     title: "Digestive & Liver Health",
-    metadataLabel: "HEPATIC & RUMINAL CONDITIONING",
+    eyebrow: "DIGESTIVE HEALTH",
     description:
-      "Hepatoprotective tonics and rumen conditioning formulations to support liver function, digestive health, and feed utilization in ruminants.",
+      "Digestive tonics and rumen conditioners that protect liver function, restore appetite, and improve feed digestion.",
     products: [
       "LIVER-OK",
       "LIVER-OK Injection",
@@ -100,67 +84,64 @@ const clinicalPillars: ClinicalPillar[] = [
       "RUMI-OK Bolus",
     ],
     href: "/products?category=Digestive+%26+Liver+Health",
-    icon: Activity,
-    theme: "sage",
-    clinicalStats: [
-      { label: "Hepatic Tone", value: "Herbal/Silibinin" },
-      { label: "Target", value: "Ruminal Microflora" },
-    ],
+    theme: "dark",
+    image: "/images/card-03-digestive-liver.jpg",
+    imageAlt:
+      "Documentary livestock photograph of dairy cow standing naturally in pasture",
+    imagePosition: "center 50%",
     keyBenefits: [
-      "Hepatic detox & metabolic recovery acceleration",
-      "Dynamic ruminal pH buffer against subacute acidosis",
-      "Rapid restoration of feed intake post-illness",
+      "Supports liver detoxification",
+      "Stabilizes rumen digestion",
+      "Helps restore lost appetite",
     ],
   },
   {
     id: "reproductive",
     number: "04",
     title: "Reproductive & Uterine Care",
-    metadataLabel: "POST-CALVING UTERINE TONICS",
+    eyebrow: "REPRODUCTIVE CARE",
     description:
-      "Veterinary medicines formulated for reproductive health management and uterine care in cattle and buffalo.",
+      "Specialized post-calving formulations to support uterine cleansing, faster recovery, and a timely return to breeding.",
     products: ["UTROVIBE", "CATTLESPAS"],
     href: "/products?category=Reproductive+%26+Uterine+Care",
-    icon: HeartPulse,
-    theme: "ivory",
-    clinicalStats: [
-      { label: "Calving Interval", value: "Optimized" },
-      { label: "Target", value: "Uterine Involution" },
-    ],
+    theme: "light",
+    image: "/images/card-04-reproductive-uterine.jpg",
+    imageAlt:
+      "Dairy farm photograph of a healthy adult cow standing beside a calf",
+    imagePosition: "center 48%",
     keyBenefits: [
-      "Natural postpartum uterine cleansing & expulsion",
-      "Promotes myometrial tone & lochial discharge",
-      "Accelerates timely return to estrus & conception",
+      "Promotes natural uterine cleansing",
+      "Supports faster calving recovery",
+      "Assists return to breeding cycle",
     ],
   },
   {
     id: "parasite-control",
     number: "05",
     title: "Parasite Control",
-    metadataLabel: "BROAD-SPECTRUM ANTHELMINTICS",
+    eyebrow: "PARASITE CONTROL",
     description:
-      "Broad-spectrum anthelmintics and flukicides for internal parasite and liver fluke control in livestock.",
+      "Targeted treatments for internal parasites and liver flukes, protecting herd health and seasonal grazing productivity.",
     products: ["FENDIVIBE PLUS", "FLUKEVIBE DS", "WORMS-OK PLUS"],
     href: "/products?category=Parasite+Control",
-    icon: ShieldCheck,
-    theme: "sage",
-    clinicalStats: [
-      { label: "Efficacy Range", value: "Nematode & Fluke" },
-      { label: "Target", value: "Zero Resistance" },
-    ],
+    theme: "dark",
+    image: "/images/card-05-parasite-control.jpg",
+    imageAlt:
+      "Agricultural photograph of healthy sheep and lamb in green pasture",
+    imagePosition: "center 52%",
     keyBenefits: [
-      "Targeted Fasciola hepatica eradication in all stages",
-      "Complete gastrointestinal roundworm clearance",
-      "Flock & herd synchronization with low withdrawal",
+      "Effective fluke and worm control",
+      "Protects gut and liver health",
+      "Supports herd-wide treatment",
     ],
   },
   {
     id: "calcium-milk",
     number: "06",
     title: "Calcium & Milk Support",
-    metadataLabel: "METABOLIC MINERAL THERAPY",
+    eyebrow: "CALCIUM & MILK SUPPORT",
     description:
-      "Calcium and mineral supplements in liquid and gel forms to support post-calving recovery and milk productivity in dairy animals.",
+      "Fast-acting calcium and mineral formulations to manage calving stress, prevent milk fever, and maintain steady milk yields.",
     products: [
       "CATTLESTAR",
       "CATTLESTAR-DS",
@@ -169,17 +150,15 @@ const clinicalPillars: ClinicalPillar[] = [
       "CATTLESTAR ADVANCE GEL",
     ],
     href: "/products?category=Calcium+%26+Mineral+Support",
-    icon: Droplets,
-    theme: "image",
-    bgImage: images.aboutHero,
-    clinicalStats: [
-      { label: "Ionic Surge", value: "Immediate Gel" },
-      { label: "Target", value: "Milk Fever Prev." },
-    ],
+    theme: "light",
+    image: "/images/card-06-calcium-milk.jpg",
+    imageAlt:
+      "Commercial dairy photography of fresh milk pouring into stainless-steel container",
+    imagePosition: "center 50%",
     keyBenefits: [
-      "Prevents periparturient hypocalcemia at onset",
-      "Maintains peak lactation volume and butterfat content",
-      "Fast-acting oral gel matrix with sustained calcium salts",
+      "Helps prevent milk fever",
+      "Supports steady milk yields",
+      "Fast-absorbing oral forms",
     ],
   },
 ];
@@ -189,27 +168,27 @@ export function ClinicalPillars() {
     <section
       id="clinical-pillars"
       className="relative bg-white pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-8 lg:pb-10 scroll-mt-20"
+      data-theme="light"
+      aria-label="Clinical Solutions Pillars"
     >
       <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
-        {/* Section Introduction */}
-        <div className="max-w-5xl mb-5 sm:mb-6">
-          {/* Heading */}
+        {/* Section Header */}
+        <div className="max-w-4xl mb-6 sm:mb-8">
           <ScrollReveal delay={0.1}>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-5xl font-extrabold tracking-tight text-[#172333] leading-[1.12]">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-deep-navy leading-tight">
               Six clinical pillars. One healthcare standard.
             </h2>
           </ScrollReveal>
 
-          {/* Description */}
           <ScrollReveal delay={0.2}>
-            <p className="mt-3 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#292F39]/80">
+            <p className="mt-3 max-w-2xl font-body text-base sm:text-lg leading-relaxed text-[#3a4750]">
               Precision-formulated veterinary solutions structured around physiological
               stress windows, metabolic recovery, and daily farm productivity.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* React Bits ScrollStack Section */}
+        {/* ScrollStack Stacking Cards Container */}
         <div className="mt-1 sm:mt-2">
           <ScrollStack
             useWindowScroll={true}
@@ -223,217 +202,338 @@ export function ClinicalPillars() {
             className="w-full"
           >
             {clinicalPillars.map((pillar) => {
-              const isNavy = pillar.theme === "navy";
-              const isSage = pillar.theme === "sage";
-              const isImage = pillar.theme === "image";
-              const isDark = isNavy || isImage;
+              const isDark = pillar.theme === "dark";
 
-              let cardStyles = "bg-[#F6F3EC] text-[#292F39] border-[#DCE4D6]";
-              if (isNavy) {
-                cardStyles = "bg-[#172333] text-white border-[#172333]";
-              } else if (isSage) {
-                cardStyles = "bg-[#EBF1E8] text-[#292F39] border-[#DCE4D6]";
-              } else if (isImage) {
-                cardStyles = "bg-[#172333] text-white border-[#172333]";
-              }
-
-              const IconComponent = pillar.icon;
+              // Strict alternating styling between Deep Navy and Warm Pebble Cream
+              const containerBg = isDark ? "bg-deep-navy" : "bg-warm-cream";
+              const borderColor = isDark ? "border-white/10" : "border-deep-navy/10";
+              const textTitle = isDark ? "text-white" : "text-deep-navy";
+              const textBody = isDark ? "text-white/80" : "text-cadet-blue";
+              const textMicroLabel = isDark ? "text-white/50" : "text-deep-navy/55";
+              const textProducts = isDark ? "text-white" : "text-deep-navy";
+              const productDotColor = isDark ? "text-white/30" : "text-deep-navy/30";
+              const ctaTextColor = isDark
+                ? "text-brand-orange hover:text-white"
+                : "text-deep-navy hover:text-brand-orange";
+              const highlightRuleColor = isDark
+                ? "border-white/10 divide-white/10"
+                : "border-deep-navy/10 divide-deep-navy/10";
+              const highlightTextColor = isDark ? "text-white/85" : "text-deep-navy";
+              const fadeClassFrom = isDark ? "from-deep-navy" : "from-warm-cream";
+              const fadeRadial = isDark
+                ? "bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(49,56,65,0.75)_100%)]"
+                : "bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(238,238,238,0.75)_100%)]";
 
               return (
                 <ScrollStackItem
                   key={pillar.id}
-                  itemClassName={`border-2 transition-colors duration-300 ${cardStyles}`}
+                  itemClassName={`!p-0 !rounded-2xl border transition-colors duration-300 ${containerBg} ${borderColor} shadow-sm overflow-hidden`}
                 >
-                  {/* Background Photo Overlay for Image Treatment */}
-                  {isImage && pillar.bgImage && (
-                    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit] opacity-15">
-                      <Image
-                        src={pillar.bgImage}
-                        alt=""
-                        fill
-                        className="object-cover object-center"
-                        sizes="(max-width: 1024px) 100vw, 1200px"
-                      />
-                      <div className="absolute inset-0 bg-[#172333]/70" />
-                    </div>
-                  )}
-
-                  <div className="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8 items-center h-full">
-                    {/* Left Column (7 cols): Architecture details & formulary products */}
-                    <div className="md:col-span-7 flex flex-col justify-between h-full">
-                      <div>
-                        {/* Top Pillar Header */}
-                        <div className="flex items-center justify-between border-b pb-3.5 border-current/15">
+                  <article
+                    id={pillar.id}
+                    tabIndex={0}
+                    className="group relative w-full h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+                  >
+                    {/* ─── DESKTOP / TABLET HORIZONTAL COMPOSITION (lg+) ─── */}
+                    <div className="hidden lg:grid lg:grid-cols-12 items-stretch min-h-[300px] h-full">
+                      {/* Left Column (5 cols): Number, Category, Description, Products, Action */}
+                      <div className="lg:col-span-5 p-7 xl:p-8 flex flex-col justify-between relative z-10">
+                        <div>
+                          {/* Editorial Number & Simplified Eyebrow */}
                           <div className="flex items-baseline gap-3">
-                            <span className="font-heading text-xl sm:text-2xl font-extrabold text-[#EE9B16]">
+                            <span className="font-heading text-2xl xl:text-3xl font-extrabold tracking-tight text-[#ea9216]">
                               {pillar.number}
                             </span>
-                            <span
-                              className={`text-xs font-bold tracking-wider uppercase ${
-                                isDark ? "text-white/70" : "text-[#172333]/70"
-                              }`}
-                            >
-                              {pillar.metadataLabel}
+                            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#ea9216]">
+                              {pillar.eyebrow}
                             </span>
                           </div>
-                          <span
-                            className={`rounded-full px-3 py-0.5 text-xs font-semibold ${
-                              isDark
-                                ? "bg-white/10 text-white/90"
-                                : "bg-[#F6F3EC] text-[#172333] ring-1 ring-[#DCE4D6]"
-                            }`}
+
+                          {/* Category Title */}
+                          <h3
+                            className={`mt-2 font-heading text-2xl xl:text-[1.85rem] font-extrabold tracking-tight leading-[1.18] ${textTitle}`}
                           >
-                            Category {pillar.number}
-                          </span>
+                            {pillar.title}
+                          </h3>
+
+                          {/* Concise, Human-Readable Description */}
+                          <p
+                            className={`mt-2 font-body text-xs xl:text-sm leading-relaxed ${textBody} max-w-lg`}
+                          >
+                            {pillar.description}
+                          </p>
+
+                          {/* Clean Typographic Product List (No Rounded Pills) */}
+                          <div className="mt-4 pt-3 border-t border-current/10">
+                            <span
+                              className={`block font-body text-[10px] xl:text-[11px] font-bold tracking-[0.18em] uppercase mb-1.5 ${textMicroLabel}`}
+                            >
+                              Formulation Products
+                            </span>
+                            <p
+                              className={`font-body text-xs xl:text-[13px] leading-relaxed font-semibold tracking-wide ${textProducts}`}
+                            >
+                              {pillar.products.map((product, idx) => (
+                                <React.Fragment key={product}>
+                                  {idx > 0 && (
+                                    <span
+                                      className={`mx-1.5 xl:mx-2 font-normal ${productDotColor}`}
+                                      aria-hidden="true"
+                                    >
+                                      ·
+                                    </span>
+                                  )}
+                                  <span className="transition-colors hover:text-[#ea9216]">
+                                    {product}
+                                  </span>
+                                </React.Fragment>
+                              ))}
+                            </p>
+                          </div>
                         </div>
 
-                        {/* Title & Description */}
-                        <h3
-                          className={`mt-4 font-heading text-2xl sm:text-3xl font-extrabold tracking-tight ${
-                            isDark ? "text-white" : "text-[#172333]"
-                          }`}
-                        >
-                          {pillar.title}
-                        </h3>
-                        <p
-                          className={`mt-2.5 font-body text-xs sm:text-sm leading-relaxed ${
-                            isDark ? "text-white/80" : "text-[#292F39]/80"
-                          }`}
-                        >
-                          {pillar.description}
-                        </p>
-
-                        {/* Formulation Product Badges */}
-                        <div className="mt-4">
-                          <span
-                            className={`block font-body text-xs font-semibold tracking-wider uppercase mb-2 ${
-                              isDark ? "text-white/60" : "text-[#292F39]/60"
-                            }`}
+                        {/* Open Formulary CTA */}
+                        <div className="mt-4 pt-3 border-t border-current/10">
+                          <Link
+                            href={pillar.href}
+                            className={`group/link inline-flex items-center gap-2 text-xs xl:text-sm font-bold tracking-wide transition-colors ${ctaTextColor}`}
                           >
-                            Formulation Products
+                            <span>Open formulary</span>
+                            <ArrowRight
+                              className="h-3.5 w-3.5 xl:h-4 xl:w-4 transition-transform duration-300 group-hover/link:translate-x-1.5 text-[#ea9216]"
+                              strokeWidth={2.2}
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Center Column (4 cols): Seamlessly Integrated Photography with Fading Edges */}
+                      <div
+                        className="lg:col-span-4 relative overflow-hidden min-h-[300px] h-full"
+                      >
+                        <Image
+                          src={pillar.image}
+                          alt={pillar.imageAlt}
+                          fill
+                          sizes="(max-width: 1280px) 35vw, 450px"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                          style={{ objectPosition: pillar.imagePosition || "center" }}
+                        />
+
+                        {/* Left Feathered Edge - smoothly dissolves photo into left text column */}
+                        <div
+                          className={`pointer-events-none absolute inset-y-0 left-0 w-24 xl:w-32 bg-gradient-to-r ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Right Feathered Edge - smoothly dissolves photo into right highlights column */}
+                        <div
+                          className={`pointer-events-none absolute inset-y-0 right-0 w-24 xl:w-32 bg-gradient-to-l ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Top Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 top-0 h-10 xl:h-14 bg-gradient-to-b ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Bottom Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 bottom-0 h-10 xl:h-14 bg-gradient-to-t ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Soft Perimeter Vignette */}
+                        <div
+                          className={`pointer-events-none absolute inset-0 ${fadeRadial} z-10`}
+                          aria-hidden="true"
+                        />
+                      </div>
+
+                      {/* Right Column (3 cols): 3 Short, Clear Highlights */}
+                      <div
+                        className="lg:col-span-3 p-6 xl:p-7 flex flex-col justify-center relative z-10"
+                      >
+                        <div className="w-full">
+                          <span
+                            className={`block font-body text-[10px] xl:text-[11px] font-bold tracking-[0.18em] uppercase mb-2.5 ${textMicroLabel}`}
+                          >
+                            Key Highlights
                           </span>
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                            {pillar.products.map((product) => (
-                              <span
-                                key={product}
-                                className={`rounded-lg px-2.5 py-1 font-body text-xs font-bold tracking-wide transition-all ${
-                                  isDark
-                                    ? "bg-white/10 text-white/90 ring-1 ring-white/15 hover:bg-white/20"
-                                    : "bg-white text-[#172333] ring-1 ring-[#DCE4D6] hover:ring-[#EE9B16]"
-                                }`}
+
+                          <div
+                            className={`border-t divide-y ${highlightRuleColor}`}
+                          >
+                            {pillar.keyBenefits.map((benefit, bIdx) => (
+                              <div
+                                key={benefit}
+                                className="py-2.5 flex items-start gap-2.5 xl:gap-3"
                               >
-                                {product}
-                              </span>
+                                <span
+                                  className="font-mono text-xs font-bold text-[#ea9216] shrink-0 pt-0.5"
+                                  aria-hidden="true"
+                                >
+                                  {`0${bIdx + 1}`}
+                                </span>
+                                <span
+                                  className={`font-body text-xs xl:text-[13px] leading-snug font-medium ${highlightTextColor}`}
+                                >
+                                  {benefit}
+                                </span>
+                              </div>
                             ))}
                           </div>
                         </div>
                       </div>
-
-                      {/* Open Formulary Action */}
-                      <div className="mt-6 pt-3.5 border-t border-current/15">
-                        <Link
-                          href={pillar.href}
-                          className={`group/btn inline-flex items-center gap-2.5 text-sm font-bold transition-all ${
-                            isDark
-                              ? "text-[#EE9B16] hover:text-white"
-                              : "text-[#172333] hover:text-[#EE9B16]"
-                          }`}
-                        >
-                          <span>Open formulary</span>
-                          <span
-                            className={`flex h-6 w-6 items-center justify-center rounded-full transition-transform duration-200 group-hover/btn:translate-x-1 ${
-                              isDark
-                                ? "bg-[#EE9B16] text-[#172333]"
-                                : "bg-[#172333] text-white group-hover/btn:bg-[#EE9B16] group-hover/btn:text-[#172333]"
-                            }`}
-                          >
-                            <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
-                          </span>
-                        </Link>
-                      </div>
                     </div>
 
-                    {/* Right Column (5 cols): Clinical Specifications & Benefits Panel */}
-                    <div className="md:col-span-5">
-                      <div
-                        className={`rounded-2xl p-5 border ${
-                          isDark
-                            ? "bg-white/5 border-white/10"
-                            : "bg-white border-[#DCE4D6]"
-                        }`}
+                    {/* ─── MOBILE & TABLET VERTICAL STACK (< lg) ─── */}
+                    <div className="lg:hidden p-5 sm:p-7 flex flex-col gap-4">
+                      {/* 1. Header: Number + Eyebrow */}
+                      <div className="flex items-baseline gap-3 border-b pb-3 border-current/10">
+                        <span className="font-heading text-2xl sm:text-3xl font-extrabold tracking-tight text-[#ea9216]">
+                          {pillar.number}
+                        </span>
+                        <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] uppercase text-[#ea9216]">
+                          {pillar.eyebrow}
+                        </span>
+                      </div>
+
+                      {/* 2. Category Title */}
+                      <h3
+                        className={`font-heading text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug ${textTitle}`}
                       >
-                        {/* Header with Icon */}
-                        <div className="flex items-center justify-between pb-3 border-b border-current/10">
-                          <div className="flex items-center gap-2.5">
-                            <div
-                              className={`flex h-9 w-9 items-center justify-center rounded-xl ${
-                                isDark
-                                  ? "bg-white/10 text-[#EE9B16]"
-                                  : "bg-[#F6F3EC] text-[#EE9B16]"
-                              }`}
-                            >
-                              <IconComponent className="h-4 w-4" />
-                            </div>
-                            <span
-                              className={`text-xs font-bold uppercase tracking-wider ${
-                                isDark ? "text-white/80" : "text-[#172333]"
-                              }`}
-                            >
-                              Key Highlights
-                            </span>
-                          </div>
-                        </div>
+                        {pillar.title}
+                      </h3>
 
-                        {/* Metric Highlights */}
-                        <div className="mt-3.5 grid grid-cols-2 gap-2 text-center">
-                          {pillar.clinicalStats.map((stat) => (
-                            <div
-                              key={stat.label}
-                              className={`rounded-xl p-2.5 border ${
-                                isDark
-                                  ? "bg-white/5 border-white/10"
-                                  : "bg-[#F6F3EC] border-[#DCE4D6]"
-                              }`}
-                            >
-                              <span
-                                className={`block text-[11px] font-medium uppercase tracking-wider ${
-                                  isDark ? "text-white/60" : "text-[#292F39]/60"
-                                }`}
-                              >
-                                {stat.label}
+                      {/* 3. Integrated Photography with Seamless Fading Edges */}
+                      <div
+                        className="relative w-full h-52 sm:h-64 overflow-hidden rounded-xl my-2"
+                      >
+                        <Image
+                          src={pillar.image}
+                          alt={pillar.imageAlt}
+                          fill
+                          sizes="(max-width: 1024px) 92vw, 600px"
+                          className="object-cover"
+                          style={{ objectPosition: pillar.imagePosition || "center" }}
+                        />
+
+                        {/* Top Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 top-0 h-12 sm:h-16 bg-gradient-to-b ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Bottom Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Left Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-14 bg-gradient-to-r ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Right Feathered Edge */}
+                        <div
+                          className={`pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-14 bg-gradient-to-l ${fadeClassFrom} to-transparent z-10`}
+                          aria-hidden="true"
+                        />
+
+                        {/* Soft Perimeter Vignette */}
+                        <div
+                          className={`pointer-events-none absolute inset-0 ${fadeRadial} z-10`}
+                          aria-hidden="true"
+                        />
+                      </div>
+
+                      {/* 4. Short Description */}
+                      <p
+                        className={`font-body text-xs sm:text-sm leading-relaxed ${textBody}`}
+                      >
+                        {pillar.description}
+                      </p>
+
+                      {/* 5. Formulation Products List */}
+                      <div className="pt-2 border-t border-current/10">
+                        <span
+                          className={`block font-body text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase mb-1 ${textMicroLabel}`}
+                        >
+                          Formulation Products
+                        </span>
+                        <p
+                          className={`font-body text-xs sm:text-sm font-semibold tracking-wide leading-relaxed ${textProducts}`}
+                        >
+                          {pillar.products.map((product, idx) => (
+                            <React.Fragment key={product}>
+                              {idx > 0 && (
+                                <span
+                                  className={`mx-1.5 font-normal ${productDotColor}`}
+                                  aria-hidden="true"
+                                >
+                                  ·
+                                </span>
+                              )}
+                              <span className="transition-colors hover:text-[#ea9216]">
+                                {product}
                               </span>
-                              <span
-                                className={`mt-0.5 block font-heading text-xs font-bold ${
-                                  isDark ? "text-[#EE9B16]" : "text-[#172333]"
-                                }`}
-                              >
-                                {stat.value}
-                              </span>
-                            </div>
+                            </React.Fragment>
                           ))}
-                        </div>
+                        </p>
+                      </div>
 
-                        {/* Physiological Actions */}
-                        <ul className="mt-3.5 space-y-2">
-                          {pillar.keyBenefits.map((benefit) => (
-                            <li
+                      {/* 6. Key Highlights */}
+                      <div className="pt-3 border-t border-current/10">
+                        <span
+                          className={`block font-body text-[10px] sm:text-[11px] font-bold tracking-[0.18em] uppercase mb-2 ${textMicroLabel}`}
+                        >
+                          Key Highlights
+                        </span>
+                        <div
+                          className={`border-t divide-y ${highlightRuleColor}`}
+                        >
+                          {pillar.keyBenefits.map((benefit, bIdx) => (
+                            <div
                               key={benefit}
-                              className="flex items-center gap-2 text-xs"
+                              className="py-2 flex items-start gap-2.5"
                             >
-                              <CheckCircle2 className="h-3.5 w-3.5 text-[#60785B] shrink-0" />
                               <span
-                                className={
-                                  isDark ? "text-white/85" : "text-[#292F39]/85"
-                                }
+                                className="font-mono text-xs font-bold text-[#ea9216] shrink-0 pt-0.5"
+                                aria-hidden="true"
+                              >
+                                {`0${bIdx + 1}`}
+                              </span>
+                              <span
+                                className={`font-body text-xs sm:text-sm leading-snug font-medium ${highlightTextColor}`}
                               >
                                 {benefit}
                               </span>
-                            </li>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
+                      </div>
+
+                      {/* 7. Open Formulary Action */}
+                      <div className="pt-3 border-t border-current/10">
+                        <Link
+                          href={pillar.href}
+                          className={`group/link inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wide transition-colors ${ctaTextColor}`}
+                        >
+                          <span>Open formulary</span>
+                          <ArrowRight
+                            className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 group-hover/link:translate-x-1.5 text-[#ea9216]"
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                          />
+                        </Link>
                       </div>
                     </div>
-                  </div>
+                  </article>
                 </ScrollStackItem>
               );
             })}
@@ -443,3 +543,5 @@ export function ClinicalPillars() {
     </section>
   );
 }
+
+export default ClinicalPillars;

@@ -1,695 +1,391 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useReducedMotion,
-  AnimatePresence,
-} from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { appleSprings } from "@/lib/apple-motion";
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence, useScroll, useReducedMotion } from "framer-motion";
 
-/**
- * 6 Clinical Lifecycle Stages with calibrated anatomical targeting coordinates
- * mapped to the 690 x 460 cow-anatomy model.
- */
-interface StageData {
-  id: string;
-  stageNumber: string;
-  label: string;
-  shortDesc: string;
-  organName: string;
-  challenge: string;
-  solution: string;
-  products: { name: string; href: string }[];
-  cx: number;
-  cy: number;
-  rx: number;
-  ry: number;
-  callout: { x: number; y: number; label: string };
-  href: string;
+interface LifecycleStage {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  alt: string;
 }
 
-const STAGES: StageData[] = [
+const LIFECYCLE_STAGES: LifecycleStage[] = [
   {
-    id: "grow",
-    stageNumber: "01",
-    label: "Grow",
-    shortDesc: "Growth & Bone Strength",
-    organName: "Skeletal & Muscular Frame",
-    challenge: "Rapid growth phases place heavy strain on developing bones and calf immunity.",
-    solution: "Easily absorbed ionic minerals that build dense bones and healthy calf weight without metabolic stress.",
-    products: [
-      { name: "Cattlemin", href: "/products/cattlemin" },
-      { name: "Cattlestar Gold", href: "/products/cattlestar-gold" },
-    ],
-    cx: 295,
-    cy: 88,
-    rx: 80,
-    ry: 32,
-    callout: { x: 295, y: 35, label: "Spine & Skeletal Frame" },
-    href: "/products?category=Nutritional+Supplements",
+    number: "01",
+    title: "Grow",
+    subtitle: "Calf & Heifer Growth",
+    description:
+      "Nurturing robust calf vitality and balanced skeletal frame development during early growth. Ensures steady daily weight gain and strong natural immunity from the very start.",
+    image: "/images/stage-01-grow.jpg",
+    alt: "Healthy young dairy calf standing naturally beside a heifer in clean green pasture",
   },
   {
-    id: "digest",
-    stageNumber: "02",
-    label: "Digest",
-    shortDesc: "Healthy Stomach & Liver",
-    organName: "Rumen & Hepatic System",
-    challenge: "Acidosis, sluggish digestion, and hepatic stress sharply reduce daily feed efficiency.",
-    solution: "Protective herbal extracts that shield liver cells, restore appetite, and stabilize rumen flora.",
-    products: [
-      { name: "LIVER-OK", href: "/products/liver-ok" },
-      { name: "RUMI-OK", href: "/products/rumi-ok-powder" },
-    ],
-    cx: 370,
-    cy: 180,
-    rx: 62,
-    ry: 48,
-    callout: { x: 370, y: 110, label: "Stomach & Digestion" },
-    href: "/products?category=Digestive+%26+Liver+Health",
+    number: "02",
+    title: "Digest",
+    subtitle: "Rumen & Gut Health",
+    description:
+      "Maintaining optimal rumen balance and liver vitality to maximize daily feed efficiency. Helps prevent digestive stress and supports smooth, natural nutrient absorption.",
+    image: "/images/stage-02-digest.jpg",
+    alt: "Healthy adult dairy cow calmly grazing and feeding on fresh natural pasture",
   },
   {
-    id: "calve",
-    stageNumber: "03",
-    label: "Calve",
-    shortDesc: "Safe Calving & Cleansing",
-    organName: "Reproductive Tract",
-    challenge: "Delayed uterine cleansing and retained lochia lengthen calving-to-conception intervals.",
-    solution: "Hormone-free herbal uterotonics that clear lochia and restore uterine tone for on-time breeding.",
-    products: [
-      { name: "UTROVIBE", href: "/products/utrovibe" },
-      { name: "CATTLESPAS", href: "/products/cattlespas" },
-    ],
-    cx: 485,
-    cy: 220,
-    rx: 46,
-    ry: 36,
-    callout: { x: 540, y: 160, label: "Uterine Recovery & Cleansing" },
-    href: "/products?category=Reproductive+%26+Uterine+Care",
+    number: "03",
+    title: "Reproduce & Calve",
+    subtitle: "Fertility & Calving Care",
+    description:
+      "Supporting reproductive health, smooth pregnancy, and safe calving transitions. Promotes gentle post-calving recovery and maintains a timely conception cycle.",
+    image: "/images/stage-03-reproduce.jpg",
+    alt: "Healthy pregnant dairy cow in a peaceful natural pasture beside open farm shelter",
   },
   {
-    id: "produce",
-    stageNumber: "04",
-    label: "Produce",
-    shortDesc: "Daily Milk Yield & Vitality",
-    organName: "Udder & Lactation System",
-    challenge: "Peak lactation drains calcium and phosphorus reserves, triggering subclinical hypocalcemia.",
-    solution: "High-potency calcium gels and oral suspensions that sustain peak yields and prevent sudden drops.",
-    products: [
-      { name: "CATTLESTAR", href: "/products/cattlestar" },
-      { name: "CATTLESTAR-DS", href: "/products/cattlestar-ds" },
-    ],
-    cx: 520,
-    cy: 268,
-    rx: 40,
-    ry: 28,
-    callout: { x: 585, y: 240, label: "Udder & Milk Production" },
-    href: "/products?category=Calcium+%26+Mineral+Support",
+    number: "04",
+    title: "Produce",
+    subtitle: "Lactation & Milk Yield",
+    description:
+      "Sustaining peak milk yields and mineral balance throughout high-demand lactation periods. Preserves maternal vitality while supporting steady, quality daily milk production.",
+    image: "/images/stage-04-produce.jpg",
+    alt: "Healthy dairy cow during natural milking in modern dairy farm environment",
   },
   {
-    id: "protect",
-    stageNumber: "05",
-    label: "Protect",
-    shortDesc: "Udder & Infection Defense",
-    organName: "Immune & Teat Defense",
-    challenge: "Bacterial pathogen entry into teat canals causes acute mastitis and irreversible tissue loss.",
-    solution: "Targeted third-generation cephalosporins and anti-infectives providing rapid bacterial clearance.",
-    products: [
-      { name: "CATTLE-CEF", href: "/products/cattle-cef" },
-      { name: "CATTLECEF-SB", href: "/products/cattlecef-sb" },
-    ],
-    cx: 528,
-    cy: 290,
-    rx: 30,
-    ry: 20,
-    callout: { x: 590, y: 325, label: "Udder & Teat Defense" },
-    href: "/products?category=Veterinary+Medicines",
+    number: "05",
+    title: "Protect",
+    subtitle: "Udder & Immunity Care",
+    description:
+      "Safeguarding udder tissue integrity and reinforcing natural systemic defenses against environmental stress. Protects milk hygiene and supports long-term animal wellbeing.",
+    image: "/images/stage-05-protect.jpg",
+    alt: "Healthy dairy cow standing calmly in clean natural pasture",
   },
   {
-    id: "recover",
-    stageNumber: "06",
-    label: "Recover",
-    shortDesc: "Pain Relief & Fast Recovery",
-    organName: "Systemic Recovery & Pain Relief",
-    challenge: "High pyrexia, severe musculoskeletal pain, and trauma suppress appetite and mobility.",
-    solution: "Rapid veterinary antipyretics and NSAIDs that swiftly bring down fever and restore active feeding.",
-    products: [
-      { name: "PYROVIBE Injection", href: "/products/pyrovibe-injection" },
-      { name: "MEGLUVIBE", href: "/products/megluvibe" },
-    ],
-    cx: 265,
-    cy: 195,
-    rx: 55,
-    ry: 45,
-    callout: { x: 200, y: 135, label: "Fever & Pain Relief" },
-    href: "/products?category=Veterinary+Medicines",
+    number: "06",
+    title: "Recover",
+    subtitle: "Dry Period & Cellular Repair",
+    description:
+      "Restoring body reserves and rejuvenating mammary tissue during the essential dry period. Prepares the animal for a healthy next lactation cycle with renewed stamina.",
+    image: "/images/stage-06-recover.jpg",
+    alt: "Calm healthy dairy cow resting comfortably in peaceful natural pasture",
   },
 ];
 
-/**
- * High-Performance Anatomical Cow Stage with Unified SVG Scene Graph
- * Locking the cow bitmap and state-of-the-art clinical HUD reticle into the identical 690x460 coordinate grid.
- */
-function AnatomicalCowStage({
-  activeStage,
-  className = "",
-}: {
-  activeStage: StageData;
-  className?: string;
-}) {
-  return (
-    <div className={`relative aspect-[3/2] w-full ${className}`}>
-      {/* Contact Shadow Under Hooves */}
-      <div
-        className="pointer-events-none absolute -bottom-2 left-1/2 h-8 w-[82%] -translate-x-1/2 rounded-[100%] bg-black/60 blur-xl"
-        aria-hidden="true"
-      />
-
-      {/* Unified SVG Canvas: Image and clinical reticle share the exact same coordinate engine */}
-      <svg
-        viewBox="0 0 690 460"
-        className="pointer-events-none h-full w-full overflow-visible"
-        aria-hidden="true"
-      >
-        <defs>
-          {/* Subtle Clinical Organ Highlight Gradient */}
-          <radialGradient id="organ-zone-tint" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#ea9216" stopOpacity="0.25" />
-            <stop offset="65%" stopColor="#ea9216" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#ea9216" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        {/* 1. Base Anatomical Cow Model: Locked to exact (0,0,690,460) viewBox */}
-        <image
-          href="/images/cattle/cow-anatomy.png"
-          x="0"
-          y="0"
-          width="690"
-          height="460"
-          preserveAspectRatio="xMidYMid meet"
-          style={{ filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.45))" }}
-        />
-
-        {/* 2. Anatomical Zone Focal Highlight */}
-        <g>
-          {/* Calibrated Anatomical Highlight Core */}
-          <motion.ellipse
-            initial={false}
-            animate={{
-              cx: activeStage.cx,
-              cy: activeStage.cy,
-              rx: activeStage.rx,
-              ry: activeStage.ry,
-            }}
-            transition={{ type: "spring", stiffness: 140, damping: 22 }}
-            fill="url(#organ-zone-tint)"
-          />
-
-          {/* Clean Technical Target Contour (Precision Surgical Stippling) */}
-          <motion.ellipse
-            initial={false}
-            animate={{
-              cx: activeStage.cx,
-              cy: activeStage.cy,
-              rx: activeStage.rx,
-              ry: activeStage.ry,
-            }}
-            transition={{ type: "spring", stiffness: 140, damping: 22 }}
-            fill="none"
-            stroke="#ea9216"
-            strokeWidth="1.2"
-            strokeDasharray="4 4"
-            strokeOpacity="0.75"
-          />
-
-          {/* Subtle Expanding Precision Ring */}
-          <motion.ellipse
-            key={`pulse-${activeStage.id}`}
-            cx={activeStage.cx}
-            cy={activeStage.cy}
-            rx={activeStage.rx}
-            ry={activeStage.ry}
-            fill="none"
-            stroke="#ea9216"
-            strokeWidth="1"
-            initial={{ scale: 0.98, opacity: 0.6 }}
-            animate={{ scale: 1.15, opacity: 0 }}
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
-          />
-        </g>
-
-        {/* 3. High-Precision Clinical Reticle */}
-        <motion.g
-          initial={false}
-          animate={{ x: activeStage.cx, y: activeStage.cy }}
-          transition={{ type: "spring", stiffness: 140, damping: 22 }}
-        >
-          {/* Precision Outer Stippled Aperture */}
-          <circle
-            r="18"
-            fill="none"
-            stroke="#ea9216"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="3 3"
-            strokeOpacity="0.6"
-          />
-
-          {/* Clean Medical Crosshairs (N, S, E, W) */}
-          <g stroke="#ea9216" strokeWidth="1.2" strokeLinecap="square">
-            <line x1="0" y1="-8" x2="0" y2="-18" vectorEffect="non-scaling-stroke" />
-            <line x1="0" y1="8" x2="0" y2="18" vectorEffect="non-scaling-stroke" />
-            <line x1="-8" y1="0" x2="-18" y2="0" vectorEffect="non-scaling-stroke" />
-            <line x1="8" y1="0" x2="18" y2="0" vectorEffect="non-scaling-stroke" />
-          </g>
-
-          {/* Center Precision Pinpoint */}
-          <circle
-            r="3"
-            fill="#ea9216"
-          />
-          <circle
-            r="1.5"
-            fill="#ffffff"
-          />
-
-          {/* Technical Telemetry Tag */}
-          {activeStage.cx > 460 ? (
-            <g transform="translate(-144, -24)" className="hidden sm:block">
-              {/* Leader Line from Reticle */}
-              <path
-                d="M 126 12 L 114 0 L 100 0"
-                fill="none"
-                stroke="#ea9216"
-                strokeWidth="1"
-                strokeOpacity="0.6"
-              />
-              {/* Technical Container */}
-              <rect
-                x="-8"
-                y="-12"
-                width="108"
-                height="24"
-                rx="3"
-                fill="#1a2027"
-                stroke="#ea9216"
-                strokeWidth="1"
-                strokeOpacity="0.4"
-              />
-              {/* Active Marker Dot */}
-              <circle cx="1" cy="0" r="2" fill="#ea9216" />
-              {/* Stage Callout Text */}
-              <text
-                x="9"
-                y="3.5"
-                fill="#ffffff"
-                fontSize="8.5"
-                fontFamily="monospace"
-                fontWeight="600"
-                letterSpacing="0.08em"
-              >
-                LOC: {activeStage.label.toUpperCase()} · {activeStage.stageNumber}
-              </text>
-            </g>
-          ) : (
-            <g transform="translate(32, -24)" className="hidden sm:block">
-              {/* Leader Line from Reticle */}
-              <path
-                d="M -14 12 L -2 0 L 10 0"
-                fill="none"
-                stroke="#ea9216"
-                strokeWidth="1"
-                strokeOpacity="0.6"
-              />
-              {/* Technical Container */}
-              <rect
-                x="10"
-                y="-12"
-                width="108"
-                height="24"
-                rx="3"
-                fill="#1a2027"
-                stroke="#ea9216"
-                strokeWidth="1"
-                strokeOpacity="0.4"
-              />
-              {/* Active Marker Dot */}
-              <circle cx="19" cy="0" r="2" fill="#ea9216" />
-              {/* Stage Callout Text */}
-              <text
-                x="27"
-                y="3.5"
-                fill="#ffffff"
-                fontSize="8.5"
-                fontFamily="monospace"
-                fontWeight="600"
-                letterSpacing="0.08em"
-              >
-                LOC: {activeStage.label.toUpperCase()} · {activeStage.stageNumber}
-              </text>
-            </g>
-          )}
-        </motion.g>
-      </svg>
-    </div>
-  );
-}
-
 export function LifecycleAnatomy() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const prefersReduced = useReducedMotion();
-  const [activeStageIndex, setActiveStageIndex] = useState(0);
-  const [mobileStageIndex, setMobileStageIndex] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  /* Calculate active stage index from scroll position for desktop */
   useEffect(() => {
     if (prefersReduced) return;
-    const unsub = scrollYProgress.on("change", (latest) => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
       const idx = Math.min(
-        STAGES.length - 1,
-        Math.max(0, Math.floor(latest * STAGES.length))
+        LIFECYCLE_STAGES.length - 1,
+        Math.max(0, Math.floor(latest * LIFECYCLE_STAGES.length))
       );
-      setActiveStageIndex(idx);
+      setActiveIndex(idx);
     });
-    return () => unsub();
+    return () => unsubscribe();
   }, [scrollYProgress, prefersReduced]);
 
-  const activeStage = STAGES[activeStageIndex];
-  const mobileStage = STAGES[mobileStageIndex];
+  const handleSelectStage = (idx: number) => {
+    setActiveIndex(idx);
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const containerTop = window.scrollY + rect.top;
+    const scrollableDistance = containerRef.current.offsetHeight - window.innerHeight;
+    const targetFraction = (idx + 0.5) / LIFECYCLE_STAGES.length;
+    const targetScrollY = containerTop + targetFraction * scrollableDistance;
+
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: number) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo(targetScrollY);
+    } else {
+      window.scrollTo({ top: targetScrollY, behavior: "smooth" });
+    }
+  };
+
+  const activeStage = LIFECYCLE_STAGES[activeIndex];
 
   return (
-    <>
-      {/* ─── Desktop 400vh Pinned Sequence (lg: and above) ─── */}
-      <section ref={containerRef} className="relative hidden lg:block h-[400vh] bg-deep-navy">
-        <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-deep-navy px-4 sm:px-6 lg:px-8 py-12">
-          <div className="mx-auto w-full max-w-[1800px]">
-            
-            {/* Section Header - Single Heading Directive */}
-            <div className="mb-8 border-b border-white/[0.08] pb-5">
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Animal Healthcare Lifecycle
-              </h2>
-            </div>
-
-            {/* Main 2-Column Stage Layout */}
-            <div className="grid grid-cols-12 items-center gap-12">
-              
-              {/* Left Stage (7 cols): High-Resolution Cow Model with Glowing Anatomical Overlay */}
-              <div className="col-span-7 flex flex-col items-center">
-                <AnatomicalCowStage activeStage={activeStage} className="max-w-[640px]" />
-
-                {/* Interactive Stage Navigator & Timeline Progress Bar */}
-                <div className="mt-6 w-full max-w-[640px]">
-                  <div className="grid grid-cols-6 gap-2">
-                    {STAGES.map((s, idx) => {
-                      const isActive = idx === activeStageIndex;
-                      return (
-                        <button
-                          key={s.id}
-                          type="button"
-                          onClick={() => setActiveStageIndex(idx)}
-                          className={`group relative flex flex-col items-center rounded-xl px-2.5 py-2.5 transition-all duration-200 cursor-pointer touch-manipulation active:scale-[0.95] ${
-                            isActive
-                              ? "bg-white/10 border border-brand-orange text-white"
-                              : "bg-white/[0.03] border border-white/10 hover:bg-white/[0.08]"
-                          }`}
-                        >
-                          <span
-                            className={`text-[10px] font-mono font-medium tracking-wider ${
-                              isActive ? "text-white" : "text-white/40 group-hover:text-white"
-                            }`}
-                          >
-                            {s.stageNumber}
-                          </span>
-                          <span
-                            className={`text-xs font-bold ${
-                              isActive ? "text-white" : "text-white/70 group-hover:text-white"
-                            }`}
-                          >
-                            {s.label}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Progress Hairline Bar */}
-                  <div className="mt-3 h-[1px] w-full overflow-hidden bg-white/15">
-                    <motion.div
-                      className="h-full bg-white/80"
-                      animate={{
-                        width: `${((activeStageIndex + 1) / STAGES.length) * 100}%`,
-                      }}
-                      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Stage (5 cols): Dynamic Clinical Intelligence Panel */}
-              <div className="col-span-5 flex flex-col justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeStage.id}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -16 }}
-                    transition={prefersReduced ? { duration: 0 } : appleSprings.criticallyDamped}
-                    className="rounded-2xl border border-white/10 bg-[#222A31] p-8 lg:p-9 shadow-lg"
-                  >
-                    {/* Stage Headline & Anatomical Target */}
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-heading text-3xl font-black tracking-tight text-white sm:text-4xl">
-                        {activeStage.label}
-                      </h3>
-                      <span className="font-mono text-xs font-semibold text-brand-orange">
-                        STAGE {activeStage.stageNumber}
-                      </span>
-                    </div>
-
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="block h-1.5 w-1.5 rounded-sm bg-brand-orange" aria-hidden="true" />
-                      <span className="font-mono text-xs font-medium text-white/70">
-                        Target: <span className="text-white">{activeStage.organName}</span>
-                      </span>
-                    </div>
-
-                    {/* Commercial Challenge & Solution */}
-                    <div className="mt-6 space-y-4 border-t border-white/[0.08] pt-5">
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
-                          The Challenge
-                        </span>
-                        <p className="mt-1 text-sm font-medium leading-relaxed text-white/90">
-                          {activeStage.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-orange">
-                          CattleVibes Solution
-                        </span>
-                        <p className="mt-1 text-sm leading-relaxed text-white/80">
-                          {activeStage.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Targeted Products */}
-                    <div className="mt-6 border-t border-white/[0.08] pt-5">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
-                        Recommended Formulations
-                      </span>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {activeStage.products.map((p) => (
-                          <Link
-                            key={p.name}
-                            href={p.href}
-                            className="group flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-brand-orange/60 hover:bg-brand-orange/10 hover:text-brand-orange"
-                          >
-                            <span>{p.name}</span>
-                            <ArrowUpRight className="h-3 w-3 text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-orange" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Action Link */}
-                    <div className="mt-6 border-t border-white/[0.08] pt-4">
-                      <Link
-                        href={activeStage.href}
-                        className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-brand-orange"
-                      >
-                        Explore {activeStage.label} Products
-                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Mobile Interactive Telemetry Experience (< 1024px) ─── */}
-      <section className="block lg:hidden bg-deep-navy px-4 py-12 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-lg sm:max-w-xl">
-          
-          {/* Section Heading - Single Heading Directive */}
-          <div className="border-b border-white/[0.08] pb-4">
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+    <section
+      ref={containerRef}
+      className="relative h-auto lg:h-[320vh] bg-deep-navy"
+      data-theme="dark"
+      aria-label="Animal Healthcare Lifecycle"
+    >
+      <div className="relative lg:sticky top-0 flex flex-col justify-center overflow-hidden bg-deep-navy py-12 sm:py-16 lg:py-0 lg:min-h-screen lg:min-h-[100svh] pt-[calc(var(--nav-height)+1.25rem)] lg:pt-[calc(var(--nav-height)+1.75rem)] pb-12 lg:pb-10">
+        <div className="mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-8">
+          {/* Section Heading - Single clean heading directive */}
+          <div className="mb-6 lg:mb-8 border-b border-white/[0.08] pb-3 sm:pb-4">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Animal Healthcare Lifecycle
             </h2>
           </div>
 
-          {/* 6-Stage Touch Selector (3x2 grid on mobile, 6 cols on sm) */}
-          <div className="mt-5">
-            <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6 sm:gap-2">
-              {STAGES.map((s, idx) => {
-                const isActive = idx === mobileStageIndex;
-                return (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => setMobileStageIndex(idx)}
-                    className={`flex flex-col items-center justify-center rounded-md px-2 py-2 transition-all duration-200 cursor-pointer touch-manipulation active:scale-[0.96] ${
-                      isActive
-                        ? "bg-white/10 border border-brand-orange text-white"
-                        : "bg-white/[0.03] border border-white/10 text-white/70 hover:bg-white/[0.08]"
-                    }`}
+          {/* ─── DESKTOP & TABLET COMPOSITION (lg and above) ─── */}
+          <div className="hidden lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14 items-stretch">
+            {/* Left Column (6 cols): Perfectly Aligned Editorial Image */}
+            <div className="lg:col-span-6 flex flex-col">
+              <div className="relative h-full min-h-[380px] max-h-[500px] xl:max-h-[540px] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-2xl">
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={activeStage.number}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.015 }}
+                    transition={
+                      prefersReduced
+                        ? { duration: 0 }
+                        : { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
+                    }
+                    className="absolute inset-0 h-full w-full"
                   >
-                    <span
-                      className={`text-[9px] font-mono font-medium tracking-wider ${
-                        isActive ? "text-white" : "text-white/40 group-hover:text-white"
-                      }`}
-                    >
-                      {s.stageNumber}
-                    </span>
-                    <span
-                      className={`text-xs font-bold leading-tight mt-0.5 ${
-                        isActive ? "text-white" : "text-white/70 group-hover:text-white"
-                      }`}
-                    >
-                      {s.label}
-                    </span>
-                  </button>
-                );
-              })}
+                    <Image
+                      src={activeStage.image}
+                      alt={activeStage.alt}
+                      fill
+                      priority={activeIndex === 0}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover object-center"
+                    />
+                    {/* Subtle bottom gradient to ground the photography */}
+                    <div
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-deep-navy/50 to-transparent"
+                      aria-hidden="true"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
 
-            {/* Stage Progress Hairline */}
-            <div className="mt-2.5 h-[1px] w-full overflow-hidden bg-white/15">
-              <motion.div
-                className="h-full bg-white/80"
-                animate={{
-                  width: `${((mobileStageIndex + 1) / STAGES.length) * 100}%`,
-                }}
-                transition={{ type: "spring", stiffness: 120, damping: 22 }}
-              />
+            {/* Right Column (6 cols): Active Stage Story & Editorial Index Navigation */}
+            <div className="lg:col-span-6 flex flex-col justify-between">
+              {/* Active Stage Editorial Block */}
+              <div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeStage.number}
+                    id="lifecycle-detail-panel"
+                    role="tabpanel"
+                    aria-labelledby={`lifecycle-tab-${activeStage.number}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={
+                      prefersReduced
+                        ? { duration: 0 }
+                        : { duration: 0.28, ease: [0.16, 1, 0.3, 1] }
+                    }
+                  >
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
+                        STAGE {activeStage.number}
+                      </span>
+                      <span className="text-sm font-medium text-white/50">
+                        &middot;
+                      </span>
+                      <span className="font-body text-sm font-medium text-white/70">
+                        {activeStage.subtitle}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-2 font-heading text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                      {activeStage.title}
+                    </h3>
+
+                    <p className="mt-3 font-body text-base sm:text-lg leading-relaxed text-white/80 max-w-2xl">
+                      {activeStage.description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Editorial Index Navigation with Subtle Progress Bar */}
+              <div className="mt-6 border-t border-white/10 pt-4">
+                {/* Slim Scroll Progress Line */}
+                <div className="mb-3 h-0.5 w-full overflow-hidden rounded-full bg-white/10">
+                  <motion.div
+                    className="h-full bg-brand-orange"
+                    style={{
+                      width: `${((activeIndex + 1) / LIFECYCLE_STAGES.length) * 100}%`,
+                      transition: "width 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    }}
+                  />
+                </div>
+
+                <div className="divide-y divide-white/[0.08]" role="tablist" aria-label="Lifecycle Stages">
+                  {LIFECYCLE_STAGES.map((stage, idx) => {
+                    const isActive = idx === activeIndex;
+                    return (
+                      <button
+                        key={stage.number}
+                        id={`lifecycle-tab-${stage.number}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        aria-controls="lifecycle-detail-panel"
+                        onClick={() => handleSelectStage(idx)}
+                        className={`group flex w-full items-center justify-between py-2 xl:py-2.5 text-left transition-colors duration-200 cursor-pointer ${
+                          isActive
+                            ? "text-white"
+                            : "text-white/45 hover:text-white/80"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 xl:gap-4">
+                          <span
+                            className={`font-mono text-xs font-bold transition-colors ${
+                              isActive ? "text-brand-orange" : "text-white/35 group-hover:text-white/60"
+                            }`}
+                          >
+                            {stage.number}
+                          </span>
+                          <span className={`font-heading text-base xl:text-lg transition-colors ${isActive ? "font-bold text-white" : "font-medium text-white/60 group-hover:text-white/90"}`}>
+                            {stage.title}
+                          </span>
+                          <span className="hidden sm:inline font-body text-xs text-white/40">
+                            {stage.subtitle}
+                          </span>
+                        </div>
+
+                        {/* Subtle Active Accent Dot */}
+                        <span
+                          className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
+                            isActive ? "bg-brand-orange scale-100 opacity-100" : "bg-transparent scale-50 opacity-0"
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Scaled Anatomical Cow Model with Live Target Glow */}
-          <div className="my-4 sm:my-6">
-            <AnatomicalCowStage activeStage={mobileStage} className="w-full max-w-[420px] sm:max-w-[500px] mx-auto" />
-          </div>
-
-          {/* Dynamic Clinical Telemetry Card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={mobileStage.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={prefersReduced ? { duration: 0 } : appleSprings.snappy}
-              className="rounded-2xl border border-white/10 bg-[#222A31] p-5 sm:p-6 shadow-md"
-            >
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-heading text-2xl font-black tracking-tight text-white">
-                  {mobileStage.label}
-                </h3>
-                <span className="font-mono text-[11px] font-semibold text-brand-orange">
-                  STAGE {mobileStage.stageNumber}
-                </span>
-              </div>
-
-              <div className="mt-1.5 flex items-center gap-1.5">
-                <span className="block h-1.5 w-1.5 rounded-sm bg-brand-orange" aria-hidden="true" />
-                <span className="font-mono text-xs font-medium text-white/70">
-                  Target: <span className="text-white">{mobileStage.organName}</span>
-                </span>
-              </div>
-
-              <div className="mt-4 space-y-3 border-t border-white/[0.08] pt-3.5">
-                <div>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
-                    The Challenge
-                  </span>
-                  <p className="mt-1 text-xs font-medium leading-relaxed text-white/90">
-                    {mobileStage.challenge}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-orange">
-                    CattleVibes Solution
-                  </span>
-                  <p className="mt-1 text-xs leading-relaxed text-white/80">
-                    {mobileStage.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* Targeted Products */}
-              <div className="mt-4 border-t border-white/[0.08] pt-3">
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
-                  Recommended Formulations
-                </span>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {mobileStage.products.map((p) => (
-                    <Link
-                      key={p.name}
-                      href={p.href}
-                      className="group flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-semibold text-white transition-colors hover:border-brand-orange/60 hover:bg-brand-orange/10 hover:text-brand-orange"
-                    >
-                      <span>{p.name}</span>
-                      <ArrowUpRight className="h-3 w-3 text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-orange" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Link */}
-              <div className="mt-4 border-t border-white/[0.08] pt-3">
-                <Link
-                  href={mobileStage.href}
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-brand-orange"
+          {/* ─── MOBILE COMPOSITION (under 1024px) ─── */}
+          <div className="block lg:hidden space-y-4 sm:space-y-6">
+            {/* 1. Active Stage Image (compact size for mobile) */}
+            <div className="relative aspect-[16/10] max-h-[200px] sm:max-h-[240px] w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] shadow-lg">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={activeStage.number}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.01 }}
+                  transition={
+                    prefersReduced
+                      ? { duration: 0 }
+                      : { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
+                  }
+                  className="absolute inset-0 h-full w-full"
                 >
-                  Explore {mobileStage.label} Products
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                  <Image
+                    src={activeStage.image}
+                    alt={activeStage.alt}
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
+            {/* 2. Active Stage Content */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStage.number}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={
+                  prefersReduced
+                    ? { duration: 0 }
+                    : { duration: 0.25, ease: [0.16, 1, 0.3, 1] }
+                }
+                className="space-y-1.5"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs font-bold text-brand-orange">
+                    STAGE {activeStage.number}
+                  </span>
+                  <span className="text-white/40">&middot;</span>
+                  <span className="text-xs font-medium text-white/70">
+                    {activeStage.subtitle}
+                  </span>
+                </div>
+
+                <h3 className="font-heading text-2xl font-black text-white">
+                  {activeStage.title}
+                </h3>
+
+                <p className="font-body text-xs sm:text-sm leading-relaxed text-white/80 line-clamp-2">
+                  {activeStage.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* 3. Six-Stage Navigation */}
+            <div className="border-t border-white/10 pt-3">
+              <div className="mb-2 h-0.5 w-full overflow-hidden rounded-full bg-white/10">
+                <div
+                  className="h-full bg-brand-orange transition-all duration-200"
+                  style={{
+                    width: `${((activeIndex + 1) / LIFECYCLE_STAGES.length) * 100}%`,
+                  }}
+                />
+              </div>
+
+              <div className="divide-y divide-white/[0.08]" role="tablist" aria-label="Lifecycle Stages">
+                {LIFECYCLE_STAGES.map((stage, idx) => {
+                  const isActive = idx === activeIndex;
+                  return (
+                    <button
+                      key={stage.number}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => handleSelectStage(idx)}
+                      className={`group flex w-full min-h-[40px] items-center justify-between py-2 text-left transition-colors cursor-pointer touch-manipulation active:scale-[0.99] ${
+                        isActive ? "text-white font-semibold" : "text-white/50"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`font-mono text-xs font-bold ${
+                            isActive ? "text-brand-orange" : "text-white/35"
+                          }`}
+                        >
+                          {stage.number}
+                        </span>
+                        <span className="text-sm">
+                          {stage.title}
+                        </span>
+                        <span className="text-xs text-white/40">
+                          ({stage.subtitle})
+                        </span>
+                      </div>
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          isActive ? "bg-brand-orange" : "bg-transparent"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
+
+export default LifecycleAnatomy;

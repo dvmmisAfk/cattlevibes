@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { MagneticButton } from "@/components/motion/MagneticButton";
@@ -13,6 +12,7 @@ export function CinematicHero() {
   return (
     <section
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy"
+      data-theme="dark"
       suppressHydrationWarning
     >
       {/* ─── High-Fidelity Pastoral Hero Image Background ─── */}

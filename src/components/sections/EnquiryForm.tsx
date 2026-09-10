@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
 
 interface EnquiryFormProps {
@@ -10,10 +10,12 @@ interface EnquiryFormProps {
 export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [product, setProduct] = useState(initialProduct);
+  const [prevInitial, setPrevInitial] = useState(initialProduct);
 
-  useEffect(() => {
+  if (prevInitial !== initialProduct) {
+    setPrevInitial(initialProduct);
     setProduct(initialProduct);
-  }, [initialProduct]);
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
 
   if (submitted) {
     return (
-      <div className="w-full max-w-md text-left">
+      <div className="w-full max-w-md text-left" role="status" aria-live="polite">
         <h3 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy">
           Enquiry received.
         </h3>
@@ -35,7 +37,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md">
+    <form onSubmit={handleSubmit} className="w-full max-w-md" noValidate={false}>
       <h2 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy md:text-3xl">
         Product Enquiry
       </h2>
@@ -74,7 +76,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
           name="message"
           rows={4}
           placeholder="Specify batch quantities, dosage queries, or institutional requirements..."
-          className="w-full resize-none rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-yam-orange focus:outline-none focus:ring-2 focus:ring-yam-orange/20"
+          className="w-full resize-none rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
         />
       </div>
 
@@ -83,7 +85,7 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
           type="submit"
           variant="primary"
           size="lg"
-          className="w-full justify-center"
+          className="w-full justify-center min-h-[48px] active:scale-[0.98] transition-transform"
         >
           Send Enquiry
         </Button>
@@ -118,17 +120,18 @@ function Field({
         className="block text-xs font-bold uppercase tracking-wider text-cadet-blue mb-1.5"
       >
         {label}
-        {required && <span className="text-yam-orange font-bold"> *</span>}
+        {required && <span className="text-brand-orange font-bold"> *</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
+        aria-required={required}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-yam-orange focus:outline-none focus:ring-2 focus:ring-yam-orange/20"
+        className="w-full rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm text-deep-navy placeholder:text-text-muted/60 transition-colors focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
       />
     </div>
   );
