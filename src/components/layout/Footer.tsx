@@ -41,29 +41,29 @@ function InstagramIcon({ className = "h-5 w-5" }: { className?: string }) {
 const SOCIAL_LINKS = [
   {
     name: "WhatsApp",
-    href: siteConfig.socials?.whatsapp || "https://wa.me/",
+    href: siteConfig.socials.whatsapp,
     icon: WhatsAppIcon,
-    label: "Connect on WhatsApp",
+    label: "Chat with CattleVibes on WhatsApp",
   },
   {
     name: "Email",
-    href: siteConfig.socials?.email || `mailto:${siteConfig.email}`,
+    href: siteConfig.socials.email,
     icon: MailIcon,
-    label: "Send an Email",
+    label: "Email CattleVibes",
   },
   {
     name: "Facebook",
-    href: siteConfig.socials?.facebook || "https://facebook.com/",
+    href: siteConfig.socials.facebook,
     icon: FacebookIcon,
-    label: "Follow on Facebook",
+    label: "CattleVibes on Facebook",
   },
   {
     name: "Instagram",
-    href: siteConfig.socials?.instagram || "https://instagram.com/",
+    href: siteConfig.socials.instagram,
     icon: InstagramIcon,
-    label: "Follow on Instagram",
+    label: "CattleVibes on Instagram",
   },
-];
+].filter((item) => Boolean(item.href));
 
 export function Footer() {
   return (
@@ -78,10 +78,16 @@ export function Footer() {
             >
               <BrandLogo variant="white" />
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/85">
-              {siteConfig.shortName} &middot; {siteConfig.subtitle}. Delivering premium
-              veterinary medicines and nutritional supplements for livestock health and
-              productivity.
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/90">
+              {siteConfig.name}. {siteConfig.subtitle}. Veterinary medicines and
+              nutritional supplements for livestock.
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/90">
+              {siteConfig.phone}
+              <br />
+              {siteConfig.email}
+              <br />
+              {siteConfig.registeredOffice || siteConfig.address}
             </p>
 
             {/* Social Media Channels */}
@@ -105,7 +111,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/70">
+            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/90">
               Company
             </h4>
             <ul className="space-y-3">
@@ -119,7 +125,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/80 transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-orange rounded"
+                    className="rounded text-sm text-white/90 transition-colors hover:text-brand-orange focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
                   >
                     {item.label}
                   </Link>
@@ -129,7 +135,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/70">
+            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/90">
               Products
             </h4>
             <ul className="space-y-3">
@@ -137,7 +143,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/80 transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-orange rounded"
+                    className="rounded text-sm text-white/90 transition-colors hover:text-brand-orange focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
                   >
                     {item.label}
                   </Link>
@@ -147,55 +153,69 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/70">
+            <h4 className="mb-4 font-heading text-xs font-semibold uppercase tracking-wider text-white/90">
               Contact
             </h4>
-            <ul className="space-y-3 text-sm text-white/80">
+            <ul className="space-y-3 text-sm text-white/90">
               <li>
                 <Link
                   href="/contact"
-                  className="transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-orange rounded"
+                  className="rounded transition-colors hover:text-brand-orange focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
                 >
-                  Commercial Enquiries
+                  Send an enquiry
                 </Link>
               </li>
               <li>
                 <a
+                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                  className="rounded transition-colors hover:text-brand-orange focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
                   href={`mailto:${siteConfig.email}`}
-                  className="transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-orange rounded"
+                  className="rounded transition-colors hover:text-brand-orange focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
                 >
                   {siteConfig.email}
                 </a>
               </li>
-              <li>{siteConfig.address}</li>
+              <li>{siteConfig.registeredOffice || siteConfig.address}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-white/75" suppressHydrationWarning>
+          <p className="text-xs text-white/90" suppressHydrationWarning>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link
               href="/privacy"
-              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
+              className="text-xs text-white/90 transition-colors hover:text-brand-orange"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
+              className="text-xs text-white/90 transition-colors hover:text-brand-orange"
             >
-              Terms of Service
+              Terms and Conditions
             </Link>
             <Link
-              href="/contact"
-              className="text-xs text-white/75 transition-colors hover:text-brand-orange"
+              href="/cookies"
+              className="text-xs text-white/90 transition-colors hover:text-brand-orange"
             >
-              Commercial Enquiries
+              Cookie Policy
             </Link>
-          </div>
+            <Link
+              href="/refunds"
+              className="text-xs text-white/90 transition-colors hover:text-brand-orange"
+            >
+              Refund Policy
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

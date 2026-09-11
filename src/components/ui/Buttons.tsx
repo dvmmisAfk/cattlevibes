@@ -82,7 +82,7 @@ export function Button({
   const content = (
     <span className="relative z-10 inline-flex items-center justify-center gap-2">
       {loading ? (
-        <Loader2 className="h-4 w-4 animate-spin text-current" />
+        <Loader2 className="h-4 w-4 animate-spin text-current" aria-hidden="true" />
       ) : (
         icon
       )}
@@ -118,6 +118,7 @@ export function Button({
     <button
       type={type}
       disabled={disabled || loading}
+      aria-busy={loading || undefined}
       onClick={onClick}
       className={`${baseClasses} ${vClass} ${sClass} ${className}`}
       aria-label={ariaLabel}

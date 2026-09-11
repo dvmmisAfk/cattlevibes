@@ -357,14 +357,14 @@ export function ProductQuickView({
                 onClick={() => onEnquire(product)}
                 className="flex h-12 flex-1 items-center justify-center rounded-xl bg-brand-orange text-sm font-bold text-deep-navy transition-all hover:bg-[#d88410] active:scale-[0.97] shadow-sm cursor-pointer"
               >
-                Enquire Now
+                Enquire about this product
               </button>
             )}
             <Link
               href={`/products/${product.slug}`}
               className="glare-button flex h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-white text-sm font-bold text-deep-navy transition-all hover:bg-soft-white active:scale-[0.97] shadow-sm"
             >
-              <span>Details</span>
+              <span>View product details</span>
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </Link>
           </div>

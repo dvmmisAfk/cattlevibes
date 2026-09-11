@@ -3,32 +3,38 @@ import { siteConfig } from "@/data/site";
 export interface EnquiryPayload {
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   company?: string;
   location?: string;
+  role?: string;
   product?: string;
   message?: string;
 }
 
 function line(label: string, value?: string) {
   const trimmed = value?.trim();
-  if (!trimmed) return `${label}: —`;
+  if (!trimmed) return null;
   return `${label}: ${trimmed}`;
 }
 
 export function buildEnquiryWhatsAppMessage(data: EnquiryPayload) {
-  return [
-    "CattleVibes Product Enquiry",
-    "",
+  const header = ["CattleVibes Product Enquiry", ""];
+  const fields = [
     line("Name", data.name),
     line("Phone", data.phone),
     line("Email", data.email),
     line("Company / Farm", data.company),
+    line("Role", data.role),
     line("Location", data.location),
     line("Product / Dossier", data.product),
+  ].filter(Boolean);
+  const message = data.message?.trim();
+  return [
+    ...header,
+    ...fields,
     "",
     "Message / Requirement:",
-    data.message?.trim() || "—",
+    message || "Please contact me about CattleVibes products.",
   ].join("\n");
 }
 

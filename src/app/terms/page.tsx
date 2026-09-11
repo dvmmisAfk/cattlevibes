@@ -1,111 +1,127 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import Link from "next/link";
+import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 import { siteConfig } from "@/data/site";
+import { imageCredits, legalMeta } from "@/data/legal";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: `Terms and conditions governing the professional use, distribution, and procurement of ${siteConfig.name} veterinary formulations.`,
+  title: "Terms and Conditions",
+  description: `Website terms for ${siteConfig.name}.`,
 };
 
 export default function TermsPage() {
   return (
-    <div className="bg-soft-white pt-(--nav-height)">
-      <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
-        <Breadcrumbs className="mb-8" />
+    <LegalPage title="Terms and Conditions">
+      <LegalSection index="01" title="Agreement">
+        <p>
+          By using this website you agree to these terms. They govern the site only. Product
+          supply, pricing, credit, and delivery are agreed in a separate written order or
+          distribution contract with {siteConfig.name}.
+        </p>
+      </LegalSection>
 
-        <div className="border-b border-border pb-8">
-          <h1 className="font-heading text-3xl font-extrabold tracking-tight text-deep-navy sm:text-4xl md:text-5xl">
-            Terms of Service
-          </h1>
-          <p className="mt-3 text-sm text-text-muted">
-            Last Updated: January 2026 &middot; CattleVibes Healthcare Pvt. Ltd.
-          </p>
-        </div>
+      <LegalSection index="02" title="What this site is">
+        <p>
+          The site is a marketing catalogue for veterinary medicines and nutritional products
+          for livestock. It does not take online payment, create a cart, or complete a sale.
+        </p>
+        <p>
+          Content is for professional information. It is not veterinary advice, a prescription,
+          or a diagnosis. Products are for animal use only, under a registered veterinarian,
+          in line with the label and applicable Indian drug law.
+        </p>
+      </LegalSection>
 
-        <div className="prose prose-slate mt-10 max-w-none space-y-8 text-sm leading-relaxed text-cadet-blue md:text-base">
-          {/* Section 1 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">01.</span> Scope of Agreement & Veterinary Professional Use
-            </h2>
-            <p className="mt-3">
-              These Terms of Service govern the access, evaluation, and commercial procurement of
-              veterinary pharmaceuticals, clinical nutrition products, and feed supplements manufactured
-              and distributed by <strong>{siteConfig.name}</strong>.
-            </p>
-            <p className="mt-3">
-              All therapeutic pharmaceutical products catalogued herein are designated strictly for
-              administration by, or under the direct prescription and supervision of, licensed veterinary
-              practitioners in accordance with applicable livestock healthcare statutory regulations.
-            </p>
-          </section>
+      <LegalSection index="03" title="Use of the site">
+        <p>
+          You may browse, download the published catalogue PDF for legitimate professional
+          use, and send an enquiry. You must not misuse the site, scrape it abusively, pose as{" "}
+          {siteConfig.shortName}, or use product information to treat humans.
+        </p>
+      </LegalSection>
 
-          {/* Section 2 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">02.</span> Institutional Supply & Commercial Procurement
-            </h2>
-            <p className="mt-3">
-              Procurement orders submitted via institutional tenders, distributor consignment contracts,
-              or verified commercial veterinary accounts are subject to confirmation of distributor
-              licensing, drug controller certifications, and cold-chain compliance capabilities where
-              mandated by specific formulation storage requirements.
-            </p>
-            <p className="mt-3">
-              Delivery schedules, batch release certificates (COA &middot; Certificate of Analysis),
-              and minimum order thresholds are defined in individual commercial supply schedules.
-            </p>
-          </section>
+      <LegalSection index="04" title="Product information">
+        <p>
+          Names, compositions, indications, and pack shots on the site may be incomplete or
+          out of date compared with the physical pack and the official catalogue. The pack
+          label and a veterinarian’s direction control. We do not warrant that every webpage
+          statement is a complete regulatory dossier.
+        </p>
+      </LegalSection>
 
-          {/* Section 3 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">03.</span> Quality Assurance & Good Manufacturing Practices (GMP)
-            </h2>
-            <p className="mt-3">
-              All CattleVibes products are manufactured under strict Schedule M / Good Manufacturing
-              Practice (GMP) standards. Quality assurance checkpoints monitor purity, active constituent
-              bioavailability, stability, and sterility from raw ingredient chelation through to sealed
-              packshot distribution.
-            </p>
-            <p className="mt-3">
-              Distributors and stockists are required to maintain recommended ambient storage conditions
-              (below 25&deg;C in dry, light-shielded warehouses) to preserve active compound stability.
-            </p>
-          </section>
+      <LegalSection index="05" title="Liability">
+        <p>
+          To the extent permitted by Indian law, {siteConfig.name} is not liable for loss
+          arising from reliance on website summaries, off-label use, poor storage, or delay in
+          WhatsApp or email. Nothing in these terms limits liability that cannot be excluded
+          by law, including liability for proven product defects under applicable statute.
+        </p>
+      </LegalSection>
 
-          {/* Section 4 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">04.</span> Medical Disclaimer & Limitation of Liability
-            </h2>
-            <p className="mt-3">
-              Information provided across this digital portal represents scientific specifications,
-              pharmacological kinetics, and approved indications. It does not replace individualized clinical
-              veterinary diagnosis. Dosage adjustments must always be determined by the treating veterinarian
-              based on livestock body weight, lactation stage, and physiological health status.
-            </p>
-            <p className="mt-3">
-              CattleVibes Healthcare Pvt. Ltd. shall not be liable for adverse outcomes resulting from
-              off-label use, unauthorized dosage escalation, or substandard product storage in non-compliant
-              commercial facilities.
-            </p>
-          </section>
+      <LegalSection index="06" title="Intellectual property and image credits">
+        <p>
+          The {siteConfig.shortName} name, product names, logos, and pack shots on this site
+          are used by {siteConfig.name}. Do not copy them for another commercial brand.
+        </p>
+        <ul className="list-disc space-y-2 pl-5">
+          {imageCredits.map((item) => (
+            <li key={item.use}>
+              <strong>{item.use}:</strong> {item.credit}
+              {item.source ? ` (${item.source})` : ""}. {item.license}.
+              {item.href ? (
+                <>
+                  {" "}
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-deep-navy underline underline-offset-2"
+                  >
+                    Source
+                  </a>
+                </>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+        <p>
+          Unsplash photos are used under the{" "}
+          <a
+            href="https://unsplash.com/license"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-deep-navy underline underline-offset-2"
+          >
+            Unsplash License
+          </a>
+          .
+        </p>
+      </LegalSection>
 
-          {/* Section 5 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">05.</span> Intellectual Property & Formulation Trademarks
-            </h2>
-            <p className="mt-3">
-              Product brand names including Cattlemin, Cattlestar, Liver-OK, Utrovibe, Pyrovibe,
-              Megluvibe, Cattle-Cef, Flukevibe DS, and all proprietary packaging packshot imagery are
-              the exclusive intellectual property of CattleVibes Healthcare Pvt. Ltd. Unauthorized
-              reproduction, commercial misrepresentation, or trademark dilution is strictly prohibited.
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
+      <LegalSection index="07" title="Other policies">
+        <p>
+          <Link href="/privacy" className="font-semibold text-deep-navy underline underline-offset-2">
+            Privacy Policy
+          </Link>
+          ,{" "}
+          <Link href="/cookies" className="font-semibold text-deep-navy underline underline-offset-2">
+            Cookie Policy
+          </Link>
+          , and{" "}
+          <Link href="/refunds" className="font-semibold text-deep-navy underline underline-offset-2">
+            Refund Policy
+          </Link>{" "}
+          form part of these terms.
+        </p>
+      </LegalSection>
+
+      <LegalSection index="08" title="Governing law">
+        <p>
+          These terms are governed by {legalMeta.governingLaw}. Courts of competent
+          jurisdiction in India will hear disputes, unless a signed commercial contract says
+          otherwise.
+        </p>
+      </LegalSection>
+    </LegalPage>
   );
 }

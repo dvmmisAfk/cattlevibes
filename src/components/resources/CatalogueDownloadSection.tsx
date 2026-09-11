@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Download, ExternalLink } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { VeterinaryNotice } from "@/components/legal/VeterinaryNotice";
 
 export function CatalogueDownloadSection() {
   const catalogueHref = "/downloads/cattlevibes-product-catalogue.pdf";
@@ -29,8 +30,9 @@ export function CatalogueDownloadSection() {
                 Download Our Complete Product Catalogue
               </h2>
               <p className="mt-4 text-base sm:text-lg leading-relaxed text-cadet-blue max-w-xl">
-                The authoritative veterinary compendium covering clinical pharmacology, target-species indications, standardized administration schedules, and pack sizes across all 24 formulations.
+                The veterinary compendium covering compositions, target-species indications, administration notes, and pack sizes across all 24 formulations.
               </p>
+              <VeterinaryNotice className="mt-3 max-w-xl" />
             </div>
 
             {/* Editorial Specification Matrix (Hairline Dividers, No Template Cards) */}
@@ -185,7 +187,7 @@ export function CatalogueDownloadSection() {
                     strokeWidth={2.2}
                   />
                   <span>Download Catalogue PDF</span>
-                  <span className="ml-1 text-xs text-white/70 font-numeral font-medium">
+                  <span className="ml-1 text-xs text-white/90 font-numeral font-medium">
                     (14.2 MB)
                   </span>
                 </a>

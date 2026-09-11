@@ -1,105 +1,107 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import Link from "next/link";
+import { LegalPage, LegalSection } from "@/components/legal/LegalPage";
 import { siteConfig } from "@/data/site";
+import { legalMeta } from "@/data/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `Privacy practices and data handling policies of ${siteConfig.name} for B2B procurement and veterinary professional enquiries.`,
+  description: `How ${siteConfig.name} collects and uses enquiry details on this website.`,
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-soft-white pt-(--nav-height)">
-      <div className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
-        <Breadcrumbs className="mb-8" />
+    <LegalPage title="Privacy Policy">
+      <LegalSection index="01" title="Who we are">
+        <p>
+          This policy applies to the public website operated by{" "}
+          <strong>{siteConfig.name}</strong> ({siteConfig.shortName}), an Indian company.
+          Contact: {siteConfig.email}, {siteConfig.phone}. Registered office details, CIN,
+          and GSTIN are not published on this site yet. Ask us in writing if you need them
+          for a statutory notice.
+        </p>
+        <p>
+          This website is an enquiry-led catalogue. It is not an online shop and it does not
+          create a customer account.
+        </p>
+      </LegalSection>
 
-        <div className="border-b border-border pb-8">
-          <h1 className="font-heading text-3xl font-extrabold tracking-tight text-deep-navy sm:text-4xl md:text-5xl">
-            Privacy Policy
-          </h1>
-          <p className="mt-3 text-sm text-text-muted">
-            Last Updated: January 2026 &middot; CattleVibes Healthcare Pvt. Ltd.
-          </p>
-        </div>
+      <LegalSection index="02" title="What we collect (necessary data only)">
+        <p>
+          We do not run a website database for enquiries. If you use a form, your browser
+          builds a message and you send it on WhatsApp. Fields we ask for:
+        </p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>Required: name, phone number, consent, and your message or product interest.</li>
+          <li>Optional: email, farm or company name, location, and role.</li>
+        </ul>
+        <p>
+          We do not ask for veterinary licence numbers, Aadhaar, payment card data, or
+          browsing analytics. Hosting logs (such as IP address and user-agent) may be created
+          by the hosting provider for security and uptime. We do not use them for advertising.
+        </p>
+      </LegalSection>
 
-        <div className="prose prose-slate mt-10 max-w-none space-y-8 text-sm leading-relaxed text-cadet-blue md:text-base">
-          {/* Section 1 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">01.</span> Commitment to Commercial Confidentiality
-            </h2>
-            <p className="mt-3">
-              <strong>{siteConfig.name}</strong> is committed to maintaining the confidentiality,
-              integrity, and security of corporate, distributor, and veterinary professional data
-              collected through our digital channels and commercial inquiry portals.
-            </p>
-          </section>
+      <LegalSection index="03" title="Why we process it">
+        <p>
+          We use enquiry details only to respond to product, distribution, or documentation
+          requests and to keep a record of that conversation in WhatsApp. Legal bases under
+          the Digital Personal Data Protection Act, 2023 are your consent (the form tick) and
+          our legitimate need to reply to a request you initiated.
+        </p>
+      </LegalSection>
 
-          {/* Section 2 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">02.</span> Information Collected
-            </h2>
-            <p className="mt-3">
-              We collect information strictly necessary to facilitate institutional supply, commercial
-              enquiries, distributor onboarding, and clinical product support:
-            </p>
-            <ul className="mt-3 list-inside space-y-2">
-              <li>&middot; Professional contact details (name, organizational title, veterinary license registration number).</li>
-              <li>&middot; Corporate enterprise information (distributorship firm name, GST/tax ID, operational jurisdiction).</li>
-              <li>&middot; Commercial procurement inquiries (formulation specifications, bulk batch volume requirements, delivery logistics).</li>
-              <li>&middot; Technical digital logs (IP address, browser architecture, routing telemetry for security and firewall management).</li>
-            </ul>
-          </section>
+      <LegalSection index="04" title="WhatsApp and other processors">
+        <p>
+          Submitting a form opens WhatsApp (Meta Platforms). That chat is processed under
+          WhatsApp’s terms and privacy policy, which may involve servers outside India. Do
+          not send sensitive personal data in the form. Email to {siteConfig.email} is
+          processed by our email provider.
+        </p>
+        <p>
+          We do not sell personal data. We do not use Google Analytics, Meta Pixel, Hotjar,
+          or similar trackers on this site.
+        </p>
+      </LegalSection>
 
-          {/* Section 3 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">03.</span> Purpose of Processing & Non-Disclosure
-            </h2>
-            <p className="mt-3">
-              Data collected is utilized exclusively for B2B order fulfilment, distribution coordination,
-              statutory compliance audits, and responsive clinical formulation support. CattleVibes
-              does not sell, lease, or monetize commercial inquiry records to any third-party marketing entities.
-            </p>
-            <p className="mt-3">
-              Information is shared only with verified logistics partners, accredited testing laboratories,
-              or regulatory authorities where explicitly required under veterinary drug control statutes.
-            </p>
-          </section>
+      <LegalSection index="05" title="Cookies">
+        <p>
+          See the{" "}
+          <Link href="/cookies" className="font-semibold text-deep-navy underline underline-offset-2">
+            Cookie Policy
+          </Link>
+          . We do not use advertising cookies. Cookie consent is not required for this site’s
+          current setup because we do not set non-essential tracking cookies.
+        </p>
+      </LegalSection>
 
-          {/* Section 4 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">04.</span> Data Security & Storage Architecture
-            </h2>
-            <p className="mt-3">
-              Our infrastructure employs industry-standard encryption protocols (TLS 1.3 in transit and
-              AES-256 at rest) for all digital commercial dossiers and contact communications. Access
-              to B2B enquiry records is restricted to authorized commercial operations and clinical
-              compliance personnel.
-            </p>
-          </section>
+      <LegalSection index="06" title="Retention and security">
+        <p>
+          This website does not store form submissions. WhatsApp and email retain messages
+          according to those services and our ordinary business records. We do not claim a
+          specific encryption standard for data we do not host.
+        </p>
+      </LegalSection>
 
-          {/* Section 5 */}
-          <section className="rounded-xl border border-border bg-white p-6 md:p-8">
-            <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              <span className="font-numeral font-medium">05.</span> Contact the Data Protection Officer
-            </h2>
-            <p className="mt-3">
-              For inquiries regarding corporate data records, statutory compliance disclosures, or
-              account record deletion requests, contact our compliance team directly at{" "}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="font-semibold text-deep-navy hover:text-brand-orange transition-colors"
-              >
-                {siteConfig.email}
-              </a>
-              .
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
+      <LegalSection index="07" title="Your rights">
+        <p>
+          Subject to Indian law, you may ask to access, correct, or erase personal data we
+          hold, withdraw consent for future messages, and raise a grievance. Email{" "}
+          {siteConfig.email}
+          {legalMeta.grievanceOfficerName
+            ? ` (Grievance Officer: ${legalMeta.grievanceOfficerName})`
+            : " (privacy contact until a named Grievance Officer is published)"}
+          . We will need enough detail to find your enquiry. You may also complain to the Data
+          Protection Board of India when that process is available for your request.
+        </p>
+      </LegalSection>
+
+      <LegalSection index="08" title="Children">
+        <p>
+          This site is for veterinary professionals, farms, and distributors. It is not
+          directed at children.
+        </p>
+      </LegalSection>
+    </LegalPage>
   );
 }

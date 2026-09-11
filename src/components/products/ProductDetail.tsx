@@ -9,6 +9,7 @@ import { ProductPackshot } from "@/components/products/ProductPackshot";
 import { BestsellerRibbon } from "@/components/products/BestsellerRibbon";
 import { PrimaryButton } from "@/components/ui/Buttons";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { VeterinaryNotice } from "@/components/legal/VeterinaryNotice";
 import { getRelatedProducts } from "@/data/products";
 
 interface ProductDetailViewProps {
@@ -56,9 +57,10 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
           <p className="mt-4 text-base leading-relaxed text-cadet-blue">
             {product.shortDescription}
           </p>
+          <VeterinaryNotice className="mt-4" />
           <div className="mt-8">
             <PrimaryButton href={`/contact?product=${encodeURIComponent(product.name)}`}>
-              Enquire About This Product
+              Enquire about this product
             </PrimaryButton>
           </div>
 
@@ -115,10 +117,10 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       <section className="mt-16 rounded-xl border border-border bg-light-pebble/60 p-8 text-center md:p-12">
         <h2 className="font-heading text-xl font-bold text-deep-navy">Need more information?</h2>
         <p className="mt-3 text-sm text-cadet-blue">
-          Contact our team for detailed product information and enquiries.
+          Contact our team for product information. This is not an online checkout.
         </p>
         <div className="mt-6">
-          <PrimaryButton href="/contact">Send Enquiry</PrimaryButton>
+          <PrimaryButton href="/contact">Send an enquiry</PrimaryButton>
         </div>
       </section>
     </div>

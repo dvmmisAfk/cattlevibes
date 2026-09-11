@@ -171,6 +171,23 @@ h3 {
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 200;
+  border-radius: 0.75rem;
+  background: #313841;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
 /* ─── Zero-latency Instant Response (Apple Design §1) ─── */
 .touch-press {
   user-select: none;

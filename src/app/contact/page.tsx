@@ -22,7 +22,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       <div className="relative flex flex-col justify-end overflow-hidden bg-deep-navy px-4 pb-16 pt-[calc(var(--nav-height)+2.5rem)] sm:px-6 md:px-8 lg:min-h-[100svh] lg:px-8 xl:px-10 lg:pb-20" data-theme="dark">
         <Image
           src={images.farmAtmospheric}
-          alt=""
+          alt="Green pasture landscape at dusk"
           fill
           className="object-cover opacity-35"
           sizes="(max-width: 1024px) 100vw, 50vw"
@@ -36,7 +36,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           </h1>
           <dl className="mt-12 space-y-8 border-t border-white/15 pt-8">
             <div>
-              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/90 uppercase">
                 Phone
               </dt>
               <dd className="mt-2">
@@ -49,7 +49,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/90 uppercase">
                 Email
               </dt>
               <dd className="mt-2">
@@ -62,7 +62,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               </dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/75 uppercase">
+              <dt className="text-[10px] font-semibold tracking-[0.2em] text-white/90 uppercase">
                 Address
               </dt>
               <dd className="mt-2 font-heading text-lg font-semibold text-white md:text-xl">

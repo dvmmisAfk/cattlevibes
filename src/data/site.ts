@@ -8,11 +8,14 @@ export const siteConfig = {
   phone: "+91 79917 48529",
   email: "info@cattlevibes.com",
   address: "India",
+  registeredOffice: "",
+  cin: "",
+  gstin: "",
   whatsappNumber: "917991748529",
   socials: {
     whatsapp: "https://wa.me/917991748529",
     email: "mailto:info@cattlevibes.com",
-    facebook: "https://facebook.com/",
+    facebook: "",
     instagram: "https://www.instagram.com/cattlevibeshealthcare",
   },
   urls: {
@@ -22,6 +25,10 @@ export const siteConfig = {
     products: "/products",
     resources: "/resources",
     contact: "/contact",
+    privacy: "/privacy",
+    terms: "/terms",
+    cookies: "/cookies",
+    refunds: "/refunds",
   },
 };
 
@@ -48,8 +55,6 @@ export const images = {
   logoWhite: "/images/cattlevibes-mark-white.png",
   heroImage: "/images/hero-pasture-sheep.jpg",
   aboutHero: "/images/about-hero.jpg",
-  farmWide:
-    "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80",
-  farmAtmospheric:
-    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80",
+  farmWide: "/images/ovine-pasture-wide.jpg",
+  farmAtmospheric: "/images/contact-pasture.jpg",
 };

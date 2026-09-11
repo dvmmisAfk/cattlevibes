@@ -11,7 +11,7 @@ export function CinematicHero() {
 
   return (
     <section
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-deep-navy"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#4a6b32]"
       data-theme="dark"
       suppressHydrationWarning
     >
@@ -28,23 +28,6 @@ export function CinematicHero() {
           className="object-cover object-[center_68%] sm:object-[center_62%]"
         />
       </div>
-
-      {/* ─── Architectural Contrast Scrims ─── */}
-      {/* Subtle Overall Darkening (Enriches tonal depth & enhances text contrast) */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-black/20"
-        aria-hidden="true"
-      />
-      {/* Top Scrim for Navbar Contrast */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/65 via-black/25 to-transparent"
-        aria-hidden="true"
-      />
-      {/* Bottom Gradient for Smooth Section Blend */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep-navy via-deep-navy/50 to-transparent"
-        aria-hidden="true"
-      />
 
       {/* ─── Content ─── */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1800px] flex-col items-center px-4 pt-16 text-center sm:px-6 lg:px-8">

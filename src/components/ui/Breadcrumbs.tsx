@@ -21,8 +21,10 @@ const routeTitleMap: Record<string, string> = {
   products: "Products",
   resources: "Resources",
   contact: "Contact",
-  terms: "Terms of Service",
+  terms: "Terms and Conditions",
   privacy: "Privacy Policy",
+  cookies: "Cookie Policy",
+  refunds: "Refund Policy",
 };
 
 export function Breadcrumbs({
@@ -52,7 +54,7 @@ export function Breadcrumbs({
     })();
 
   const isDark = theme === "dark";
-  const textColor = isDark ? "text-white/60" : "text-cadet-blue/70";
+  const textColor = isDark ? "text-white/85" : "text-cadet-blue";
   const activeColor = isDark ? "text-white" : "text-deep-navy";
   const hoverColor = "hover:text-yam-orange";
   const separatorColor = isDark ? "text-white/30" : "text-border";
