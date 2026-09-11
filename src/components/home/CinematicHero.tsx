@@ -19,12 +19,13 @@ export function CinematicHero() {
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image
           src={images.heroImage}
-          alt="Golden sunrise over rolling livestock pasture with grazing sheep"
+          alt="Herd of sheep grazing on a green hillside at golden hour"
           fill
           priority
           unoptimized
+          quality={100}
           sizes="100vw"
-          className="object-cover object-[center_60%] sm:object-center"
+          className="object-cover object-[center_68%] sm:object-[center_62%]"
         />
       </div>
 

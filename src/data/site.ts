@@ -46,7 +46,7 @@ export const productDropdownLinks = [
 export const images = {
   logo: "/images/cattlevibes-mark.png",
   logoWhite: "/images/cattlevibes-mark-white.png",
-  heroImage: "/images/hero-livestock-sunrise-uhd.png",
+  heroImage: "/images/hero-pasture-sheep.jpg",
   aboutHero: "/images/about-hero.jpg",
   farmWide:
     "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80",
