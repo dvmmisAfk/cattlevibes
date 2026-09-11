@@ -1,15 +1,8 @@
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: visible;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: scroll-position;
+  height: auto;
+  overflow: visible;
 }
 
 .scroll-stack-scroller[data-use-window-scroll="true"] {
@@ -18,68 +11,57 @@
 }
 
 .scroll-stack-inner {
-  padding: 0.5rem 1rem 12rem;
-  min-height: auto;
+  position: relative;
+  width: 100%;
   box-sizing: border-box;
-}
-
-@media (min-width: 640px) {
-  .scroll-stack-inner {
-    padding: 0.75rem 2.5rem 14rem;
-  }
+  padding-top: 0.5rem;
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-inner {
-    padding: 1rem 4rem 16rem;
+    padding-top: 0.75rem;
   }
 }
 
 .scroll-stack-card-wrapper {
   position: relative;
-}
-
-.scroll-stack-card-wrapper:first-child .scroll-stack-card {
-  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .scroll-stack-card {
-  transform-origin: top center;
-  will-change: transform, filter;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  box-shadow: 0 16px 36px -12px rgba(23, 35, 51, 0.14);
-  min-height: auto;
-  width: 100%;
-  margin: 12px 0;
-  padding: 1.25rem;
-  border-radius: 20px;
-  box-sizing: border-box;
-  /* Improve mobile performance */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   position: relative;
+  transform-origin: top center;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  /* Luxurious multi-layered elevation shadow */
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 8px 24px -4px rgba(17, 24, 39, 0.12),
+    0 24px 48px -12px rgba(17, 24, 39, 0.18);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 640px) {
   .scroll-stack-card {
-    min-height: 21rem;
-    padding: 2.25rem 2.5rem;
-    border-radius: 32px;
-    margin: 24px 0;
+    border-radius: 24px;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 12px 28px -6px rgba(17, 24, 39, 0.14),
+      0 28px 56px -14px rgba(17, 24, 39, 0.2);
   }
 }
 
 @media (min-width: 1024px) {
   .scroll-stack-card {
-    min-height: 20rem;
-    padding: 2.75rem 3rem;
-    border-radius: 40px;
-    margin: 32px 0;
+    border-radius: 28px;
+    box-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.06),
+      0 16px 36px -6px rgba(17, 24, 39, 0.16),
+      0 36px 72px -16px rgba(17, 24, 39, 0.22);
   }
-}
-
-.scroll-stack-end {
-  width: 100%;
-  height: 1px;
 }

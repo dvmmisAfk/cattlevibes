@@ -165,7 +165,7 @@ export function ClinicalPillars() {
   return (
     <section
       id="clinical-pillars"
-      className="relative bg-white pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-8 lg:pb-10 scroll-mt-20"
+      className="relative bg-white pt-10 md:pt-14 lg:pt-16 pb-2 sm:pb-4 lg:pb-6 scroll-mt-20"
       data-theme="light"
       aria-label="Clinical Solutions Pillars"
     >
@@ -191,15 +191,13 @@ export function ClinicalPillars() {
           <ScrollStack
             useWindowScroll={true}
             itemDistance={70}
-            itemScale={0.03}
-            itemStackDistance={24}
-            stackPosition="16%"
-            scaleEndPosition="8%"
-            baseScale={0.88}
-            blurAmount={0.4}
+            itemScale={0.024}
+            itemStackDistance={40}
+            stackPosition="12%"
+            baseScale={0.9}
             className="w-full"
           >
-            {clinicalPillars.map((pillar) => {
+            {clinicalPillars.map((pillar, pillarIdx) => {
               const isDark = pillar.theme === "dark";
 
               // Strict alternating styling between Deep Navy and Warm Pebble Cream
@@ -222,31 +220,37 @@ export function ClinicalPillars() {
               return (
                 <ScrollStackItem
                   key={pillar.id}
-                  itemClassName={`!p-0 !rounded-2xl border transition-colors duration-300 ${containerBg} ${borderColor} shadow-sm overflow-hidden`}
+                  index={pillarIdx}
+                  itemClassName={`!p-0 !rounded-2xl lg:!rounded-3xl border transition-colors duration-300 ${containerBg} ${borderColor} shadow-sm overflow-hidden`}
                 >
                   <article
                     id={pillar.id}
                     tabIndex={0}
-                    className="group relative w-full h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+                    className="group relative w-full h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 flex flex-col"
                   >
-                    {/* ─── DESKTOP / TABLET HORIZONTAL COMPOSITION (lg+) ─── */}
-                    <div className="hidden lg:grid lg:grid-cols-12 items-stretch min-h-[300px] h-full">
-                      {/* Left Column (5 cols): Number, Category, Description, Products */}
-                      <div className="lg:col-span-5 p-7 xl:p-8 flex flex-col justify-center relative z-10">
-                        <div>
-                          {/* Editorial Number & Simplified Eyebrow */}
-                          <div className="flex items-baseline gap-3">
-                            <span className="font-heading text-2xl xl:text-3xl font-extrabold tracking-tight text-[#ea9216]">
-                              {pillar.number}
-                            </span>
-                            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#ea9216]">
-                              {pillar.eyebrow}
-                            </span>
-                          </div>
+                    {/* ─── DEDICATED TOP TAB BAR (Visible when stacked in deck) ─── */}
+                    <div className="h-[34px] lg:h-10 px-4 sm:px-6 lg:px-8 border-b border-current/10 flex items-center justify-between shrink-0 select-none">
+                      <div className="flex items-center gap-2.5">
+                        <span className="font-heading text-sm lg:text-base font-black tracking-tight text-[#ea9216]">
+                          {pillar.number}
+                        </span>
+                        <span className="text-[10px] lg:text-[11px] font-bold tracking-[0.2em] uppercase text-[#ea9216]">
+                          {pillar.eyebrow}
+                        </span>
+                      </div>
+                      <span className={`text-[10px] lg:text-[11px] font-bold uppercase tracking-wider ${textMicroLabel}`}>
+                        PILLAR {pillar.number} / 06
+                      </span>
+                    </div>
 
+                    {/* ─── DESKTOP / TABLET HORIZONTAL COMPOSITION (lg+) ─── */}
+                    <div className="hidden lg:grid lg:grid-cols-12 items-stretch min-h-[290px] flex-1">
+                      {/* Left Column (5 cols): Title, Description, Products */}
+                      <div className="lg:col-span-5 p-6 xl:p-8 flex flex-col justify-center relative z-10">
+                        <div>
                           {/* Category Title */}
                           <h3
-                            className={`mt-2 font-heading text-2xl xl:text-[1.85rem] font-extrabold tracking-tight leading-[1.18] ${textTitle}`}
+                            className={`font-heading text-2xl xl:text-[1.85rem] font-extrabold tracking-tight leading-[1.18] ${textTitle}`}
                           >
                             {pillar.title}
                           </h3>
@@ -258,7 +262,7 @@ export function ClinicalPillars() {
                             {pillar.description}
                           </p>
 
-                          {/* Clean Typographic Product List (No Rounded Pills) */}
+                          {/* Clean Typographic Product List */}
                           <div className="mt-4 pt-3 border-t border-current/10">
                             <span
                               className={`block font-body text-[10px] xl:text-[11px] font-bold tracking-[0.18em] uppercase mb-1.5 ${textMicroLabel}`}
@@ -290,7 +294,7 @@ export function ClinicalPillars() {
 
                       {/* Center Column (4 cols): Seamlessly Integrated Photography with Fading Edges */}
                       <div
-                        className="lg:col-span-4 relative overflow-hidden min-h-[300px] h-full"
+                        className="lg:col-span-4 relative overflow-hidden min-h-[290px] h-full"
                       >
                         <Image
                           src={pillar.image}
@@ -301,27 +305,27 @@ export function ClinicalPillars() {
                           style={{ objectPosition: pillar.imagePosition || "center" }}
                         />
 
-                        {/* Left Feathered Edge - smoothly dissolves photo into left text column */}
+                        {/* Left Feathered Edge */}
                         <div
-                          className={`pointer-events-none absolute inset-y-0 left-0 w-24 xl:w-32 bg-gradient-to-r ${fadeClassFrom} to-transparent z-10`}
+                          className={`pointer-events-none absolute inset-y-0 left-0 w-20 xl:w-28 bg-gradient-to-r ${fadeClassFrom} to-transparent z-10`}
                           aria-hidden="true"
                         />
 
-                        {/* Right Feathered Edge - smoothly dissolves photo into right highlights column */}
+                        {/* Right Feathered Edge */}
                         <div
-                          className={`pointer-events-none absolute inset-y-0 right-0 w-24 xl:w-32 bg-gradient-to-l ${fadeClassFrom} to-transparent z-10`}
+                          className={`pointer-events-none absolute inset-y-0 right-0 w-20 xl:w-28 bg-gradient-to-l ${fadeClassFrom} to-transparent z-10`}
                           aria-hidden="true"
                         />
 
                         {/* Top Feathered Edge */}
                         <div
-                          className={`pointer-events-none absolute inset-x-0 top-0 h-10 xl:h-14 bg-gradient-to-b ${fadeClassFrom} to-transparent z-10`}
+                          className={`pointer-events-none absolute inset-x-0 top-0 h-10 xl:h-12 bg-gradient-to-b ${fadeClassFrom} to-transparent z-10`}
                           aria-hidden="true"
                         />
 
                         {/* Bottom Feathered Edge */}
                         <div
-                          className={`pointer-events-none absolute inset-x-0 bottom-0 h-10 xl:h-14 bg-gradient-to-t ${fadeClassFrom} to-transparent z-10`}
+                          className={`pointer-events-none absolute inset-x-0 bottom-0 h-10 xl:h-12 bg-gradient-to-t ${fadeClassFrom} to-transparent z-10`}
                           aria-hidden="true"
                         />
 
@@ -334,7 +338,7 @@ export function ClinicalPillars() {
 
                       {/* Right Column (3 cols): 3 Short, Clear Highlights */}
                       <div
-                        className="lg:col-span-3 p-6 xl:p-7 flex flex-col justify-center relative z-10"
+                        className="lg:col-span-3 p-5 xl:p-7 flex flex-col justify-center relative z-10"
                       >
                         <div className="w-full">
                           <span
@@ -349,7 +353,7 @@ export function ClinicalPillars() {
                             {pillar.keyBenefits.map((benefit, bIdx) => (
                               <div
                                 key={benefit}
-                                className="py-2.5 flex items-start gap-2.5 xl:gap-3"
+                                className="py-2 flex items-start gap-2.5 xl:gap-3"
                               >
                                 <span
                                   className="font-mono text-xs font-bold text-[#ea9216] shrink-0 pt-0.5"
@@ -370,32 +374,22 @@ export function ClinicalPillars() {
                     </div>
 
                     {/* ─── MOBILE & TABLET COMPACT HORIZONTAL COMPOSITION (< lg) ─── */}
-                    <div className="lg:hidden p-4 sm:p-5 flex flex-col gap-2.5">
-                      {/* 1. Header: Number + Eyebrow */}
-                      <div className="flex items-center gap-2 border-b pb-2 border-current/10">
-                        <span className="font-heading text-lg font-extrabold tracking-tight text-[#ea9216]">
-                          {pillar.number}
-                        </span>
-                        <span className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#ea9216]">
-                          {pillar.eyebrow}
-                        </span>
-                      </div>
-
-                      {/* 2. Category Title */}
+                    <div className="lg:hidden p-3.5 sm:p-4 flex flex-col gap-2.5 flex-1 justify-center">
+                      {/* Category Title */}
                       <h3
                         className={`font-heading text-lg sm:text-xl font-extrabold tracking-tight leading-tight ${textTitle}`}
                       >
                         {pillar.title}
                       </h3>
 
-                      {/* 3. Media + Description Row: Compact Thumbnail + Clean Description */}
+                      {/* Media + Description Row: Compact Thumbnail + Clean Description */}
                       <div className="flex items-center gap-3 sm:gap-4 my-0.5">
-                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 overflow-hidden rounded-xl border border-current/10 shadow-xs">
+                        <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 overflow-hidden rounded-xl border border-current/10 shadow-xs">
                           <Image
                             src={pillar.image}
                             alt={pillar.imageAlt}
                             fill
-                            sizes="100px"
+                            sizes="80px"
                             className="object-cover"
                             style={{ objectPosition: pillar.imagePosition || "center" }}
                           />
@@ -411,7 +405,7 @@ export function ClinicalPillars() {
                         </p>
                       </div>
 
-                      {/* 4. Formulation Products List */}
+                      {/* Formulation Products List */}
                       <div className="pt-2 border-t border-current/10">
                         <span
                           className={`block font-body text-[10px] font-bold tracking-[0.18em] uppercase mb-0.5 ${textMicroLabel}`}
@@ -439,10 +433,10 @@ export function ClinicalPillars() {
                         </p>
                       </div>
 
-                      {/* 5. Key Highlights: 3 clean, compact inline bullets */}
+                      {/* Key Highlights: 3 clean, compact inline bullets */}
                       <div className="pt-2 border-t border-current/10">
                         <span
-                          className={`block font-body text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5 ${textMicroLabel}`}
+                          className={`block font-body text-[10px] font-bold tracking-[0.18em] uppercase mb-1 ${textMicroLabel}`}
                         >
                           Key Highlights
                         </span>
