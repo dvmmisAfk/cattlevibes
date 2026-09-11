@@ -156,8 +156,8 @@ export function WhyCattleVibesReasons() {
                     {/* Left: Oversized Architectural Numeral + Headline */}
                     <div className="lg:col-span-6">
                       <span
-                        className={`block font-heading text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-extrabold leading-none select-none tracking-tight mb-3 lg:mb-5 drop-shadow-xs ${
-                          item.isAccent ? "text-brand-orange" : "text-deep-navy/40"
+                        className={`block font-numeral text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-normal leading-none select-none tracking-tight mb-3 lg:mb-5 ${
+                          item.isAccent ? "text-deep-navy" : "text-cadet-blue"
                         }`}
                       >
                         {item.number}
@@ -187,8 +187,8 @@ export function WhyCattleVibesReasons() {
                     {/* Right: Oversized Architectural Numeral + Headline */}
                     <div className="order-1 lg:order-2 lg:col-span-6 lg:pl-12 lg:border-l lg:border-deep-navy/10">
                       <span
-                        className={`block font-heading text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-extrabold leading-none select-none tracking-tight mb-3 lg:mb-5 drop-shadow-xs ${
-                          item.isAccent ? "text-brand-orange" : "text-deep-navy/40"
+                        className={`block font-numeral text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-normal leading-none select-none tracking-tight mb-3 lg:mb-5 ${
+                          item.isAccent ? "text-deep-navy" : "text-cadet-blue"
                         }`}
                       >
                         {item.number}

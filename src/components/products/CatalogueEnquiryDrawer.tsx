@@ -94,7 +94,7 @@ export function CatalogueEnquiryDrawer({
                     <FlaskConical className="h-6 w-6 text-brand-orange" strokeWidth={1.75} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="mb-0.5 font-mono text-[10px] font-semibold tracking-wider text-cadet-blue uppercase">
+                    <p className="mb-0.5 font-heading text-[10px] font-semibold tracking-wider text-cadet-blue uppercase">
                       Enquiring About
                     </p>
                     <p className="font-heading text-base font-bold text-deep-navy truncate">

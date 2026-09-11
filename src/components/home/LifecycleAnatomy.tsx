@@ -183,8 +183,8 @@ export function LifecycleAnatomy() {
                     }
                   >
                     <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
-                        STAGE {activeStage.number}
+                      <span className="font-body text-xs font-bold tracking-widest text-white/70 uppercase">
+                        STAGE <span className="font-numeral font-medium tracking-normal">{activeStage.number}</span>
                       </span>
                       <span className="text-sm font-medium text-white/50">
                         &middot;
@@ -238,8 +238,8 @@ export function LifecycleAnatomy() {
                       >
                         <div className="flex items-center gap-3 xl:gap-4">
                           <span
-                            className={`font-mono text-xs font-bold transition-colors ${
-                              isActive ? "text-brand-orange" : "text-white/35 group-hover:text-white/60"
+                            className={`font-numeral text-xs font-medium transition-colors ${
+                              isActive ? "text-white" : "text-white/35 group-hover:text-white/60"
                             }`}
                           >
                             {stage.number}
@@ -311,8 +311,8 @@ export function LifecycleAnatomy() {
                 className="space-y-1.5"
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold text-brand-orange">
-                    STAGE {activeStage.number}
+                  <span className="font-body text-xs font-bold text-white/70">
+                    STAGE <span className="font-numeral font-medium">{activeStage.number}</span>
                   </span>
                   <span className="text-white/40">&middot;</span>
                   <span className="text-xs font-medium text-white/70">
@@ -357,8 +357,8 @@ export function LifecycleAnatomy() {
                     >
                       <div className="flex items-center gap-3">
                         <span
-                          className={`font-mono text-xs font-bold ${
-                            isActive ? "text-brand-orange" : "text-white/35"
+                          className={`font-numeral text-xs font-medium ${
+                            isActive ? "text-white" : "text-white/35"
                           }`}
                         >
                           {stage.number}

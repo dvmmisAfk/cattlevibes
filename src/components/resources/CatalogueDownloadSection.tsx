@@ -29,19 +29,19 @@ export function CatalogueDownloadSection() {
                 Download Our Complete Product Catalogue
               </h2>
               <p className="mt-4 text-base sm:text-lg leading-relaxed text-cadet-blue max-w-xl">
-                The authoritative veterinary compendium covering clinical pharmacology, target-species indications, standardized administration schedules, and pack sizes across all 21 formulations.
+                The authoritative veterinary compendium covering clinical pharmacology, target-species indications, standardized administration schedules, and pack sizes across all 24 formulations.
               </p>
             </div>
 
             {/* Editorial Specification Matrix (Hairline Dividers, No Template Cards) */}
             <div className="border-y border-border/80 divide-y divide-border/60">
               <div className="py-4 sm:py-5 flex items-start gap-4">
-                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                <span className="font-numeral text-xs font-medium text-cadet-blue mt-0.5 tracking-wider">
                   01
                 </span>
                 <div>
                   <h3 className="font-heading text-sm sm:text-base font-bold text-deep-navy">
-                    21 Complete Formulations
+                    24 Complete Formulations
                   </h3>
                   <p className="text-xs sm:text-sm text-text-muted mt-0.5 leading-relaxed">
                     Sterile injectables, broad-spectrum antimicrobials, anti-inflammatory therapeutics, intrauterine infusions, and nutritional digestive tonics.
@@ -50,7 +50,7 @@ export function CatalogueDownloadSection() {
               </div>
 
               <div className="py-4 sm:py-5 flex items-start gap-4">
-                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                <span className="font-numeral text-xs font-medium text-cadet-blue mt-0.5 tracking-wider">
                   02
                 </span>
                 <div>
@@ -64,7 +64,7 @@ export function CatalogueDownloadSection() {
               </div>
 
               <div className="py-4 sm:py-5 flex items-start gap-4">
-                <span className="font-mono text-xs font-bold text-brand-orange mt-0.5 tracking-wider">
+                <span className="font-numeral text-xs font-medium text-cadet-blue mt-0.5 tracking-wider">
                   03
                 </span>
                 <div>
@@ -147,7 +147,7 @@ export function CatalogueDownloadSection() {
               <div className="grid grid-cols-3 gap-2 border-y border-border/70 py-3.5 text-center mb-6">
                 <div>
                   <span className="block font-heading text-xs sm:text-sm font-bold text-deep-navy">
-                    21 SKUs
+                    24 SKUs
                   </span>
                   <span className="block text-[11px] text-text-muted">
                     Formulations
@@ -185,7 +185,7 @@ export function CatalogueDownloadSection() {
                     strokeWidth={2.2}
                   />
                   <span>Download Catalogue PDF</span>
-                  <span className="ml-1 text-xs text-white/70 font-mono font-medium">
+                  <span className="ml-1 text-xs text-white/70 font-numeral font-medium">
                     (14.2 MB)
                   </span>
                 </a>

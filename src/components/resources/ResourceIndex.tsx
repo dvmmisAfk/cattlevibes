@@ -18,7 +18,7 @@ const RESOURCES: ResourceIndexItem[] = [
     number: "01",
     title: "Online Product Portfolio",
     description:
-      "Explore the complete CattleVibes range of 21 veterinary medicines, nutritional supplements, and preventive healthcare products.",
+      "Explore the complete CattleVibes range of 24 veterinary medicines, nutritional supplements, and preventive healthcare products.",
     actionText: "Explore Products",
     href: "/products",
   },
@@ -73,7 +73,7 @@ export function ResourceIndex() {
                 <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                   {/* Left: Number, Title & Description */}
                   <div className="flex items-start gap-5 sm:gap-7 max-w-2xl">
-                    <span className="font-mono text-sm sm:text-base font-bold text-cadet-blue/70 pt-0.5 shrink-0 transition-colors duration-200 group-hover:text-brand-orange">
+                    <span className="font-numeral text-sm sm:text-base font-medium text-cadet-blue pt-0.5 shrink-0 transition-colors duration-200 group-hover:text-deep-navy">
                       {item.number}
                     </span>
                     <div>

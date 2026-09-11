@@ -38,7 +38,7 @@ export function ProtocolStep({
       {/* Content */}
       <div className="pb-3">
         <div className="flex items-center gap-2.5">
-          <span className="font-mono text-xs sm:text-sm font-bold text-brand-orange">
+          <span className="font-numeral text-xs sm:text-sm font-medium text-white/75">
             {number}
           </span>
           <h3 className="font-heading text-base sm:text-lg font-bold text-white">

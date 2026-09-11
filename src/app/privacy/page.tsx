@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           {/* Section 1 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              01. Commitment to Commercial Confidentiality
+              <span className="font-numeral font-medium">01.</span> Commitment to Commercial Confidentiality
             </h2>
             <p className="mt-3">
               <strong>{siteConfig.name}</strong> is committed to maintaining the confidentiality,
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
           {/* Section 2 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              02. Information Collected
+              <span className="font-numeral font-medium">02.</span> Information Collected
             </h2>
             <p className="mt-3">
               We collect information strictly necessary to facilitate institutional supply, commercial
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
           {/* Section 3 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              03. Purpose of Processing & Non-Disclosure
+              <span className="font-numeral font-medium">03.</span> Purpose of Processing & Non-Disclosure
             </h2>
             <p className="mt-3">
               Data collected is utilized exclusively for B2B order fulfilment, distribution coordination,
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
           {/* Section 4 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              04. Data Security & Storage Architecture
+              <span className="font-numeral font-medium">04.</span> Data Security & Storage Architecture
             </h2>
             <p className="mt-3">
               Our infrastructure employs industry-standard encryption protocols (TLS 1.3 in transit and
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
           {/* Section 5 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              05. Contact the Data Protection Officer
+              <span className="font-numeral font-medium">05.</span> Contact the Data Protection Officer
             </h2>
             <p className="mt-3">
               For inquiries regarding corporate data records, statutory compliance disclosures, or

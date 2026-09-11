@@ -18,7 +18,10 @@ interface ProductDetailViewProps {
 export function ProductDetailView({ product }: ProductDetailViewProps) {
   const related = getRelatedProducts(product.slug);
   const infoEntries = Object.entries(product.info).filter(
-    ([, value]) => value && value !== "As per product catalogue",
+    ([key, value]) =>
+      value &&
+      value !== "As per product catalogue" &&
+      key !== "applicableAnimals",
   );
 
   return (
@@ -77,16 +80,14 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
         <section className="mt-16 rounded-xl border border-border bg-white p-6 md:p-8">
           <h2 className="font-heading text-xl font-bold text-deep-navy">Product Information</h2>
           <dl className="mt-6 grid gap-4 sm:grid-cols-2">
-            {Object.entries(product.info).map(([key, value]) =>
-              value ? (
-                <div key={key} className="border-b border-border pb-4">
-                  <dt className="font-mono text-xs font-semibold uppercase tracking-wider text-cadet-blue/70">
-                    {formatLabel(key)}
-                  </dt>
-                  <dd className="mt-1 text-sm text-text-primary">{value}</dd>
-                </div>
-              ) : null,
-            )}
+            {infoEntries.map(([key, value]) => (
+              <div key={key} className="border-b border-border pb-4">
+                <dt className="font-heading text-xs font-semibold uppercase tracking-wider text-cadet-blue/70">
+                  {formatLabel(key)}
+                </dt>
+                <dd className="mt-1 text-sm text-text-primary">{value}</dd>
+              </div>
+            ))}
           </dl>
         </section>
       )}
@@ -160,7 +161,7 @@ function DetailImageSlider({ product }: { product: Product }) {
           >
             <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
           </button>
-          <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
+          <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-numeral text-xs font-medium text-cadet-blue shadow-xs">
             {String(slide + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </div>
         </>

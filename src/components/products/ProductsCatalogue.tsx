@@ -191,7 +191,7 @@ export function ProductsCatalogue({
               <h3 className="font-heading text-lg font-bold text-deep-navy flex items-center gap-2">
                 <span>Filters</span>
                 {chips.length > 0 && (
-                  <span className="font-mono text-xs font-bold text-brand-orange">
+                  <span className="font-numeral text-xs font-medium text-cadet-blue">
                     ({chips.length})
                   </span>
                 )}
@@ -200,7 +200,7 @@ export function ProductsCatalogue({
                 <button
                   type="button"
                   onClick={clearAll}
-                  className="flex items-center gap-1 font-mono text-xs font-semibold text-cadet-blue hover:text-brand-orange cursor-pointer transition-colors"
+                  className="flex items-center gap-1 font-heading text-xs font-semibold text-cadet-blue hover:text-brand-orange cursor-pointer transition-colors"
                 >
                   <RotateCcw className="h-3 w-3" strokeWidth={1.75} />
                   Clear
@@ -244,7 +244,7 @@ export function ProductsCatalogue({
                   <SlidersHorizontal className="h-4 w-4 text-brand-orange" />
                   <span className="text-xs uppercase tracking-wider">Filters</span>
                   {chips.length > 0 && (
-                    <span className="font-mono text-xs font-bold text-brand-orange">
+                    <span className="font-numeral text-xs font-medium text-cadet-blue">
                       ({chips.length})
                     </span>
                   )}
@@ -253,15 +253,15 @@ export function ProductsCatalogue({
 
               {/* Dynamic Product Count & Clear Filters Row */}
               <div className="flex items-center justify-between pt-1">
-                <div className="font-mono text-xs font-bold uppercase tracking-wider text-cadet-blue">
-                  {filtered.length} {filtered.length === 1 ? "PRODUCT" : "PRODUCTS"}
+                <div className="font-heading text-xs font-bold uppercase tracking-wider text-cadet-blue">
+                  <span className="font-numeral font-medium">{filtered.length}</span> {filtered.length === 1 ? "PRODUCT" : "PRODUCTS"}
                 </div>
 
                 {(chips.length > 0 || query.trim().length > 0) && (
                   <button
                     type="button"
                     onClick={clearAll}
-                    className="inline-flex min-h-[44px] items-center gap-1.5 font-mono text-xs font-bold text-deep-navy hover:text-brand-orange hover:underline cursor-pointer transition-colors active:scale-[0.98] py-2"
+                    className="inline-flex min-h-[44px] items-center gap-1.5 font-heading text-xs font-bold text-deep-navy hover:text-brand-orange hover:underline cursor-pointer transition-colors active:scale-[0.98] py-2"
                   >
                     <span>Clear filters</span>
                     <span aria-hidden="true">&rarr;</span>
@@ -303,7 +303,7 @@ export function ProductsCatalogue({
               <button
                 type="button"
                 onClick={clearAll}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border bg-white px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-deep-navy shadow-xs hover:border-brand-orange hover:text-brand-orange cursor-pointer transition-all active:scale-[0.98]"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border bg-white px-4 py-2.5 font-heading text-xs font-bold uppercase tracking-wider text-deep-navy shadow-xs hover:border-brand-orange hover:text-brand-orange cursor-pointer transition-all active:scale-[0.98]"
               >
                 <span>Clear filters</span>
                 <span aria-hidden="true">&rarr;</span>
@@ -341,7 +341,7 @@ export function ProductsCatalogue({
                         key={number}
                         type="button"
                         onClick={() => setPage(number)}
-                        className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold transition-colors ${
+                        className={`flex h-10 w-10 items-center justify-center rounded-xl font-numeral font-medium transition-colors ${
                           number === currentPage
                             ? "bg-deep-navy text-white shadow-sm"
                             : "border border-border/80 text-primary-navy hover:bg-warm-cream"
@@ -376,11 +376,11 @@ export function ProductsCatalogue({
           <SlidersHorizontal className="h-3.5 w-3.5 text-brand-orange" />
           <span>Filters</span>
           {chips.length > 0 ? (
-            <span className="font-mono text-xs font-bold text-brand-orange">
+            <span className="font-numeral text-xs font-medium text-white/80">
               ({chips.length})
             </span>
           ) : (
-            <span className="text-white/60 font-mono text-[11px]">({filtered.length})</span>
+            <span className="text-white/60 font-numeral text-[11px]">({filtered.length})</span>
           )}
         </button>
       </div>
@@ -430,7 +430,7 @@ export function ProductsCatalogue({
                       Filters
                     </h3>
                     {chips.length > 0 && (
-                      <span className="font-mono text-[11px] font-medium text-brand-orange">
+                      <span className="font-numeral text-[11px] font-medium text-cadet-blue">
                         {chips.length} active {chips.length === 1 ? "filter" : "filters"}
                       </span>
                     )}
@@ -537,7 +537,7 @@ function FilterGroup({
             {title}
           </h4>
           {selected.length > 0 && (
-            <span className="font-mono text-xs font-bold text-brand-orange">
+            <span className="font-numeral text-xs font-medium text-cadet-blue">
               ({selected.length})
             </span>
           )}
@@ -665,7 +665,7 @@ function CatalogueProductCard({
             >
               <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
-            <div className="pointer-events-none absolute bottom-2 right-2 z-10 rounded border border-border/70 bg-white px-1.5 py-0.5 font-mono text-[10px] font-semibold text-cadet-blue shadow-xs">
+            <div className="pointer-events-none absolute bottom-2 right-2 z-10 rounded border border-border/70 bg-white px-1.5 py-0.5 font-numeral text-[10px] font-medium text-cadet-blue shadow-xs">
               0{slide + 1} / 0{images.length}
             </div>
           </>
@@ -673,7 +673,7 @@ function CatalogueProductCard({
       </div>
       <div className="flex flex-1 flex-col justify-between p-5">
         <div>
-          <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-cadet-blue mb-1">
+          <p className="font-heading text-[11px] font-bold uppercase tracking-wider text-cadet-blue mb-1">
             {product.category}
           </p>
           <Link

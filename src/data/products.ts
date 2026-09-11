@@ -544,6 +544,88 @@ export const products: Product[] = [
     bestseller: true,
     relatedSlugs: ["cattlestar", "cattlestar-ds", "cattlestar-advance-gel"],
   },
+  {
+    slug: "cattle-cef-1g",
+    name: "CATTLE-CEF 1 g",
+    category: "Veterinary Medicines",
+    formulation: "Injection",
+    animals: ["Cattle", "Buffalo"],
+    healthConcerns: ["Antibiotic"],
+    bestseller: true,
+    shortDescription:
+      "Ceftriaxone injection 1000 mg (1 g) for veterinary use in bacterial infections.",
+    description:
+      "CATTLE-CEF 1 g is a sterile ceftriaxone injection (1000 mg) for veterinary administration via I.M. or I.V. route. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
+    benefits: [
+      "Sterile ceftriaxone 1000 mg formulation",
+      "For I.M. / I.V. veterinary administration",
+      "Supports targeted antimicrobial therapy for bacterial infections",
+      "Professional veterinary healthcare solution",
+    ],
+    info: {
+      presentation: "1000 mg (1 g) Glass Vial with Outer Carton",
+      composition: "Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 1000 mg",
+      withdrawalPeriod: "As per product catalogue",
+      storage: "Store as directed on product label. Protect from light and moisture",
+    },
+    relatedSlugs: ["cattle-cef", "cattle-cef-3g", "cattlecef-sb"],
+  },
+  {
+    slug: "cattle-cef-3g",
+    name: "CATTLE-CEF 3 g",
+    category: "Veterinary Medicines",
+    formulation: "Injection",
+    animals: ["Cattle", "Buffalo"],
+    healthConcerns: ["Antibiotic"],
+    bestseller: true,
+    shortDescription:
+      "Ceftriaxone injection 3000 mg (3 g) with sterile water diluent for veterinary use.",
+    description:
+      "CATTLE-CEF 3 g is a sterile ceftriaxone injection (3000 mg) supplied with sterile water for injection diluent in a molded presentation tray for I.M. or I.V. veterinary administration. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
+    benefits: [
+      "High-potency ceftriaxone 3000 mg formulation",
+      "Supplied complete with sterile water diluent and molded tray",
+      "For I.M. / I.V. veterinary administration",
+      "Professional antibiotic solution for severe bacterial infections",
+    ],
+    info: {
+      presentation: "3000 mg (3 g) Glass Vial with Sterile Water Diluent in Molded Tray & Outer Carton",
+      composition: "Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 3000 mg",
+      withdrawalPeriod: "As per product catalogue",
+      storage: "Store as directed on product label. Protect from light and moisture",
+    },
+    relatedSlugs: ["cattle-cef", "cattle-cef-1g", "cattlecef-sb"],
+  },
+  {
+    slug: "cattlemin-super",
+    name: "CATTLEMIN SUPER",
+    category: "Nutritional Supplements",
+    formulation: "Powder",
+    animals: ["Cattle", "Buffalo", "Goat", "Sheep"],
+    healthConcerns: ["Nutrition", "Milk Productivity"],
+    shortDescription:
+      "Chelated mineral and vitamin feed supplement with banana flavour for fertility and productivity.",
+    description:
+      "CATTLEMIN SUPER is a highly bioavailable chelated mineral and vitamin feed supplement with delicious banana flavour formulated to maintain nutritional levels, enhance milk production, regulate hormonal balance, and support fertility and reproductive health in livestock.",
+    benefits: [
+      "Formulated with chelated minerals and essential vitamins for high bioavailability",
+      "Helps increase milk production and maintain nutritional levels",
+      "Nutritional support to pregnant animals and promotes better growth",
+      "Regulates hormonal balance, maintains fertility rate and repeat breeding support",
+      "Palatable banana flavour for enhanced feed intake",
+    ],
+    info: {
+      presentation: "1 kg Pouch",
+      composition:
+        "Nutritional value per kg: Vitamin A 7,50,000 I.U., Vitamin D3 75,000 I.U., Vitamin E 500 mg, Niacinamide 1000 mg, Cobalt 200 mg, Copper 4500 mg, Iodine 500 mg, Iron 2000 mg, Magnesium 6000 mg, Manganese 3000 mg, Potassium 154 mg, Sodium 25 mg, Sulphur 0.95%, Zinc 9600 mg, Calcium 24.6%, Phosphorus 12.3%",
+      dosage:
+        "Cow, Buffalo & Horse: 10-20 kg/Ton of Feed | Calf, Goat, Pig & Sheep: 5-10 kg/Ton of Feed | Poultry & Aqua: 500 gm - 1 kg per MT of prepared feed | Regular Supplementation: Cow, Buffalo & Horse: 50-100 gm daily; Calf, Goat, Pig & Sheep: 25-30 gm daily or as directed by veterinary consultant",
+      storage:
+        "Keep in a cool and dry place. Keep protected from direct sunlight. Strictly not for medicinal / human use. For animal feed supplement",
+    },
+    featured: false,
+    relatedSlugs: ["cattlemin", "cattlestar", "cattlestar-gold"],
+  },
 ];
 
 for (const product of products) {

@@ -26,7 +26,7 @@ export default function TermsPage() {
           {/* Section 1 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              01. Scope of Agreement & Veterinary Professional Use
+              <span className="font-numeral font-medium">01.</span> Scope of Agreement & Veterinary Professional Use
             </h2>
             <p className="mt-3">
               These Terms of Service govern the access, evaluation, and commercial procurement of
@@ -43,7 +43,7 @@ export default function TermsPage() {
           {/* Section 2 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              02. Institutional Supply & Commercial Procurement
+              <span className="font-numeral font-medium">02.</span> Institutional Supply & Commercial Procurement
             </h2>
             <p className="mt-3">
               Procurement orders submitted via institutional tenders, distributor consignment contracts,
@@ -60,7 +60,7 @@ export default function TermsPage() {
           {/* Section 3 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              03. Quality Assurance & Good Manufacturing Practices (GMP)
+              <span className="font-numeral font-medium">03.</span> Quality Assurance & Good Manufacturing Practices (GMP)
             </h2>
             <p className="mt-3">
               All CattleVibes products are manufactured under strict Schedule M / Good Manufacturing
@@ -77,7 +77,7 @@ export default function TermsPage() {
           {/* Section 4 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              04. Medical Disclaimer & Limitation of Liability
+              <span className="font-numeral font-medium">04.</span> Medical Disclaimer & Limitation of Liability
             </h2>
             <p className="mt-3">
               Information provided across this digital portal represents scientific specifications,
@@ -95,7 +95,7 @@ export default function TermsPage() {
           {/* Section 5 */}
           <section className="rounded-xl border border-border bg-white p-6 md:p-8">
             <h2 className="font-heading text-lg font-bold text-deep-navy md:text-xl">
-              05. Intellectual Property & Formulation Trademarks
+              <span className="font-numeral font-medium">05.</span> Intellectual Property & Formulation Trademarks
             </h2>
             <p className="mt-3">
               Product brand names including Cattlemin, Cattlestar, Liver-OK, Utrovibe, Pyrovibe,

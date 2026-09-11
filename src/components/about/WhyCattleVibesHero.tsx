@@ -26,13 +26,13 @@ export function WhyCattleVibesHero() {
         />
       </div>
 
-      {/* ─── 2. Directional Tonal Scrim on Left (Protects Left Typography, Preserves Right Pasture) ─── */}
+      {/* ─── 2. Directional Tonal Scrim on Left (Protects Left Typography, Keeps Right Photo 100% Haze-Free) ─── */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/92 via-deep-navy/65 via-50% to-transparent lg:from-deep-navy/90 lg:via-deep-navy/52 lg:via-55% lg:to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/95 via-deep-navy/80 via-35% to-transparent lg:from-deep-navy/95 lg:via-deep-navy/70 lg:via-38% lg:to-transparent"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/60 via-transparent to-deep-navy/20 lg:hidden"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/75 via-deep-navy/30 via-45% to-transparent lg:hidden"
         aria-hidden="true"
       />
 

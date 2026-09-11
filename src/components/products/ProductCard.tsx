@@ -63,7 +63,7 @@ export function ProductCard({
         <div>
           <div className="flex items-center justify-between gap-1">
             <p
-              className={`font-mono font-semibold uppercase tracking-wider text-cadet-blue/70 truncate ${
+              className={`font-heading font-semibold uppercase tracking-wider text-cadet-blue/70 truncate ${
                 mobileCompact ? "text-[8px] sm:text-[11px]" : "text-[10px] sm:text-[11px]"
               }`}
             >
@@ -71,7 +71,7 @@ export function ProductCard({
             </p>
             {product.formulation && (
               <span
-                className={`font-mono font-semibold uppercase tracking-wider text-text-muted shrink-0 ${
+                className={`font-heading font-semibold uppercase tracking-wider text-text-muted shrink-0 ${
                   mobileCompact
                     ? "hidden sm:inline-block text-[9px] sm:text-[10px]"
                     : "text-[9px] sm:text-[10px]"

@@ -114,6 +114,7 @@
   --color-warm-neutral: var(--color-warm-neutral);
   --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
+  --font-numeral: var(--font-playfair);
 }
 
 body {
@@ -124,6 +125,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.font-numeral {
+  font-family: var(--font-playfair), "Times New Roman", serif;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-feature-settings: "lnum" 1, "kern" 1;
+  letter-spacing: 0.02em;
 }
 
 h1,
@@ -241,9 +249,6 @@ h3 {
     animation: none !important;
   }
 
-  .hero-video-bg {
-    display: none !important;
-  }
 }
 
 @media (prefers-reduced-transparency: reduce) {

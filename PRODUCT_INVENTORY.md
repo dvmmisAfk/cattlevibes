@@ -1,10 +1,10 @@
 # CattleVibes — Complete Product Inventory & Formulary Directory
 
 > **Catalog Status:** Verified Active Inventory (Catalog-Accurate Reconciled)  
-> **Total Products:** 21 SKUs  
+> **Total Products:** 24 SKUs  
 > **Source Directory:** `src/data/products.ts` & `src/data/product-images.ts`  
 > **Official Source Document:** CattleVibes Veterinary Product Catalog  
-> **Last Reconciled:** 2026-09-08
+> **Last Reconciled:** 2026-09-12
 
 ---
 
@@ -13,25 +13,25 @@
 ### By Therapeutic Category
 | Category | SKU Count | Products Included |
 | :--- | :---: | :--- |
-| **Veterinary Medicines** | 7 | CATTLESPAS, PYROVIBE Injection, PYROVIBE Bolus, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLECEF-SB |
+| **Veterinary Medicines** | 9 | CATTLESPAS, PYROVIBE Injection, PYROVIBE Bolus, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLE-CEF 1 g, CATTLE-CEF 3 g, CATTLECEF-SB |
 | **Calcium & Milk Support** | 5 | CATTLESTAR, CATTLESTAR-DS, CATTLESTAR GOLD, CATTLESTAR GEL, CATTLESTAR ADVANCE GEL |
 | **Digestive & Liver Health** | 4 | LIVER-OK, LIVER-OK Injection, RUMI-OK Powder, RUMI-OK Bolus |
 | **Parasite Control** | 3 | FENDIVIBE PLUS, FLUKEVIBE DS, WORMS-OK PLUS |
+| **Nutritional Supplements** | 2 | CATTLEMIN, CATTLEMIN SUPER |
 | **Reproductive & Uterine Care** | 1 | UTROVIBE |
-| **Nutritional Supplements** | 1 | CATTLEMIN |
 
 ### By Physical Formulation
 | Formulation | SKU Count | Products |
 | :--- | :---: | :--- |
-| **Injection** | 8 | LIVER-OK Injection, UTROVIBE, CATTLESPAS, PYROVIBE Injection, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLECEF-SB |
+| **Injection** | 10 | LIVER-OK Injection, UTROVIBE, CATTLESPAS, PYROVIBE Injection, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLE-CEF 1 g, CATTLE-CEF 3 g, CATTLECEF-SB |
 | **Liquid / Oral Suspension** | 5 | LIVER-OK, WORMS-OK PLUS, CATTLESTAR, CATTLESTAR-DS, CATTLESTAR GOLD |
 | **Bolus** | 4 | RUMI-OK Bolus, PYROVIBE Bolus, FENDIVIBE PLUS, FLUKEVIBE DS |
-| **Powder** | 2 | RUMI-OK Powder, CATTLEMIN |
+| **Powder** | 3 | RUMI-OK Powder, CATTLEMIN, CATTLEMIN SUPER |
 | **Oral Gel** | 2 | CATTLESTAR GEL, CATTLESTAR ADVANCE GEL |
 
 ### By Target Animal Species
-- **Cattle & Buffalo (Ruminants):** 21/21 products (100% portfolio coverage)
-- **Sheep & Goat (Small Ruminants):** 8 products (`LIVER-OK`, `RUMI-OK Powder`, `FENDIVIBE PLUS`, `FLUKEVIBE DS`, `WORMS-OK PLUS`, `CATTLEMIN`, `CATTLESTAR GOLD`, `PYROVIBE Bolus`)
+- **Cattle & Buffalo (Ruminants):** 24/24 products (100% portfolio coverage)
+- **Sheep & Goat (Small Ruminants):** 9 products (`LIVER-OK`, `RUMI-OK Powder`, `FENDIVIBE PLUS`, `FLUKEVIBE DS`, `WORMS-OK PLUS`, `CATTLEMIN`, `CATTLEMIN SUPER`, `CATTLESTAR GOLD`, `PYROVIBE Bolus`)
 - **Calf:** 1 product (`CATTLESTAR GOLD`)
 
 ---
@@ -45,7 +45,7 @@
 | 03 | **UTROVIBE** | `utrovibe` | Injection | Reproductive & Uterine Care | Cattle, Buffalo | No | Official Packshot (3x) |
 | 04 | **RUMI-OK Powder** | `rumi-ok-powder` | Powder | Digestive & Liver Health | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (2x) |
 | 05 | **RUMI-OK Bolus** | `rumi-ok-bolus` | Bolus | Digestive & Liver Health | Cattle, Buffalo | No | Official Packshot |
-| 06 | **CATTLESPAS** | `cattlespas` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
+| 06 | **CATTLESPAS** | `cattlespas` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (2x) |
 | 07 | **PYROVIBE Injection** | `pyrovibe-injection` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot |
 | 08 | **PYROVIBE Bolus** | `pyrovibe-bolus` | Bolus | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
 | 09 | **MEGLUVIBE** | `megluvibe` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
@@ -59,8 +59,11 @@
 | 17 | **CATTLESTAR GEL** | `cattlestar-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
 | 18 | **CATTLESTAR ADVANCE GEL** | `cattlestar-advance-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
 | 19 | **CATTLESTAR** | `cattlestar` | Liquid | Calcium & Milk Support | Cattle, Buffalo | Yes | Official Packshot (3x) |
-| 20 | **CATTLESTAR-DS** | `cattlestar-ds` | Liquid | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot (2x) |
+| 20 | **CATTLESTAR-DS** | `cattlestar-ds` | Liquid | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
 | 21 | **CATTLESTAR GOLD** | `cattlestar-gold` | Liquid | Calcium & Milk Support | Cattle, Buffalo, Calf, Sheep, Goat | No | Official Packshot (5L, 2L, 1L) |
+| 22 | **CATTLE-CEF 1 g** | `cattle-cef-1g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box & Vial) |
+| 23 | **CATTLE-CEF 3 g** | `cattle-cef-3g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box, Vial & Diluent Tray) |
+| 24 | **CATTLEMIN SUPER** | `cattlemin-super` | Powder | Nutritional Supplements | Cattle, Buffalo, Goat, Sheep | No | Official Packshot (Front & Back Pouch) |
 
 ---
 
@@ -150,9 +153,9 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/cattlestar-1.png`
-  - `/images/cattlestar-2.png`
-  - `/images/cattlestar-3.png`
+  - `/images/cattlestar.png` (Official 5L, 2L, 1L Lineup Packshot)
+  - `/images/cattlestar-5l.png` (5 Ltr Presentation Packshot)
+  - `/images/cattlestar-2l.png` (2 Ltr Presentation Packshot)
 - **Related Formulary:** `cattlestar-ds`, `cattlestar-gold`, `cattlestar-gel`
 
 ---
@@ -175,8 +178,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Applicable Animals:* Cattle, Buffalo, Horses
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
-  - `/images/cattlestar-ds-1.png`
-  - `/images/cattlestar-ds-2.png`
+  - `/images/cattlestar-ds-1.png` (Official 5L, 2L, 1L Lineup Packshot)
 - **Related Formulary:** `cattlestar`, `cattlestar-gold`, `cattle-phos`
 
 ---
@@ -387,7 +389,8 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
-  - `/images/cattlespas.png`
+  - `/images/cattlespas.png` (Official 100 ml Glass Vial & Outer Carton Duo Packshot)
+  - `/images/cattlespas-box.png` (Outer Carton Packaging Packshot)
 - **Related Formulary:** `utrovibe`, `megluvibe`, `pyrovibe-injection`
 
 ---
@@ -535,13 +538,64 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
 
 ---
 
+### 18. CATTLE-CEF 1 g
+- **Slug:** `cattle-cef-1g`
+- **Category:** Veterinary Medicines
+- **Formulation:** Injection
+- **Health Concerns:** Antibiotic
+- **Featured Product:** No
+- **Bestseller:** Yes
+- **Short Description:** Ceftriaxone injection 1000 mg (1 g) for veterinary use in bacterial infections.
+- **Full Clinical Description:** CATTLE-CEF 1 g is a sterile ceftriaxone injection (1000 mg) for veterinary administration via I.M. or I.V. route. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.
+- **Key Benefits:**
+  - Sterile ceftriaxone 1000 mg formulation
+  - For I.M. / I.V. veterinary administration
+  - Supports targeted antimicrobial therapy for bacterial infections
+  - Professional veterinary healthcare solution
+- **Storage & Presentation:**
+  - *Composition:* Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 1000 mg
+  - *Presentation:* 1000 mg (1 g) Glass Vial with Outer Carton
+  - *Withdrawal Period:* As per product catalogue
+  - *Storage:* Store as directed on product label. Protect from light and moisture
+- **Product Images:**
+  - `/images/cattle-cef-1g.png` (Official 1000 mg Glass Vial & Outer Carton Duo Packshot)
+  - `/images/cattle-cef-1g-box.png` (Outer Carton Packaging View)
+- **Related Formulary:** `cattle-cef`, `cattle-cef-3g`, `cattlecef-sb`
+
+---
+
+### 19. CATTLE-CEF 3 g
+- **Slug:** `cattle-cef-3g`
+- **Category:** Veterinary Medicines
+- **Formulation:** Injection
+- **Health Concerns:** Antibiotic
+- **Featured Product:** No
+- **Bestseller:** Yes
+- **Short Description:** Ceftriaxone injection 3000 mg (3 g) with sterile water diluent for veterinary use.
+- **Full Clinical Description:** CATTLE-CEF 3 g is a sterile ceftriaxone injection (3000 mg) supplied with sterile water for injection diluent in a molded presentation tray for I.M. or I.V. veterinary administration. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.
+- **Key Benefits:**
+  - High-potency ceftriaxone 3000 mg formulation
+  - Supplied complete with sterile water diluent and molded tray
+  - For I.M. / I.V. veterinary administration
+  - Professional antibiotic solution for severe bacterial infections
+- **Storage & Presentation:**
+  - *Composition:* Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 3000 mg
+  - *Presentation:* 3000 mg (3 g) Glass Vial with Sterile Water Diluent in Molded Tray & Outer Carton
+  - *Withdrawal Period:* As per product catalogue
+  - *Storage:* Store as directed on product label. Protect from light and moisture
+- **Product Images:**
+  - `/images/cattle-cef-3g.png` (Official 3000 mg Glass Vial, Sterile Water Diluent & Outer Carton in Molded Tray Packshot)
+- **Related Formulary:** `cattle-cef`, `cattle-cef-1g`, `cattlecef-sb`
+
+---
+
 ```
 ================================================================================
 CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
 ================================================================================
 ```
 
-### 18. FENDIVIBE PLUS
+### 20. FENDIVIBE PLUS
 - **Slug:** `fendivibe-plus`
 - **Category:** Parasite Control
 - **Formulation:** Bolus
@@ -565,7 +619,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
 
 ---
 
-### 19. FLUKEVIBE DS
+### 21. FLUKEVIBE DS
 - **Slug:** `flukevibe-ds`
 - **Category:** Parasite Control
 - **Formulation:** Bolus
@@ -589,7 +643,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
 
 ---
 
-### 20. WORMS-OK PLUS
+### 22. WORMS-OK PLUS
 - **Slug:** `worms-ok-plus`
 - **Category:** Parasite Control
 - **Formulation:** Liquid (Oral Suspension)
@@ -619,7 +673,7 @@ CATEGORY 06: NUTRITIONAL SUPPLEMENTS
 ================================================================================
 ```
 
-### 21. CATTLEMIN
+### 23. CATTLEMIN
 - **Slug:** `cattlemin`
 - **Category:** Nutritional Supplements
 - **Formulation:** Powder
@@ -637,13 +691,41 @@ CATEGORY 06: NUTRITIONAL SUPPLEMENTS
   - *Composition:* As per product catalogue
   - *Indications:* As per product catalogue
   - *Dosage:* As per product catalogue
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 1 kg Pouch & 10 kg Bucket
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place away from moisture
 - **Product Images:**
-  - `/images/cattlemin-1.png`
-  - `/images/cattlemin-2.png`
+  - `/images/cattlemin-2.png` (Official 1 kg Pouch Packshot)
+  - `/images/cattlemin-bucket.png` (Official 10 kg Bucket Packshot)
 - **Related Formulary:** `cattlestar`, `cattlestar-gold`, `cattle-phos`
+
+---
+
+### 24. CATTLEMIN SUPER
+- **Slug:** `cattlemin-super`
+- **Category:** Nutritional Supplements
+- **Formulation:** Powder
+- **Health Concerns:** Nutrition, Milk Productivity
+- **Featured Product:** No
+- **Short Description:** Chelated mineral and vitamin feed supplement with banana flavour for fertility and productivity.
+- **Full Clinical Description:** CATTLEMIN SUPER is a highly bioavailable chelated mineral and vitamin feed supplement with delicious banana flavour formulated to maintain nutritional levels, enhance milk production, regulate hormonal balance, and support fertility and reproductive health in livestock.
+- **Key Benefits:**
+  - Formulated with chelated minerals and essential vitamins for high bioavailability
+  - Helps increase milk production and maintain nutritional levels
+  - Nutritional support to pregnant animals and promotes better growth
+  - Regulates hormonal balance, maintains fertility rate and repeat breeding support
+  - Palatable banana flavour for enhanced feed intake
+- **Composition & Feeding Guidelines:**
+  - *Composition:* Nutritional value per kg: Vitamin A 7,50,000 I.U., Vitamin D3 75,000 I.U., Vitamin E 500 mg, Niacinamide 1000 mg, Cobalt 200 mg, Copper 4500 mg, Iodine 500 mg, Iron 2000 mg, Magnesium 6000 mg, Manganese 3000 mg, Potassium 154 mg, Sodium 25 mg, Sulphur 0.95%, Zinc 9600 mg, Calcium 24.6%, Phosphorus 12.3%
+  - *Direction for Use:* Cow, Buffalo & Horse: 10-20 kg/Ton of Feed | Calf, Goat, Pig & Sheep: 5-10 kg/Ton of Feed | Poultry & Aqua: 500 gm - 1 kg per MT of prepared feed
+  - *Regular Supplementation:* Cow, Buffalo & Horse: 50-100 gm daily | Calf, Goat, Pig & Sheep: 25-30 gm daily or as directed by veterinary consultant
+- **Storage & Presentation:**
+  - *Presentation:* 1 kg Pouch
+  - *Storage:* Keep in a cool & dry place. Keep protected from direct sunlight. Strictly not for medicinal / human use. For animal feed supplement
+- **Product Images:**
+  - `/images/cattlemin-super-1.png` (Official 1 kg Front Packaging Packshot with Banana Flavour Banner)
+  - `/images/cattlemin-super-2.png` (Official 1 kg Back Packaging Packshot with Guaranteed Composition Matrix)
+- **Related Formulary:** `cattlemin`, `cattlestar`, `cattlestar-gold`
 
 ---
 
@@ -674,3 +756,6 @@ Every product is dynamically rendered in the CattleVibes Next.js platform via `/
 | 19 | **CATTLESTAR** | `https://cattlevibes.com/products/cattlestar` |
 | 20 | **CATTLESTAR-DS** | `https://cattlevibes.com/products/cattlestar-ds` |
 | 21 | **CATTLESTAR GOLD** | `https://cattlevibes.com/products/cattlestar-gold` |
+| 22 | **CATTLE-CEF 1 g** | `https://cattlevibes.com/products/cattle-cef-1g` |
+| 23 | **CATTLE-CEF 3 g** | `https://cattlevibes.com/products/cattle-cef-3g` |
+| 24 | **CATTLEMIN SUPER** | `https://cattlevibes.com/products/cattlemin-super` |

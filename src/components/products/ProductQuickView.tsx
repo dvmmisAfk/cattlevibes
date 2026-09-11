@@ -248,7 +248,7 @@ export function ProductQuickView({
               >
                 <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
               </button>
-              <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-cadet-blue shadow-xs">
+              <div className="absolute bottom-3 right-3 z-10 rounded-md border border-border/70 bg-white px-2.5 py-1 font-numeral text-xs font-medium text-cadet-blue shadow-xs">
                 {String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
               </div>
             </>
@@ -259,7 +259,7 @@ export function ProductQuickView({
           <div>
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
-                <p className="font-mono text-xs font-bold tracking-wider text-cadet-blue uppercase">
+                <p className="font-heading text-xs font-bold tracking-wider text-cadet-blue uppercase">
                   {product.category} · {product.formulation}
                 </p>
                 <h2
@@ -286,7 +286,7 @@ export function ProductQuickView({
             <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl border border-border/70 bg-soft-white/60 p-4">
               {product.info.composition && (
                 <div className="col-span-2 border-b border-border/50 pb-2.5">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                  <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
                     Active Composition
                   </span>
                   <span className="text-xs font-semibold text-deep-navy leading-snug block mt-0.5">
@@ -295,7 +295,7 @@ export function ProductQuickView({
                 </div>
               )}
               <div>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
                   Formulation
                 </span>
                 <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
@@ -303,7 +303,7 @@ export function ProductQuickView({
                 </span>
               </div>
               <div>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
                   Suitable For
                 </span>
                 <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
@@ -312,7 +312,7 @@ export function ProductQuickView({
               </div>
               {product.info.presentation && (
                 <div>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                  <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
                     Presentation
                   </span>
                   <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
@@ -321,7 +321,7 @@ export function ProductQuickView({
                 </div>
               )}
               <div>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
+                <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-cadet-blue block">
                   Category
                 </span>
                 <span className="text-xs font-semibold text-deep-navy mt-0.5 block">
@@ -332,7 +332,7 @@ export function ProductQuickView({
 
             {product.benefits && product.benefits.length > 0 && (
               <div className="mt-5">
-                <h4 className="font-mono text-[11px] font-bold uppercase tracking-wider text-deep-navy">
+                <h4 className="font-heading text-[11px] font-bold uppercase tracking-wider text-deep-navy">
                   Clinical Highlights
                 </h4>
                 <ul className="mt-2.5 space-y-1.5">

@@ -19,22 +19,29 @@ export function CinematicHero() {
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image
           src={images.heroImage}
-          alt="Pastoral grazing landscape with livestock under a sunny sky"
+          alt="Golden sunrise over rolling livestock pasture with grazing sheep"
           fill
           priority
+          unoptimized
           sizes="100vw"
-          className="object-cover object-center transform scale-[1.01]"
+          className="object-cover object-[center_60%] sm:object-center"
         />
       </div>
 
-      {/* ─── Architectural Scrim & Vignette Overlays for Contrast & Readability ─── */}
-      <div className="absolute inset-0 bg-deep-navy/45" aria-hidden="true" />
+      {/* ─── Architectural Contrast Scrims ─── */}
+      {/* Subtle Overall Darkening (Enriches tonal depth & enhances text contrast) */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-deep-navy/80 via-deep-navy/25 to-deep-navy/40"
+        className="pointer-events-none absolute inset-0 bg-black/20"
         aria-hidden="true"
       />
+      {/* Top Scrim for Navbar Contrast */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(49,56,65,0.75)_100%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/65 via-black/25 to-transparent"
+        aria-hidden="true"
+      />
+      {/* Bottom Gradient for Smooth Section Blend */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep-navy via-deep-navy/50 to-transparent"
         aria-hidden="true"
       />
 
@@ -42,7 +49,7 @@ export function CinematicHero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1800px] flex-col items-center px-4 pt-16 text-center sm:px-6 lg:px-8">
         {/* Two-Line Centered Head Tagline with Brand Yam Accent Word */}
         <motion.h1
-          className="max-w-6xl font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
+          className="max-w-6xl font-heading text-[clamp(1.75rem,5.4vw,5.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white [text-shadow:_0_2px_16px_rgba(0,0,0,0.55),_0_4px_32px_rgba(0,0,0,0.4)]"
           initial={prefersReduced ? {} : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -55,7 +62,7 @@ export function CinematicHero() {
 
         {/* Clear Supporting Sentence */}
         <motion.p
-          className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/90 sm:text-lg md:mt-7 md:text-xl"
+          className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/95 sm:text-lg md:mt-7 md:text-xl [text-shadow:_0_1px_12px_rgba(0,0,0,0.5)]"
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}

@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Buttons";
+import {
+  buildEnquiryWhatsAppMessage,
+  getWhatsAppChatUrl,
+} from "@/lib/whatsapp";
 
 interface EnquiryFormProps {
   initialProduct?: string;
@@ -9,6 +13,7 @@ interface EnquiryFormProps {
 
 export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [whatsAppUrl, setWhatsAppUrl] = useState("");
   const [product, setProduct] = useState(initialProduct);
   const [prevInitial, setPrevInitial] = useState(initialProduct);
 
@@ -19,6 +24,22 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fields = new FormData(form);
+
+    const message = buildEnquiryWhatsAppMessage({
+      name: String(fields.get("name") || ""),
+      phone: String(fields.get("phone") || ""),
+      email: String(fields.get("email") || ""),
+      company: String(fields.get("company") || ""),
+      location: String(fields.get("location") || ""),
+      product: String(fields.get("product") || product),
+      message: String(fields.get("message") || ""),
+    });
+
+    const url = getWhatsAppChatUrl(message);
+    setWhatsAppUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -26,12 +47,22 @@ export function EnquiryForm({ initialProduct = "" }: EnquiryFormProps) {
     return (
       <div className="w-full max-w-md text-left" role="status" aria-live="polite">
         <h3 className="font-heading text-2xl font-extrabold tracking-tight text-deep-navy">
-          Enquiry received.
+          Opening WhatsApp…
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-cadet-blue">
-          Our commercial desk will respond with catalogue or formulation detail
-          shortly.
+          Your enquiry is ready to send on WhatsApp. If a new chat did not open,
+          use the button below.
         </p>
+        {whatsAppUrl ? (
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-deep-navy px-6 text-sm font-semibold text-white transition-transform hover:bg-deep-navy/95 active:scale-[0.98]"
+          >
+            Send on WhatsApp
+          </a>
+        ) : null}
       </div>
     );
   }

@@ -21,7 +21,7 @@ const RESOURCE_FAQS: FAQItem[] = [
     number: "02",
     question: "Can I get detailed specifications for individual products?",
     answer:
-      "Yes. Every product in our portfolio has a dedicated live page featuring verified active compositions, target animals, indications, and administration notes. Additionally, our downloadable catalogue PDF includes comprehensive profile sheets for all 21 formulations.",
+      "Yes. Every product in our portfolio has a dedicated live page featuring verified active compositions, target animals, indications, and administration notes. Additionally, our downloadable catalogue PDF includes comprehensive profile sheets for all 24 formulations.",
   },
   {
     number: "03",
@@ -83,7 +83,7 @@ export function ResourceFAQ() {
                   aria-controls={`resource-faq-panel-${faq.number}`}
                 >
                   <div className="flex items-start gap-5 sm:gap-8">
-                    <span className="font-mono text-sm sm:text-base font-bold text-cadet-blue/70 pt-0.5 group-hover:text-brand-orange transition-colors shrink-0">
+                    <span className="font-numeral text-sm sm:text-base font-medium text-cadet-blue pt-0.5 group-hover:text-deep-navy transition-colors shrink-0">
                       {faq.number}
                     </span>
                     <h3 className="font-heading text-lg sm:text-xl font-bold text-deep-navy group-hover:text-brand-orange transition-colors">

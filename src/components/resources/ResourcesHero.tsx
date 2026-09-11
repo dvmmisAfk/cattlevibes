@@ -13,25 +13,26 @@ export function ResourcesHero() {
       data-theme="dark"
       aria-labelledby="resources-hero-title"
     >
-      {/* ─── 1. Full-Bleed Authentic Pastoral Landscape Image (4K UHD Mountain Pasture) ─── */}
+      {/* ─── 1. Full-Bleed Authentic Pastoral Landscape Image (4K UHD Livestock Sunrise Pasture) ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <Image
-          src="/images/resources-hero-pasture-mountains.png"
-          alt="Herd of dairy cattle grazing on lush green pasture against snow-capped mountain range"
+          src="/images/resources-hero-pasture-livestock-uhd.png"
+          alt="Dairy cattle and water buffalo grazing on lush morning pasture under a golden sunrise"
           fill
           priority
+          unoptimized
           sizes="100vw"
-          className="object-cover object-[center_65%] lg:object-[center_60%]"
+          className="object-cover object-[center_60%] lg:object-[center_55%]"
         />
       </div>
 
-      {/* ─── 2. Subtle Left-to-Right Scrim Overlay (Preserves Cattle & Landscape on Right) ─── */}
+      {/* ─── 2. Directional Tonal Scrim on Left (Protects Left Typography, Keeps Right Photo 100% Haze-Free) ─── */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/90 via-deep-navy/65 via-50% to-transparent lg:from-deep-navy/88 lg:via-deep-navy/50 lg:via-55% lg:to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep-navy/95 via-deep-navy/80 via-35% to-transparent lg:from-deep-navy/95 lg:via-deep-navy/70 lg:via-38% lg:to-transparent"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/60 via-transparent to-deep-navy/20 lg:hidden"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/75 via-deep-navy/30 via-45% to-transparent lg:hidden"
         aria-hidden="true"
       />
 

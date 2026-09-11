@@ -16,12 +16,13 @@ export function SolutionsCTA() {
       {/* ─── 1. Cinematic Full-Bleed Backdrop ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <Image
-          src="/images/solutions-pastoral-cow-hd.jpg"
-          alt="Dairy cattle grazing peacefully in open pasture under atmospheric daylight"
+          src="/images/solutions-cta-pasture-livestock-uhd.png"
+          alt="Golden sunrise over lush pasture with cattle, water buffalo, and grazing sheep"
           fill
           priority
+          unoptimized
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_55%] sm:object-center"
         />
 
         {/* Deep Navy Atmospheric Scrim for High-Contrast Legibility */}
@@ -51,13 +52,13 @@ export function SolutionsCTA() {
           }}
         >
           {/* Typographic Headline matching unified homepage scale */}
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-tight [text-shadow:_0_2px_16px_rgba(0,0,0,0.55),_0_4px_32px_rgba(0,0,0,0.4)]">
             Better animal health starts with the{" "}
             <span className="text-brand-orange">right formulation.</span>
           </h2>
 
           {/* Supporting Copy */}
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl md:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg md:text-xl md:leading-relaxed [text-shadow:_0_1px_12px_rgba(0,0,0,0.5)]">
             Whether managing high-yield dairy herds, commercial feedlots, or pastoral flocks,
             our veterinary specialists work directly with producers and distributors.
           </p>

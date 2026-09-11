@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResourcesPage() {
+  // Client-ready pastoral layout
   return (
     <div className="min-h-screen bg-white">
       {/* ─── 01. Cinematic Left-Aligned Resources Hero ─── */}

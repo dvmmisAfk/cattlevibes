@@ -126,7 +126,7 @@ export function FAQAccordion() {
                         className="w-full flex items-start justify-between gap-6 py-6 sm:py-7 text-left transition-colors hover:text-brand-orange group cursor-pointer"
                       >
                         <div className="flex items-start gap-5 sm:gap-7">
-                          <span className="font-mono text-sm sm:text-base font-bold text-cadet-blue/70 pt-0.5 group-hover:text-brand-orange transition-colors shrink-0">
+                          <span className="font-numeral text-sm sm:text-base font-medium text-cadet-blue pt-0.5 group-hover:text-deep-navy transition-colors shrink-0">
                             {number}
                           </span>
                           <span className="font-heading text-base sm:text-lg lg:text-xl font-bold text-deep-navy group-hover:text-brand-orange transition-colors leading-snug">

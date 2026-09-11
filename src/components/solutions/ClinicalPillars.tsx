@@ -34,6 +34,8 @@ const clinicalPillars: ClinicalPillar[] = [
       "MEGLUVIBE",
       "CATTLE PHOS",
       "CATTLE-CEF",
+      "CATTLE-CEF 1 g",
+      "CATTLE-CEF 3 g",
       "CATTLECEF-SB",
     ],
     href: "/products?category=Veterinary+Medicines",
@@ -55,7 +57,7 @@ const clinicalPillars: ClinicalPillar[] = [
     eyebrow: "ANIMAL NUTRITION",
     description:
       "Essential vitamin and mineral supplements to support daily livestock growth, feed conversion, and herd vitality.",
-    products: ["CATTLEMIN"],
+    products: ["CATTLEMIN", "CATTLEMIN SUPER"],
     href: "/products?category=Nutritional+Supplements",
     theme: "light",
     image: "/images/card-02-animal-nutrition.jpg",
@@ -205,7 +207,8 @@ export function ClinicalPillars() {
               const borderColor = isDark ? "border-white/10" : "border-deep-navy/10";
               const textTitle = isDark ? "text-white" : "text-deep-navy";
               const textBody = isDark ? "text-white/80" : "text-cadet-blue";
-              const textMicroLabel = isDark ? "text-white/50" : "text-deep-navy/55";
+              const textIndex = isDark ? "text-white/80" : "text-deep-navy";
+              const textMicroLabel = isDark ? "text-white/50" : "text-cadet-blue";
               const textProducts = isDark ? "text-white" : "text-deep-navy";
               const productDotColor = isDark ? "text-white/30" : "text-deep-navy/30";
               const highlightRuleColor = isDark
@@ -231,15 +234,15 @@ export function ClinicalPillars() {
                     {/* ─── DEDICATED TOP TAB BAR (Visible when stacked in deck) ─── */}
                     <div className="h-[34px] lg:h-10 px-4 sm:px-6 lg:px-8 border-b border-current/10 flex items-center justify-between shrink-0 select-none">
                       <div className="flex items-center gap-2.5">
-                        <span className="font-heading text-sm lg:text-base font-black tracking-tight text-[#ea9216]">
+                        <span className={`font-numeral text-sm lg:text-base font-medium tracking-tight ${textIndex}`}>
                           {pillar.number}
                         </span>
-                        <span className="text-[10px] lg:text-[11px] font-bold tracking-[0.2em] uppercase text-[#ea9216]">
+                        <span className={`text-[10px] lg:text-[11px] font-bold tracking-[0.2em] uppercase ${textIndex}`}>
                           {pillar.eyebrow}
                         </span>
                       </div>
                       <span className={`text-[10px] lg:text-[11px] font-bold uppercase tracking-wider ${textMicroLabel}`}>
-                        PILLAR {pillar.number} / 06
+                        PILLAR <span className="font-numeral font-medium tracking-normal">{pillar.number}</span> / <span className="font-numeral font-medium tracking-normal">06</span>
                       </span>
                     </div>
 
@@ -356,7 +359,7 @@ export function ClinicalPillars() {
                                 className="py-2 flex items-start gap-2.5 xl:gap-3"
                               >
                                 <span
-                                  className="font-mono text-xs font-bold text-[#ea9216] shrink-0 pt-0.5"
+                                  className={`font-numeral text-xs font-medium ${textIndex} shrink-0 pt-0.5`}
                                   aria-hidden="true"
                                 >
                                   {`0${bIdx + 1}`}
@@ -447,7 +450,7 @@ export function ClinicalPillars() {
                               className="flex items-center gap-2"
                             >
                               <span
-                                className="font-mono text-[10px] font-bold text-[#ea9216] shrink-0"
+                                className={`font-numeral text-[10px] font-medium ${textIndex} shrink-0`}
                                 aria-hidden="true"
                               >
                                 {`0${bIdx + 1}`}

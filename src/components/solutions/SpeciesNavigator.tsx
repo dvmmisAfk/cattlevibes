@@ -124,8 +124,8 @@ function SpeciesCard({ item, isActive, onSelect }: SpeciesCardProps) {
           {/* Index & Names */}
           <div className="flex items-baseline gap-4 sm:gap-5">
             <span
-              className={`font-mono text-2xl sm:text-3xl lg:text-4xl font-extrabold transition-colors leading-none ${
-                isActive ? "text-brand-orange" : "text-cadet-blue/60"
+              className={`font-numeral text-2xl sm:text-3xl lg:text-4xl font-medium transition-colors leading-none ${
+                isActive ? "text-deep-navy" : "text-cadet-blue/60"
               }`}
             >
               {item.number}
@@ -261,14 +261,14 @@ function MobileSpeciesAccordion({
               className="flex w-full items-center justify-between gap-4 p-5 text-left cursor-pointer active:scale-[0.99] touch-manipulation"
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-mono text-base font-extrabold text-brand-orange">
+                <span className="font-numeral text-base font-medium text-deep-navy">
                   {item.number}
                 </span>
                 <div>
                   <h3 className="font-heading text-lg font-bold text-deep-navy">
                     {item.name}
                   </h3>
-                  <p className="font-body text-xs italic text-brand-orange">
+                  <p className="font-body text-xs italic text-cadet-blue">
                     {item.scientificName}
                   </p>
                 </div>

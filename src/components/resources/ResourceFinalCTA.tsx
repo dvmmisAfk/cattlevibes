@@ -16,12 +16,13 @@ export function ResourceFinalCTA() {
       {/* ─── 1. Cinematic Full-Bleed Backdrop ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <Image
-          src="/images/solutions-pastoral-cow-hd.jpg"
-          alt="Dairy cattle grazing peacefully in open pasture under atmospheric daylight"
+          src="/images/resources-cta-lighthouse-pasture-uhd.jpg?v=2026"
+          alt="Historic red and white lighthouse and cottages across vast coastal pasture with grazing sheep"
           fill
           priority
+          unoptimized
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_38%] sm:object-[center_42%]"
         />
 
         {/* Deep Navy Atmospheric Scrim for High-Contrast Legibility */}
@@ -51,13 +52,13 @@ export function ResourceFinalCTA() {
           }}
         >
           {/* Heading */}
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-tight [text-shadow:_0_2px_24px_rgba(0,0,0,0.75),_0_4px_48px_rgba(0,0,0,0.55)]">
             Need Specific{" "}
             <span className="text-brand-orange">Product Information?</span>
           </h2>
 
           {/* Supporting Copy */}
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl md:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg md:text-xl md:leading-relaxed [text-shadow:_0_1px_16px_rgba(0,0,0,0.75)]">
             Tell us what you are looking for and our team can help you find the right formulation, dosage protocols, and documentation.
           </p>
 
