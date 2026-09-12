@@ -19,9 +19,8 @@ export function WhyCattleVibesCTA() {
           src="/images/why-cattlevibes-cta-farm-realities.png"
           alt="Dairy farmers tending and feeding cattle in modern barn at golden sunrise"
           fill
-          priority
-          unoptimized
-          quality={100}
+          loading="lazy"
+          quality={90}
           sizes="100vw"
           className="object-cover object-center"
         />

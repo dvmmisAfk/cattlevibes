@@ -123,7 +123,8 @@ export function HealthcareAreas() {
                       src={activeItem.image}
                       alt={activeItem.alt}
                       fill
-                      priority={activeItem.id === "veterinary-medicines"}
+                      loading="lazy"
+                      quality={85}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       className="object-cover object-center"
                     />

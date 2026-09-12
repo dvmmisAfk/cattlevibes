@@ -183,7 +183,8 @@ function SpeciesDetailPanel({ current }: SpeciesDetailPanelProps) {
             alt={`${current.name} (${current.scientificName}) — Cattlevibes species classification`}
             fill
             sizes="(max-width: 1024px) 100vw, 42vw"
-            priority
+            loading="lazy"
+            quality={85}
             className="object-cover object-center transition-all duration-300"
           />
         </div>

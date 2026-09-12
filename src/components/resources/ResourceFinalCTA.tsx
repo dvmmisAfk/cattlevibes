@@ -19,9 +19,8 @@ export function ResourceFinalCTA() {
           src="/images/resources-cta-lighthouse-pasture-uhd.jpg"
           alt="Historic red and white lighthouse and cottages across vast coastal pasture with grazing sheep"
           fill
-          priority
-          unoptimized
-          quality={100}
+          loading="lazy"
+          quality={90}
           sizes="100vw"
           className="object-cover object-[center_38%] sm:object-[center_42%]"
         />

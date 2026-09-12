@@ -20,8 +20,7 @@ export function SolutionsHero() {
           alt="Cow grazing on a rolling green pasture beside a rustic wooden barn"
           fill
           priority
-          unoptimized
-          quality={100}
+          quality={90}
           sizes="100vw"
           className="object-cover object-[25%_bottom] md:object-[center_60%] lg:object-[center_55%] pointer-events-none scale-x-[-1]"
         />

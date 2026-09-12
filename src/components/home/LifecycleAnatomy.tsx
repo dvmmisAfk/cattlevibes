@@ -149,7 +149,8 @@ export function LifecycleAnatomy() {
                       src={activeStage.image}
                       alt={activeStage.alt}
                       fill
-                      priority={activeIndex === 0}
+                      loading="lazy"
+                      quality={85}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       className="object-cover object-center"
                     />
@@ -288,7 +289,8 @@ export function LifecycleAnatomy() {
                     src={activeStage.image}
                     alt={activeStage.alt}
                     fill
-                    priority
+                    loading="lazy"
+                    quality={85}
                     sizes="100vw"
                     className="object-cover object-center"
                   />

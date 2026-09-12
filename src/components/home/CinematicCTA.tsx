@@ -20,9 +20,8 @@ export function CinematicCTA() {
           src="/images/indian-cow-shelter-ground.jpg"
           alt="Authentic open-air Indian cow shelter (gaushala) and rural dairy farm"
           fill
-          priority
-          unoptimized
-          quality={100}
+          loading="lazy"
+          quality={90}
           sizes="100vw"
           className="object-cover object-center"
         />

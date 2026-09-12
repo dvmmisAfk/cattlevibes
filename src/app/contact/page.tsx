@@ -27,8 +27,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           className="object-cover opacity-35"
           sizes="(max-width: 1024px) 100vw, 50vw"
           priority
-          unoptimized
-          quality={100}
+          quality={90}
         />
         <div className="absolute inset-0 bg-deep-navy/75" />
 

@@ -22,8 +22,7 @@ export function CinematicHero() {
           alt="Herd of sheep grazing on a green hillside at golden hour"
           fill
           priority
-          unoptimized
-          quality={100}
+          quality={90}
           sizes="100vw"
           className="object-cover object-[center_68%] sm:object-[center_62%]"
         />

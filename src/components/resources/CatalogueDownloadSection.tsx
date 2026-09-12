@@ -118,7 +118,8 @@ export function CatalogueDownloadSection() {
                       src="/images/cattlevibes-catalogue-cover.jpg"
                       alt="Official CattleVibes Veterinary Product Catalogue Cover"
                       fill
-                      priority
+                      loading="lazy"
+                      quality={85}
                       sizes="(min-width: 1024px) 40vw, 90vw"
                       className="object-cover object-center"
                     />

@@ -21,8 +21,7 @@ export function WhyCattleVibesHero() {
           alt="Agricultural field landscape at sunrise"
           fill
           priority
-          unoptimized
-          quality={100}
+          quality={90}
           sizes="100vw"
           className="object-cover object-[center_60%] lg:object-[center_50%]"
         />
