@@ -20,7 +20,8 @@ export function WhyCattleVibesCTA() {
           alt="Dairy farmers tending and feeding cattle in modern barn at golden sunrise"
           fill
           priority
-          quality={82}
+          unoptimized
+          quality={100}
           sizes="100vw"
           className="object-cover object-center"
         />

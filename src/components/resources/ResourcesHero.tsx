@@ -20,7 +20,8 @@ export function ResourcesHero() {
           alt="Dairy cattle and water buffalo grazing on lush morning pasture under a golden sunrise"
           fill
           priority
-          quality={82}
+          unoptimized
+          quality={100}
           sizes="100vw"
           className="object-cover object-[center_60%] lg:object-[center_55%]"
         />

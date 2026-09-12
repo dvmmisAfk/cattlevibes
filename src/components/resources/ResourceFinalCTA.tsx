@@ -20,7 +20,8 @@ export function ResourceFinalCTA() {
           alt="Historic red and white lighthouse and cottages across vast coastal pasture with grazing sheep"
           fill
           priority
-          quality={82}
+          unoptimized
+          quality={100}
           sizes="100vw"
           className="object-cover object-[center_38%] sm:object-[center_42%]"
         />

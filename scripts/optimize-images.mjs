@@ -60,26 +60,17 @@ async function optimizeAll() {
     const isHero = HERO_IMAGES.has(file);
     const isLogo = LOGO_MARKS.has(file);
 
-    let pipeline = sharp(inputPath);
-    const meta = await pipeline.metadata();
+    if (isHero) {
+      // User requirement: Keep Hero and CTA section images at 100% uncompressed pristine fidelity
+      console.log(`Skipping Hero/CTA image (100% uncompressed master preserved): ${file}`);
+      results.push({ file, originalSize, newSize: originalSize, reduction: "0.0%" });
+      totalOptimizedBytes += originalSize;
+      continue;
+    }
 
     if (isLogo) {
       // Retain dimensions, max compression
       pipeline = pipeline.png({ compressionLevel: 9, effort: 10 });
-    } else if (isHero) {
-      // 1920px max dimension
-      pipeline = pipeline.resize({
-        width: 1920,
-        height: 1280,
-        fit: "inside",
-        withoutEnlargement: true,
-      });
-
-      if (ext === ".jpg" || ext === ".jpeg") {
-        pipeline = pipeline.jpeg({ quality: 82, mozjpeg: true, progressive: true });
-      } else if (ext === ".png") {
-        pipeline = pipeline.png({ compressionLevel: 9, effort: 8 });
-      }
     } else {
       // Check if it is a product packshot or card photo
       const isPngPackshot = ext === ".png";
