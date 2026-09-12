@@ -20,7 +20,7 @@ export function SolutionsCTA() {
           alt="Golden sunrise over lush pasture with cattle, water buffalo, and grazing sheep"
           fill
           priority
-          unoptimized
+          quality={82}
           sizes="100vw"
           className="object-cover object-[center_55%] sm:object-center"
         />

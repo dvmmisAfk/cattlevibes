@@ -16,11 +16,11 @@ export function ResourceFinalCTA() {
       {/* ─── 1. Cinematic Full-Bleed Backdrop ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <Image
-          src="/images/resources-cta-lighthouse-pasture-uhd.jpg?v=2026"
+          src="/images/resources-cta-lighthouse-pasture-uhd.jpg"
           alt="Historic red and white lighthouse and cottages across vast coastal pasture with grazing sheep"
           fill
           priority
-          unoptimized
+          quality={82}
           sizes="100vw"
           className="object-cover object-[center_38%] sm:object-[center_42%]"
         />

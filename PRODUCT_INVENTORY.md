@@ -13,7 +13,7 @@
 ### By Therapeutic Category
 | Category | SKU Count | Products Included |
 | :--- | :---: | :--- |
-| **Veterinary Medicines** | 9 | CATTLESPAS, PYROVIBE Injection, PYROVIBE Bolus, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLE-CEF 1 g, CATTLE-CEF 3 g, CATTLECEF-SB |
+| **Veterinary Medicines** | 9 | CATTLESPAS Injection, PYROVIBE Injection, PYROVIBE Bolus, MEGLUVIBE Injection, CATTLE PHOS Injection, CATTLE-CEF Injection, CATTLE-CEF 1 g Injection, CATTLE-CEF 3 g Injection, CATTLECEF-SB Injection |
 | **Calcium & Milk Support** | 5 | CATTLESTAR, CATTLESTAR-DS, CATTLESTAR GOLD, CATTLESTAR GEL, CATTLESTAR ADVANCE GEL |
 | **Digestive & Liver Health** | 4 | LIVER-OK, LIVER-OK Injection, RUMI-OK Powder, RUMI-OK Bolus |
 | **Parasite Control** | 3 | FENDIVIBE PLUS, FLUKEVIBE DS, WORMS-OK PLUS |
@@ -23,8 +23,8 @@
 ### By Physical Formulation
 | Formulation | SKU Count | Products |
 | :--- | :---: | :--- |
-| **Injection** | 10 | LIVER-OK Injection, UTROVIBE, CATTLESPAS, PYROVIBE Injection, MEGLUVIBE, CATTLE PHOS, CATTLE-CEF, CATTLE-CEF 1 g, CATTLE-CEF 3 g, CATTLECEF-SB |
-| **Liquid / Oral Suspension** | 5 | LIVER-OK, WORMS-OK PLUS, CATTLESTAR, CATTLESTAR-DS, CATTLESTAR GOLD |
+| **Injection** | 9 | LIVER-OK Injection, CATTLESPAS Injection, PYROVIBE Injection, MEGLUVIBE Injection, CATTLE PHOS Injection, CATTLE-CEF Injection, CATTLE-CEF 1 g Injection, CATTLE-CEF 3 g Injection, CATTLECEF-SB Injection |
+| **Liquid / Oral Suspension** | 6 | LIVER-OK, UTROVIBE, WORMS-OK PLUS, CATTLESTAR, CATTLESTAR-DS, CATTLESTAR GOLD |
 | **Bolus** | 4 | RUMI-OK Bolus, PYROVIBE Bolus, FENDIVIBE PLUS, FLUKEVIBE DS |
 | **Powder** | 3 | RUMI-OK Powder, CATTLEMIN, CATTLEMIN SUPER |
 | **Oral Gel** | 2 | CATTLESTAR GEL, CATTLESTAR ADVANCE GEL |
@@ -42,27 +42,27 @@
 | :-: | :--- | :--- | :--- | :--- | :--- | :-: | :--- |
 | 01 | **LIVER-OK** | `liver-ok` | Liquid | Digestive & Liver Health | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (3x) |
 | 02 | **LIVER-OK Injection** | `liver-ok-injection` | Injection | Digestive & Liver Health | Cattle, Buffalo | No | Official Packshot (3x) |
-| 03 | **UTROVIBE** | `utrovibe` | Injection | Reproductive & Uterine Care | Cattle, Buffalo | No | Official Packshot (3x) |
+| 03 | **UTROVIBE** | `utrovibe` | Liquid | Reproductive & Uterine Care | Cattle, Buffalo | No | Official Packshot (3x) |
 | 04 | **RUMI-OK Powder** | `rumi-ok-powder` | Powder | Digestive & Liver Health | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (2x) |
 | 05 | **RUMI-OK Bolus** | `rumi-ok-bolus` | Bolus | Digestive & Liver Health | Cattle, Buffalo | No | Official Packshot |
-| 06 | **CATTLESPAS** | `cattlespas` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (2x) |
+| 06 | **CATTLESPAS Injection** | `cattlespas` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (2x) |
 | 07 | **PYROVIBE Injection** | `pyrovibe-injection` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot |
 | 08 | **PYROVIBE Bolus** | `pyrovibe-bolus` | Bolus | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
-| 09 | **MEGLUVIBE** | `megluvibe` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
-| 10 | **CATTLE PHOS** | `cattle-phos` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot (2x) |
-| 11 | **CATTLE-CEF** | `cattle-cef` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
-| 12 | **CATTLECEF-SB** | `cattlecef-sb` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
-| 13 | **FENDIVIBE PLUS** | `fendivibe-plus` | Bolus | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
-| 14 | **FLUKEVIBE DS** | `flukevibe-ds` | Bolus | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
-| 15 | **WORMS-OK PLUS** | `worms-ok-plus` | Liquid (Suspension) | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
-| 16 | **CATTLEMIN** | `cattlemin` | Powder | Nutritional Supplements | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (2x) |
-| 17 | **CATTLESTAR GEL** | `cattlestar-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
-| 18 | **CATTLESTAR ADVANCE GEL** | `cattlestar-advance-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
-| 19 | **CATTLESTAR** | `cattlestar` | Liquid | Calcium & Milk Support | Cattle, Buffalo | Yes | Official Packshot (3x) |
-| 20 | **CATTLESTAR-DS** | `cattlestar-ds` | Liquid | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
-| 21 | **CATTLESTAR GOLD** | `cattlestar-gold` | Liquid | Calcium & Milk Support | Cattle, Buffalo, Calf, Sheep, Goat | No | Official Packshot (5L, 2L, 1L) |
-| 22 | **CATTLE-CEF 1 g** | `cattle-cef-1g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box & Vial) |
-| 23 | **CATTLE-CEF 3 g** | `cattle-cef-3g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box, Vial & Diluent Tray) |
+| 09 | **MEGLUVIBE Injection** | `megluvibe` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
+| 10 | **CATTLE PHOS Injection** | `cattle-phos` | Injection | Veterinary Medicines | Cattle, Buffalo | Yes | Official Packshot (2x) |
+| 11 | **CATTLECEF-SB Injection** | `cattlecef-sb` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot |
+| 12 | **FENDIVIBE PLUS** | `fendivibe-plus` | Bolus | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
+| 13 | **FLUKEVIBE DS** | `flukevibe-ds` | Bolus | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
+| 14 | **WORMS-OK PLUS** | `worms-ok-plus` | Liquid (Suspension) | Parasite Control | Cattle, Buffalo, Sheep, Goat | No | Official Packshot |
+| 15 | **CATTLEMIN** | `cattlemin` | Powder | Nutritional Supplements | Cattle, Buffalo, Goat, Sheep | Yes | Official Packshot (2x) |
+| 16 | **CATTLESTAR GEL** | `cattlestar-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
+| 17 | **CATTLESTAR ADVANCE GEL** | `cattlestar-advance-gel` | Gel | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
+| 18 | **CATTLESTAR** | `cattlestar` | Liquid | Calcium & Milk Support | Cattle, Buffalo | Yes | Official Packshot (3x) |
+| 19 | **CATTLESTAR-DS** | `cattlestar-ds` | Liquid | Calcium & Milk Support | Cattle, Buffalo | No | Official Packshot |
+| 20 | **CATTLESTAR GOLD** | `cattlestar-gold` | Liquid | Calcium & Milk Support | Cattle, Buffalo, Calf, Sheep, Goat | No | Official Packshot (5L, 2L, 1L) |
+| 21 | **CATTLE-CEF 1 GM Injection** | `cattle-cef-1g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box & Vial) |
+| 22 | **CATTLE-CEF 3 GM Injection** | `cattle-cef-3g` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box, Vial & Diluent Tray) |
+| 23 | **CATTLE-CEF 4 GM Injection** | `cattle-cef` | Injection | Veterinary Medicines | Cattle, Buffalo | No | Official Packshot (Box, Vial & Diluent Tray) |
 | 24 | **CATTLEMIN SUPER** | `cattlemin-super` | Powder | Nutritional Supplements | Cattle, Buffalo, Goat, Sheep | No | Official Packshot (Front & Back Pouch) |
 
 ---
@@ -120,7 +120,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - *Growers:* 20 ml per 100 birds daily
   - *Layers:* 50 ml per 100 birds daily
   - *Guidance:* Or as directed by the Veterinary Consultant
-- **Presentation:** 1 L, 2 L, 5 L, 10 L & 20 L
+- **Presentation:** 1, 2, 5, 10 & 20 L
 - **Safety Classification:**
   - For Animal Feed Supplement Only
   - Strictly Not for Medicinal/Human Use
@@ -149,7 +149,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - Liquid formulation for easy administration
   - Metabolic support for dairy animals
 - **Presentation & Storage:**
-  - *Presentation:* 1 L, 2 L, 5 L, 10 L & 20 L
+  - *Presentation:* 1, 2, 5, 10 & 20 L
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
@@ -174,7 +174,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - Enhanced mineral support
   - Supports dairy animal productivity
 - **Presentation & Storage:**
-  - *Presentation:* 1 L, 2 L, 5 L, 10 L & 20 L
+  - *Presentation:* 1, 2, 5, 10 & 20 L
   - *Applicable Animals:* Cattle, Buffalo, Horses
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
@@ -197,7 +197,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - Supports post-calving recovery
   - Aids milk productivity in dairy animals
 - **Presentation & Storage:**
-  - *Presentation:* 300 g Bottle
+  - *Presentation:* 300 gm
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
@@ -220,7 +220,7 @@ CATEGORY 01: CALCIUM & MILK PRODUCTIVITY SUPPORT
   - Enhanced support for high milk yield persistency
   - Convenient oral gel administration
 - **Presentation & Storage:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 300 gm
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
@@ -250,7 +250,7 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - Formulated for ruminant health management
   - Suitable for veterinary-guided use in dairy and farm animals
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 100 ml, 250 ml, 500 ml & 1 L
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place away from direct sunlight
 - **Product Images:**
@@ -275,7 +275,7 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - Supports liver health management in large animals
   - Professional veterinary healthcare solution
 - **Storage & Presentation:**
-  - *Presentation:* 100 ml Multi-Dose Vial (B-Complex Liver Extract with Vitamin B12 Injection)
+  - *Presentation:* 100 ml
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store protected from light & moisture
 - **Product Images:**
@@ -301,7 +301,7 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - Suitable for cattle, buffalo, goat, and sheep
   - Aids feed utilization in ruminants
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 250 gm, 500 gm, 1 kg & 5 kg
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
@@ -325,7 +325,7 @@ CATEGORY 02: DIGESTIVE & LIVER HEALTH
   - Supports rumen health in large ruminants
   - Aids digestive function management
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 10 × 4 Bolus
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store in a cool, dry place
 - **Product Images:**
@@ -354,7 +354,7 @@ CATEGORY 03: REPRODUCTIVE & UTERINE CARE
   - Formulated for uterine care in dairy animals
   - Veterinary medicine for professional use
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 250 ml, 500 ml & 1 L
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
@@ -385,7 +385,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Supports reproductive health management
   - Formulated for cattle and buffalo
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 100 ml
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
@@ -409,7 +409,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Injectable formulation for veterinary use
   - Suitable for large animals under veterinary guidance
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 100 ml
   - *Applicable Animals:* Cattle, Buffalo, Horse
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
@@ -433,7 +433,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Anti-inflammatory and antipyretic support
   - Formulated for cattle and buffalo
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 10 × 4 BOLUS
   - *Applicable Animals:* Cattle, Buffalo
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
@@ -457,7 +457,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Supports health management in dairy animals
   - Formulated for cattle and buffalo
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 100 ml
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store as directed on product label
 - **Product Images:**
@@ -480,7 +480,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Injectable formulation for large ruminants
   - Supports metabolic health in dairy animals
 - **Storage & Presentation:**
-  - *Presentation:* 100 ml Glass Vial with Protective Outer Carton
+  - *Presentation:* 100 ml
   - *Applicable Animals:* Cattle, Buffalo
   - *Storage:* Store protected from direct light. Keep out of reach of children
 - **Product Images:**
@@ -504,7 +504,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Supports treatment of bacterial infections
   - Professional veterinary medicine
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* Vials: 1 gm, 3 gm & 4 gm
   - *Applicable Animals:* Cattle, Buffalo
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
@@ -528,7 +528,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Broad-spectrum veterinary support
   - For use under veterinary supervision
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* Vials: 4.5 gm
   - *Applicable Animals:* Cattle, Buffalo
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label
@@ -554,7 +554,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Professional veterinary healthcare solution
 - **Storage & Presentation:**
   - *Composition:* Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 1000 mg
-  - *Presentation:* 1000 mg (1 g) Glass Vial with Outer Carton
+  - *Presentation:* Vials: 1 gm, 3 gm & 4 gm
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label. Protect from light and moisture
 - **Product Images:**
@@ -580,7 +580,7 @@ CATEGORY 04: VETERINARY MEDICINES (ANALGESICS, ANTIBIOTICS & SPECIALTIES)
   - Professional antibiotic solution for severe bacterial infections
 - **Storage & Presentation:**
   - *Composition:* Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 3000 mg
-  - *Presentation:* 3000 mg (3 g) Glass Vial with Sterile Water Diluent in Molded Tray & Outer Carton
+  - *Presentation:* Vials: 1 gm, 3 gm & 4 gm
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store as directed on product label. Protect from light and moisture
 - **Product Images:**
@@ -609,7 +609,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - Supports internal parasite control
   - Suitable for multiple livestock species
 - **Storage & Presentation:**
-  - *Presentation:* 10 x 1 x 1 Bolus & 1 x 1 Bolus
+  - *Presentation:* 10 Strips per Box 1 Bolus Per Strip
   - *Applicable Animals:* Cattle, Buffalo, Sheep, Goat
   - *Withdrawal Period:* Single dose therapy. As per product catalogue
   - *Storage:* Store in a cool, dry place
@@ -633,7 +633,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - Supports liver fluke control in ruminants
   - Veterinary parasite management solution
 - **Storage & Presentation:**
-  - *Presentation:* As per product catalogue
+  - *Presentation:* 10 Strips per Box 1 Bolus Per Strip
   - *Applicable Animals:* Cattle, Buffalo, Sheep, Goat
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
@@ -657,7 +657,7 @@ CATEGORY 05: PARASITE CONTROL & ANTHELMINTICS
   - Comprehensive worm and ectoparasite control
   - For veterinary-guided parasite management
 - **Storage & Presentation:**
-  - *Presentation:* 30 ml Suspension with Outer Carton
+  - *Presentation:* 30 ml
   - *Applicable Animals:* Cattle, Buffalo, Sheep, Goat
   - *Withdrawal Period:* As per product catalogue
   - *Storage:* Store in a cool, dry place
@@ -691,7 +691,7 @@ CATEGORY 06: NUTRITIONAL SUPPLEMENTS
   - *Composition:* As per product catalogue
   - *Indications:* As per product catalogue
   - *Dosage:* As per product catalogue
-  - *Presentation:* 1 kg Pouch & 10 kg Bucket
+  - *Presentation:* 500 gm, 1 kg, 5 kg, 10 kg & 25 kg
   - *Applicable Animals:* Cattle, Buffalo, Goat, Sheep
   - *Storage:* Store in a cool, dry place away from moisture
 - **Product Images:**
@@ -720,7 +720,7 @@ CATEGORY 06: NUTRITIONAL SUPPLEMENTS
   - *Direction for Use:* Cow, Buffalo & Horse: 10-20 kg/Ton of Feed | Calf, Goat, Pig & Sheep: 5-10 kg/Ton of Feed | Poultry & Aqua: 500 gm - 1 kg per MT of prepared feed
   - *Regular Supplementation:* Cow, Buffalo & Horse: 50-100 gm daily | Calf, Goat, Pig & Sheep: 25-30 gm daily or as directed by veterinary consultant
 - **Storage & Presentation:**
-  - *Presentation:* 1 kg Pouch
+  - *Presentation:* 500 gm, 1 kg, 5 kg, 10 kg & 25 kg
   - *Storage:* Keep in a cool & dry place. Keep protected from direct sunlight. Strictly not for medicinal / human use. For animal feed supplement
 - **Product Images:**
   - `/images/cattlemin-super-1.png` (Official 1 kg Front Packaging Packshot with Banana Flavour Banner)
@@ -740,22 +740,22 @@ Every product is dynamically rendered in the CattleVibes Next.js platform via `/
 | 03 | **UTROVIBE** | `https://cattlevibes.com/products/utrovibe` |
 | 04 | **RUMI-OK Powder** | `https://cattlevibes.com/products/rumi-ok-powder` |
 | 05 | **RUMI-OK Bolus** | `https://cattlevibes.com/products/rumi-ok-bolus` |
-| 06 | **CATTLESPAS** | `https://cattlevibes.com/products/cattlespas` |
+| 06 | **CATTLESPAS Injection** | `https://cattlevibes.com/products/cattlespas` |
 | 07 | **PYROVIBE Injection** | `https://cattlevibes.com/products/pyrovibe-injection` |
 | 08 | **PYROVIBE Bolus** | `https://cattlevibes.com/products/pyrovibe-bolus` |
-| 09 | **MEGLUVIBE** | `https://cattlevibes.com/products/megluvibe` |
-| 10 | **CATTLE PHOS** | `https://cattlevibes.com/products/cattle-phos` |
-| 11 | **CATTLE-CEF** | `https://cattlevibes.com/products/cattle-cef` |
-| 12 | **CATTLECEF-SB** | `https://cattlevibes.com/products/cattlecef-sb` |
-| 13 | **FENDIVIBE PLUS** | `https://cattlevibes.com/products/fendivibe-plus` |
-| 14 | **FLUKEVIBE DS** | `https://cattlevibes.com/products/flukevibe-ds` |
-| 15 | **WORMS-OK PLUS** | `https://cattlevibes.com/products/worms-ok-plus` |
-| 16 | **CATTLEMIN** | `https://cattlevibes.com/products/cattlemin` |
-| 17 | **CATTLESTAR GEL** | `https://cattlevibes.com/products/cattlestar-gel` |
-| 18 | **CATTLESTAR ADVANCE GEL** | `https://cattlevibes.com/products/cattlestar-advance-gel` |
-| 19 | **CATTLESTAR** | `https://cattlevibes.com/products/cattlestar` |
-| 20 | **CATTLESTAR-DS** | `https://cattlevibes.com/products/cattlestar-ds` |
-| 21 | **CATTLESTAR GOLD** | `https://cattlevibes.com/products/cattlestar-gold` |
-| 22 | **CATTLE-CEF 1 g** | `https://cattlevibes.com/products/cattle-cef-1g` |
-| 23 | **CATTLE-CEF 3 g** | `https://cattlevibes.com/products/cattle-cef-3g` |
+| 09 | **MEGLUVIBE Injection** | `https://cattlevibes.com/products/megluvibe` |
+| 10 | **CATTLE PHOS Injection** | `https://cattlevibes.com/products/cattle-phos` |
+| 11 | **CATTLECEF-SB Injection** | `https://cattlevibes.com/products/cattlecef-sb` |
+| 12 | **FENDIVIBE PLUS** | `https://cattlevibes.com/products/fendivibe-plus` |
+| 13 | **FLUKEVIBE DS** | `https://cattlevibes.com/products/flukevibe-ds` |
+| 14 | **WORMS-OK PLUS** | `https://cattlevibes.com/products/worms-ok-plus` |
+| 15 | **CATTLEMIN** | `https://cattlevibes.com/products/cattlemin` |
+| 16 | **CATTLESTAR GEL** | `https://cattlevibes.com/products/cattlestar-gel` |
+| 17 | **CATTLESTAR ADVANCE GEL** | `https://cattlevibes.com/products/cattlestar-advance-gel` |
+| 18 | **CATTLESTAR** | `https://cattlevibes.com/products/cattlestar` |
+| 19 | **CATTLESTAR-DS** | `https://cattlevibes.com/products/cattlestar-ds` |
+| 20 | **CATTLESTAR GOLD** | `https://cattlevibes.com/products/cattlestar-gold` |
+| 21 | **CATTLE-CEF 1 GM Injection** | `https://cattlevibes.com/products/cattle-cef-1g` |
+| 22 | **CATTLE-CEF 3 GM Injection** | `https://cattlevibes.com/products/cattle-cef-3g` |
+| 23 | **CATTLE-CEF 4 GM Injection** | `https://cattlevibes.com/products/cattle-cef` |
 | 24 | **CATTLEMIN SUPER** | `https://cattlevibes.com/products/cattlemin-super` |

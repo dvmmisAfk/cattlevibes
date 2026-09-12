@@ -58,7 +58,7 @@ export const productImageMap: Record<string, string[]> = {
   ],
   "cattlestar-gel": ["/images/cattlestar-gel.png"],
   "cattlestar-advance-gel": ["/images/cattlestar-advance-gel.png"],
-  "cattlestar-gold": ["/images/cattlestar-gold-1.png?v=20260911"],
+  "cattlestar-gold": ["/images/cattlestar-gold-1.png"],
 };
 
 export function getProductImages(slug: string): string[] {

@@ -16,11 +16,11 @@ export function WhyCattleVibesCTA() {
       {/* ─── 1. Cinematic Full-Bleed Backdrop (Pastoral Farm View) ─── */}
       <div className="absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <Image
-          src="/images/why-cattlevibes-cta-farm-realities.png?v=20260911"
+          src="/images/why-cattlevibes-cta-farm-realities.png"
           alt="Dairy farmers tending and feeding cattle in modern barn at golden sunrise"
           fill
           priority
-          unoptimized
+          quality={82}
           sizes="100vw"
           className="object-cover object-center"
         />

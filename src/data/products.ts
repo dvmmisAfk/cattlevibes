@@ -20,7 +20,7 @@ export const products: Product[] = [
       "Suitable for veterinary-guided use in dairy and farm animals",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "100 ml, 250 ml, 500 ml & 1 L",
       applicableAnimals: "Cattle, Buffalo, Goat, Sheep",
       storage: "Store in a cool, dry place away from direct sunlight",
     },
@@ -45,7 +45,7 @@ export const products: Product[] = [
       "Professional veterinary healthcare solution",
     ],
     info: {
-      presentation: "100 ml Multi-Dose Vial",
+      presentation: "100 ml",
       composition: "B-Complex Liver Extract with Vitamin B12 Injection",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store protected from light & moisture",
@@ -56,23 +56,25 @@ export const products: Product[] = [
     slug: "utrovibe",
     name: "UTROVIBE",
     category: "Reproductive & Uterine Care",
-    formulation: "Injection",
+    formulation: "Liquid",
     animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Reproductive Health"],
     bestseller: true,
     shortDescription:
-      "Veterinary medicine for reproductive and uterine health management in dairy animals.",
+      "Uterine tonic and cleansing liquid to facilitate expulsion of retained placenta and support uterine health.",
     description:
-      "UTROVIBE is formulated for reproductive and uterine health support in cattle and buffalo. Refer to the official product catalogue for complete indications and dosage.",
+      "UTROVIBE Liquid is formulated for reproductive and uterine health support in dairy animals, helping facilitate natural expulsion of retained placenta and supporting postpartum uterine involution. Refer to the official product catalogue for complete indications and dosage.",
     benefits: [
-      "Supports reproductive health management",
-      "Formulated for uterine care in dairy animals",
-      "Veterinary medicine for professional use",
+      "Helps facilitate expulsion of retained placenta (ROP)",
+      "Promotes natural uterine cleansing and involution",
+      "Supports milk production and reproductive cycle return",
+      "Palatable liquid formulation for dairy cattle and buffalo",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "250 ml, 500 ml & 1 L",
+      composition: "Herbal Uterine Tonic & Cleansing Liquid",
       applicableAnimals: "Cattle, Buffalo",
-      storage: "Store as directed on product label",
+      storage: "Store in a cool, dry place away from direct sunlight",
     },
     relatedSlugs: ["cattlespas", "cattlestar", "megluvibe"],
   },
@@ -94,7 +96,7 @@ export const products: Product[] = [
       "Aids feed utilization in ruminants",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "250 gm, 500 gm, 1 kg & 5 kg",
       applicableAnimals: "Cattle, Buffalo, Goat, Sheep",
       storage: "Store in a cool, dry place",
     },
@@ -118,7 +120,7 @@ export const products: Product[] = [
       "Aids digestive function management",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "10 × 4 Bolus",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store in a cool, dry place",
     },
@@ -126,7 +128,7 @@ export const products: Product[] = [
   },
   {
     slug: "cattlespas",
-    name: "CATTLESPAS",
+    name: "CATTLESPAS Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
@@ -134,14 +136,14 @@ export const products: Product[] = [
     shortDescription:
       "Veterinary injection for uterine and reproductive health management.",
     description:
-      "CATTLESPAS is a veterinary medicine for reproductive health management. Refer to the official product catalogue for complete indications and dosage.",
+      "CATTLESPAS Injection is a veterinary medicine for reproductive health management. Refer to the official product catalogue for complete indications and dosage.",
     benefits: [
       "Veterinary injection for professional use",
       "Supports reproductive health management",
       "Formulated for cattle and buffalo",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "100 ml",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store as directed on product label",
     },
@@ -164,7 +166,7 @@ export const products: Product[] = [
       "Suitable for large animals under veterinary guidance",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "100 ml",
       applicableAnimals: "Cattle, Buffalo, Horse",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store as directed on product label",
@@ -190,7 +192,7 @@ export const products: Product[] = [
       "Formulated for cattle and buffalo",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "10 × 4 BOLUS",
       applicableAnimals: "Cattle, Buffalo",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
@@ -201,7 +203,7 @@ export const products: Product[] = [
   },
   {
     slug: "megluvibe",
-    name: "MEGLUVIBE",
+    name: "MEGLUVIBE Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
@@ -209,14 +211,14 @@ export const products: Product[] = [
     shortDescription:
       "Veterinary injection for reproductive and inflammatory conditions in dairy animals.",
     description:
-      "MEGLUVIBE is a veterinary injection for use in dairy animals. Refer to the official product catalogue for complete indications and dosage.",
+      "MEGLUVIBE Injection is a veterinary injection for use in dairy animals. Refer to the official product catalogue for complete indications and dosage.",
     benefits: [
       "Veterinary injection for professional administration",
       "Supports health management in dairy animals",
       "Formulated for cattle and buffalo",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "100 ml",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store as directed on product label",
     },
@@ -224,7 +226,7 @@ export const products: Product[] = [
   },
   {
     slug: "cattle-phos",
-    name: "CATTLE PHOS",
+    name: "CATTLE PHOS Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
@@ -232,14 +234,14 @@ export const products: Product[] = [
     shortDescription:
       "Phosphorus and mineral support injection for large ruminants.",
     description:
-      "CATTLE PHOS provides phosphorus and mineral support for cattle and buffalo. Refer to the official product catalogue for complete composition and dosage.",
+      "CATTLE PHOS Injection provides phosphorus and mineral support for cattle and buffalo. Refer to the official product catalogue for complete composition and dosage.",
     benefits: [
       "Mineral and phosphorus support",
       "Injectable formulation for large ruminants",
       "Supports metabolic health in dairy animals",
     ],
     info: {
-      presentation: "100 ml Glass Vial with Outer Carton",
+      presentation: "100 ml",
       composition: "Butaphosphan & Cyanocobalamin Injection",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store protected from direct light. Keep out of reach of children",
@@ -248,33 +250,8 @@ export const products: Product[] = [
     relatedSlugs: ["cattlemin", "cattlestar", "cattlestar-ds"],
   },
   {
-    slug: "cattle-cef",
-    name: "CATTLE-CEF",
-    category: "Veterinary Medicines",
-    formulation: "Injection",
-    animals: ["Cattle", "Buffalo"],
-    healthConcerns: ["Antibiotic"],
-    bestseller: true,
-    shortDescription:
-      "Ceftiofur-based antibiotic injection for bacterial infections in livestock.",
-    description:
-      "CATTLE-CEF is an antibiotic injection for veterinary use. Refer to the official product catalogue for complete indications, dosage, and withdrawal period.",
-    benefits: [
-      "Antibiotic formulation for veterinary use",
-      "Supports treatment of bacterial infections",
-      "Professional veterinary medicine",
-    ],
-    info: {
-      presentation: "As per product catalogue",
-      applicableAnimals: "Cattle, Buffalo",
-      withdrawalPeriod: "As per product catalogue",
-      storage: "Store as directed on product label",
-    },
-    relatedSlugs: ["cattlecef-sb", "pyrovibe-injection", "fendivibe-plus"],
-  },
-  {
     slug: "cattlecef-sb",
-    name: "CATTLECEF-SB",
+    name: "CATTLECEF-SB Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
@@ -282,14 +259,14 @@ export const products: Product[] = [
     shortDescription:
       "Ceftiofur and Sulbactam combination antibiotic injection for livestock.",
     description:
-      "CATTLECEF-SB combines ceftiofur with sulbactam for veterinary antibiotic therapy. Refer to the official product catalogue for complete product information.",
+      "CATTLECEF-SB Injection combines ceftiofur with sulbactam for veterinary antibiotic therapy. Refer to the official product catalogue for complete product information.",
     benefits: [
       "Combination antibiotic formulation",
       "Broad-spectrum veterinary support",
       "For use under veterinary supervision",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "Vials: 4.5 gm",
       applicableAnimals: "Cattle, Buffalo",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store as directed on product label",
@@ -313,7 +290,7 @@ export const products: Product[] = [
       "Suitable for multiple livestock species",
     ],
     info: {
-      presentation: "10 x 1 x 1 Bolus & 1 x 1 Bolus",
+      presentation: "10 Strips per Box 1 Bolus Per Strip",
       composition: "Fenbendazole & Ivermectin Bolus",
       applicableAnimals: "Cattle, Buffalo, Sheep, Goat",
       withdrawalPeriod: "Single dose therapy. As per product catalogue",
@@ -338,7 +315,7 @@ export const products: Product[] = [
       "Veterinary parasite management solution",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "10 Strips per Box 1 Bolus Per Strip",
       applicableAnimals: "Cattle, Buffalo, Sheep, Goat",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store in a cool, dry place",
@@ -362,7 +339,7 @@ export const products: Product[] = [
       "For veterinary-guided parasite management",
     ],
     info: {
-      presentation: "30 ml Suspension with Outer Carton",
+      presentation: "30 ml",
       composition: "Fenbendazole & Ivermectin Oral Suspension",
       applicableAnimals: "Cattle, Buffalo, Sheep, Goat",
       withdrawalPeriod: "As per product catalogue",
@@ -388,7 +365,7 @@ export const products: Product[] = [
       "Promotes stronger immunity and overall metabolic health",
     ],
     info: {
-      presentation: "1 kg, 5 kg, 25 kg Bag",
+      presentation: "500 gm, 1 kg, 5 kg, 10 kg & 25 kg",
       composition: "Chelated Minerals, Vitamins & Amino Acids Supplement",
       applicableAnimals: "Cattle, Buffalo, Goat, Sheep",
       storage: "Store in a cool, dry place away from direct sunlight",
@@ -414,7 +391,7 @@ export const products: Product[] = [
       "Supports post-calving recovery and milk productivity",
     ],
     info: {
-      presentation: "300 g Bottle",
+      presentation: "300 gm",
       composition: "Ionic Calcium Rich Oral Gel",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store as directed on product label",
@@ -438,7 +415,7 @@ export const products: Product[] = [
       "Convenient gel administration",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "300 gm",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store as directed on product label",
     },
@@ -462,7 +439,7 @@ export const products: Product[] = [
       "Metabolic support for dairy animals",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "1, 2, 5, 10 & 20 L",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store in a cool, dry place",
     },
@@ -486,7 +463,7 @@ export const products: Product[] = [
       "Supports dairy animal productivity",
     ],
     info: {
-      presentation: "As per product catalogue",
+      presentation: "1, 2, 5, 10 & 20 L",
       applicableAnimals: "Cattle, Buffalo",
       storage: "Store in a cool, dry place",
     },
@@ -532,7 +509,7 @@ export const products: Product[] = [
         "Per 100 ml: Calcium 6100 mg, Phosphorus 3050 mg, Vitamin D3 12000 I.U., Vitamin B12 100 mcg, Vitamin E 1000 I.U., Vitamin H (Biotin) 30 mg, Carbohydrate 30000 mg, Zinc 1500 mg, Chromium 5 mg, Copper 500 mg, Shatavari Extract 1500 mg, Jivanti 1500 mg, Silymarin 450 mg, Piper Longum 400 mg",
       dosage:
         "Calf, Foal & Pig: 40 ml daily | Sheep, Goat & Dog: 20 ml daily | Cattle & Horses: 100 ml daily | Chicks & Broilers: 10 ml per 100 birds daily | Growers: 20 ml per 100 birds daily | Layers: 50 ml per 100 birds daily | Or as directed by the Veterinary Consultant",
-      presentation: "1 L, 2 L, 5 L, 10 L & 20 L",
+      presentation: "1, 2, 5, 10 & 20 L",
       applicableAnimals:
         "Cattle, Buffalo, Horse, Calf, Foal, Pig, Sheep, Goat, Dog, Chicks, Broilers, Growers, Layers",
       safetyClassification:
@@ -546,16 +523,16 @@ export const products: Product[] = [
   },
   {
     slug: "cattle-cef-1g",
-    name: "CATTLE-CEF 1 g",
+    name: "CATTLE-CEF 1 GM Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Antibiotic"],
     bestseller: true,
     shortDescription:
-      "Ceftriaxone injection 1000 mg (1 g) for veterinary use in bacterial infections.",
+      "Ceftriaxone injection 1000 mg (1 GM) for veterinary use in bacterial infections.",
     description:
-      "CATTLE-CEF 1 g is a sterile ceftriaxone injection (1000 mg) for veterinary administration via I.M. or I.V. route. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
+      "CATTLE-CEF 1 GM Injection is a sterile ceftriaxone injection (1000 mg) for veterinary administration via I.M. or I.V. route. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
     benefits: [
       "Sterile ceftriaxone 1000 mg formulation",
       "For I.M. / I.V. veterinary administration",
@@ -563,25 +540,25 @@ export const products: Product[] = [
       "Professional veterinary healthcare solution",
     ],
     info: {
-      presentation: "1000 mg (1 g) Glass Vial with Outer Carton",
+      presentation: "Vials: 1 gm, 3 gm & 4 gm",
       composition: "Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 1000 mg",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store as directed on product label. Protect from light and moisture",
     },
-    relatedSlugs: ["cattle-cef", "cattle-cef-3g", "cattlecef-sb"],
+    relatedSlugs: ["cattle-cef-3g", "cattle-cef", "cattlecef-sb"],
   },
   {
     slug: "cattle-cef-3g",
-    name: "CATTLE-CEF 3 g",
+    name: "CATTLE-CEF 3 GM Injection",
     category: "Veterinary Medicines",
     formulation: "Injection",
     animals: ["Cattle", "Buffalo"],
     healthConcerns: ["Antibiotic"],
     bestseller: true,
     shortDescription:
-      "Ceftriaxone injection 3000 mg (3 g) with sterile water diluent for veterinary use.",
+      "Ceftriaxone injection 3000 mg (3 GM) with sterile water diluent for veterinary use.",
     description:
-      "CATTLE-CEF 3 g is a sterile ceftriaxone injection (3000 mg) supplied with sterile water for injection diluent in a molded presentation tray for I.M. or I.V. veterinary administration. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
+      "CATTLE-CEF 3 GM Injection is a sterile ceftriaxone injection (3000 mg) supplied with sterile water for injection diluent in a molded presentation tray for I.M. or I.V. veterinary administration. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
     benefits: [
       "High-potency ceftriaxone 3000 mg formulation",
       "Supplied complete with sterile water diluent and molded tray",
@@ -589,12 +566,38 @@ export const products: Product[] = [
       "Professional antibiotic solution for severe bacterial infections",
     ],
     info: {
-      presentation: "3000 mg (3 g) Glass Vial with Sterile Water Diluent in Molded Tray & Outer Carton",
+      presentation: "Vials: 1 gm, 3 gm & 4 gm",
       composition: "Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 3000 mg",
       withdrawalPeriod: "As per product catalogue",
       storage: "Store as directed on product label. Protect from light and moisture",
     },
-    relatedSlugs: ["cattle-cef", "cattle-cef-1g", "cattlecef-sb"],
+    relatedSlugs: ["cattle-cef-1g", "cattle-cef", "cattlecef-sb"],
+  },
+  {
+    slug: "cattle-cef",
+    name: "CATTLE-CEF 4 GM Injection",
+    category: "Veterinary Medicines",
+    formulation: "Injection",
+    animals: ["Cattle", "Buffalo"],
+    healthConcerns: ["Antibiotic"],
+    bestseller: true,
+    shortDescription:
+      "Ceftriaxone injection 4000 mg (4 GM) with sterile water diluent for veterinary use in severe bacterial infections.",
+    description:
+      "CATTLE-CEF 4 GM Injection is a sterile ceftriaxone injection (4000 mg) supplied with sterile water for injection diluent in a molded presentation tray for I.M. or I.V. veterinary administration. Refer to the official product catalogue and packaging label for complete indications, dosage, and withdrawal guidelines.",
+    benefits: [
+      "High-potency ceftriaxone 4000 mg (4 GM) formulation",
+      "Supplied complete with sterile water diluent and molded tray",
+      "For I.M. / I.V. veterinary administration",
+      "Professional antibiotic solution for severe bacterial infections",
+    ],
+    info: {
+      presentation: "Vials: 1 gm, 3 gm & 4 gm",
+      composition: "Each vial contains: Ceftriaxone Sodium I.P. equivalent to Ceftriaxone 4000 mg",
+      withdrawalPeriod: "As per product catalogue",
+      storage: "Store as directed on product label. Protect from light and moisture",
+    },
+    relatedSlugs: ["cattle-cef-1g", "cattle-cef-3g", "cattlecef-sb"],
   },
   {
     slug: "cattlemin-super",
@@ -615,7 +618,7 @@ export const products: Product[] = [
       "Palatable banana flavour for enhanced feed intake",
     ],
     info: {
-      presentation: "1 kg Pouch",
+      presentation: "500 gm, 1 kg, 5 kg, 10 kg & 25 kg",
       composition:
         "Nutritional value per kg: Vitamin A 7,50,000 I.U., Vitamin D3 75,000 I.U., Vitamin E 500 mg, Niacinamide 1000 mg, Cobalt 200 mg, Copper 4500 mg, Iodine 500 mg, Iron 2000 mg, Magnesium 6000 mg, Manganese 3000 mg, Potassium 154 mg, Sodium 25 mg, Sulphur 0.95%, Zinc 9600 mg, Calcium 24.6%, Phosphorus 12.3%",
       dosage:

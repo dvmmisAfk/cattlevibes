@@ -134,10 +134,11 @@ export function ProductQuickView({
       products[(productIndex - 1 + products.length) % products.length],
     ];
     neighbors.forEach((item) => {
-      resolveImages(item ?? product).forEach((src) => {
+      const cover = resolveImages(item ?? product)[0];
+      if (cover) {
         const image = new Image();
-        image.src = src;
-      });
+        image.src = `/_next/image?url=${encodeURIComponent(cover)}&w=828&q=85`;
+      }
     });
   }, [productIndex, products, product]);
 
